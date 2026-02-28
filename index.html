@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EnglishUp — Seviye Testi</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+  :root {
+    --bg: #eef4fc;
+    --surface: #ffffff;
+    --surface2: #ddeaf9;
+    --border: #b8d4f0;
+    --accent: #2f80ed;
+    --accent2: #1a9cd8;
+    --success: #1aaa6b;
+    --danger: #e03a52;
+    --text: #1a2a3a;
+    --muted: #6a8caa;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(160deg, #ddeef9 0%, #eef4fc 50%, #f0f7ff 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 40px;
+  }
+
+  .header {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-top: 8px;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  .stats-pill {
+    display: flex;
+    gap: 12px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .stats-pill b { color: var(--accent2); font-weight: 500; }
+
+  /* HOME */
+  .screen { width: 100%; max-width: 480px; display: none; }
+  .screen.active { display: block; }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.6; }
+
+  .level-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+  .level-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.07);
+  }
+  .level-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--card-color, var(--accent));
+    border-radius: 4px 0 0 4px;
+  }
+  .level-card:hover { border-color: var(--card-color, var(--accent)); transform: translateX(4px); }
+  .level-card.selected { border-color: var(--card-color, var(--accent)); background: var(--surface2); }
+
+  .level-card[data-level="A1"] { --card-color: #1aaa6b; }
+  .level-card[data-level="A2"] { --card-color: #2f80ed; }
+  .level-card[data-level="B1"] { --card-color: #e09a1a; }
+  .level-card[data-level="MIXED"] { --card-color: #9b3de8; }
+
+  .level-badge {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--card-color, var(--accent));
+    margin-bottom: 4px;
+  }
+  .level-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 2px; }
+  .level-desc { font-size: 0.8rem; color: var(--muted); }
+  .level-progress {
+    margin-top: 10px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .level-progress-fill {
+    height: 100%;
+    background: var(--card-color, var(--accent));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .level-score-text { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+
+  .q-count-row { display: flex; gap: 10px; margin-bottom: 28px; align-items: center; }
+  .q-count-label { font-size: 0.85rem; color: var(--muted); }
+  .q-count-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    transition: all 0.15s;
+  }
+  .q-count-btn.active, .q-count-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(79,142,247,0.08);
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* QUIZ */
+  .quiz-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 480px;
+  }
+  .quiz-back {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    box-shadow: 0 1px 4px rgba(47,128,237,0.08);
+  }
+  .quiz-back:hover { background: var(--surface2); }
+
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  .progress-text { font-size: 0.8rem; color: var(--muted); flex-shrink: 0; }
+
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 16px rgba(47,128,237,0.08);
+  }
+  .q-type-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .q-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .q-blank { 
+    display: inline-block;
+    min-width: 80px;
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .choices { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 480px; }
+
+  .choice-btn {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .choice-letter {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .choice-btn:hover:not(:disabled) { border-color: var(--accent); }
+  .choice-btn:hover:not(:disabled) .choice-letter { background: var(--accent); }
+
+  .choice-btn.correct { border-color: var(--success); background: rgba(79,207,122,0.08); }
+  .choice-btn.correct .choice-letter { background: var(--success); color: #0d0f14; }
+  .choice-btn.wrong { border-color: var(--danger); background: rgba(247,79,106,0.08); }
+  .choice-btn.wrong .choice-letter { background: var(--danger); color: #fff; }
+
+  .feedback-bar {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    margin-top: 4px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+  .feedback-bar.show { display: flex; }
+  .feedback-bar.correct { background: rgba(79,207,122,0.12); border: 1px solid rgba(79,207,122,0.3); color: var(--success); }
+  .feedback-bar.wrong { background: rgba(247,79,106,0.1); border: 1px solid rgba(247,79,106,0.25); color: #f7788a; }
+  .feedback-icon { font-size: 1.1rem; }
+  .feedback-explain { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+
+  .next-btn {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 16px;
+    padding: 15px;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: none;
+    transition: all 0.15s;
+  }
+  .next-btn.show { display: block; }
+  .next-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* RESULT */
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(47,128,237,0.1);
+  }
+  .result-emoji { font-size: 3rem; margin-bottom: 12px; }
+  .result-score {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent2);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .result-label { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .result-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-box {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 12px 8px;
+  }
+  .stat-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; }
+  .stat-val.green { color: var(--success); }
+  .stat-val.red { color: var(--danger); }
+  .stat-name { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  .result-msg { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 10px;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .history-section { width: 100%; max-width: 480px; margin-top: 28px; }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .history-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+  }
+  .history-level { font-weight: 600; }
+  .history-score { color: var(--accent2); font-family: 'Syne', sans-serif; font-weight: 700; }
+  .history-date { color: var(--muted); font-size: 0.76rem; }
+
+  @keyframes pop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .pop { animation: pop 0.2s ease forwards; }
+
+  .streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26,156,216,0.1);
+    border: 1px solid rgba(26,156,216,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    color: var(--accent2);
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">English<span>Up</span></div>
+  <div class="stats-pill" id="headerStats"></div>
+</div>
+
+<!-- HOME SCREEN -->
+<div class="screen active" id="homeScreen">
+  <div class="hero-title">İngilizce'ni<br>test et.</div>
+  <p class="hero-sub">A1'den B1'e — seviyeni seç, quiz başlasın.</p>
+
+  <div id="streakBadge" style="display:none" class="streak-badge">🔥 <span id="streakCount">0</span> günlük seri</div>
+
+  <div class="level-cards">
+    <div class="level-card" data-level="A1" onclick="selectLevel('A1')">
+      <div class="level-badge">A1</div>
+      <div class="level-name">Başlangıç</div>
+      <div class="level-desc">Temel kelimeler, renkler, sayılar, günlük ifadeler</div>
+      <div class="level-progress"><div class="level-progress-fill" id="prog-A1" style="width:0%"></div></div>
+      <div class="level-score-text" id="score-A1">Henüz quiz yapılmadı</div>
+    </div>
+    <div class="level-card" data-level="A2" onclick="selectLevel('A2')">
+      <div class="level-badge">A2</div>
+      <div class="level-name">Temel</div>
+      <div class="level-desc">Simple past, present continuous, günlük diyaloglar</div>
+      <div class="level-progress"><div class="level-progress-fill" id="prog-A2" style="width:0%"></div></div>
+      <div class="level-score-text" id="score-A2">Henüz quiz yapılmadı</div>
+    </div>
+    <div class="level-card" data-level="B1" onclick="selectLevel('B1')">
+      <div class="level-badge">B1</div>
+      <div class="level-name">Orta</div>
+      <div class="level-desc">Conditionals, passive voice, idioms, akademik kelimeler</div>
+      <div class="level-progress"><div class="level-progress-fill" id="prog-B1" style="width:0%"></div></div>
+      <div class="level-score-text" id="score-B1">Henüz quiz yapılmadı</div>
+    </div>
+    <div class="level-card" data-level="MIXED" onclick="selectLevel('MIXED')">
+      <div class="level-badge" style="color:#cf4ff7">MIX</div>
+      <div class="level-name">Karışık</div>
+      <div class="level-desc">A1 + A2 + B1 sorularından rastgele seçim</div>
+    </div>
+  </div>
+
+  <div class="q-count-row">
+    <span class="q-count-label">Soru sayısı:</span>
+    <button class="q-count-btn active" onclick="setQCount(10, this)">10</button>
+    <button class="q-count-btn" onclick="setQCount(20, this)">20</button>
+    <button class="q-count-btn" onclick="setQCount(50, this)">50</button>
+  </div>
+
+  <button class="btn-primary" id="startBtn" onclick="startQuiz()" disabled>Seviye Seç ↑</button>
+
+  <div class="history-section" id="historySection" style="display:none">
+    <div class="section-title">Son Quizler</div>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<!-- QUIZ SCREEN -->
+<div class="screen" id="quizScreen">
+  <div class="quiz-top">
+    <button class="quiz-back" onclick="goHome()">←</button>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText">0/0</div>
+  </div>
+
+  <div class="q-card pop" id="qCard">
+    <div class="q-type-tag" id="qTypeTag">Grammar</div>
+    <div class="q-text" id="qText"></div>
+  </div>
+
+  <div class="choices" id="choices"></div>
+
+  <div class="feedback-bar" id="feedbackBar">
+    <div class="feedback-icon" id="feedbackIcon"></div>
+    <div>
+      <div id="feedbackText"></div>
+      <div class="feedback-explain" id="feedbackExplain"></div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Sonraki →</button>
+</div>
+
+<!-- RESULT SCREEN -->
+<div class="screen" id="resultScreen">
+  <div class="result-card pop">
+    <div class="result-emoji" id="resultEmoji">🎉</div>
+    <div class="result-score" id="resultScore">0%</div>
+    <div class="result-label" id="resultLabel"></div>
+    <div class="result-stats">
+      <div class="stat-box">
+        <div class="stat-val green" id="rCorrect">0</div>
+        <div class="stat-name">Doğru</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val red" id="rWrong">0</div>
+        <div class="stat-name">Yanlış</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" id="rTotal">0</div>
+        <div class="stat-name">Toplam</div>
+      </div>
+    </div>
+    <div class="result-msg" id="resultMsg"></div>
+    <button class="btn-primary" onclick="retryQuiz()">Tekrar Dene</button>
+    <button class="btn-secondary" onclick="goHome()">Ana Sayfa</button>
+  </div>
+</div>
+
+<script>
+// =================== QUESTION BANK ===================
+const QUESTIONS = {
+A1: [
+  {t:"vocabulary",q:"What color is the sky?",o:["Blue","Green","Red","Yellow"],a:0,e:"The sky is blue."},
+  {t:"grammar",q:"___ is my name John.",o:["My","This","It","He"],a:0,e:"'My name is John' – iyelik sıfatı."},
+  {t:"vocabulary",q:"How do you say 'elma' in English?",o:["Apple","Banana","Orange","Grape"],a:0,e:"Elma = Apple"},
+  {t:"grammar",q:"I ___ a student.",o:["am","is","are","be"],a:0,e:"I ile 'am' kullanılır."},
+  {t:"vocabulary",q:"Which number comes after 4?",o:["5","3","6","7"],a:0,e:"4'ten sonra 5 gelir."},
+  {t:"grammar",q:"She ___ happy.",o:["is","am","are","be"],a:0,e:"She (o) ile 'is' kullanılır."},
+  {t:"vocabulary",q:"What do you say when you meet someone?",o:["Hello","Goodbye","Thank you","Sorry"],a:0,e:"Birini ilk gördüğünde 'Hello' denir."},
+  {t:"grammar",q:"They ___ my friends.",o:["are","is","am","be"],a:0,e:"They ile 'are' kullanılır."},
+  {t:"vocabulary",q:"'Kitap' in English is:",o:["Book","Pen","Desk","Chair"],a:0,e:"Kitap = Book"},
+  {t:"grammar",q:"___ you like coffee?",o:["Do","Does","Is","Are"],a:0,e:"'Do you like...?' – soru kalıbı."},
+  {t:"vocabulary",q:"What animal says 'meow'?",o:["Cat","Dog","Bird","Fish"],a:0,e:"Kedi miyavlar: meow."},
+  {t:"grammar",q:"He ___ to school every day.",o:["goes","go","going","gone"],a:0,e:"He/she/it ile fiil +s alır."},
+  {t:"vocabulary",q:"Which day comes after Monday?",o:["Tuesday","Sunday","Wednesday","Friday"],a:0,e:"Pazartesi'den sonra Salı (Tuesday) gelir."},
+  {t:"grammar",q:"I have ___ apple.",o:["an","a","the","—"],a:0,e:"Sesli harfle başlayan kelime önüne 'an' gelir."},
+  {t:"vocabulary",q:"'Kırmızı' means:",o:["Red","Blue","Green","Black"],a:0,e:"Kırmızı = Red"},
+  {t:"grammar",q:"___ name is Sara.",o:["Her","She","He","His"],a:0,e:"Sara (kız) için 'Her name'."},
+  {t:"vocabulary",q:"How many fingers do you have on one hand?",o:["5","4","6","10"],a:0,e:"Bir elde 5 parmak var."},
+  {t:"grammar",q:"We ___ in Turkey.",o:["live","lives","living","lived"],a:0,e:"We ile fiilin yalın hali: live."},
+  {t:"vocabulary",q:"'Araba' in English:",o:["Car","Bus","Train","Plane"],a:0,e:"Araba = Car"},
+  {t:"grammar",q:"___ is your name?",o:["What","Where","Who","How"],a:0,e:"İsim sorulurken 'What' kullanılır."},
+  {t:"vocabulary",q:"Opposite of 'big' is:",o:["Small","Tall","Fast","Old"],a:0,e:"Big'in zıttı Small (küçük)."},
+  {t:"grammar",q:"This is ___ book. (belongs to me)",o:["my","your","his","their"],a:0,e:"Bana ait → my."},
+  {t:"vocabulary",q:"'Su' in English:",o:["Water","Juice","Milk","Tea"],a:0,e:"Su = Water"},
+  {t:"grammar",q:"Please ___ the door.",o:["open","opens","opening","opened"],a:0,e:"Emir cümlelerinde fiilin yalın hali."},
+  {t:"vocabulary",q:"Which season comes after Summer?",o:["Autumn","Spring","Winter","Summer"],a:0,e:"Yazdan sonra Sonbahar (Autumn) gelir."},
+  {t:"grammar",q:"I ___ not like spicy food.",o:["do","does","am","is"],a:0,e:"Olumsuz: I do not / don't."},
+  {t:"vocabulary",q:"What do you use to write?",o:["Pen","Fork","Spoon","Key"],a:0,e:"Yazmak için kalem (pen) kullanırsın."},
+  {t:"grammar",q:"There ___ two cats.",o:["are","is","am","be"],a:0,e:"Çoğul ile 'are' kullanılır."},
+  {t:"vocabulary",q:"'Güzel' in English:",o:["Beautiful","Ugly","Tall","Short"],a:0,e:"Güzel = Beautiful"},
+  {t:"grammar",q:"___ old are you?",o:["How","What","Where","Who"],a:0,e:"Yaş sorarken 'How old'."},
+  {t:"vocabulary",q:"Which is a fruit?",o:["Orange","Carrot","Potato","Onion"],a:0,e:"Orange (portakal) bir meyvedir."},
+  {t:"grammar",q:"She ___ TV every evening.",o:["watches","watch","watching","watched"],a:0,e:"She için watches (3. tekil +es)."},
+  {t:"vocabulary",q:"'Ev' in English:",o:["House","School","Hospital","Market"],a:0,e:"Ev = House"},
+  {t:"grammar",q:"___ he your brother?",o:["Is","Are","Do","Does"],a:0,e:"He is → Is he? soru kalıbı."},
+  {t:"vocabulary",q:"What time do most people sleep?",o:["Night","Morning","Afternoon","Noon"],a:0,e:"İnsanlar geceleri (Night) uyur."},
+  {t:"grammar",q:"I ___ English right now.",o:["am learning","learn","learned","learns"],a:0,e:"'Right now' → present continuous: am learning."},
+  {t:"vocabulary",q:"'Öğretmen' in English:",o:["Teacher","Doctor","Police","Pilot"],a:0,e:"Öğretmen = Teacher"},
+  {t:"grammar",q:"The children ___ in the park.",o:["are playing","is playing","plays","played"],a:0,e:"Children (çoğul) + present continuous: are playing."},
+  {t:"vocabulary",q:"Which body part do you use to see?",o:["Eyes","Ears","Nose","Mouth"],a:0,e:"Görmek için gözler (Eyes) kullanılır."},
+  {t:"grammar",q:"___ your mother work?",o:["Does","Do","Is","Are"],a:0,e:"He/she/it sorularında 'Does'."},
+  {t:"vocabulary",q:"'Sıcak' in English:",o:["Hot","Cold","Warm","Cool"],a:0,e:"Sıcak = Hot"},
+  {t:"grammar",q:"There is ___ milk in the glass.",o:["some","a","an","many"],a:0,e:"Sayılamaz isimlerle 'some'."},
+  {t:"vocabulary",q:"The opposite of 'day' is:",o:["Night","Evening","Morning","Noon"],a:0,e:"Gündüzün zıttı gece (Night)."},
+  {t:"grammar",q:"I ___ breakfast at 7 am.",o:["have","has","having","had"],a:0,e:"I ile 'have' (yalın hal)."},
+  {t:"vocabulary",q:"'Ağaç' in English:",o:["Tree","Flower","Grass","Bush"],a:0,e:"Ağaç = Tree"},
+  {t:"grammar",q:"This bag is ___. (belongs to you)",o:["yours","mine","his","ours"],a:0,e:"Sana ait → yours."},
+  {t:"vocabulary",q:"Which animal can fly?",o:["Bird","Fish","Cat","Horse"],a:0,e:"Kuş (Bird) uçabilir."},
+  {t:"grammar",q:"___ are those people?",o:["Who","What","Where","How"],a:0,e:"Kişileri sorarken 'Who'."},
+  {t:"vocabulary",q:"'Mutlu' in English:",o:["Happy","Sad","Angry","Tired"],a:0,e:"Mutlu = Happy"},
+  {t:"grammar",q:"She doesn't ___ vegetables.",o:["like","likes","liked","liking"],a:0,e:"Doesn't + fiilin yalın hali."},
+],
+A2: [
+  {t:"grammar",q:"I ___ to Paris last year.",o:["went","go","goes","going"],a:0,e:"Geçmiş zaman: went (go'nun past hali)."},
+  {t:"grammar",q:"She was cooking when I ___ home.",o:["arrived","arrive","arrives","arriving"],a:0,e:"Eş zamanlı geçmiş: was cooking / arrived (past simple)."},
+  {t:"vocabulary",q:"'Appointment' means:",o:["Randevu","Atama","Tatil","Toplantı odası"],a:0,e:"Appointment = randevu."},
+  {t:"grammar",q:"They ___ to the cinema yesterday.",o:["didn't go","don't go","weren't go","not went"],a:0,e:"Past simple olumsuz: didn't + yalın fiil."},
+  {t:"grammar",q:"I have ___ seen that movie.",o:["already","yet","still","never"],a:0,e:"'Already' cümle içinde olumlu perfect ile kullanılır."},
+  {t:"vocabulary",q:"'Exhausted' means:",o:["Çok yorgun","Heyecanlı","Üzgün","Kızgın"],a:0,e:"Exhausted = aşırı yorgun."},
+  {t:"grammar",q:"She has lived here ___ 5 years.",o:["for","since","during","from"],a:0,e:"Süre ifadeleri için 'for'."},
+  {t:"grammar",q:"___ you ever been to London?",o:["Have","Did","Are","Do"],a:0,e:"Deneyim sorusu: Have you ever...?"},
+  {t:"vocabulary",q:"'Neighbourhood' means:",o:["Mahalle","Şehir","Köy","Kasaba"],a:0,e:"Neighbourhood = mahalle."},
+  {t:"grammar",q:"If it rains, we ___ stay home.",o:["will","would","can","must"],a:0,e:"Gerçek koşul: If + present, will + yalın."},
+  {t:"grammar",q:"The book was written ___ Orhan Pamuk.",o:["by","from","with","of"],a:0,e:"Passive voice'ta eyleyeni 'by' ile belirtiriz."},
+  {t:"vocabulary",q:"'Colleague' means:",o:["İş arkadaşı","Komşu","Arkadaş","Akraba"],a:0,e:"Colleague = iş arkadaşı."},
+  {t:"grammar",q:"He ___ (not finish) his homework yet.",o:["hasn't finished","didn't finish","isn't finishing","don't finish"],a:0,e:"'Yet' ile present perfect olumsuz."},
+  {t:"grammar",q:"She is ___ than her sister.",o:["taller","more tall","tallest","most tall"],a:0,e:"Tek heceli sıfatlarda karşılaştırma: -er."},
+  {t:"vocabulary",q:"'Convenient' means:",o:["Uygun/elverişli","Güzel","Pahalı","Gerekli"],a:0,e:"Convenient = uygun, kullanışlı."},
+  {t:"grammar",q:"I ___ here since 2020.",o:["have been","was","am","had been"],a:0,e:"Bugüne kadar süren durum: have been + since."},
+  {t:"grammar",q:"They were ___ football at 5pm.",o:["playing","played","play","plays"],a:0,e:"Past continuous: were + -ing."},
+  {t:"vocabulary",q:"'Receipt' means:",o:["Fiş/makbuz","Tarif","Liste","Sözleşme"],a:0,e:"Receipt = ödeme fişi."},
+  {t:"grammar",q:"This is the ___ film I've ever seen.",o:["best","better","good","most good"],a:0,e:"En üstünlük: the best (good'un superlative'i)."},
+  {t:"grammar",q:"She ___ when the phone rang.",o:["was sleeping","slept","sleeps","had slept"],a:0,e:"Bir eylem sırasında olan: was sleeping."},
+  {t:"vocabulary",q:"'Permission' means:",o:["İzin","Ceza","Görev","Ödül"],a:0,e:"Permission = izin."},
+  {t:"grammar",q:"You should ___ more water.",o:["drink","drinking","drank","drinks"],a:0,e:"Modal 'should' + yalın fiil."},
+  {t:"grammar",q:"___ did you go last weekend?",o:["Where","What","How","Who"],a:0,e:"Yer soran: Where."},
+  {t:"vocabulary",q:"'Fluent' means:",o:["Akıcı","Yavaş","Sessiz","Karmaşık"],a:0,e:"Fluent = akıcı (dil için)."},
+  {t:"grammar",q:"I would like ___ coffee, please.",o:["some","any","a","an"],a:0,e:"Kibarca istek: I would like some..."},
+  {t:"grammar",q:"The film ___ at 8 o'clock tonight.",o:["starts","is starting","will start","start"],a:0,e:"Program/takvim: present simple future."},
+  {t:"vocabulary",q:"'Curious' means:",o:["Meraklı","Çalışkan","Sabırlı","Yaratıcı"],a:0,e:"Curious = meraklı."},
+  {t:"grammar",q:"She ___ her keys. She can't find them.",o:["has lost","lost","loses","is losing"],a:0,e:"Sonucu şu an hissedilen: has lost (present perfect)."},
+  {t:"grammar",q:"___ long does it take to get there?",o:["How","What","Where","When"],a:0,e:"Süre soran: How long."},
+  {t:"vocabulary",q:"'Reliable' means:",o:["Güvenilir","Hızlı","Nazik","Zeki"],a:0,e:"Reliable = güvenilir."},
+  {t:"grammar",q:"I must ___ harder for the exam.",o:["study","studying","studied","studies"],a:0,e:"Must + yalın fiil."},
+  {t:"grammar",q:"The cake ___ by my mom.",o:["was made","made","is making","makes"],a:0,e:"Passive voice (past): was made."},
+  {t:"vocabulary",q:"'Elderly' means:",o:["Yaşlı","Genç","Orta yaşlı","Bebek"],a:0,e:"Elderly = yaşlı (nazik ifade)."},
+  {t:"grammar",q:"I have been waiting ___ an hour.",o:["for","since","during","from"],a:0,e:"Süre (bir saat) → for."},
+  {t:"grammar",q:"___ you mind if I sit here?",o:["Would","Do","Could","Should"],a:0,e:"Kibarca izin: Would you mind...?"},
+  {t:"vocabulary",q:"'Commute' means:",o:["İşe gidip gelmek","Tatile çıkmak","Gezme","Dinlenmek"],a:0,e:"Commute = işe/okula gidip gelmek."},
+  {t:"grammar",q:"She ___ TV when I called.",o:["was watching","watched","watches","is watching"],a:0,e:"Geçmişte devam eden eylem: was watching."},
+  {t:"grammar",q:"He is ___ student in the class.",o:["the most hardworking","more hardworking","hardworking","hardworkingest"],a:0,e:"Uzun sıfatlarda superlative: the most + sıfat."},
+  {t:"vocabulary",q:"'Generous' means:",o:["Cömert","Kıskanç","Kibar","Dürüst"],a:0,e:"Generous = cömert."},
+  {t:"grammar",q:"I ___ to the gym three times a week.",o:["go","went","going","goes"],a:0,e:"Alışkanlık için present simple: go (I ile)."},
+  {t:"grammar",q:"Have you finished ___ the report?",o:["writing","write","written","wrote"],a:0,e:"finish + -ing: finished writing."},
+  {t:"vocabulary",q:"'Approximately' means:",o:["Yaklaşık olarak","Tam olarak","Hemen","Kesinlikle"],a:0,e:"Approximately = yaklaşık."},
+  {t:"grammar",q:"Neither of them ___ the answer.",o:["knows","know","knew","knowing"],a:0,e:"Neither of them → tekil: knows."},
+  {t:"grammar",q:"I'd rather ___ home tonight.",o:["stay","to stay","staying","stayed"],a:0,e:"I'd rather + yalın fiil."},
+  {t:"vocabulary",q:"'Postpone' means:",o:["Ertelemek","İptal etmek","Hızlandırmak","Onaylamak"],a:0,e:"Postpone = ertelemek."},
+  {t:"grammar",q:"By the time she arrived, we ___ dinner.",o:["had finished","finished","have finished","finish"],a:0,e:"Daha önce tamamlanan eylem: past perfect."},
+  {t:"vocabulary",q:"'Stubborn' means:",o:["İnatçı","Utangaç","Düşünceli","Tembel"],a:0,e:"Stubborn = inatçı."},
+  {t:"grammar",q:"I ___ like to make a reservation.",o:["would","will","should","must"],a:0,e:"Kibarca istek: would like."},
+  {t:"grammar",q:"She suggested ___ to the new restaurant.",o:["going","go","to go","gone"],a:0,e:"suggest + -ing."},
+  {t:"vocabulary",q:"'Invoice' means:",o:["Fatura","Sözleşme","Liste","Ödeme"],a:0,e:"Invoice = fatura."},
+  {t:"grammar",q:"You ___ smoke in the hospital.",o:["mustn't","don't have to","shouldn't have","needn't"],a:0,e:"Yasak için: mustn't."},
+],
+B1: [
+  {t:"grammar",q:"If I ___ rich, I would travel the world.",o:["were","am","had been","have been"],a:0,e:"2. koşul (gerçekleşmesi olası değil): If + were."},
+  {t:"vocabulary",q:"'Ambiguous' means:",o:["Belirsiz/çift anlamlı","Açık","Kesin","Basit"],a:0,e:"Ambiguous = belirsiz, iki anlama gelen."},
+  {t:"grammar",q:"She ___ him if she had seen him.",o:["would have greeted","would greet","will greet","greets"],a:0,e:"3. koşul (geçmiş gerçekleşmedi): would have + PP."},
+  {t:"vocabulary",q:"'Eloquent' means:",o:["Güzel konuşan/akıcı","Sessiz","Kaba","Karmaşık"],a:0,e:"Eloquent = güzel, akıcı ve ikna edici konuşan."},
+  {t:"grammar",q:"The report ___ by Friday.",o:["must be completed","must complete","should completing","has to completing"],a:0,e:"Passive modal: must be + past participle."},
+  {t:"vocabulary",q:"'Persevere' means:",o:["Azimle devam etmek","Vazgeçmek","Başarısız olmak","Durdurmak"],a:0,e:"Persevere = ısrarcı olmak, kararlılıkla devam etmek."},
+  {t:"grammar",q:"___ I known the answer, I would have won.",o:["Had","If","Should","Were"],a:0,e:"3. koşulun tersine çevrilmiş hali: Had I known..."},
+  {t:"vocabulary",q:"'Inevitable' means:",o:["Kaçınılmaz","Beklenmedik","Şaşırtıcı","İsteğe bağlı"],a:0,e:"Inevitable = kaçınılmaz."},
+  {t:"grammar",q:"She insisted on ___ the bill.",o:["paying","pay","to pay","paid"],a:0,e:"insist on + -ing."},
+  {t:"vocabulary",q:"'Pragmatic' means:",o:["Pratik/gerçekçi","İdealist","Duygusal","Soyut"],a:0,e:"Pragmatic = pratik, gerçekçi düşünen."},
+  {t:"grammar",q:"The manager ___ that the project be delayed.",o:["suggested","said","told","asked"],a:0,e:"suggest + that + bare infinitive (subjunctive)."},
+  {t:"vocabulary",q:"'Concede' means:",o:["Kabul etmek/ödün vermek","İnkar etmek","Kazanmak","Savunmak"],a:0,e:"Concede = bir şeyi (isteksizce) kabul etmek."},
+  {t:"grammar",q:"Not until she left ___ he realise his mistake.",o:["did","was","had","has"],a:0,e:"Negatif inversyon: Not until... did he..."},
+  {t:"vocabulary",q:"'Dilemma' means:",o:["İkilem","Çözüm","Karar","Seçenek"],a:0,e:"Dilemma = zor seçim, ikilem."},
+  {t:"grammar",q:"He is said ___ very wealthy.",o:["to be","be","being","been"],a:0,e:"It is said that... / He is said to be..."},
+  {t:"vocabulary",q:"'Meticulous' means:",o:["Titiz/çok dikkatli","Dağınık","Aceleci","Kayıtsız"],a:0,e:"Meticulous = çok titiz, dikkatli."},
+  {t:"grammar",q:"___ the bad weather, the event was a success.",o:["Despite","Although","However","Even"],a:0,e:"Despite + isim/zamir (cümle değil)."},
+  {t:"vocabulary",q:"'Condescending' means:",o:["Küçümseyen","Saygılı","Mütevazı","Nazik"],a:0,e:"Condescending = küçümseyen, aşağılayan tavır."},
+  {t:"grammar",q:"I wish I ___ more time to study.",o:["had","have","will have","had had"],a:0,e:"Wish + past simple (şimdiki dilekler)."},
+  {t:"vocabulary",q:"'Substantial' means:",o:["Önemli miktarda","Küçük","Önemsiz","Sıradan"],a:0,e:"Substantial = büyük, önemli miktarda."},
+  {t:"grammar",q:"The decision was taken without ___ the team.",o:["consulting","consult","to consult","consulted"],a:0,e:"Preposition + -ing: without consulting."},
+  {t:"vocabulary",q:"'Nuance' means:",o:["İnce fark/nüans","Genel ilke","Büyük fark","Hata"],a:0,e:"Nuance = ince, nüanslı fark."},
+  {t:"grammar",q:"She had the car ___.",o:["repaired","repair","repairing","to repair"],a:0,e:"Causative: have + nesne + past participle."},
+  {t:"vocabulary",q:"'Integrity' means:",o:["Dürüstlük/bütünlük","Zeka","Güç","Başarı"],a:0,e:"Integrity = dürüstlük, ahlaki bütünlük."},
+  {t:"grammar",q:"___ harder, he might have passed the exam.",o:["Had he studied","If he studied","Should he study","He had studied"],a:0,e:"3. koşul inversiyonu: Had he studied..."},
+  {t:"vocabulary",q:"'Redundant' means:",o:["Gereksiz/fazladan","Yetersiz","Önemli","Benzersiz"],a:0,e:"Redundant = gereksiz, fazladan."},
+  {t:"grammar",q:"The project ___ by the time the boss arrived.",o:["had been completed","was completed","has been completed","completed"],a:0,e:"Geçmişte daha önce tamamlanan: past perfect passive."},
+  {t:"vocabulary",q:"'Prone to' means:",o:["Eğilimli olmak","Karşı çıkmak","Bağlı olmak","Kaçınmak"],a:0,e:"Prone to = bir şeye yatkın/eğilimli."},
+  {t:"grammar",q:"I regret ___ that decision.",o:["making","make","to make","made"],a:0,e:"regret + -ing (geçmiş eylem pişmanlığı)."},
+  {t:"vocabulary",q:"'Versatile' means:",o:["Çok yönlü","Uzmanlaşmış","Sınırlı","Sabit"],a:0,e:"Versatile = çok yönlü, farklı işler yapabilen."},
+  {t:"grammar",q:"She tends ___ under pressure.",o:["to panic","panicking","panic","panicked"],a:0,e:"tend + to + yalın fiil."},
+  {t:"vocabulary",q:"'Forthcoming' means:",o:["Yakın gelecekteki/yardımsever","Geçmiş","Uzak","Belirsiz"],a:0,e:"Forthcoming = yaklaşan; ya da açık sözlü, yardımsever."},
+  {t:"grammar",q:"Rarely ___ such dedication.",o:["have I seen","I have seen","I saw","did I see"],a:0,e:"Negatif inversyon: Rarely + yardımcı + özne + fiil."},
+  {t:"vocabulary",q:"'Deteriorate' means:",o:["Kötüleşmek","İyileşmek","Sabit kalmak","Gelişmek"],a:0,e:"Deteriorate = giderek kötüleşmek."},
+  {t:"grammar",q:"She ___ working here for 10 years by next June.",o:["will have been","will be","has been","had been"],a:0,e:"Gelecekte tamamlanacak: future perfect continuous."},
+  {t:"vocabulary",q:"'Scrutinize' means:",o:["Dikkatle incelemek","Görmezden gelmek","Onaylamak","Hızlı okumak"],a:0,e:"Scrutinize = ayrıntılı incelemek."},
+  {t:"grammar",q:"No sooner ___ arrived than it started raining.",o:["had she","she had","has she","did she"],a:0,e:"No sooner + past perfect inversiyonu."},
+  {t:"vocabulary",q:"'Tentative' means:",o:["Geçici/kararsız","Kesin","Cesur","Planlı"],a:0,e:"Tentative = geçici, kararsız, taslak halinde."},
+  {t:"grammar",q:"The new law requires everyone ___ a licence.",o:["to have","having","have","had"],a:0,e:"require + nesne + to-infinitive."},
+  {t:"vocabulary",q:"'Implication' means:",o:["Çıkarım/ima","Açıklama","Kanıt","Yargı"],a:0,e:"Implication = ima, dolaylı anlam ya da sonuç."},
+  {t:"grammar",q:"It is time we ___ action.",o:["took","take","had taken","taking"],a:0,e:"It is time + past simple (şimdiki zorunluluk)."},
+  {t:"vocabulary",q:"'Coherent' means:",o:["Tutarlı/anlaşılır","Karmaşık","Parçalı","Belirsiz"],a:0,e:"Coherent = tutarlı, mantıklı bir bütün oluşturan."},
+  {t:"grammar",q:"Having ___ the report, she sent it to the manager.",o:["finished","finish","finishing","been finished"],a:0,e:"Participial clause (perfect): Having finished..."},
+  {t:"vocabulary",q:"'Leverage' means:",o:["Avantaj/kaldıraç","Dezavantaj","Engel","Risk"],a:0,e:"Leverage = kaldıraç, avantaj olarak kullanmak."},
+  {t:"grammar",q:"The more you practice, ___ you become.",o:["the better","better","the best","best"],a:0,e:"'The more... the more/better...' yapısı."},
+  {t:"vocabulary",q:"'Ambivalent' means:",o:["Kararsız/çelişkili hisseden","Emin","Heyecanlı","Kararlı"],a:0,e:"Ambivalent = aynı anda zıt duygular hisseden."},
+  {t:"grammar",q:"She ___ the presentation well, which surprised everyone.",o:["handled","had handled","has handled","handles"],a:0,e:"Geçmiş bir olayı aktarırken past simple."},
+  {t:"vocabulary",q:"'Concise' means:",o:["Kısa ve öz","Uzun","Belirsiz","Ayrıntılı"],a:0,e:"Concise = gereksiz ayrıntı olmadan kısa ve net."},
+  {t:"grammar",q:"The meeting was called off due to ___ bad weather.",o:["the","a","—","some"],a:0,e:"Belirli, bilinen kötü hava: 'the bad weather'."},
+  {t:"vocabulary",q:"'Obsolete' means:",o:["Kullanılmaz hale gelmiş","Modern","Popüler","Gelişmiş"],a:0,e:"Obsolete = artık kullanılmayan, demode."},
+]
+};
+
+// =================== APP STATE ===================
+let state = {
+  level: null,
+  qCount: 10,
+  questions: [],
+  current: 0,
+  score: 0,
+  answered: false
+};
+
+function getStorage() {
+  try { return JSON.parse(localStorage.getItem('englishup') || '{}'); } catch { return {}; }
+}
+function saveStorage(data) {
+  try { localStorage.setItem('englishup', JSON.stringify(data)); } catch {}
+}
+
+function selectLevel(lv) {
+  state.level = lv;
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  document.querySelector(`.level-card[data-level="${lv}"]`).classList.add('selected');
+  const btn = document.getElementById('startBtn');
+  btn.textContent = 'Başla →';
+  btn.disabled = false;
+}
+
+function setQCount(n, el) {
+  state.qCount = n;
+  document.querySelectorAll('.q-count-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function startQuiz() {
+  let pool = [];
+  if (state.level === 'MIXED') {
+    pool = [...QUESTIONS.A1, ...QUESTIONS.A2, ...QUESTIONS.B1];
+  } else {
+    pool = [...QUESTIONS[state.level]];
+  }
+  shuffle(pool);
+  state.questions = pool.slice(0, state.qCount);
+  state.current = 0;
+  state.score = 0;
+  showScreen('quizScreen');
+  renderQuestion();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function renderQuestion() {
+  const q = state.questions[state.current];
+  const total = state.questions.length;
+  state.answered = false;
+
+  document.getElementById('progressFill').style.width = ((state.current / total) * 100) + '%';
+  document.getElementById('progressText').textContent = `${state.current + 1}/${total}`;
+
+  const tagMap = { grammar: '📝 Dilbilgisi', vocabulary: '📚 Kelime', idiom: '💬 Deyim' };
+  document.getElementById('qTypeTag').textContent = tagMap[q.t] || q.t;
+  document.getElementById('qText').textContent = q.q;
+
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.o.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => answer(i, btn, q);
+    choicesEl.appendChild(btn);
+  });
+
+  document.getElementById('feedbackBar').className = 'feedback-bar';
+  document.getElementById('nextBtn').className = 'next-btn';
+
+  // animate card
+  const card = document.getElementById('qCard');
+  card.classList.remove('pop');
+  void card.offsetWidth;
+  card.classList.add('pop');
+}
+
+function answer(idx, clickedBtn, q) {
+  if (state.answered) return;
+  state.answered = true;
+  const isCorrect = idx === q.a;
+  if (isCorrect) state.score++;
+
+  const btns = document.querySelectorAll('.choice-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[q.a].classList.add('correct');
+  if (!isCorrect) clickedBtn.classList.add('wrong');
+
+  const fb = document.getElementById('feedbackBar');
+  document.getElementById('feedbackIcon').textContent = isCorrect ? '✅' : '❌';
+  document.getElementById('feedbackText').textContent = isCorrect ? 'Doğru!' : `Yanlış — Cevap: ${q.o[q.a]}`;
+  document.getElementById('feedbackExplain').textContent = q.e || '';
+  fb.className = 'feedback-bar show ' + (isCorrect ? 'correct' : 'wrong');
+
+  document.getElementById('nextBtn').className = 'next-btn show';
+}
+
+function nextQuestion() {
+  state.current++;
+  if (state.current >= state.questions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  const total = state.questions.length;
+  const pct = Math.round((state.score / total) * 100);
+  const wrong = total - state.score;
+
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('rCorrect').textContent = state.score;
+  document.getElementById('rWrong').textContent = wrong;
+  document.getElementById('rTotal').textContent = total;
+
+  let emoji, label, msg;
+  if (pct >= 90) { emoji = '🏆'; label = 'Mükemmel!'; msg = 'Harika bir performans! Seviyeni çok iyi hakimsin.'; }
+  else if (pct >= 70) { emoji = '🎉'; label = 'Çok İyi!'; msg = 'Harika gidiyorsun. Birkaç konuyu biraz daha çalışabilirsin.'; }
+  else if (pct >= 50) { emoji = '👍'; label = 'İyi'; msg = 'Temel konuları iyi biliyorsun. Biraz daha pratik yaparsan çok daha iyi olursun!'; }
+  else { emoji = '💪'; label = 'Daha fazla çalış'; msg = 'Endişelenme! Tekrar dene, her seferinde daha iyiye gideceksin.'; }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultLabel').textContent = label;
+  document.getElementById('resultMsg').textContent = msg;
+
+  // save to storage
+  const store = getStorage();
+  if (!store.history) store.history = [];
+  if (!store.scores) store.scores = {};
+  const entry = { level: state.level, pct, correct: state.score, total, date: new Date().toLocaleDateString('tr-TR') };
+  store.history.unshift(entry);
+  if (store.history.length > 10) store.history = store.history.slice(0, 10);
+  if (!store.scores[state.level] || pct > store.scores[state.level]) {
+    store.scores[state.level] = pct;
+  }
+  // streak
+  const today = new Date().toDateString();
+  if (store.lastDate !== today) {
+    store.streak = (store.lastDate === new Date(Date.now() - 86400000).toDateString()) ? (store.streak || 0) + 1 : 1;
+    store.lastDate = today;
+  }
+  saveStorage(store);
+
+  showScreen('resultScreen');
+}
+
+function retryQuiz() {
+  startQuiz();
+}
+
+function goHome() {
+  showScreen('homeScreen');
+  refreshHome();
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function refreshHome() {
+  const store = getStorage();
+  const scores = store.scores || {};
+  const levels = ['A1', 'A2', 'B1'];
+  levels.forEach(lv => {
+    const prog = document.getElementById('prog-' + lv);
+    const txt = document.getElementById('score-' + lv);
+    if (scores[lv] !== undefined) {
+      prog.style.width = scores[lv] + '%';
+      txt.textContent = `En iyi: ${scores[lv]}%`;
+    }
+  });
+
+  // streak
+  if (store.streak > 1) {
+    document.getElementById('streakBadge').style.display = 'inline-flex';
+    document.getElementById('streakCount').textContent = store.streak;
+  }
+
+  // history
+  const hist = store.history || [];
+  if (hist.length > 0) {
+    document.getElementById('historySection').style.display = 'block';
+    const list = document.getElementById('historyList');
+    list.innerHTML = hist.slice(0, 5).map(h =>
+      `<div class="history-item">
+        <span class="history-level">${h.level}</span>
+        <span class="history-score">${h.pct}%</span>
+        <span class="history-date">${h.date} · ${h.correct}/${h.total}</span>
+      </div>`
+    ).join('');
+  }
+
+  // header stats
+  const totalQ = (store.history || []).reduce((s, h) => s + h.total, 0);
+  if (totalQ > 0) {
+    document.getElementById('headerStats').innerHTML = `<span><b>${totalQ}</b> soru</span>`;
+  }
+
+  // reset selection
+  state.level = null;
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  const btn = document.getElementById('startBtn');
+  btn.textContent = 'Seviye Seç ↑';
+  btn.disabled = true;
+}
+
+// init
+refreshHome();
+</script>
+</body>
+</html>
