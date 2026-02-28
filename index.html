@@ -452,6 +452,162 @@
     letter-spacing: 0.2px;
   }
   .footer-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* NAV BAR */
+  .nav-bar {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.07);
+  }
+  .nav-btn {
+    flex: 1;
+    padding: 9px 6px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.2px;
+  }
+  .nav-btn.active {
+    background: linear-gradient(135deg, #2f80ed, #1a9cd8);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.25);
+  }
+  .nav-btn:hover:not(.active) { color: var(--accent); background: var(--surface2); }
+
+  /* ÖĞRETICI */
+  .lesson-topic-list { display: flex; flex-direction: column; gap: 10px; }
+  .topic-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: all 0.18s;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topic-card:hover { border-color: var(--accent); transform: translateX(4px); }
+  .topic-card-left { display: flex; align-items: center; gap: 12px; }
+  .topic-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ddeef9, #b8d4f0);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .topic-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.92rem; }
+  .topic-sub { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+  .topic-arrow { color: var(--muted); font-size: 1rem; }
+
+  /* LESSON DETAIL */
+  .lesson-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 18px;
+  }
+  .lesson-title-card {
+    background: linear-gradient(135deg, #2f80ed, #1a9cd8);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .lesson-title-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+  .lesson-title-card p { font-size: 0.85rem; opacity: 0.85; line-height: 1.5; }
+
+  .rule-box {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.06);
+  }
+  .rule-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rule-text {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .formula-pill {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .examples-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .example-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .example-item:last-child { border-bottom: none; }
+  .ex-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.75rem;
+    min-width: 20px;
+    padding-top: 1px;
+  }
+  .ex-en { color: var(--text); }
+  .ex-tr { color: var(--muted); font-size: 0.8rem; font-style: italic; }
 </style>
 </head>
 <body>
@@ -459,6 +615,11 @@
 <div class="header">
   <div class="logo">English<span>Up</span></div>
   <div class="stats-pill" id="headerStats"></div>
+</div>
+
+<div class="nav-bar">
+  <button class="nav-btn active" id="navQuiz" onclick="switchTab('home')">📝 Quiz</button>
+  <button class="nav-btn" id="navLearn" onclick="switchTab('learn')">📖 Öğretici</button>
 </div>
 
 <!-- HOME SCREEN -->
@@ -572,6 +733,19 @@
     <div class="result-msg" id="resultMsg"></div>
     <button class="btn-primary" onclick="retryQuiz()">Tekrar Dene</button>
     <button class="btn-secondary" onclick="goHome()">Ana Sayfa</button>
+  </div>
+</div>
+
+<!-- LEARN SCREEN -->
+<div class="screen" id="learnScreen">
+  <div id="topicListView">
+    <div class="hero-title" style="font-size:1.6rem;margin-bottom:6px">A2 Öğretici</div>
+    <p class="hero-sub" style="margin-bottom:20px">Bir konu seç, kuralları ve örnekleri incele.</p>
+    <div class="lesson-topic-list" id="topicList"></div>
+  </div>
+  <div id="topicDetailView" style="display:none">
+    <button class="lesson-back-btn" onclick="showTopicList()">← Konulara Dön</button>
+    <div id="lessonContent"></div>
   </div>
 </div>
 
@@ -965,6 +1139,444 @@ function refreshHome() {
 
 // init
 refreshHome();
+
+// =================== TAB SWITCHING ===================
+function switchTab(tab) {
+  if (tab === 'home') {
+    showScreen('homeScreen');
+    document.getElementById('navQuiz').classList.add('active');
+    document.getElementById('navLearn').classList.remove('active');
+    refreshHome();
+  } else {
+    showScreen('learnScreen');
+    document.getElementById('navLearn').classList.add('active');
+    document.getElementById('navQuiz').classList.remove('active');
+    renderTopicList();
+  }
+}
+
+// =================== LESSON DATA ===================
+const LESSONS = [
+  {
+    id: 1, icon: '⏰', title: 'Simple Past Tense',
+    sub: 'Geçmişte tamamlanan eylemler',
+    desc: 'Simple Past Tense, geçmişte belirli bir zamanda başlayıp biten eylemleri anlatmak için kullanılır.',
+    formula: 'Subject + V2 (past form) | Negative: did not + V1 | Question: Did + Subject + V1?',
+    rules: [
+      'Düzenli fiiller: fiil + -ed (work → worked, play → played)',
+      'Düzensiz fiiller ezberlenmeli: go → went, see → saw, buy → bought',
+      'Olumsuz: did not (didn\'t) + fiilin yalın hali',
+      'Soru: Did + özne + fiilin yalın hali?',
+      'Zaman ifadeleri: yesterday, last week, in 2020, ago'
+    ],
+    examples: [
+      {en:'I went to school yesterday.', tr:'Dün okula gittim.'},
+      {en:'She watched a movie last night.', tr:'Dün gece film izledi.'},
+      {en:'They played football on Sunday.', tr:'Pazar günü futbol oynadılar.'},
+      {en:'He didn\'t come to the party.', tr:'Partiye gelmedi.'},
+      {en:'Did you see that film?', tr:'O filmi gördün mü?'},
+      {en:'We visited Istanbul two years ago.', tr:'İki yıl önce İstanbul\'u ziyaret ettik.'},
+      {en:'My mother cooked a delicious meal.', tr:'Annem lezzetli bir yemek pişirdi.'},
+      {en:'I didn\'t sleep well last night.', tr:'Dün gece iyi uyumadım.'},
+      {en:'Did she call you this morning?', tr:'Bu sabah seni aradı mı?'},
+      {en:'He bought a new car last month.', tr:'Geçen ay yeni bir araba aldı.'},
+      {en:'We didn\'t go to the beach.', tr:'Sahile gitmedik.'},
+      {en:'The meeting started at 9 o\'clock.', tr:'Toplantı saat 9\'da başladı.'},
+      {en:'I studied English for two hours.', tr:'İki saat İngilizce çalıştım.'},
+      {en:'Did they finish the project?', tr:'Projeyi bitirdiler mi?'},
+      {en:'She sent me a message yesterday.', tr:'Dün bana mesaj gönderdi.'},
+      {en:'We ate pizza for dinner.', tr:'Akşam yemeğinde pizza yedik.'},
+      {en:'He didn\'t understand the question.', tr:'Soruyu anlamadı.'},
+      {en:'I woke up early this morning.', tr:'Bu sabah erken uyandım.'},
+      {en:'They travelled to Paris last summer.', tr:'Geçen yaz Paris\'e gezdiler.'},
+      {en:'She won the competition in 2023.', tr:'2023\'te yarışmayı kazandı.'},
+    ]
+  },
+  {
+    id: 2, icon: '🔄', title: 'Past Continuous Tense',
+    sub: 'Geçmişte devam eden eylemler',
+    desc: 'Geçmişte belirli bir anda devam etmekte olan eylemleri anlatır. Genellikle Simple Past ile birlikte kullanılır.',
+    formula: 'Subject + was/were + V-ing | Negative: was/were + not + V-ing',
+    rules: [
+      'I/He/She/It → was + V-ing',
+      'We/You/They → were + V-ing',
+      '"When" ile gelen past simple, devam eden eylemi keser',
+      '"While" ile iki paralel eylem anlatılır',
+      'Belirli bir geçmiş anda neler olduğunu anlatmak için kullanılır'
+    ],
+    examples: [
+      {en:'I was reading a book when she called.', tr:'O aradığında kitap okuyordum.'},
+      {en:'They were playing games all evening.', tr:'Bütün akşam oyun oynuyorlardı.'},
+      {en:'She was cooking dinner at 7pm.', tr:'Saat 7\'de akşam yemeği pişiriyordu.'},
+      {en:'While I was studying, he was watching TV.', tr:'Ben çalışırken o TV izliyordu.'},
+      {en:'It was raining when we left.', tr:'Ayrıldığımızda yağmur yağıyordu.'},
+      {en:'He wasn\'t listening to the teacher.', tr:'Öğretmeni dinlemiyordu.'},
+      {en:'Were you sleeping at midnight?', tr:'Gece yarısı uyuyor muydun?'},
+      {en:'We were having lunch when the alarm rang.', tr:'Alarm çaldığında öğle yemeği yiyorduk.'},
+      {en:'She was smiling throughout the meeting.', tr:'Toplantı boyunca gülümsüyordu.'},
+      {en:'I was walking to work this morning.', tr:'Bu sabah işe yürüyordum.'},
+      {en:'They weren\'t paying attention.', tr:'Dikkat etmiyorlardı.'},
+      {en:'What were you doing at 8pm?', tr:'Saat 8\'de ne yapıyordun?'},
+      {en:'He was working on his laptop all day.', tr:'Bütün gün dizüstü bilgisayarında çalışıyordu.'},
+      {en:'The children were playing in the garden.', tr:'Çocuklar bahçede oynuyordu.'},
+      {en:'I was thinking about you.', tr:'Seni düşünüyordum.'},
+      {en:'She was wearing a red dress.', tr:'Kırmızı bir elbise giyiyordu.'},
+      {en:'We were not expecting this news.', tr:'Bu haberi beklemiyorduk.'},
+      {en:'The sun was shining all afternoon.', tr:'Öğleden sonra güneş parlıyordu.'},
+      {en:'He was trying to fix the car.', tr:'Arabayı tamir etmeye çalışıyordu.'},
+      {en:'While she was singing, I was dancing.', tr:'O şarkı söylerken ben dans ediyordum.'},
+    ]
+  },
+  {
+    id: 3, icon: '✅', title: 'Present Perfect Tense',
+    sub: 'Geçmişin bugünle bağlantısı',
+    desc: 'Geçmişte olmuş ama bugünü etkileyen olayları ya da deneyimleri anlatmak için kullanılır.',
+    formula: 'Subject + have/has + V3 (past participle) | Negative: have/has + not + V3',
+    rules: [
+      'I/You/We/They → have + V3',
+      'He/She/It → has + V3',
+      'for (süre için): I have lived here for 5 years.',
+      'since (başlangıç noktası için): She has worked here since 2020.',
+      'ever, never, already, yet, just gibi zarflarla kullanılır',
+      'Geçmiş deneyimleri anlatmak için: Have you ever been to London?'
+    ],
+    examples: [
+      {en:'I have visited Paris twice.', tr:'Paris\'i iki kez ziyaret ettim.'},
+      {en:'She has just finished her homework.', tr:'Ödevini yeni bitirdi.'},
+      {en:'Have you ever eaten sushi?', tr:'Hiç suşi yedin mi?'},
+      {en:'He hasn\'t called me yet.', tr:'Henüz beni aramadı.'},
+      {en:'We have lived here for ten years.', tr:'On yıldır burada yaşıyoruz.'},
+      {en:'They have already left.', tr:'Onlar çoktan ayrıldı.'},
+      {en:'I have never seen that movie.', tr:'O filmi hiç görmedim.'},
+      {en:'She has worked here since 2019.', tr:'2019\'dan beri burada çalışıyor.'},
+      {en:'Have you finished your coffee?', tr:'Kahveni bitirdin mi?'},
+      {en:'He has broken his leg.', tr:'Bacağını kırdı.'},
+      {en:'I have lost my keys.', tr:'Anahtarlarımı kaybettim.'},
+      {en:'We haven\'t decided yet.', tr:'Henüz karar vermedik.'},
+      {en:'Has she ever been to Japan?', tr:'Hiç Japonya\'ya gitti mi?'},
+      {en:'They have known each other for years.', tr:'Yıllardır birbirlerini tanıyorlar.'},
+      {en:'I\'ve just had lunch.', tr:'Yeni öğle yemeği yedim.'},
+      {en:'She has read that book three times.', tr:'O kitabı üç kez okudu.'},
+      {en:'We have saved enough money.', tr:'Yeterince para biriktirdik.'},
+      {en:'He hasn\'t replied to my email.', tr:'E-postama yanıt vermedi.'},
+      {en:'Have they arrived?', tr:'Geldiler mi?'},
+      {en:'I have already seen this episode.', tr:'Bu bölümü zaten izledim.'},
+    ]
+  },
+  {
+    id: 4, icon: '📊', title: 'Comparatives & Superlatives',
+    sub: 'Karşılaştırma ve üstünlük dereceleri',
+    desc: 'Sıfatları karşılaştırmak (comparative) veya en üstün derecesini belirtmek (superlative) için kullanılır.',
+    formula: 'Short adj: -er / the -est | Long adj: more / the most | Irregular: good→better→best',
+    rules: [
+      'Kısa sıfatlar (1-2 hece): -er ekle (tall→taller, big→bigger)',
+      'Uzun sıfatlar (2+ hece): more kullan (more beautiful)',
+      'Superlative: the + sıfat-est / the most + sıfat',
+      'Düzensiz: good→better→best, bad→worse→worst, far→further→furthest',
+      'than ile karşılaştırma yapılır: She is taller than me.',
+      'Superlative genellikle in/of ile kullanılır: the best in the class'
+    ],
+    examples: [
+      {en:'She is taller than her sister.', tr:'Kız kardeşinden daha uzun.'},
+      {en:'This is the most beautiful city I\'ve seen.', tr:'Gördüğüm en güzel şehir bu.'},
+      {en:'He is more intelligent than his brother.', tr:'Kardeşinden daha zeki.'},
+      {en:'Today is hotter than yesterday.', tr:'Bugün dünden daha sıcak.'},
+      {en:'This is the cheapest hotel in town.', tr:'Şehirdeki en ucuz otel bu.'},
+      {en:'My bag is heavier than yours.', tr:'Çantam seninkinden daha ağır.'},
+      {en:'She speaks English better than me.', tr:'İngilizceyi benden daha iyi konuşuyor.'},
+      {en:'This is the worst film I\'ve ever seen.', tr:'Gördüğüm en kötü film bu.'},
+      {en:'He is the youngest student in the class.', tr:'Sınıftaki en genç öğrenci o.'},
+      {en:'The new phone is more expensive than the old one.', tr:'Yeni telefon eskisinden daha pahalı.'},
+      {en:'Summer is hotter than winter.', tr:'Yaz, kıştan daha sıcaktır.'},
+      {en:'This exercise is easier than the last one.', tr:'Bu egzersiz bir öncekinden daha kolay.'},
+      {en:'She is the most hardworking person in the office.', tr:'Ofisteki en çalışkan kişi o.'},
+      {en:'It\'s colder in the north than in the south.', tr:'Kuzeyde güneyden daha soğuktur.'},
+      {en:'The second test was more difficult than the first.', tr:'İkinci sınav birincisinden daha zordu.'},
+      {en:'He drives faster than his father.', tr:'Babasından daha hızlı araba kullanıyor.'},
+      {en:'This is the longest bridge in the country.', tr:'Bu ülkedeki en uzun köprü.'},
+      {en:'My coffee is stronger than yours.', tr:'Kahvem seninkinden daha güçlü.'},
+      {en:'She is more careful than her colleague.', tr:'İş arkadaşından daha dikkatli.'},
+      {en:'This is the best pizza I\'ve ever had.', tr:'Yediğim en iyi pizza bu.'},
+    ]
+  },
+  {
+    id: 5, icon: '🔮', title: 'Future: will & going to',
+    sub: 'Gelecek zamanı ifade etme',
+    desc: '"Will" anlık kararlar ve tahminler için, "going to" ise planlanmış kararlar ve görünen kanıtlara dayalı tahminler için kullanılır.',
+    formula: 'will + V1 (base) | am/is/are + going to + V1',
+    rules: [
+      'Will: anlık karar, teklif, söz, tahmin',
+      'Going to: önceden planlanmış eylemler',
+      'Going to: kanıta dayalı tahmin (Look at those clouds – it\'s going to rain!)',
+      'Will: I think, I believe, probably gibi ifadelerle sık kullanılır',
+      'Olumsuz: won\'t (will not) / isn\'t going to',
+    ],
+    examples: [
+      {en:'I will help you with your homework.', tr:'Ödevinle sana yardım edeceğim.'},
+      {en:'She is going to visit her parents next week.', tr:'Gelecek hafta ailesini ziyaret edecek.'},
+      {en:'I think it will rain tomorrow.', tr:'Yarın yağmur yağacağını düşünüyorum.'},
+      {en:'We are going to move to a new house.', tr:'Yeni bir eve taşınacağız.'},
+      {en:'He won\'t be at the meeting.', tr:'Toplantıda olmayacak.'},
+      {en:'Are you going to study tonight?', tr:'Bu gece çalışacak mısın?'},
+      {en:'I\'ll call you later.', tr:'Seni sonra arayacağım.'},
+      {en:'She\'s going to have a baby.', tr:'Bebek bekliyor.'},
+      {en:'Will you open the window, please?', tr:'Pencereyi açar mısın lütfen?'},
+      {en:'They are going to get married in June.', tr:'Haziran\'da evlenecekler.'},
+      {en:'I probably won\'t be home until 8.', tr:'8\'e kadar muhtemelen evde olmayacağım.'},
+      {en:'Look out! You\'re going to fall!', tr:'Dikkat! Düşeceksin!'},
+      {en:'We will do our best to help you.', tr:'Sana yardım etmek için elimizden geleni yapacağız.'},
+      {en:'I\'m not going to eat junk food anymore.', tr:'Artık abur cubur yemeyeceğim.'},
+      {en:'Will she pass the exam?', tr:'Sınavı geçecek mi?'},
+      {en:'They\'re going to redecorate the office.', tr:'Ofisi yeniden dekore edecekler.'},
+      {en:'I\'ll have the chicken, please.', tr:'Lütfen tavuk alacağım. (restoranda)'},
+      {en:'He is not going to apologize.', tr:'Özür dilemeyecek.'},
+      {en:'I think prices will increase next year.', tr:'Gelecek yıl fiyatların artacağını düşünüyorum.'},
+      {en:'She is going to start a new course.', tr:'Yeni bir kursa başlayacak.'},
+    ]
+  },
+  {
+    id: 6, icon: '🤝', title: 'Modal Verbs',
+    sub: 'can, could, must, should, may, might',
+    desc: 'Modal fiiller yetenek, zorunluluk, tavsiye, izin ve olasılık gibi anlamlar katar.',
+    formula: 'Subject + modal + V1 (yalın fiil)',
+    rules: [
+      'can: yetenek (I can swim.) / izin (Can I go out?)',
+      'could: geçmiş yetenek / kibarca istek / olasılık',
+      'must: güçlü zorunluluk (You must wear a seatbelt.)',
+      'mustn\'t: yasak (You mustn\'t smoke here.)',
+      'should: tavsiye (You should see a doctor.)',
+      'may/might: olasılık (It might rain today.)',
+      'Modal fiillerden sonra fiilin yalın hali kullanılır (to almaz)'
+    ],
+    examples: [
+      {en:'She can speak three languages.', tr:'Üç dil konuşabiliyor.'},
+      {en:'You should see a doctor.', tr:'Bir doktora gitmelisin.'},
+      {en:'I must finish this report today.', tr:'Bu raporu bugün bitirmeliyim.'},
+      {en:'Could you help me, please?', tr:'Bana yardım edebilir misin lütfen?'},
+      {en:'It might rain this afternoon.', tr:'Bu öğleden sonra yağmur yağabilir.'},
+      {en:'You mustn\'t use your phone in class.', tr:'Derste telefonunu kullanmamalısın.'},
+      {en:'May I sit here?', tr:'Buraya oturabilir miyim?'},
+      {en:'She couldn\'t come to the party.', tr:'Partiye gelemedi.'},
+      {en:'You should eat more vegetables.', tr:'Daha fazla sebze yemelisin.'},
+      {en:'He must be very tired.', tr:'Çok yorgun olmalı.'},
+      {en:'Can you swim?', tr:'Yüzebilir misin?'},
+      {en:'I might be late tomorrow.', tr:'Yarın geç kalabilirim.'},
+      {en:'We should leave early.', tr:'Erken ayrılmalıyız.'},
+      {en:'You can\'t park here.', tr:'Buraya park edemezsin.'},
+      {en:'Could I borrow your pen?', tr:'Kalemini ödünç alabilir miyim?'},
+      {en:'She may not be at home.', tr:'Evde olmayabilir.'},
+      {en:'Students must attend all classes.', tr:'Öğrenciler tüm derslere katılmalı.'},
+      {en:'You shouldn\'t eat so much sugar.', tr:'Bu kadar şeker yememelisin.'},
+      {en:'He can\'t be serious.', tr:'Ciddiye alınamaz. (şaşkınlık)'},
+      {en:'They might cancel the event.', tr:'Etkinliği iptal edebilirler.'},
+    ]
+  },
+  {
+    id: 7, icon: '🔁', title: 'Passive Voice',
+    sub: 'Edilgen çatı',
+    desc: 'Eylemi gerçekleştirenden çok eylemin kendisine veya nesneye odaklanmak için kullanılır.',
+    formula: 'Subject + am/is/are + V3 (past participle) | Past: was/were + V3',
+    rules: [
+      'Present passive: am/is/are + past participle',
+      'Past passive: was/were + past participle',
+      'Eylemi kimin yaptığı bilinmiyorsa veya önemli değilse kullanılır',
+      'Eylemi yapanı belirtmek için "by" kullanılır',
+      'Active: The chef cooked the meal. → Passive: The meal was cooked by the chef.'
+    ],
+    examples: [
+      {en:'The letter was written by him.', tr:'Mektup onun tarafından yazıldı.'},
+      {en:'English is spoken all over the world.', tr:'İngilizce tüm dünyada konuşuluyor.'},
+      {en:'The cake was eaten by the children.', tr:'Pasta çocuklar tarafından yendi.'},
+      {en:'This building was built in 1990.', tr:'Bu bina 1990\'da inşa edildi.'},
+      {en:'The windows are cleaned every week.', tr:'Pencereler her hafta temizlenir.'},
+      {en:'My wallet was stolen.', tr:'Cüzdanım çalındı.'},
+      {en:'The movie was directed by Nolan.', tr:'Film Nolan tarafından yönetildi.'},
+      {en:'Mistakes were made.', tr:'Hatalar yapıldı.'},
+      {en:'The exam results will be announced tomorrow.', tr:'Sınav sonuçları yarın açıklanacak.'},
+      {en:'These shoes are made in Italy.', tr:'Bu ayakkabılar İtalya\'da yapılmıştır.'},
+      {en:'The book was published last year.', tr:'Kitap geçen yıl yayımlandı.'},
+      {en:'Coffee is grown in Brazil.', tr:'Kahve Brezilya\'da yetiştirilir.'},
+      {en:'The package was delivered this morning.', tr:'Paket bu sabah teslim edildi.'},
+      {en:'The road is being repaired.', tr:'Yol tamir ediliyor.'},
+      {en:'The match was cancelled due to rain.', tr:'Maç yağmur nedeniyle iptal edildi.'},
+      {en:'French is taught at this school.', tr:'Bu okulda Fransızca öğretiliyor.'},
+      {en:'A new hospital was opened last month.', tr:'Geçen ay yeni bir hastane açıldı.'},
+      {en:'The report was sent to the manager.', tr:'Rapor müdüre gönderildi.'},
+      {en:'Lunch is served at 12 o\'clock.', tr:'Öğle yemeği saat 12\'de servis edilir.'},
+      {en:'The car was repaired by a mechanic.', tr:'Araba bir tamirci tarafından tamir edildi.'},
+    ]
+  },
+  {
+    id: 8, icon: '⚖️', title: 'Conditionals (Type 0 & 1)',
+    sub: 'Koşul cümleleri – gerçek durumlar',
+    desc: 'Type 0: her zaman doğru olan gerçekler için. Type 1: gerçekleşmesi mümkün koşullar için.',
+    formula: 'Type 0: If + present, present | Type 1: If + present simple, will + V1',
+    rules: [
+      'Type 0: genel gerçekler ve bilimsel yasalar için',
+      'Type 1: gerçekçi ve olası koşullar için',
+      'If yerine "when" de kullanılabilir (Type 0)',
+      'Type 1\'de unless (if not anlamında) kullanılabilir',
+      'Sonuç cümlesi başa da gelebilir: We\'ll be late if we don\'t hurry.'
+    ],
+    examples: [
+      {en:'If you heat water to 100°C, it boils.', tr:'Suyu 100 dereceye ısıtırsan, kaynar.'},
+      {en:'If it rains, we will stay home.', tr:'Yağmur yağarsa, evde kalacağız.'},
+      {en:'If you eat too much, you feel sick.', tr:'Çok yersen, hasta hissedersin.'},
+      {en:'I will call you if I need help.', tr:'Yardıma ihtiyacım olursa seni arayacağım.'},
+      {en:'If she studies hard, she will pass.', tr:'Sıkı çalışırsa geçecek.'},
+      {en:'Water freezes if the temperature drops below 0.', tr:'Sıcaklık 0\'ın altına düşerse su donar.'},
+      {en:'If you press this button, the door opens.', tr:'Bu düğmeye basarsan kapı açılır.'},
+      {en:'We\'ll miss the bus if we don\'t hurry.', tr:'Acele etmezsek otobüsü kaçıracağız.'},
+      {en:'If you don\'t water plants, they die.', tr:'Bitkileri sulamazsan, ölürler.'},
+      {en:'If he arrives early, we will start the meeting.', tr:'Erken gelirse, toplantıya başlayacağız.'},
+      {en:'I will be happy if you come.', tr:'Gelirsen mutlu olurum.'},
+      {en:'If you mix red and blue, you get purple.', tr:'Kırmızı ve mavi karıştırırsan, mor elde edersin.'},
+      {en:'Unless you hurry, you\'ll be late.', tr:'Acele etmezsen geç kalırsın.'},
+      {en:'If I have time, I will visit you.', tr:'Zamanım olursa seni ziyaret edeceğim.'},
+      {en:'Plants grow if they get enough sunlight.', tr:'Bitkiler yeterli güneş ışığı alırsa büyürler.'},
+      {en:'If you feel ill, you should rest.', tr:'Hasta hissedersen, dinlenmelisin.'},
+      {en:'She will be angry if you forget her birthday.', tr:'Doğum gününü unutursan kızacak.'},
+      {en:'If you don\'t eat breakfast, you feel tired.', tr:'Kahvaltı yapmazsan yorgun hissedersin.'},
+      {en:'We will go to the beach if the weather is nice.', tr:'Hava güzelse sahile gideceğiz.'},
+      {en:'If he doesn\'t apologize, I won\'t forgive him.', tr:'Özür dilemezse onu affetmeyeceğim.'},
+    ]
+  },
+  {
+    id: 9, icon: '🔗', title: 'Conjunctions & Connectors',
+    sub: 'Bağlaçlar ve bağlayıcı ifadeler',
+    desc: 'Cümleleri ve fikirleri birbirine bağlamak için kullanılan önemli bağlaçlar.',
+    formula: 'and, but, or, so, because, although, however, therefore, despite...',
+    rules: [
+      'and: ekleme (I like tea and coffee.)',
+      'but: karşıtlık (She is rich but unhappy.)',
+      'because: neden (I\'m tired because I worked all day.)',
+      'although/even though: zıtlık cümle içinde (Although it was cold, we went out.)',
+      'however/nevertheless: cümle başında zıtlık',
+      'therefore/so: sonuç (It was raining, so we stayed home.)',
+      'despite/in spite of: + isim/-ing (Despite the rain, we went out.)'
+    ],
+    examples: [
+      {en:'I was tired, but I finished the work.', tr:'Yorgundum ama işi bitirdim.'},
+      {en:'She didn\'t come because she was ill.', tr:'Hasta olduğu için gelmedi.'},
+      {en:'Although it was late, he kept working.', tr:'Geç olmasına rağmen çalışmaya devam etti.'},
+      {en:'It was raining, so we stayed inside.', tr:'Yağmur yağıyordu, bu yüzden içeride kaldık.'},
+      {en:'I like coffee and tea.', tr:'Kahve ve çayı severim.'},
+      {en:'He is smart; however, he is lazy.', tr:'Zeki; ancak, tembel.'},
+      {en:'She studied hard. Therefore, she passed.', tr:'Sıkı çalıştı. Bu nedenle geçti.'},
+      {en:'Despite the traffic, we arrived on time.', tr:'Trafiğe rağmen zamanında ulaştık.'},
+      {en:'Would you like tea or coffee?', tr:'Çay mı yoksa kahve mi istersiniz?'},
+      {en:'Even though he was busy, he helped us.', tr:'Meşgul olmasına rağmen bize yardım etti.'},
+      {en:'I couldn\'t sleep because of the noise.', tr:'Gürültü yüzünden uyuyamadım.'},
+      {en:'She was nervous; nevertheless, she did well.', tr:'Gerginiydi; buna rağmen iyi yaptı.'},
+      {en:'He works hard so that he can buy a house.', tr:'Ev alabilmek için sıkı çalışıyor.'},
+      {en:'In spite of the cold, they went swimming.', tr:'Soğuğa rağmen yüzmeye gittiler.'},
+      {en:'I will go whether you come or not.', tr:'Gelsen de gelmesen de gideceğim.'},
+      {en:'Both she and her sister are doctors.', tr:'Hem o hem de kız kardeşi doktor.'},
+      {en:'Either you study or you fail.', tr:'Ya çalışırsın ya da kalırsın.'},
+      {en:'Not only is he smart, but also kind.', tr:'Sadece zeki değil, aynı zamanda nazik.'},
+      {en:'She left early because she had an appointment.', tr:'Randevusu olduğu için erken ayrıldı.'},
+      {en:'I was hungry, so I made a sandwich.', tr:'Açtım, bu yüzden sandviç yaptım.'},
+    ]
+  },
+  {
+    id: 10, icon: '❓', title: 'Question Forms',
+    sub: 'Soru cümleleri oluşturma',
+    desc: 'Yes/No soruları, WH soruları ve dolaylı sorular dahil İngilizce soru kalıpları.',
+    formula: 'Aux + Subject + V1? | WH-word + Aux + Subject + V1?',
+    rules: [
+      'Yes/No soruları: yardımcı fiil cümle başına geçer',
+      'WH soruları: What, Where, When, Who, Why, How',
+      'Do/Does/Did: present ve past simple sorularında',
+      'Subject question: Who wrote this? (özne soruluyorsa yardımcı yok)',
+      'Dolaylı soru: Can you tell me where the station is? (düz cümle sırası)',
+      'Question tags: She is nice, isn\'t she?'
+    ],
+    examples: [
+      {en:'Do you speak English?', tr:'İngilizce konuşuyor musun?'},
+      {en:'Where did you go last night?', tr:'Dün gece nereye gittin?'},
+      {en:'What time does the train leave?', tr:'Tren saat kaçta kalkıyor?'},
+      {en:'Why are you crying?', tr:'Neden ağlıyorsun?'},
+      {en:'Who called you this morning?', tr:'Bu sabah seni kim aradı?'},
+      {en:'How long have you been waiting?', tr:'Ne zamandır bekliyorsun?'},
+      {en:'Have you ever been to Italy?', tr:'Hiç İtalya\'ya gittin mi?'},
+      {en:'Could you tell me where the bank is?', tr:'Bankanın nerede olduğunu söyleyebilir misiniz?'},
+      {en:'Whose bag is this?', tr:'Bu kimin çantası?'},
+      {en:'How many people were at the party?', tr:'Partide kaç kişi vardı?'},
+      {en:'She lives in London, doesn\'t she?', tr:'Londra\'da yaşıyor, değil mi?'},
+      {en:'Which colour do you prefer?', tr:'Hangi rengi tercih edersiniz?'},
+      {en:'How much does this coat cost?', tr:'Bu palto ne kadar?'},
+      {en:'Did they enjoy the concert?', tr:'Konseri beğendiler mi?'},
+      {en:'What are you thinking about?', tr:'Ne düşünüyorsun?'},
+      {en:'Can you tell me how to get there?', tr:'Oraya nasıl gidileceğini söyler misiniz?'},
+      {en:'Why didn\'t you come to class?', tr:'Neden derse gelmedin?'},
+      {en:'How often do you exercise?', tr:'Ne sıklıkla egzersiz yaparsın?'},
+      {en:'You\'re coming, aren\'t you?', tr:'Geliyorsun, değil mi?'},
+      {en:'What does this word mean?', tr:'Bu kelimenin anlamı nedir?'},
+    ]
+  }
+];
+
+// =================== LESSON RENDERING ===================
+function renderTopicList() {
+  document.getElementById('topicListView').style.display = 'block';
+  document.getElementById('topicDetailView').style.display = 'none';
+  const list = document.getElementById('topicList');
+  list.innerHTML = LESSONS.map(l => `
+    <div class="topic-card" onclick="openLesson(${l.id})">
+      <div class="topic-card-left">
+        <div class="topic-icon">${l.icon}</div>
+        <div>
+          <div class="topic-title">${l.title}</div>
+          <div class="topic-sub">${l.sub}</div>
+        </div>
+      </div>
+      <span class="topic-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function openLesson(id) {
+  const l = LESSONS.find(x => x.id === id);
+  if (!l) return;
+  document.getElementById('topicListView').style.display = 'none';
+  document.getElementById('topicDetailView').style.display = 'block';
+
+  const rulesHTML = l.rules.map(r => `<div style="display:flex;gap:8px;margin-bottom:6px"><span style="color:var(--accent);flex-shrink:0">•</span><span>${r}</span></div>`).join('');
+  const examplesHTML = l.examples.map((ex, i) => `
+    <div class="example-item">
+      <span class="ex-num">${i+1}</span>
+      <div>
+        <div class="ex-en">${ex.en}</div>
+        <div class="ex-tr">${ex.tr}</div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('lessonContent').innerHTML = `
+    <div class="lesson-title-card">
+      <h2>${l.icon} ${l.title}</h2>
+      <p>${l.desc}</p>
+    </div>
+    <div class="rule-box">
+      <h3>📐 Formül</h3>
+      <div class="formula-pill">${l.formula}</div>
+      <div class="examples-title">Kurallar</div>
+      <div style="font-size:0.84rem;line-height:1.8">${rulesHTML}</div>
+    </div>
+    <div class="rule-box">
+      <h3>💬 Örnek Cümleler (${l.examples.length} adet)</h3>
+      ${examplesHTML}
+    </div>
+  `;
+  document.getElementById('learnScreen').scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+
+function showTopicList() {
+  document.getElementById('topicListView').style.display = 'block';
+  document.getElementById('topicDetailView').style.display = 'none';
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
