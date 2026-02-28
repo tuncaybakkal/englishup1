@@ -409,6 +409,49 @@
     color: var(--accent2);
     margin-bottom: 20px;
   }
+  .footer {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 36px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(47,128,237,0.06);
+  }
+  .footer-left {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .footer-left strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text);
+  }
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #2f80ed, #1a9cd8);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.2px;
+  }
+  .footer-link:hover { opacity: 0.88; transform: translateY(-1px); }
 </style>
 </head>
 <body>
@@ -521,60 +564,70 @@
   </div>
 </div>
 
+<footer class="footer">
+  <div class="footer-left">
+    <strong>Tuncay BAKKAL</strong>
+    Hazırlayan · EnglishUp © 2025
+  </div>
+  <a class="footer-link" href="https://miacad.app" target="_blank" rel="noopener">
+    🌐 miacad.app
+  </a>
+</footer>
+
 <script>
 // =================== QUESTION BANK ===================
 const QUESTIONS = {
 A1: [
   {t:"vocabulary",q:"What color is the sky?",o:["Blue","Green","Red","Yellow"],a:0,e:"The sky is blue."},
-  {t:"grammar",q:"___ is my name John.",o:["My","This","It","He"],a:0,e:"'My name is John' – iyelik sıfatı."},
-  {t:"vocabulary",q:"How do you say 'elma' in English?",o:["Apple","Banana","Orange","Grape"],a:0,e:"Elma = Apple"},
   {t:"grammar",q:"I ___ a student.",o:["am","is","are","be"],a:0,e:"I ile 'am' kullanılır."},
-  {t:"vocabulary",q:"Which number comes after 4?",o:["5","3","6","7"],a:0,e:"4'ten sonra 5 gelir."},
+  {t:"vocabulary",q:"How do you say 'elma' in English?",o:["Apple","Banana","Orange","Grape"],a:0,e:"Elma = Apple"},
   {t:"grammar",q:"She ___ happy.",o:["is","am","are","be"],a:0,e:"She (o) ile 'is' kullanılır."},
-  {t:"vocabulary",q:"What do you say when you meet someone?",o:["Hello","Goodbye","Thank you","Sorry"],a:0,e:"Birini ilk gördüğünde 'Hello' denir."},
+  {t:"vocabulary",q:"Which number comes after 4?",o:["5","3","6","7"],a:0,e:"4'ten sonra 5 gelir."},
   {t:"grammar",q:"They ___ my friends.",o:["are","is","am","be"],a:0,e:"They ile 'are' kullanılır."},
-  {t:"vocabulary",q:"'Kitap' in English is:",o:["Book","Pen","Desk","Chair"],a:0,e:"Kitap = Book"},
+  {t:"vocabulary",q:"What do you say when you first meet someone?",o:["Hello","Goodbye","Thank you","Sorry"],a:0,e:"Birini ilk gördüğünde 'Hello' denir."},
   {t:"grammar",q:"___ you like coffee?",o:["Do","Does","Is","Are"],a:0,e:"'Do you like...?' – soru kalıbı."},
-  {t:"vocabulary",q:"What animal says 'meow'?",o:["Cat","Dog","Bird","Fish"],a:0,e:"Kedi miyavlar: meow."},
+  {t:"vocabulary",q:"'Kitap' in English is:",o:["Book","Pen","Desk","Chair"],a:0,e:"Kitap = Book"},
   {t:"grammar",q:"He ___ to school every day.",o:["goes","go","going","gone"],a:0,e:"He/she/it ile fiil +s alır."},
-  {t:"vocabulary",q:"Which day comes after Monday?",o:["Tuesday","Sunday","Wednesday","Friday"],a:0,e:"Pazartesi'den sonra Salı (Tuesday) gelir."},
-  {t:"grammar",q:"I have ___ apple.",o:["an","a","the","—"],a:0,e:"Sesli harfle başlayan kelime önüne 'an' gelir."},
-  {t:"vocabulary",q:"'Kırmızı' means:",o:["Red","Blue","Green","Black"],a:0,e:"Kırmızı = Red"},
-  {t:"grammar",q:"___ name is Sara.",o:["Her","She","He","His"],a:0,e:"Sara (kız) için 'Her name'."},
-  {t:"vocabulary",q:"How many fingers do you have on one hand?",o:["5","4","6","10"],a:0,e:"Bir elde 5 parmak var."},
-  {t:"grammar",q:"We ___ in Turkey.",o:["live","lives","living","lived"],a:0,e:"We ile fiilin yalın hali: live."},
-  {t:"vocabulary",q:"'Araba' in English:",o:["Car","Bus","Train","Plane"],a:0,e:"Araba = Car"},
-  {t:"grammar",q:"___ is your name?",o:["What","Where","Who","How"],a:0,e:"İsim sorulurken 'What' kullanılır."},
-  {t:"vocabulary",q:"Opposite of 'big' is:",o:["Small","Tall","Fast","Old"],a:0,e:"Big'in zıttı Small (küçük)."},
-  {t:"grammar",q:"This is ___ book. (belongs to me)",o:["my","your","his","their"],a:0,e:"Bana ait → my."},
-  {t:"vocabulary",q:"'Su' in English:",o:["Water","Juice","Milk","Tea"],a:0,e:"Su = Water"},
-  {t:"grammar",q:"Please ___ the door.",o:["open","opens","opening","opened"],a:0,e:"Emir cümlelerinde fiilin yalın hali."},
-  {t:"vocabulary",q:"Which season comes after Summer?",o:["Autumn","Spring","Winter","Summer"],a:0,e:"Yazdan sonra Sonbahar (Autumn) gelir."},
-  {t:"grammar",q:"I ___ not like spicy food.",o:["do","does","am","is"],a:0,e:"Olumsuz: I do not / don't."},
-  {t:"vocabulary",q:"What do you use to write?",o:["Pen","Fork","Spoon","Key"],a:0,e:"Yazmak için kalem (pen) kullanırsın."},
-  {t:"grammar",q:"There ___ two cats.",o:["are","is","am","be"],a:0,e:"Çoğul ile 'are' kullanılır."},
-  {t:"vocabulary",q:"'Güzel' in English:",o:["Beautiful","Ugly","Tall","Short"],a:0,e:"Güzel = Beautiful"},
-  {t:"grammar",q:"___ old are you?",o:["How","What","Where","Who"],a:0,e:"Yaş sorarken 'How old'."},
-  {t:"vocabulary",q:"Which is a fruit?",o:["Orange","Carrot","Potato","Onion"],a:0,e:"Orange (portakal) bir meyvedir."},
-  {t:"grammar",q:"She ___ TV every evening.",o:["watches","watch","watching","watched"],a:0,e:"She için watches (3. tekil +es)."},
-  {t:"vocabulary",q:"'Ev' in English:",o:["House","School","Hospital","Market"],a:0,e:"Ev = House"},
-  {t:"grammar",q:"___ he your brother?",o:["Is","Are","Do","Does"],a:0,e:"He is → Is he? soru kalıbı."},
-  {t:"vocabulary",q:"What time do most people sleep?",o:["Night","Morning","Afternoon","Noon"],a:0,e:"İnsanlar geceleri (Night) uyur."},
-  {t:"grammar",q:"I ___ English right now.",o:["am learning","learn","learned","learns"],a:0,e:"'Right now' → present continuous: am learning."},
-  {t:"vocabulary",q:"'Öğretmen' in English:",o:["Teacher","Doctor","Police","Pilot"],a:0,e:"Öğretmen = Teacher"},
-  {t:"grammar",q:"The children ___ in the park.",o:["are playing","is playing","plays","played"],a:0,e:"Children (çoğul) + present continuous: are playing."},
-  {t:"vocabulary",q:"Which body part do you use to see?",o:["Eyes","Ears","Nose","Mouth"],a:0,e:"Görmek için gözler (Eyes) kullanılır."},
-  {t:"grammar",q:"___ your mother work?",o:["Does","Do","Is","Are"],a:0,e:"He/she/it sorularında 'Does'."},
-  {t:"vocabulary",q:"'Sıcak' in English:",o:["Hot","Cold","Warm","Cool"],a:0,e:"Sıcak = Hot"},
-  {t:"grammar",q:"There is ___ milk in the glass.",o:["some","a","an","many"],a:0,e:"Sayılamaz isimlerle 'some'."},
-  {t:"vocabulary",q:"The opposite of 'day' is:",o:["Night","Evening","Morning","Noon"],a:0,e:"Gündüzün zıttı gece (Night)."},
-  {t:"grammar",q:"I ___ breakfast at 7 am.",o:["have","has","having","had"],a:0,e:"I ile 'have' (yalın hal)."},
-  {t:"vocabulary",q:"'Ağaç' in English:",o:["Tree","Flower","Grass","Bush"],a:0,e:"Ağaç = Tree"},
-  {t:"grammar",q:"This bag is ___. (belongs to you)",o:["yours","mine","his","ours"],a:0,e:"Sana ait → yours."},
-  {t:"vocabulary",q:"Which animal can fly?",o:["Bird","Fish","Cat","Horse"],a:0,e:"Kuş (Bird) uçabilir."},
-  {t:"grammar",q:"___ are those people?",o:["Who","What","Where","How"],a:0,e:"Kişileri sorarken 'Who'."},
-  {t:"vocabulary",q:"'Mutlu' in English:",o:["Happy","Sad","Angry","Tired"],a:0,e:"Mutlu = Happy"},
-  {t:"grammar",q:"She doesn't ___ vegetables.",o:["like","likes","liked","liking"],a:0,e:"Doesn't + fiilin yalın hali."},
+  {t:"vocabulary",q:"What animal says 'meow'?",o:["Cat","Dog","Bird","Fish"],a:0,e:"Kedi miyavlar: meow."},
+  {t:"grammar",q:"Which day comes after Monday?",o:["Tuesday","Sunday","Wednesday","Friday"],a:0,e:"Pazartesi'den sonra Salı (Tuesday) gelir."},
+  {t:"vocabulary",q:"I have ___ apple.",o:["an","a","the","one"],a:0,e:"Sesli harfle başlayan kelime önüne 'an' gelir."},
+  {t:"grammar",q:"'Kırmızı' means:",o:["Red","Blue","Green","Black"],a:0,e:"Kırmızı = Red"},
+  {t:"vocabulary",q:"___ name is Sara. (she)",o:["Her","She","He","His"],a:0,e:"Sara (kız) için 'Her name'."},
+  {t:"grammar",q:"How many fingers do you have on one hand?",o:["5","4","6","10"],a:0,e:"Bir elde 5 parmak var."},
+  {t:"vocabulary",q:"We ___ in Turkey.",o:["live","lives","living","lived"],a:0,e:"We ile fiilin yalın hali: live."},
+  {t:"grammar",q:"'Araba' in English:",o:["Car","Bus","Train","Plane"],a:0,e:"Araba = Car"},
+  {t:"vocabulary",q:"___ is your name?",o:["What","Where","Who","How"],a:0,e:"İsim sorulurken 'What' kullanılır."},
+  {t:"grammar",q:"Opposite of 'big' is:",o:["Small","Tall","Fast","Old"],a:0,e:"Big'in zıttı Small (küçük)."},
+  {t:"vocabulary",q:"This is ___ book. (belongs to me)",o:["my","your","his","their"],a:0,e:"Bana ait → my."},
+  {t:"grammar",q:"'Su' in English:",o:["Water","Juice","Milk","Tea"],a:0,e:"Su = Water"},
+  {t:"vocabulary",q:"Please ___ the door.",o:["open","opens","opening","opened"],a:0,e:"Emir cümlelerinde fiilin yalın hali."},
+  {t:"grammar",q:"Which season comes after Summer?",o:["Autumn","Spring","Winter","Summer"],a:0,e:"Yazdan sonra Sonbahar (Autumn) gelir."},
+  {t:"vocabulary",q:"I ___ not like spicy food.",o:["do","does","am","is"],a:0,e:"Olumsuz: I do not / don't."},
+  {t:"grammar",q:"What do you use to write?",o:["Pen","Fork","Spoon","Key"],a:0,e:"Yazmak için kalem (pen) kullanırsın."},
+  {t:"vocabulary",q:"There ___ two cats.",o:["are","is","am","be"],a:0,e:"Çoğul ile 'are' kullanılır."},
+  {t:"grammar",q:"'Güzel' in English:",o:["Beautiful","Ugly","Tall","Short"],a:0,e:"Güzel = Beautiful"},
+  {t:"vocabulary",q:"___ old are you?",o:["How","What","Where","Who"],a:0,e:"Yaş sorarken 'How old'."},
+  {t:"grammar",q:"Which is a fruit?",o:["Orange","Carrot","Potato","Onion"],a:0,e:"Orange (portakal) bir meyvedir."},
+  {t:"vocabulary",q:"She ___ TV every evening.",o:["watches","watch","watching","watched"],a:0,e:"She için watches (3. tekil +es)."},
+  {t:"grammar",q:"'Ev' in English:",o:["House","School","Hospital","Market"],a:0,e:"Ev = House"},
+  {t:"vocabulary",q:"___ he your brother?",o:["Is","Are","Do","Does"],a:0,e:"He is → Is he? soru kalıbı."},
+  {t:"grammar",q:"What time do most people sleep?",o:["Night","Morning","Afternoon","Noon"],a:0,e:"İnsanlar geceleri (Night) uyur."},
+  {t:"vocabulary",q:"I ___ English right now.",o:["am learning","learn","learned","learns"],a:0,e:"'Right now' → present continuous: am learning."},
+  {t:"grammar",q:"'Öğretmen' in English:",o:["Teacher","Doctor","Police","Pilot"],a:0,e:"Öğretmen = Teacher"},
+  {t:"vocabulary",q:"The children ___ in the park.",o:["are playing","is playing","plays","played"],a:0,e:"Children (çoğul) + present continuous: are playing."},
+  {t:"grammar",q:"Which body part do you use to see?",o:["Eyes","Ears","Nose","Mouth"],a:0,e:"Görmek için gözler (Eyes) kullanılır."},
+  {t:"vocabulary",q:"___ your mother work?",o:["Does","Do","Is","Are"],a:0,e:"He/she/it sorularında 'Does'."},
+  {t:"grammar",q:"'Sıcak' in English:",o:["Hot","Cold","Warm","Cool"],a:0,e:"Sıcak = Hot"},
+  {t:"vocabulary",q:"There is ___ milk in the glass.",o:["some","a","an","many"],a:0,e:"Sayılamaz isimlerle 'some'."},
+  {t:"grammar",q:"The opposite of 'day' is:",o:["Night","Evening","Morning","Noon"],a:0,e:"Gündüzün zıttı gece (Night)."},
+  {t:"vocabulary",q:"I ___ breakfast at 7 am.",o:["have","has","having","had"],a:0,e:"I ile 'have' (yalın hal)."},
+  {t:"grammar",q:"'Ağaç' in English:",o:["Tree","Flower","Grass","Bush"],a:0,e:"Ağaç = Tree"},
+  {t:"vocabulary",q:"This bag is ___. (belongs to you)",o:["yours","mine","his","ours"],a:0,e:"Sana ait → yours."},
+  {t:"grammar",q:"Which animal can fly?",o:["Bird","Fish","Cat","Horse"],a:0,e:"Kuş (Bird) uçabilir."},
+  {t:"vocabulary",q:"___ are those people?",o:["Who","What","Where","How"],a:0,e:"Kişileri sorarken 'Who'."},
+  {t:"grammar",q:"'Mutlu' in English:",o:["Happy","Sad","Angry","Tired"],a:0,e:"Mutlu = Happy"},
+  {t:"vocabulary",q:"She doesn't ___ vegetables.",o:["like","likes","liked","liking"],a:0,e:"Doesn't + fiilin yalın hali."},
+  {t:"grammar",q:"___ is my name. (I)",o:["My","His","Her","Their"],a:0,e:"Ben → My name."},
 ],
 A2: [
   {t:"grammar",q:"I ___ to Paris last year.",o:["went","go","goes","going"],a:0,e:"Geçmiş zaman: went (go'nun past hali)."},
@@ -749,42 +802,50 @@ function renderQuestion() {
   document.getElementById('qTypeTag').textContent = tagMap[q.t] || q.t;
   document.getElementById('qText').textContent = q.q;
 
+  // Shuffle options while tracking correct answer
+  const correctText = q.o[q.a];
+  const shuffled = [...q.o];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const newCorrectIdx = shuffled.indexOf(correctText);
+
   const choicesEl = document.getElementById('choices');
   choicesEl.innerHTML = '';
   const letters = ['A', 'B', 'C', 'D'];
-  q.o.forEach((opt, i) => {
+  shuffled.forEach((opt, i) => {
     const btn = document.createElement('button');
     btn.className = 'choice-btn';
     btn.innerHTML = `<span class="choice-letter">${letters[i]}</span>${opt}`;
-    btn.onclick = () => answer(i, btn, q);
+    btn.onclick = () => answerQ(i, btn, newCorrectIdx, q.e);
     choicesEl.appendChild(btn);
   });
 
   document.getElementById('feedbackBar').className = 'feedback-bar';
   document.getElementById('nextBtn').className = 'next-btn';
 
-  // animate card
   const card = document.getElementById('qCard');
   card.classList.remove('pop');
   void card.offsetWidth;
   card.classList.add('pop');
 }
 
-function answer(idx, clickedBtn, q) {
+function answerQ(idx, clickedBtn, correctIdx, explain) {
   if (state.answered) return;
   state.answered = true;
-  const isCorrect = idx === q.a;
+  const isCorrect = idx === correctIdx;
   if (isCorrect) state.score++;
 
   const btns = document.querySelectorAll('.choice-btn');
   btns.forEach(b => b.disabled = true);
-  btns[q.a].classList.add('correct');
+  btns[correctIdx].classList.add('correct');
   if (!isCorrect) clickedBtn.classList.add('wrong');
 
   const fb = document.getElementById('feedbackBar');
   document.getElementById('feedbackIcon').textContent = isCorrect ? '✅' : '❌';
-  document.getElementById('feedbackText').textContent = isCorrect ? 'Doğru!' : `Yanlış — Cevap: ${q.o[q.a]}`;
-  document.getElementById('feedbackExplain').textContent = q.e || '';
+  document.getElementById('feedbackText').textContent = isCorrect ? 'Doğru!' : `Yanlış!`;
+  document.getElementById('feedbackExplain').textContent = explain || '';
   fb.className = 'feedback-bar show ' + (isCorrect ? 'correct' : 'wrong');
 
   document.getElementById('nextBtn').className = 'next-btn show';
