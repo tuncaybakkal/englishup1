@@ -749,6 +749,56 @@
   </div>
 </div>
 
+<!-- LESSON QUIZ SCREEN -->
+<div class="screen" id="lessonQuizScreen">
+  <div class="quiz-top">
+    <button class="quiz-back" onclick="backToLesson()">←</button>
+    <div class="progress-bar"><div class="progress-fill" id="lqProgressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="lqProgressText">0/0</div>
+  </div>
+  <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;color:var(--accent);margin-bottom:12px;width:100%;max-width:480px" id="lqTitle"></div>
+  <div class="q-card pop" id="lqCard">
+    <div class="q-type-tag">📝 Dilbilgisi</div>
+    <div class="q-text" id="lqQText"></div>
+  </div>
+  <div class="choices" id="lqChoices"></div>
+  <div class="feedback-bar" id="lqFeedback">
+    <div class="feedback-icon" id="lqFeedbackIcon"></div>
+    <div>
+      <div id="lqFeedbackText"></div>
+      <div class="feedback-explain" id="lqFeedbackExplain"></div>
+    </div>
+  </div>
+  <button class="next-btn" id="lqNextBtn" onclick="nextLessonQuestion()">Sonraki →</button>
+</div>
+
+<!-- LESSON RESULT SCREEN -->
+<div class="screen" id="lessonResultScreen">
+  <div class="result-card pop">
+    <div class="result-emoji" id="lqrEmoji">🎉</div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--muted);margin-bottom:4px" id="lqrTitle"></div>
+    <div class="result-score" id="lqrScore">0%</div>
+    <div class="result-stats">
+      <div class="stat-box">
+        <div class="stat-val green" id="lqrCorrect">0</div>
+        <div class="stat-name">Doğru</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val red" id="lqrWrong">0</div>
+        <div class="stat-name">Yanlış</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" id="lqrTotal">0</div>
+        <div class="stat-name">Toplam</div>
+      </div>
+    </div>
+    <div class="result-msg" id="lqrMsg"></div>
+    <button class="btn-primary" onclick="retryLessonQuiz()">Tekrar Dene</button>
+    <button class="btn-secondary" onclick="backToLesson()">Konuya Dön</button>
+    <button class="btn-secondary" onclick="switchTab('learn')" style="margin-top:8px">Tüm Konular</button>
+  </div>
+</div>
+
 <script>
 // =================== QUESTION BANK ===================
 const QUESTIONS = {
@@ -1516,7 +1566,359 @@ const LESSONS = [
   }
 ];
 
-// =================== LESSON RENDERING ===================
+// =================== LESSON QUIZ DATA ===================
+const LESSON_QUIZ = {
+  1: [ // Simple Past
+    {q:"I ___ to the cinema last night.",o:["went","go","goes","going"],a:0,e:"Simple past: go → went (düzensiz fiil)."},
+    {q:"She ___ (not/eat) breakfast this morning.",o:["didn't eat","don't eat","wasn't eat","not ate"],a:0,e:"Past simple olumsuz: didn't + yalın fiil."},
+    {q:"___ you see that film yesterday?",o:["Did","Do","Were","Have"],a:0,e:"Past simple soru: Did + özne + yalın fiil."},
+    {q:"They ___ football last Sunday.",o:["played","play","playing","were play"],a:0,e:"Düzenli fiil past: play + ed = played."},
+    {q:"He ___ home at 10pm.",o:["arrived","arrives","arriving","arrive"],a:0,e:"arrive + d = arrived (e ile biten: sadece d)."},
+    {q:"We ___ on holiday two weeks ago.",o:["went","go","have gone","goes"],a:0,e:"ago ile kullanım: Simple Past."},
+    {q:"___ she call you last night?",o:["Did","Does","Was","Has"],a:0,e:"Geçmiş soru: Did + özne + yalın fiil."},
+    {q:"I ___ (not/know) the answer.",o:["didn't know","don't know","wasn't know","haven't know"],a:0,e:"didn't + know (yalın hal)."},
+    {q:"The concert ___ at 8 o'clock.",o:["started","starts","starting","start"],a:0,e:"start + ed = started."},
+    {q:"My parents ___ me a new phone for my birthday.",o:["bought","buy","buyed","buying"],a:0,e:"buy'ın past hali: bought (düzensiz)."},
+    {q:"Where ___ you yesterday?",o:["were","was","did","are"],a:0,e:"to be'nin past hali: you → were."},
+    {q:"She ___ very tired after the meeting.",o:["was","is","were","be"],a:0,e:"She + singular → was."},
+    {q:"They ___ the project on time.",o:["finished","finish","finishing","have finished"],a:0,e:"finish + ed, past simple."},
+    {q:"I ___ (see) him at the market.",o:["saw","seen","seed","see"],a:0,e:"see'nin past hali: saw (düzensiz)."},
+    {q:"___ the film interesting?",o:["Was","Were","Did","Is"],a:0,e:"to be soru: Was the film...?"},
+    {q:"He ___ hard for the exam.",o:["studied","study","studying","studies"],a:0,e:"study → studied (y→ied)."},
+    {q:"We didn't ___ to the party.",o:["go","went","going","gone"],a:0,e:"didn't + yalın fiil: go (went değil!)."},
+    {q:"She ___ (write) three emails this morning.",o:["wrote","written","writes","writing"],a:0,e:"write'ın past hali: wrote."},
+    {q:"I ___ my keys on the table.",o:["left","leave","leaving","leaved"],a:0,e:"leave'nin past hali: left (düzensiz)."},
+    {q:"The children ___ very excited.",o:["were","was","are","be"],a:0,e:"Children (çoğul) → were."},
+    {q:"Did they ___ the match?",o:["win","won","winning","wins"],a:0,e:"Did + yalın fiil: win (won değil)."},
+    {q:"She ___ (not/come) to school on Monday.",o:["didn't come","doesn't come","wasn't come","hadn't come"],a:0,e:"Past simple olumsuz: didn't come."},
+    {q:"I ___ a great book last week.",o:["read","reads","reading","readed"],a:0,e:"read'in past hali de 'read' ama /red/ telaffuz edilir."},
+  ],
+  2: [ // Past Continuous
+    {q:"I ___ TV when you called.",o:["was watching","watched","am watching","watch"],a:0,e:"Geçmişte devam eden eylem: was + V-ing."},
+    {q:"They ___ football at 5pm.",o:["were playing","played","are playing","play"],a:0,e:"They + plural → were playing."},
+    {q:"She ___ (not/sleep) when I arrived.",o:["wasn't sleeping","didn't sleep","isn't sleeping","not slept"],a:0,e:"Past continuous olumsuz: wasn't + V-ing."},
+    {q:"___ he working when you saw him?",o:["Was","Were","Did","Is"],a:0,e:"He/she/it → Was + V-ing?"},
+    {q:"While I ___, she cooked dinner.",o:["was reading","read","am reading","reads"],a:0,e:"While + past continuous, past simple."},
+    {q:"It ___ raining all morning.",o:["was","were","is","did"],a:0,e:"It → was + raining."},
+    {q:"We ___ the map when we got lost.",o:["were studying","studied","are studying","study"],a:0,e:"We → were + studying."},
+    {q:"___ you listening to music?",o:["Were","Was","Did","Are"],a:0,e:"You → Were you + V-ing?"},
+    {q:"He ___ to his friend when the teacher came in.",o:["was talking","talked","is talking","talks"],a:0,e:"Past continuous: was talking."},
+    {q:"The sun ___ shining brightly.",o:["was","were","is","did"],a:0,e:"The sun (singular) → was shining."},
+    {q:"I ___ (not/pay) attention in class.",o:["wasn't paying","didn't pay","am not paying","not paid"],a:0,e:"Past continuous olumsuz: wasn't paying."},
+    {q:"What ___ you doing at midnight?",o:["were","was","did","are"],a:0,e:"What were you doing? – past continuous soru."},
+    {q:"She ___ a red dress at the party.",o:["was wearing","wore","wears","is wearing"],a:0,e:"Bir anda devam eden görünüm: was wearing."},
+    {q:"The baby ___ while we were eating.",o:["was crying","cried","is crying","cries"],a:0,e:"was crying – eş zamanlı eylem."},
+    {q:"They ___ when I arrived.",o:["were arguing","argued","are arguing","argue"],a:0,e:"were arguing – geçmişte devam eden."},
+    {q:"I ___ (think) about you all day.",o:["was thinking","thought","am thinking","think"],a:0,e:"was thinking – sürekli düşünme."},
+    {q:"While she ___ shopping, her car was stolen.",o:["was doing","did","does","is doing"],a:0,e:"While + past continuous: was doing."},
+    {q:"He ___ (not/work) – he was asleep!",o:["wasn't working","didn't work","isn't working","not worked"],a:0,e:"wasn't working – past continuous olumsuz."},
+    {q:"___ the children playing nicely?",o:["Were","Was","Did","Are"],a:0,e:"Children (çoğul) → Were + playing?"},
+    {q:"We ___ to the radio when the news broke.",o:["were listening","listened","are listening","listen"],a:0,e:"were listening – eş zamanlı geçmiş."},
+    {q:"It ___ getting dark when we left.",o:["was","were","is","did"],a:0,e:"It was getting – past continuous."},
+    {q:"She ___ a sandwich when I saw her.",o:["was eating","ate","eats","is eating"],a:0,e:"Gördüğümde devam ediyordu: was eating."},
+  ],
+  3: [ // Present Perfect
+    {q:"I ___ never been to Australia.",o:["have","has","had","am"],a:0,e:"I + have: I have never been."},
+    {q:"She ___ just finished her homework.",o:["has","have","had","is"],a:0,e:"She/he/it + has: has just finished."},
+    {q:"___ you ever eaten sushi?",o:["Have","Has","Did","Are"],a:0,e:"Deneyim sorusu: Have you ever...?"},
+    {q:"He ___ (not/call) me yet.",o:["hasn't called","didn't call","isn't calling","don't call"],a:0,e:"hasn't + V3: yet ile kullanım."},
+    {q:"We ___ known each other for ten years.",o:["have","has","had","are"],a:0,e:"We + have known – for (süre)."},
+    {q:"They ___ already left.",o:["have","has","had","did"],a:0,e:"already ile present perfect: have left."},
+    {q:"I have lived here ___ 2018.",o:["since","for","during","from"],a:0,e:"Başlangıç noktası → since."},
+    {q:"She has studied English ___ three years.",o:["for","since","ago","during"],a:0,e:"Süre → for."},
+    {q:"___ he ever met a famous person?",o:["Has","Have","Did","Was"],a:0,e:"He/she/it → Has he ever...?"},
+    {q:"I have ___ seen that movie.",o:["already","yet","since","for"],a:0,e:"Olumlu cümlede: already."},
+    {q:"Have you finished your work ___?",o:["yet","already","since","ever"],a:0,e:"Soru veya olumsuzda: yet."},
+    {q:"She ___ just arrived at the station.",o:["has","have","had","is"],a:0,e:"She + has just arrived."},
+    {q:"I ___ (lose) my wallet. I can't find it.",o:["have lost","lost","lose","am losing"],a:0,e:"Sonucu şimdi hissedilen: have lost."},
+    {q:"They haven't replied ___.",o:["yet","already","since","ever"],a:0,e:"Henüz + olumsuz: yet."},
+    {q:"How long ___ you been married?",o:["have","has","did","are"],a:0,e:"How long have you been...?"},
+    {q:"He has ___ to three different countries.",o:["been","went","gone","go"],a:0,e:"been to = ziyaret etmiş (ve dönmüş)."},
+    {q:"I've ___ eaten – I'm not hungry.",o:["just","yet","since","never"],a:0,e:"Az önce yedim: just."},
+    {q:"We ___ (not/decide) where to go yet.",o:["haven't decided","didn't decide","don't decide","aren't deciding"],a:0,e:"haven't + V3 + yet."},
+    {q:"Has she ___ lived abroad?",o:["ever","already","yet","just"],a:0,e:"Yaşam deneyimi sorusu: ever."},
+    {q:"I have read this book ___ times.",o:["three","ago","since","yet"],a:0,e:"Present perfect + sayı: three times."},
+    {q:"He ___ (work) here since he graduated.",o:["has worked","worked","is working","works"],a:0,e:"since + past event → present perfect."},
+    {q:"___ they seen the new exhibition?",o:["Have","Has","Did","Were"],a:0,e:"They → Have they seen...?"},
+  ],
+  4: [ // Comparatives & Superlatives
+    {q:"She is ___ than her brother.",o:["taller","more tall","tallest","the tallest"],a:0,e:"Kısa sıfat comparative: tall + er."},
+    {q:"This is the ___ film I've ever seen.",o:["best","better","good","most good"],a:0,e:"Superlative düzensiz: good → the best."},
+    {q:"He drives ___ than his father.",o:["more carefully","more careful","carefullier","carefuller"],a:0,e:"Zarf comparative: more + carefully."},
+    {q:"This exercise is ___ than the last one.",o:["easier","more easy","easiest","most easy"],a:0,e:"easy → easier (y→ier)."},
+    {q:"Mount Everest is the ___ mountain in the world.",o:["highest","higher","most high","more high"],a:0,e:"Superlative: high → the highest."},
+    {q:"Today is ___ than yesterday.",o:["hotter","more hot","hottest","most hot"],a:0,e:"Kısa sıfat, çift ünsüz: hot → hotter."},
+    {q:"She is ___ student in the class.",o:["the most hardworking","more hardworking","hardworkingest","most hardworking"],a:0,e:"Uzun sıfat superlative: the most + sıfat."},
+    {q:"My bag is ___ than yours.",o:["heavier","more heavy","heaviest","most heavy"],a:0,e:"heavy → heavier (y→ier)."},
+    {q:"This is ___ expensive hotel in the city.",o:["the most","the more","most","more"],a:0,e:"Superlative: the most + expensive."},
+    {q:"He is ___ than I thought.",o:["smarter","more smart","smartest","the smartest"],a:0,e:"Kısa sıfat: smart → smarter."},
+    {q:"Which is ___ – a cat or a dog?",o:["more intelligent","intelligenter","most intelligent","the most intelligent"],a:0,e:"Uzun sıfat comparative: more intelligent."},
+    {q:"She sings ___ than anyone else.",o:["better","more good","gooder","best"],a:0,e:"good → better (düzensiz)."},
+    {q:"This road is ___ than the highway.",o:["more dangerous","dangerouser","most dangerous","the most dangerous"],a:0,e:"Uzun sıfat: more dangerous."},
+    {q:"He is the ___ player on the team.",o:["worst","worse","bad","most bad"],a:0,e:"bad → worse → the worst (düzensiz)."},
+    {q:"Your idea is ___ than mine.",o:["better","more good","gooder","best"],a:0,e:"good → better (comparative)."},
+    {q:"This is ___ book I have ever read.",o:["the most boring","the more boring","most boring","more boring"],a:0,e:"Superlative: the most boring."},
+    {q:"London is ___ than my hometown.",o:["bigger","more big","biggest","most big"],a:0,e:"big → bigger (çift g)."},
+    {q:"She arrived ___ than expected.",o:["earlier","more early","earliest","most early"],a:0,e:"early → earlier (y→ier)."},
+    {q:"The ___ you practice, the better you become.",o:["more","most","much","many"],a:0,e:"The more... the better... kalıbı."},
+    {q:"This is by far ___ option.",o:["the best","the better","most best","more better"],a:0,e:"by far + superlative: the best."},
+    {q:"He finished ___ than the other runners.",o:["faster","more fast","fastest","most fast"],a:0,e:"fast → faster (kısa sıfat)."},
+    {q:"It's ___ today than it was last week.",o:["colder","more cold","coldest","most cold"],a:0,e:"cold → colder."},
+  ],
+  5: [ // Future will & going to
+    {q:"Look at those clouds! It ___ rain.",o:["is going to","will","is","shall"],a:0,e:"Kanıta dayalı tahmin → going to."},
+    {q:"I think she ___ pass the exam.",o:["will","is going to","is","shall"],a:0,e:"Kişisel tahmin → will."},
+    {q:"We ___ visit Paris next month. (plan)",o:["are going to","will","are","shall"],a:0,e:"Önceden yapılmış plan → going to."},
+    {q:"'The phone is ringing.' – 'I ___ get it!'",o:["will","am going to","am","shall"],a:0,e:"Anlık karar → will."},
+    {q:"She ___ (not/be) at the party tonight.",o:["won't be","isn't going to be","isn't","doesn't"],a:0,e:"will olumsuz: won't be."},
+    {q:"___ you help me with this?",o:["Will","Are going to","Do","Shall"],a:0,e:"Yardım teklifi/rica: Will you...?"},
+    {q:"They have bought tickets. They ___ fly to Rome.",o:["are going to","will","are","do"],a:0,e:"Kesin plan (bilet alındı): going to."},
+    {q:"I promise I ___ be late.",o:["won't","am not going to","don't","am not"],a:0,e:"Söz verme: I won't be late."},
+    {q:"What ___ you do after school today?",o:["are you going to","will you","do you","are you"],a:0,e:"Plan sorusu: What are you going to do?"},
+    {q:"I think it ___ be a great day.",o:["will","is going to","is","shall"],a:0,e:"Tahmin: I think + will."},
+    {q:"She is very tired. She ___ fall asleep soon.",o:["is going to","will","is","shall"],a:0,e:"Görülen kanıt → going to."},
+    {q:"___ I carry that for you?",o:["Shall","Will","Am going to","Do"],a:0,e:"Yardım teklifi: Shall I...?"},
+    {q:"They ___ (not/move) to London after all.",o:["aren't going to","won't","don't","haven't"],a:0,e:"Plan olumsuz: aren't going to."},
+    {q:"The train ___ at 6pm. (timetable)",o:["leaves","is going to leave","will leave","is leaving"],a:0,e:"Takvim/program: present simple future."},
+    {q:"I ___ probably stay home tonight.",o:["will","am going to","am","shall"],a:0,e:"Belirsiz tahmin: will probably."},
+    {q:"He has decided. He ___ apply for the job.",o:["is going to","will","is","does"],a:0,e:"Önceden kararlaştırılmış: going to."},
+    {q:"Don't worry, I ___ help you.",o:["will","am going to","am","do"],a:0,e:"Anlık söz: will help."},
+    {q:"___ she be there tomorrow?",o:["Will","Is going to","Does","Is"],a:0,e:"Belirsiz tahmin sorusu: Will she...?"},
+    {q:"We ___ have a baby! (just found out)",o:["are going to","will","are","shall"],a:0,e:"Belirlenmiş gerçek/plan: going to."},
+    {q:"I think prices ___ rise next year.",o:["will","are going to","are","do"],a:0,e:"Kişisel tahmin: will."},
+    {q:"She ___ call you when she arrives.",o:["will","is going to","is","shall"],a:0,e:"Söz/taahhüt: will call."},
+    {q:"Be careful! You ___ drop that!",o:["are going to","will","are","do"],a:0,e:"Açık tehlike → going to."},
+  ],
+  6: [ // Modal Verbs
+    {q:"You ___ wear a seatbelt. It's the law.",o:["must","should","can","might"],a:0,e:"Yasal zorunluluk: must."},
+    {q:"She ___ speak four languages fluently.",o:["can","must","should","might"],a:0,e:"Yetenek: can."},
+    {q:"You ___ smoke in this area. It's forbidden.",o:["mustn't","don't have to","shouldn't","can't"],a:0,e:"Yasak: mustn't."},
+    {q:"___ I use your phone?",o:["Can","Must","Should","Might"],a:0,e:"Kibarca izin: Can I...?"},
+    {q:"You look tired. You ___ rest.",o:["should","must","can","might"],a:0,e:"Tavsiye: should."},
+    {q:"It ___ rain later – the sky is dark.",o:["might","must","can","should"],a:0,e:"Olasılık: might."},
+    {q:"___ you help me, please?",o:["Could","Must","Should","Might"],a:0,e:"Kibarca istek: Could you...?"},
+    {q:"You don't ___ come if you're busy.",o:["have to","must","can","should"],a:0,e:"Gerekli değil: don't have to."},
+    {q:"He ___ be at home – his car is there.",o:["must","might","can","should"],a:0,e:"Kesin çıkarım: must."},
+    {q:"Students ___ submit work before the deadline.",o:["must","can","might","could"],a:0,e:"Zorunluluk: must."},
+    {q:"She ___ swim when she was five.",o:["could","can","might","should"],a:0,e:"Geçmiş yetenek: could."},
+    {q:"You ___ eat more vegetables – it's good for you.",o:["should","must","can","might"],a:0,e:"Tavsiye: should."},
+    {q:"___ I open the window?",o:["May","Must","Should","Might"],a:0,e:"Kibarca izin: May I...?"},
+    {q:"He ___ be serious – that's too funny!",o:["can't","mustn't","shouldn't","mightn't"],a:0,e:"İmkânsızlık/şüphe: can't be."},
+    {q:"You ___ finish the whole report today – just the summary.",o:["don't have to","mustn't","can't","shouldn't"],a:0,e:"Zorunluluk yok: don't have to."},
+    {q:"___ you tell me the way to the station?",o:["Could","Must","Should","Might"],a:0,e:"Kibarca yardım isteği: Could you...?"},
+    {q:"It ___ be true – I heard it on the news.",o:["must","might","can","should"],a:0,e:"Güçlü çıkarım: must be true."},
+    {q:"Children ___ play in the street alone.",o:["shouldn't","mustn't","can't","don't have to"],a:0,e:"Tavsiye (olumsuz): shouldn't."},
+    {q:"She ___ arrive any minute now.",o:["might","must","can","should"],a:0,e:"Belirsiz olasılık: might."},
+    {q:"You ___ be quiet in the library.",o:["must","might","can","could"],a:0,e:"Kural zorunluluğu: must."},
+    {q:"I ___ drive when I was eighteen.",o:["could","can","might","should"],a:0,e:"Geçmiş yetenek: could."},
+    {q:"He ___ be hungry – he just ate!",o:["can't","mustn't","shouldn't","mightn't"],a:0,e:"Geçmiş deyişle imkânsız: can't be."},
+  ],
+  7: [ // Passive Voice
+    {q:"The letter ___ by the president.",o:["was signed","signed","is sign","has sign"],a:0,e:"Past passive: was + V3."},
+    {q:"English ___ all over the world.",o:["is spoken","speaks","is speaking","was spoken"],a:0,e:"Present passive (genel gerçek): is spoken."},
+    {q:"The car ___ by a mechanic last week.",o:["was repaired","repaired","is repaired","repairs"],a:0,e:"Geçmiş passive: was repaired."},
+    {q:"These shoes ___ in Italy.",o:["are made","make","made","were making"],a:0,e:"Present passive: are made."},
+    {q:"The building ___ in 1920.",o:["was built","built","is built","has built"],a:0,e:"Past passive: was built."},
+    {q:"My wallet ___ on the bus.",o:["was stolen","stole","is stolen","stolen"],a:0,e:"Past passive: was stolen."},
+    {q:"The new bridge ___ next year.",o:["will be opened","will open","is opened","opens"],a:0,e:"Future passive: will be + V3."},
+    {q:"The report ___ to the manager every Monday.",o:["is sent","sends","sent","was sent"],a:0,e:"Düzenli eylem passive: is sent."},
+    {q:"The painting ___ by Picasso.",o:["was created","created","creates","is creating"],a:0,e:"Past passive + by: was created by."},
+    {q:"A new hospital ___ in the city centre.",o:["is being built","is building","builds","has built"],a:0,e:"Present continuous passive: is being built."},
+    {q:"Rice ___ in many Asian countries.",o:["is grown","grows","grew","is growing"],a:0,e:"Present passive (genel): is grown."},
+    {q:"The match ___ because of bad weather.",o:["was cancelled","cancelled","is cancelled","cancels"],a:0,e:"Past passive: was cancelled."},
+    {q:"Children ___ (not/allow) in this area.",o:["are not allowed","don't allow","not allowed","haven't allowed"],a:0,e:"Present passive olumsuz: are not allowed."},
+    {q:"The package ___ this morning.",o:["was delivered","delivered","is deliver","delivers"],a:0,e:"Past passive: was delivered."},
+    {q:"___ the windows cleaned every week?",o:["Are","Were","Do","Is"],a:0,e:"Present passive soru: Are + V3?"},
+    {q:"The book ___ into 30 languages.",o:["has been translated","translated","is translating","has translated"],a:0,e:"Present perfect passive: has been + V3."},
+    {q:"Lunch ___ at 12 o'clock every day.",o:["is served","serves","was served","serving"],a:0,e:"Düzenli passive: is served."},
+    {q:"The criminals ___ by the police.",o:["were arrested","arrested","are arrest","have arrest"],a:0,e:"Past passive: were arrested."},
+    {q:"___ the email sent yet?",o:["Was","Were","Did","Is"],a:0,e:"Past passive soru: Was it sent?"},
+    {q:"These products ___ (test) before sale.",o:["are tested","test","testing","have test"],a:0,e:"Present passive: are tested."},
+    {q:"The prize ___ to the best student.",o:["will be given","will give","gives","is giving"],a:0,e:"Future passive: will be given."},
+    {q:"The road ___ at the moment.",o:["is being repaired","is repaired","was repaired","repairs"],a:0,e:"Present continuous passive: is being repaired."},
+  ],
+  8: [ // Conditionals
+    {q:"If you ___ water to 100°C, it boils.",o:["heat","heated","will heat","heating"],a:0,e:"Type 0: If + present simple, present simple."},
+    {q:"If it rains, we ___ stay home.",o:["will","would","can","might"],a:0,e:"Type 1: If + present, will + yalın."},
+    {q:"If she ___ hard, she will pass.",o:["studies","studied","will study","is studying"],a:0,e:"Type 1'de if cümlesinde present simple."},
+    {q:"Water ___ if you freeze it.",o:["expands","will expand","expanded","expanding"],a:0,e:"Type 0: genel gerçek → present simple."},
+    {q:"If you ___ me, I'll help you.",o:["ask","asked","will ask","asking"],a:0,e:"Type 1: If + present, will..."},
+    {q:"If you press this button, the door ___.",o:["opens","will open","opened","opening"],a:0,e:"Type 0: her zaman doğru kural."},
+    {q:"___ you hurry, you'll be late.",o:["Unless","If","When","Although"],a:0,e:"Unless = if not: Unless you hurry."},
+    {q:"If I have time, I ___ visit you.",o:["will","would","can","am"],a:0,e:"Type 1 sonuç: will + yalın."},
+    {q:"If plants don't get water, they ___.",o:["die","will die","died","dying"],a:0,e:"Type 0: genel gerçek."},
+    {q:"She will be angry if you ___ her birthday.",o:["forget","forgot","will forget","forgetting"],a:0,e:"Type 1: If cümlesinde present simple."},
+    {q:"If you mix blue and yellow, you ___ green.",o:["get","will get","got","getting"],a:0,e:"Type 0: bilimsel gerçek."},
+    {q:"I ___ go to the party if I feel better.",o:["will","would","should","might"],a:0,e:"Type 1: gerçekçi koşul."},
+    {q:"If he ___ early, we can have breakfast together.",o:["arrives","arrived","will arrive","arriving"],a:0,e:"Type 1 if clause: present simple."},
+    {q:"___ it be cold, take your jacket.",o:["If","Unless","Although","Despite"],a:0,e:"If: koşul bağlacı."},
+    {q:"Ice melts if the temperature ___.",o:["rises","will rise","rose","rising"],a:0,e:"Type 0: rises (present simple)."},
+    {q:"If you eat too much sugar, you ___ feel sick.",o:["will","would","can","might"],a:0,e:"Type 1: will (gerçekçi sonuç)."},
+    {q:"___ you don't study, you'll fail.",o:["If","Unless","Although","Despite"],a:0,e:"If: doğrudan koşul."},
+    {q:"I'll call you if I ___ any news.",o:["hear","heard","will hear","hearing"],a:0,e:"Type 1 if clause: present simple."},
+    {q:"If you ___ this button, the alarm rings. (Type 0)",o:["press","pressed","will press","pressing"],a:0,e:"Type 0: her seferinde olan eylem."},
+    {q:"We ___ miss the bus unless we hurry.",o:["will","would","can","should"],a:0,e:"Unless (if not) + Type 1: will miss."},
+    {q:"If the weather is nice, we ___ to the beach.",o:["will go","would go","go","went"],a:0,e:"Type 1: will go."},
+    {q:"If he ___ (not/apologize), she won't forgive him.",o:["doesn't apologize","won't apologize","didn't apologize","not apologize"],a:0,e:"Type 1 if olumsuz: doesn't + yalın."},
+  ],
+  9: [ // Conjunctions
+    {q:"I was tired, ___ I kept working.",o:["but","so","because","although"],a:0,e:"Zıtlık: but (ama)."},
+    {q:"She didn't come ___ she was ill.",o:["because","but","although","so"],a:0,e:"Neden: because."},
+    {q:"It was raining, ___ we stayed inside.",o:["so","but","although","because"],a:0,e:"Sonuç: so (bu yüzden)."},
+    {q:"___ it was cold, they went swimming.",o:["Although","Because","So","But"],a:0,e:"Zıtlık cümlesi: Although."},
+    {q:"She studied hard; ___, she failed.",o:["however","so","because","although"],a:0,e:"Cümle başında zıtlık: however."},
+    {q:"He works hard ___ that he can buy a house.",o:["so","but","although","because"],a:0,e:"Amaç: so that."},
+    {q:"___ the traffic, we arrived on time.",o:["Despite","Although","However","Because"],a:0,e:"Despite + isim: inat anlamı."},
+    {q:"She was nervous; ___, she did well.",o:["nevertheless","however","therefore","although"],a:0,e:"Buna rağmen: nevertheless."},
+    {q:"He is smart ___ lazy.",o:["but","and","or","so"],a:0,e:"Karşıtlık: but."},
+    {q:"Would you like tea ___ coffee?",o:["or","and","but","so"],a:0,e:"Seçenek: or."},
+    {q:"She studied hard. ___, she passed.",o:["Therefore","However","Although","Despite"],a:0,e:"Neden-sonuç: Therefore."},
+    {q:"___ spite of the rain, we went out.",o:["In","Despite","Although","However"],a:0,e:"In spite of = despite."},
+    {q:"I couldn't sleep ___ of the noise.",o:["because","in spite","although","however"],a:0,e:"because of + isim."},
+    {q:"___ she and her sister are doctors.",o:["Both","Either","Neither","Though"],a:0,e:"İkisi de: Both A and B."},
+    {q:"___ you study or you fail.",o:["Either","Both","Neither","Though"],a:0,e:"Ya... ya da: Either... or."},
+    {q:"I like coffee ___ tea.",o:["and","but","or","so"],a:0,e:"Ekleme: and."},
+    {q:"He is smart; ___, he lacks confidence.",o:["however","therefore","so","because"],a:0,e:"Karşıtlık (cümle başında): however."},
+    {q:"___ even though he was busy, he helped.",o:["Even though","Because","So","But"],a:0,e:"Güçlü zıtlık: Even though."},
+    {q:"She left early ___ she had an appointment.",o:["because","but","although","however"],a:0,e:"Neden-sonuç: because."},
+    {q:"I was hungry, ___ I made a sandwich.",o:["so","but","although","however"],a:0,e:"Sonuç: so."},
+    {q:"___ the bad weather, the event was great.",o:["Despite","Although","However","Because"],a:0,e:"Despite + isim grubu."},
+    {q:"Not only is he smart, ___ also kind.",o:["but","and","or","so"],a:0,e:"Not only... but also: hem... hem de."},
+  ],
+  10: [ // Question Forms
+    {q:"___ you speak English?",o:["Do","Are","Have","Did"],a:0,e:"Present simple soru (yetenek): Do you...?"},
+    {q:"___ did you go last night?",o:["Where","What","Who","How"],a:0,e:"Yer soran WH sorusu: Where."},
+    {q:"___ time does the train leave?",o:["What","Which","How","Where"],a:0,e:"Saat soran: What time."},
+    {q:"___ are you crying?",o:["Why","What","Who","Where"],a:0,e:"Neden: Why."},
+    {q:"___ called you this morning?",o:["Who","Whom","Which","What"],a:0,e:"Özne sorusu: Who called? (yardımcı yok)"},
+    {q:"___ long have you been waiting?",o:["How","What","Which","Where"],a:0,e:"Süre: How long."},
+    {q:"___ you ever been to Japan?",o:["Have","Did","Are","Do"],a:0,e:"Deneyim sorusu: Have you ever...?"},
+    {q:"___ bag is this?",o:["Whose","Who","Which","What"],a:0,e:"Sahiplik sorusu: Whose."},
+    {q:"___ many people were at the party?",o:["How","What","Which","Where"],a:0,e:"Sayı: How many."},
+    {q:"She lives in London, ___ she?",o:["doesn't","isn't","does","is"],a:0,e:"Tag question: lives → doesn't she?"},
+    {q:"___ colour do you prefer?",o:["Which","What","How","Where"],a:0,e:"Seçim sorusu: Which."},
+    {q:"___ much does this coat cost?",o:["How","What","Which","Where"],a:0,e:"Miktar/fiyat: How much."},
+    {q:"___ they enjoy the concert?",o:["Did","Do","Were","Have"],a:0,e:"Geçmiş soru: Did they enjoy?"},
+    {q:"___ are you thinking about?",o:["What","Who","Which","How"],a:0,e:"Düşünce sorusu: What."},
+    {q:"___ often do you exercise?",o:["How","What","Which","Where"],a:0,e:"Sıklık: How often."},
+    {q:"You're coming, ___ you?",o:["aren't","isn't","don't","won't"],a:0,e:"Tag: You are → aren't you?"},
+    {q:"___ does this word mean?",o:["What","How","Which","Who"],a:0,e:"Anlam sorusu: What does it mean?"},
+    {q:"Can you tell me ___ the bank is?",o:["where","where is","what","how"],a:0,e:"Dolaylı soru: ...where the bank is (düz sıra)."},
+    {q:"___ far is it to the station?",o:["How","What","Which","Where"],a:0,e:"Mesafe: How far."},
+    {q:"___ was the weather like?",o:["What","How","Which","Where"],a:0,e:"Tanımlama sorusu: What...like?"},
+    {q:"He passed the exam, ___ he?",o:["didn't","isn't","doesn't","wasn't"],a:0,e:"Tag: passed (past simple) → didn't he?"},
+    {q:"___ subject do you like most?",o:["Which","What","How","Who"],a:0,e:"Belirli seçim: Which subject."},
+  ]
+};
+
+// =================== LESSON QUIZ STATE ===================
+let lqState = { lessonId: null, questions: [], current: 0, score: 0, answered: false };
+
+function startLessonQuiz(lessonId) {
+  const pool = [...(LESSON_QUIZ[lessonId] || [])];
+  shuffle(pool);
+  lqState = { lessonId, questions: pool, current: 0, score: 0, answered: false };
+  showScreen('lessonQuizScreen');
+  renderLessonQuestion();
+}
+
+function renderLessonQuestion() {
+  const q = lqState.questions[lqState.current];
+  const total = lqState.questions.length;
+  lqState.answered = false;
+
+  document.getElementById('lqProgressFill').style.width = ((lqState.current / total) * 100) + '%';
+  document.getElementById('lqProgressText').textContent = `${lqState.current + 1}/${total}`;
+
+  const l = LESSONS.find(x => x.id === lqState.lessonId);
+  document.getElementById('lqTitle').textContent = l ? l.icon + ' ' + l.title : 'Konu Sınavı';
+
+  document.getElementById('lqQText').textContent = q.q;
+
+  const correctText = q.o[q.a];
+  const shuffled = [...q.o];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const newCorrectIdx = shuffled.indexOf(correctText);
+
+  const choicesEl = document.getElementById('lqChoices');
+  choicesEl.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  shuffled.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => answerLQ(i, btn, newCorrectIdx, q.e);
+    choicesEl.appendChild(btn);
+  });
+
+  document.getElementById('lqFeedback').className = 'feedback-bar';
+  document.getElementById('lqNextBtn').className = 'next-btn';
+
+  const card = document.getElementById('lqCard');
+  card.classList.remove('pop');
+  void card.offsetWidth;
+  card.classList.add('pop');
+}
+
+function answerLQ(idx, clickedBtn, correctIdx, explain) {
+  if (lqState.answered) return;
+  lqState.answered = true;
+  const isCorrect = idx === correctIdx;
+  if (isCorrect) lqState.score++;
+
+  const btns = document.querySelectorAll('#lqChoices .choice-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[correctIdx].classList.add('correct');
+  if (!isCorrect) clickedBtn.classList.add('wrong');
+
+  const fb = document.getElementById('lqFeedback');
+  document.getElementById('lqFeedbackIcon').textContent = isCorrect ? '✅' : '❌';
+  document.getElementById('lqFeedbackText').textContent = isCorrect ? 'Doğru!' : 'Yanlış!';
+  document.getElementById('lqFeedbackExplain').textContent = explain || '';
+  fb.className = 'feedback-bar show ' + (isCorrect ? 'correct' : 'wrong');
+  document.getElementById('lqNextBtn').className = 'next-btn show';
+}
+
+function nextLessonQuestion() {
+  lqState.current++;
+  if (lqState.current >= lqState.questions.length) {
+    showLessonResult();
+  } else {
+    renderLessonQuestion();
+  }
+}
+
+function showLessonResult() {
+  const total = lqState.questions.length;
+  const pct = Math.round((lqState.score / total) * 100);
+  const l = LESSONS.find(x => x.id === lqState.lessonId);
+
+  document.getElementById('lqrScore').textContent = pct + '%';
+  document.getElementById('lqrCorrect').textContent = lqState.score;
+  document.getElementById('lqrWrong').textContent = total - lqState.score;
+  document.getElementById('lqrTotal').textContent = total;
+  document.getElementById('lqrTitle').textContent = l ? l.title + ' Sonucu' : 'Sonuç';
+
+  let emoji, msg;
+  if (pct >= 90) { emoji = '🏆'; msg = 'Mükemmel! Bu konuyu çok iyi öğrendin.'; }
+  else if (pct >= 70) { emoji = '🎉'; msg = 'Çok iyi! Birkaç noktayı tekrar gözden geçir.'; }
+  else if (pct >= 50) { emoji = '👍'; msg = 'İyi! Konuyu tekrar okuyup tekrar dene.'; }
+  else { emoji = '💪'; msg = 'Konuyu bir kez daha incele ve tekrar dene!'; }
+
+  document.getElementById('lqrEmoji').textContent = emoji;
+  document.getElementById('lqrMsg').textContent = msg;
+  showScreen('lessonResultScreen');
+}
+
+function retryLessonQuiz() { startLessonQuiz(lqState.lessonId); }
+function backToLesson() {
+  switchTab('learn');
+  openLesson(lqState.lessonId);
+}
+
 function renderTopicList() {
   document.getElementById('topicListView').style.display = 'block';
   document.getElementById('topicDetailView').style.display = 'none';
@@ -1567,6 +1969,10 @@ function openLesson(id) {
       <h3>💬 Örnek Cümleler (${l.examples.length} adet)</h3>
       ${examplesHTML}
     </div>
+    <button class="btn-primary" style="margin-top:8px" onclick="startLessonQuiz(${l.id})">
+      ✏️ Konuyu Sına — ${(LESSON_QUIZ[l.id]||[]).length} Soru
+    </button>
+    <div style="height:12px"></div>
   `;
   document.getElementById('learnScreen').scrollTop = 0;
   window.scrollTo(0, 0);
