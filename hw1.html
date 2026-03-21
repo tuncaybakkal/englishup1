@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-Intermediate · Unit 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f0e8;--card:#fffdf7;--accent:#e85d26;--accent2:#2b7a78;
+  --accent3:#f4a261;--dark:#1a1a2e;--mid:#4a4a6a;--light:#c8c0b0;
+  --ok:#2d9e6b;--err:#d94040;--ok-bg:#e8f7f0;--err-bg:#fdeaea;
+  --shadow:0 4px 24px rgba(30,20,10,.10);--radius:14px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh}
+
+/* HEADER */
+header{background:var(--dark);color:#fff;padding:16px 32px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.unit-badge{background:var(--accent);color:#fff;font-size:2rem;font-weight:900;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:10px;flex-shrink:0}
+.header-text h1{font-family:'Lora',serif;font-size:1.3rem;font-weight:600}
+.header-text p{font-size:.72rem;color:var(--light);margin-top:1px;letter-spacing:.5px;text-transform:uppercase}
+.score-pill{margin-left:auto;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 16px;font-weight:800;font-size:.9rem;white-space:nowrap}
+.score-pill span{color:var(--accent3)}
+.prog-wrap{background:rgba(255,255,255,.1);border-radius:50px;height:5px;width:120px;margin-left:10px;overflow:hidden;flex-shrink:0}
+.prog-fill{background:var(--accent3);height:100%;border-radius:50px;transition:width .4s}
+.global-reset{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:50px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;margin-left:8px;white-space:nowrap}
+.global-reset:hover{background:rgba(255,255,255,.22)}
+
+/* TABS */
+.tabs{background:var(--dark);display:flex;gap:3px;padding:0 32px 11px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{background:transparent;border:none;color:var(--light);font-family:'Nunito',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.5px;text-transform:uppercase;padding:6px 13px;border-radius:50px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.tab-btn.active{background:var(--accent);color:#fff}
+
+/* SECTIONS */
+.section{display:none;padding:28px 32px 60px;max-width:900px;margin:0 auto}
+.section.active{display:block}
+.section-title{font-family:'Lora',serif;font-size:1.35rem;font-weight:600;margin-bottom:3px}
+.section-sub{font-size:.74rem;color:var(--mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block}
+
+/* CARDS */
+.ex-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 26px;margin-bottom:22px}
+.ex-number{background:var(--accent);color:#fff;font-weight:900;font-size:.68rem;padding:3px 9px;border-radius:50px;display:inline-block;margin-bottom:7px;letter-spacing:1px;text-transform:uppercase}
+.ex-instruction{font-weight:700;font-size:.89rem;color:var(--mid);margin-bottom:14px;line-height:1.5}
+.word-box{background:#f0ede5;border:1.5px dashed var(--light);border-radius:10px;padding:9px 13px;font-size:.82rem;color:var(--mid);margin-bottom:14px;line-height:1.9}
+.word-box strong{color:var(--dark)}
+.person-label{background:var(--accent2);color:#fff;font-weight:900;font-size:.72rem;padding:3px 10px;border-radius:6px;display:inline-block;margin:11px 0 6px;letter-spacing:.5px;text-transform:uppercase}
+.fill-line{margin:7px 0;line-height:2.6;font-size:.92rem}
+
+/* READING TEXT CARD */
+.reading-card{background:linear-gradient(135deg,#f8f4ec,#fff);border:1.5px solid #e0d8c8;border-radius:var(--radius);padding:24px 28px;margin-bottom:22px;box-shadow:var(--shadow)}
+.reading-card h2{font-family:'Lora',serif;font-size:1.25rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.reading-card .subtitle{font-size:.78rem;color:var(--mid);text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;display:block}
+.reading-intro{background:var(--dark);color:#fff;border-radius:10px;padding:14px 18px;font-size:.9rem;font-weight:700;line-height:1.6;margin-bottom:18px}
+.reading-section{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e0d0}
+.reading-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.reading-section h3{font-family:'Lora',serif;font-size:.95rem;font-weight:600;color:var(--accent2);margin-bottom:8px;padding:4px 12px;background:#eef7f6;border-radius:6px;display:inline-block}
+.reading-section p{font-size:.9rem;line-height:1.75;color:#333}
+.reading-section p strong{color:var(--accent)}
+.reading-section p em{font-style:italic;color:var(--mid);font-size:.82rem}
+.glossary{background:#f8f4ec;border-radius:8px;padding:8px 14px;font-size:.8rem;color:var(--mid);margin-top:10px}
+.glossary strong{color:var(--dark)}
+
+/* PERSON PROFILE CARD */
+.profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:20px}
+.profile-card{background:linear-gradient(135deg,#eef7f6,#f8fffe);border:1.5px solid #c8e8e4;border-radius:12px;padding:18px 20px}
+.profile-card h3{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--accent2);margin-bottom:3px}
+.profile-card .loc{font-size:.75rem;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;display:block}
+.profile-card p{font-size:.87rem;line-height:1.7;color:#333}
+
+/* INLINE SELECT */
+.isel-wrap{display:inline-block;vertical-align:middle;margin:0 2px}
+.isel{
+  appearance:none;-webkit-appearance:none;
+  border:2px solid #bbb7ac;border-radius:7px;
+  background:#f0ede5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 7px center;
+  background-size:9px 5px;
+  font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:700;color:var(--dark);
+  padding:3px 26px 3px 9px;cursor:pointer;min-width:80px;
+  transition:border-color .15s,background-color .15s,color .15s;outline:none;
+}
+.isel:focus{border-color:var(--accent2)}
+.isel.correct{background-color:var(--ok-bg);border-color:var(--ok);color:var(--ok);pointer-events:none}
+.isel.wrong{background-color:var(--err-bg);border-color:var(--err);color:var(--err)}
+
+/* STANDALONE MC */
+.mc-group{display:flex;gap:7px;flex-wrap:wrap;margin:5px 0 11px}
+.mc-btn{background:#f0ede5;border:2px solid #d0ccc0;border-radius:8px;padding:5px 15px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .18s;color:var(--dark)}
+.mc-btn:hover{border-color:var(--accent2);background:#e0f5f3}
+.mc-btn.correct{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);pointer-events:none}
+.mc-btn.wrong{border-color:var(--err);background:var(--err-bg);color:var(--err);pointer-events:none}
+.mc-row{margin:8px 0;font-size:.91rem;line-height:1.5}
+
+/* MATCH */
+.match-container{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:6px}
+.match-item-a{background:#eef2f8;border-radius:8px;padding:8px 12px;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:7px}
+.match-item-a span.idx{background:var(--accent);color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.69rem;font-weight:900;flex-shrink:0}
+.match-select{border:2px solid #d0ccc0;border-radius:8px;padding:7px 9px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.81rem;background:#f0ede5;cursor:pointer;width:100%;transition:border-color .2s;outline:none}
+.match-select:focus{border-color:var(--accent2)}
+.match-select.correct{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.match-select.wrong{border-color:var(--err);background:var(--err-bg);color:var(--err)}
+
+/* BUTTONS */
+.check-btn{background:var(--accent);color:#fff;border:none;border-radius:50px;padding:9px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.81rem;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:14px;display:inline-flex;align-items:center;gap:5px}
+.check-btn:hover{background:#c94e1a;transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,93,38,.4)}
+.reset-btn{background:transparent;color:var(--mid);border:2px solid var(--light);border-radius:50px;padding:8px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;margin-top:14px;margin-left:7px;transition:all .2s;text-transform:uppercase;letter-spacing:.5px}
+.reset-btn:hover{border-color:var(--mid);color:var(--dark)}
+.ex-feedback{margin-top:11px;padding:9px 13px;border-radius:9px;font-weight:700;font-size:.85rem;display:none}
+.ex-feedback.show{display:block}
+.ex-feedback.good{background:var(--ok-bg);color:var(--ok);border-left:4px solid var(--ok)}
+.ex-feedback.bad{background:var(--err-bg);color:var(--err);border-left:4px solid var(--err)}
+
+/* VOCAB SECTION */
+.vocab-pair{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.vocab-label{font-weight:800;font-size:.84rem;color:var(--accent2);background:#eef7f6;padding:2px 10px;border-radius:6px;display:inline-block;margin:10px 0 4px}
+
+@media(max-width:640px){
+  header{padding:10px 14px;gap:10px}
+  .tabs{padding:0 12px 10px}
+  .section{padding:16px 14px 40px}
+  .match-container{grid-template-columns:1fr}
+  .ex-card,.reading-card{padding:14px 13px}
+  .prog-wrap{display:none}
+  .global-reset{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="unit-badge">1</div>
+  <div class="header-text">
+    <h1>Getting to Know You</h1>
+    <p>Headway Pre-Intermediate · Unit 1</p>
+  </div>
+  <div class="score-pill">✓ <span id="scoreDisplay">0</span> / <span id="totalDisplay">0</span></div>
+  <div class="prog-wrap"><div class="prog-fill" id="progressBar" style="width:0%"></div></div>
+  <button class="global-reset" onclick="globalReset()">↺ Tümünü Sıfırla</button>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('grammar',this)">📝 Grammar</button>
+  <button class="tab-btn" onclick="showTab('questions',this)">❓ Questions</button>
+  <button class="tab-btn" onclick="showTab('qwords',this)">🔤 Q. Words</button>
+  <button class="tab-btn" onclick="showTab('reading',this)">📖 Reading</button>
+  <button class="tab-btn" onclick="showTab('vocab',this)">📚 Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('everyday',this)">💬 Everyday</button>
+  <button class="tab-btn" onclick="showTab('review',this)">🔁 Review</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     GRAMMAR
+═══════════════════════════════════════════ -->
+<div id="grammar" class="section active">
+  <div class="section-title">Grammar</div>
+  <div class="section-sub">Tense Revision – Present, Past & Future</div>
+
+  <!-- Profiles -->
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h3>Johanna Becker</h3><span class="loc">🇺🇸 from the US</span>
+      <p>A student from Germany, now studying anthropology at Oxford after studying law at Stanford. Hopes to work in Mexico.</p>
+    </div>
+    <div class="profile-card">
+      <h3>Garlen Bernard</h3><span class="loc">🇫🇷 from France</span>
+      <p>A maths teacher, normally at the Sorbonne in Paris. Currently teaching at McGill University in Montreal for a year.</p>
+    </div>
+    <div class="profile-card">
+      <h3>Anna and Don</h3><span class="loc">🇬🇧 from England</span>
+      <p>Recently graduated. Doing volunteer work in Kenya for a year before returning to England to train as teachers.</p>
+    </div>
+  </div>
+
+  <div class="ex-card" id="ex1">
+    <span class="ex-number">Exercise 1</span>
+    <p class="ex-instruction">Complete the texts with the verb forms from the box. Select from the dropdown.</p>
+
+    <div class="person-label">Johanna Becker – from the US</div>
+    <div class="word-box"><strong>has · speaks · 'm studying · 'm hoping · don't want · was · moved · studied · was born</strong></div>
+    <div class="fill-line">Johanna Becker is a student. She ¹ <em>was born</em> in Germany, but she ² <span class="isel-wrap"><select class="isel" id="ex1_2" data-ans="moved" onchange="checkSelect(this)"><option value="">—</option><option>moved</option><option>has</option><option>was</option></select></span> to Boston in the US with her parents when she ³ <span class="isel-wrap"><select class="isel" id="ex1_3" data-ans="was" onchange="checkSelect(this)"><option value="">—</option><option>was</option><option>is</option><option>were</option></select></span> just six years old. She ⁴ <span class="isel-wrap"><select class="isel" id="ex1_4" data-ans="has" onchange="checkSelect(this)"><option value="">—</option><option>has</option><option>have</option><option>had</option></select></span> two older brothers. She ⁵ <span class="isel-wrap"><select class="isel" id="ex1_5" data-ans="speaks" onchange="checkSelect(this)"><option value="">—</option><option>speaks</option><option>'m studying</option><option>studied</option></select></span> three languages – German, English, and Spanish.</div>
+    <div class="fill-line">'I ⁶ <span class="isel-wrap"><select class="isel" id="ex1_6" data-ans="studied" onchange="checkSelect(this)"><option value="">—</option><option>studied</option><option>'m studying</option><option>was</option></select></span> law at Stanford University from 2014 to 2017, but I ⁷ <span class="isel-wrap"><select class="isel" id="ex1_7" data-ans="don't want" onchange="checkSelect(this)"><option value="">—</option><option>don't want</option><option>'m hoping</option><option>didn't want</option></select></span> to become a lawyer. Now I ⁸ <span class="isel-wrap"><select class="isel" id="ex1_8" data-ans="'m studying" onchange="checkSelect(this)"><option value="">—</option><option>'m studying</option><option>studied</option><option>study</option></select></span> anthropology at Oxford University. After that, I ⁹ <span class="isel-wrap"><select class="isel" id="ex1_9" data-ans="'m hoping" onchange="checkSelect(this)"><option value="">—</option><option>'m hoping</option><option>hope</option><option>hoped</option></select></span> to get a job in Mexico. I really want to work at the Museum of Anthropology in Mexico City.'</div>
+
+    <div class="person-label">Garlen Bernard – from France</div>
+    <div class="word-box"><strong>comes · like · found · takes · play · don't like · missed · 'm living · 's teaching · made · teaches · 'm going to look</strong></div>
+    <div class="fill-line">Garlen is a teacher. He ¹ <span class="isel-wrap"><select class="isel" id="ex1_g1" data-ans="comes" onchange="checkSelect(this)"><option value="">—</option><option>comes</option><option>like</option><option>teaches</option></select></span> from France. He normally ² <span class="isel-wrap"><select class="isel" id="ex1_g2" data-ans="teaches" onchange="checkSelect(this)"><option value="">—</option><option>teaches</option><option>'s teaching</option><option>found</option></select></span> mathematics at the Sorbonne, but at the moment he ³ <span class="isel-wrap"><select class="isel" id="ex1_g3" data-ans="'s teaching" onchange="checkSelect(this)"><option value="">—</option><option>'s teaching</option><option>teaches</option><option>taught</option></select></span> mathematics at McGill University in Montreal for a year.</div>
+    <div class="fill-line">'I ⁴ <span class="isel-wrap"><select class="isel" id="ex1_g4" data-ans="like" onchange="checkSelect(this)"><option value="">—</option><option>like</option><option>don't like</option><option>missed</option></select></span> living in Canada very much, the people are warm and friendly. At first, I ⁵ <span class="isel-wrap"><select class="isel" id="ex1_g5" data-ans="missed" onchange="checkSelect(this)"><option value="">—</option><option>missed</option><option>like</option><option>found</option></select></span> home a lot, but I soon ⁶ <span class="isel-wrap"><select class="isel" id="ex1_g6" data-ans="found" onchange="checkSelect(this)"><option value="">—</option><option>found</option><option>made</option><option>missed</option></select></span> friends and ⁷ <span class="isel-wrap"><select class="isel" id="ex1_g7" data-ans="made" onchange="checkSelect(this)"><option value="">—</option><option>made</option><option>found</option><option>takes</option></select></span> an apartment. I ⁸ <span class="isel-wrap"><select class="isel" id="ex1_g8" data-ans="'m living" onchange="checkSelect(this)"><option value="">—</option><option>'m living</option><option>live</option><option>lived</option></select></span> in an apartment with three other teachers – it's fun. I ⁹ <span class="isel-wrap"><select class="isel" id="ex1_g9" data-ans="don't like" onchange="checkSelect(this)"><option value="">—</option><option>don't like</option><option>like</option><option>missed</option></select></span> living on my own. It only ¹⁰ <span class="isel-wrap"><select class="isel" id="ex1_g10" data-ans="takes" onchange="checkSelect(this)"><option value="">—</option><option>takes</option><option>makes</option><option>play</option></select></span> me five minutes to walk downtown, where I can shop or go to cafés and clubs. I often ¹¹ <span class="isel-wrap"><select class="isel" id="ex1_g11" data-ans="play" onchange="checkSelect(this)"><option value="">—</option><option>play</option><option>takes</option><option>made</option></select></span> sports here – football and tennis. I ¹² <span class="isel-wrap"><select class="isel" id="ex1_g12" data-ans="'m going to look" onchange="checkSelect(this)"><option value="">—</option><option>'m going to look</option><option>looked</option><option>look</option></select></span> for a permanent job in Canada when I finish my year at McGill University. Maybe here in Montreal? Who knows? I really like Vancouver, too.'</div>
+
+    <div class="person-label">Anna and Don – from England</div>
+    <div class="word-box"><strong>have · love · 's teaching · 's helping · 're staying · 're doing · didn't want · graduated · decided · 're going to train</strong></div>
+    <div class="fill-line">Anna and Don are from Exeter in England. They both ¹ <span class="isel-wrap"><select class="isel" id="ex1_a1" data-ans="graduated" onchange="checkSelect(this)"><option value="">—</option><option>graduated</option><option>decided</option><option>didn't want</option></select></span> last year, but they ² <span class="isel-wrap"><select class="isel" id="ex1_a2" data-ans="didn't want" onchange="checkSelect(this)"><option value="">—</option><option>didn't want</option><option>graduated</option><option>decided</option></select></span> to start their careers immediately, so they ³ <span class="isel-wrap"><select class="isel" id="ex1_a3" data-ans="decided" onchange="checkSelect(this)"><option value="">—</option><option>decided</option><option>graduated</option><option>'re doing</option></select></span> to live and work abroad for a year. At the moment, they ⁴ <span class="isel-wrap"><select class="isel" id="ex1_a4" data-ans="'re doing" onchange="checkSelect(this)"><option value="">—</option><option>'re doing</option><option>'re staying</option><option>have</option></select></span> volunteer work in Kenya. They ⁵ <span class="isel-wrap"><select class="isel" id="ex1_a5" data-ans="'re staying" onchange="checkSelect(this)"><option value="">—</option><option>'re staying</option><option>'re doing</option><option>love</option></select></span> at Camp Kenya with 50 other volunteers from all over the world. They're both working in the local community: Anna ⁶ <span class="isel-wrap"><select class="isel" id="ex1_a6" data-ans="'s teaching" onchange="checkSelect(this)"><option value="">—</option><option>'s teaching</option><option>'s helping</option><option>love</option></select></span> English, and Don ⁷ <span class="isel-wrap"><select class="isel" id="ex1_a7" data-ans="'s helping" onchange="checkSelect(this)"><option value="">—</option><option>'s helping</option><option>'s teaching</option><option>have</option></select></span> the local people to build schools and playgrounds. 'The kids ⁸ <span class="isel-wrap"><select class="isel" id="ex1_a8" data-ans="love" onchange="checkSelect(this)"><option value="">—</option><option>love</option><option>have</option><option>'re doing</option></select></span> playing football,' says Don, 'and now they ⁹ <span class="isel-wrap"><select class="isel" id="ex1_a9" data-ans="have" onchange="checkSelect(this)"><option value="">—</option><option>have</option><option>love</option><option>decided</option></select></span> a real pitch to play on.' When Anna and Don go back to England, they ¹⁰ <span class="isel-wrap"><select class="isel" id="ex1_a10" data-ans="'re going to train" onchange="checkSelect(this)"><option value="">—</option><option>'re going to train</option><option>decided</option><option>graduated</option></select></span> to be teachers.</div>
+
+    <div class="ex-feedback" id="ex1-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex1')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex2">
+    <span class="ex-number">Exercise 2</span>
+    <p class="ex-instruction">Put the verbs into the correct tense and form (positive or negative).</p>
+    <div class="fill-line">1. Johanna <em>wasn't born</em> (born) in the US. ✓</div>
+    <div class="fill-line">2. She <span class="isel-wrap"><select class="isel" id="ex2_2" data-ans="doesn't speak" onchange="checkSelect(this)"><option value="">—</option><option>doesn't speak</option><option>speaks</option><option>isn't speaking</option></select></span> (speak) Portuguese.</div>
+    <div class="fill-line">3. In the photo, Johanna <span class="isel-wrap"><select class="isel" id="ex2_3" data-ans="is carrying" onchange="checkSelect(this)"><option value="">—</option><option>is carrying</option><option>carries</option><option>carried</option></select></span> (carry) some books.</div>
+    <div class="fill-line">4. Garlen <span class="isel-wrap"><select class="isel" id="ex2_4" data-ans="is" onchange="checkSelect(this)"><option value="">—</option><option>is</option><option>was</option><option>isn't</option></select></span> (be) French.</div>
+    <div class="fill-line">5. At the moment he <span class="isel-wrap"><select class="isel" id="ex2_5" data-ans="is living" onchange="checkSelect(this)"><option value="">—</option><option>is living</option><option>lives</option><option>lived</option></select></span> (live) with three other teachers.</div>
+    <div class="fill-line">6. Garlen <span class="isel-wrap"><select class="isel" id="ex2_6" data-ans="doesn't like" onchange="checkSelect(this)"><option value="">—</option><option>doesn't like</option><option>likes</option><option>is liking</option></select></span> (like) living on his own.</div>
+    <div class="fill-line">7. Anna and Don <span class="isel-wrap"><select class="isel" id="ex2_7" data-ans="don't live" onchange="checkSelect(this)"><option value="">—</option><option>don't live</option><option>live</option><option>aren't living</option></select></span> (live) in England at the moment.</div>
+    <div class="fill-line">8. They <span class="isel-wrap"><select class="isel" id="ex2_8" data-ans="finished" onchange="checkSelect(this)"><option value="">—</option><option>finished</option><option>finish</option><option>didn't finish</option></select></span> (finish) university last year.</div>
+    <div class="fill-line">9. When they go back to England, they <span class="isel-wrap"><select class="isel" id="ex2_9" data-ans="are going to train" onchange="checkSelect(this)"><option value="">—</option><option>are going to train</option><option>trained</option><option>train</option></select></span> (train) to be teachers.</div>
+    <div class="ex-feedback" id="ex2-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex2')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex3">
+    <span class="ex-number">Exercise 3</span>
+    <p class="ex-instruction">Choose the correct form of the verb.</p>
+    <div class="mc-row">1. She's very clever. She ___ three languages.
+      <div class="mc-group" id="ex3_1"><button class="mc-btn" onclick="checkMC(this,'c')">a 's speaking</button><button class="mc-btn" onclick="checkMC(this,'c')">b speak</button><button class="mc-btn" onclick="checkMC(this,'c')">c speaks</button></div></div>
+    <div class="mc-row">2. 'Would you like a cigarette?' 'No, thanks. I ___.'
+      <div class="mc-group" id="ex3_2"><button class="mc-btn" onclick="checkMC(this,'a')">a don't smoke</button><button class="mc-btn" onclick="checkMC(this,'a')">b no smoke</button><button class="mc-btn" onclick="checkMC(this,'a')">c 'm not smoking</button></div></div>
+    <div class="mc-row">3. I ___ to the cinema yesterday evening.
+      <div class="mc-group" id="ex3_3"><button class="mc-btn" onclick="checkMC(this,'c')">a go</button><button class="mc-btn" onclick="checkMC(this,'c')">b was</button><button class="mc-btn" onclick="checkMC(this,'c')">c went</button></div></div>
+    <div class="mc-row">4. Where ___ in Argentina?
+      <div class="mc-group" id="ex3_4"><button class="mc-btn" onclick="checkMC(this,'b')">a you stayed</button><button class="mc-btn" onclick="checkMC(this,'b')">b did you stay</button><button class="mc-btn" onclick="checkMC(this,'b')">c you stay</button></div></div>
+    <div class="mc-row">5. My weekend was boring. I ___ anything.
+      <div class="mc-group" id="ex3_5"><button class="mc-btn" onclick="checkMC(this,'a')">a didn't do</button><button class="mc-btn" onclick="checkMC(this,'a')">b didn't</button><button class="mc-btn" onclick="checkMC(this,'a')">c not do</button></div></div>
+    <div class="mc-row">6. This is a great party! Everyone ___ a good time.
+      <div class="mc-group" id="ex3_6"><button class="mc-btn" onclick="checkMC(this,'c')">a has</button><button class="mc-btn" onclick="checkMC(this,'c')">b having</button><button class="mc-btn" onclick="checkMC(this,'c')">c 's having</button></div></div>
+    <div class="mc-row">7. 'What ___ tonight?' 'I'm going out with friends.'
+      <div class="mc-group" id="ex3_7"><button class="mc-btn" onclick="checkMC(this,'a')">a are you doing</button><button class="mc-btn" onclick="checkMC(this,'a')">b you do</button><button class="mc-btn" onclick="checkMC(this,'a')">c do you do</button></div></div>
+    <div class="mc-row">8. I don't know this word. What ___?
+      <div class="mc-group" id="ex3_8"><button class="mc-btn" onclick="checkMC(this,'a')">a does it mean</button><button class="mc-btn" onclick="checkMC(this,'a')">b means it</button><button class="mc-btn" onclick="checkMC(this,'a')">c does mean</button></div></div>
+    <div class="mc-row">9. Next year I ___ study at university.
+      <div class="mc-group" id="ex3_9"><button class="mc-btn" onclick="checkMC(this,'b')">a go to</button><button class="mc-btn" onclick="checkMC(this,'b')">b 'm going to</button><button class="mc-btn" onclick="checkMC(this,'b')">c going to</button></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     QUESTIONS
+═══════════════════════════════════════════ -->
+<div id="questions" class="section">
+  <div class="section-title">Questions</div>
+  <div class="section-sub">Forming Questions</div>
+
+  <div class="ex-card" id="ex4">
+    <span class="ex-number">Exercise 4</span>
+    <p class="ex-instruction">Complete the questions.</p>
+    <div class="fill-line">1. 'What kind of cake <em>is</em> he <em>going to make</em>?' — 'He's going to make a chocolate cake.' ✓</div>
+    <div class="fill-line">2. 'What <span class="isel-wrap"><select class="isel" id="ex4_2a" data-ans="is" onchange="checkSelect(this)"><option value="">—</option><option>is</option><option>does</option><option>did</option></select></span> Zoe <span class="isel-wrap"><select class="isel" id="ex4_2b" data-ans="doing" onchange="checkSelect(this)"><option value="">—</option><option>doing</option><option>do</option><option>did</option></select></span>?' — 'She's playing on her iPad in her room.'</div>
+    <div class="fill-line">3. 'Where <span class="isel-wrap"><select class="isel" id="ex4_3a" data-ans="do" onchange="checkSelect(this)"><option value="">—</option><option>do</option><option>does</option><option>did</option></select></span> Jane and Peter <span class="isel-wrap"><select class="isel" id="ex4_3b" data-ans="live" onchange="checkSelect(this)"><option value="">—</option><option>live</option><option>living</option><option>lives</option></select></span>?' — 'They live in a flat, in north London.'</div>
+    <div class="fill-line">4. '<span class="isel-wrap"><select class="isel" id="ex4_4a" data-ans="Does" onchange="checkSelect(this)"><option value="">—</option><option>Does</option><option>Do</option><option>Did</option></select></span> Jane <span class="isel-wrap"><select class="isel" id="ex4_4b" data-ans="drive" onchange="checkSelect(this)"><option value="">—</option><option>drive</option><option>drives</option><option>driving</option></select></span> a car?' — 'No, she doesn't.'</div>
+    <div class="fill-line">5. 'Where <span class="isel-wrap"><select class="isel" id="ex4_5a" data-ans="are" onchange="checkSelect(this)"><option value="">—</option><option>are</option><option>do</option><option>were</option></select></span> you <span class="isel-wrap"><select class="isel" id="ex4_5b" data-ans="going" onchange="checkSelect(this)"><option value="">—</option><option>going</option><option>go</option><option>gone</option></select></span> on holiday?' — 'I'm going to Italy.'</div>
+    <div class="fill-line">6. 'What <span class="isel-wrap"><select class="isel" id="ex4_6a" data-ans="did" onchange="checkSelect(this)"><option value="">—</option><option>did</option><option>do</option><option>were</option></select></span> you <span class="isel-wrap"><select class="isel" id="ex4_6b" data-ans="do" onchange="checkSelect(this)"><option value="">—</option><option>do</option><option>doing</option><option>done</option></select></span> last night?' — 'I watched the football.'</div>
+    <div class="fill-line">7. 'Where <span class="isel-wrap"><select class="isel" id="ex4_7" data-ans="was" onchange="checkSelect(this)"><option value="">—</option><option>was</option><option>is</option><option>were</option></select></span> your grandmother born?' — 'She was born in Stockholm.'</div>
+    <div class="fill-line">8. 'When <span class="isel-wrap"><select class="isel" id="ex4_8a" data-ans="did" onchange="checkSelect(this)"><option value="">—</option><option>did</option><option>does</option><option>was</option></select></span> she get <span class="isel-wrap"><select class="isel" id="ex4_8b" data-ans="married" onchange="checkSelect(this)"><option value="">—</option><option>married</option><option>marry</option><option>marrying</option></select></span>?' — 'She got married in 1980.'</div>
+    <div class="ex-feedback" id="ex4-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex4')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex5">
+    <span class="ex-number">Exercise 5</span>
+    <p class="ex-instruction">Put the auxiliary verb in the correct place in the questions.</p>
+    <div class="fill-line">1. Where <em>does</em> Maria come from? ✓</div>
+    <div class="fill-line">2. What language <span class="isel-wrap"><select class="isel" id="ex5_2" data-ans="is" onchange="checkSelect(this)"><option value="">—</option><option>is</option><option>does</option><option>did</option></select></span> she speaking now?</div>
+    <div class="fill-line">3. What <span class="isel-wrap"><select class="isel" id="ex5_3" data-ans="are" onchange="checkSelect(this)"><option value="">—</option><option>are</option><option>do</option><option>did</option></select></span> you doing tonight?</div>
+    <div class="fill-line">4. Where <span class="isel-wrap"><select class="isel" id="ex5_4" data-ans="did" onchange="checkSelect(this)"><option value="">—</option><option>did</option><option>do</option><option>does</option></select></span> you buy your jeans?</div>
+    <div class="fill-line">5. What <span class="isel-wrap"><select class="isel" id="ex5_5" data-ans="are" onchange="checkSelect(this)"><option value="">—</option><option>are</option><option>do</option><option>did</option></select></span> you going to cook for dinner?</div>
+    <div class="fill-line">6. How much money <span class="isel-wrap"><select class="isel" id="ex5_6" data-ans="does" onchange="checkSelect(this)"><option value="">—</option><option>does</option><option>do</option><option>is</option></select></span> he have?</div>
+    <div class="fill-line">7. <span class="isel-wrap"><select class="isel" id="ex5_7" data-ans="Did" onchange="checkSelect(this)"><option value="">—</option><option>Did</option><option>Do</option><option>Does</option></select></span> you go to work yesterday?</div>
+    <div class="fill-line">8. What <span class="isel-wrap"><select class="isel" id="ex5_8" data-ans="does" onchange="checkSelect(this)"><option value="">—</option><option>does</option><option>do</option><option>is</option></select></span> your father do?</div>
+    <div class="ex-feedback" id="ex5-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex5')">↺ Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     QUESTION WORDS
+═══════════════════════════════════════════ -->
+<div id="qwords" class="section">
+  <div class="section-title">Question Words</div>
+  <div class="section-sub">Who / Whose / How / What / When / Where / Why / Which</div>
+
+  <div class="ex-card" id="ex6">
+    <span class="ex-number">Exercise 6</span>
+    <p class="ex-instruction">Complete the conversation with question words.</p>
+    <div class="fill-line"><strong>Mum:</strong> Morning, Tom. ¹ <em>How</em> are you this morning?</div>
+    <div class="fill-line"><strong>Tom:</strong> Morning, Mum. Fine, thanks. I'm just a bit tired.</div>
+    <div class="fill-line"><strong>Mum:</strong> I didn't hear you come home last night. ² <span class="isel-wrap"><select class="isel" id="ex6_2" data-ans="What" onchange="checkSelect(this)"><option value="">—</option><option>What</option><option>When</option><option>Where</option></select></span> time did you get in?</div>
+    <div class="fill-line"><strong>Tom:</strong> Not that late. About 11.00.</div>
+    <div class="fill-line"><strong>Mum:</strong> ³ <span class="isel-wrap"><select class="isel" id="ex6_3" data-ans="Where" onchange="checkSelect(this)"><option value="">—</option><option>Where</option><option>When</option><option>Why</option></select></span> did you go?</div>
+    <div class="fill-line"><strong>Tom:</strong> Just round to Alex's house. We played cards.</div>
+    <div class="fill-line"><strong>Mum:</strong> Sounds like fun. [beep] Tom, was that your phone? ⁴ <span class="isel-wrap"><select class="isel" id="ex6_4" data-ans="What" onchange="checkSelect(this)"><option value="">—</option><option>What</option><option>Who</option><option>Whose</option></select></span>'s the matter?</div>
+    <div class="fill-line"><strong>Tom:</strong> Nothing. It's a text from Lucia.</div>
+    <div class="fill-line"><strong>Mum:</strong> ⁵ <span class="isel-wrap"><select class="isel" id="ex6_5" data-ans="Who" onchange="checkSelect(this)"><option value="">—</option><option>Who</option><option>Whose</option><option>What</option></select></span>'s Lucia?</div>
+    <div class="fill-line"><strong>Tom:</strong> She's a girl I met on holiday in Spain.</div>
+    <div class="fill-line"><strong>Mum:</strong> Really? What does she want? She's coming to Oxford. ⁶ <span class="isel-wrap"><select class="isel" id="ex6_6" data-ans="When" onchange="checkSelect(this)"><option value="">—</option><option>When</option><option>Where</option><option>Why</option></select></span> is she coming?</div>
+    <div class="fill-line"><strong>Tom:</strong> Because she's going to learn English.</div>
+    <div class="fill-line"><strong>Mum:</strong> ⁷ <span class="isel-wrap"><select class="isel" id="ex6_7" data-ans="Which" onchange="checkSelect(this)"><option value="">—</option><option>Which</option><option>What</option><option>Where</option></select></span> school is she going to?</div>
+    <div class="fill-line"><strong>Tom:</strong> She doesn't know yet. She wants my advice.</div>
+    <div class="fill-line"><strong>Mum:</strong> There are lots of good schools in Oxford. ⁸ <span class="isel-wrap"><select class="isel" id="ex6_8" data-ans="When" onchange="checkSelect(this)"><option value="">—</option><option>When</option><option>Where</option><option>Why</option></select></span>'s she coming?</div>
+    <div class="fill-line"><strong>Tom:</strong> Next month.</div>
+    <div class="fill-line"><strong>Mum:</strong> Well, ⁹ <span class="isel-wrap"><select class="isel" id="ex6_9" data-ans="Why" onchange="checkSelect(this)"><option value="">—</option><option>Why</option><option>When</option><option>How</option></select></span> don't you invite her for dinner when she's here?</div>
+    <div class="fill-line"><strong>Tom:</strong> OK. I'll ask her. Thanks, Mum.</div>
+    <div class="ex-feedback" id="ex6-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex6')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex7">
+    <span class="ex-number">Exercise 7</span>
+    <p class="ex-instruction">Match a question in A with an answer in B.</p>
+    <div class="match-container">
+      <div class="match-col">
+        <div class="match-item-a"><span class="idx">1</span> What do you do?</div>
+        <div class="match-item-a"><span class="idx">2</span> Who did you go out with?</div>
+        <div class="match-item-a"><span class="idx">3</span> Where do you live?</div>
+        <div class="match-item-a"><span class="idx">4</span> When's your birthday?</div>
+        <div class="match-item-a"><span class="idx">5</span> Why are you wearing a suit?</div>
+        <div class="match-item-a"><span class="idx">6</span> How many bedrooms are there?</div>
+        <div class="match-item-a"><span class="idx">7</span> How much did you pay for it?</div>
+        <div class="match-item-a"><span class="idx">8</span> How are you?</div>
+        <div class="match-item-a"><span class="idx">9</span> Whose phone is this?</div>
+        <div class="match-item-a"><span class="idx">10</span> Which phone network do you use?</div>
+      </div>
+      <div class="match-col" id="ex7-selects"></div>
+    </div>
+    <button class="check-btn" onclick="checkMatch('ex7')">✓ Check</button>
+    <button class="reset-btn" onclick="resetMatch('ex7')">↺ Reset</button>
+    <div class="ex-feedback" id="ex7-fb"></div>
+  </div>
+
+  <div class="ex-card" id="ex8">
+    <span class="ex-number">Exercise 8</span>
+    <p class="ex-instruction">Complete the sentences with <em>who's</em> or <em>whose</em>.</p>
+    <div class="fill-line">1. '<span class="isel-wrap"><select class="isel" id="ex8_1" data-ans="Who's" onchange="checkSelect(this)"><option value="">—</option><option>Who's</option><option>Whose</option></select></span> going to the cinema on Saturday?' — 'Everyone except George.'</div>
+    <div class="fill-line">2. '<span class="isel-wrap"><select class="isel" id="ex8_2" data-ans="Whose" onchange="checkSelect(this)"><option value="">—</option><option>Whose</option><option>Who's</option></select></span> is that beautiful coat?' — 'It's Olivia's. It cost nearly £400!'</div>
+    <div class="fill-line">3. '<span class="isel-wrap"><select class="isel" id="ex8_3" data-ans="Whose" onchange="checkSelect(this)"><option value="">—</option><option>Whose</option><option>Who's</option></select></span> bag is this?' — 'It's mine.'</div>
+    <div class="fill-line">4. '<span class="isel-wrap"><select class="isel" id="ex8_4" data-ans="Who's" onchange="checkSelect(this)"><option value="">—</option><option>Who's</option><option>Whose</option></select></span> that ringing at the door?' — 'No idea, I'll go and see.'</div>
+    <div class="fill-line">5. '<span class="isel-wrap"><select class="isel" id="ex8_5" data-ans="Who's" onchange="checkSelect(this)"><option value="">—</option><option>Who's</option><option>Whose</option></select></span> that handsome boy with Sue?' — 'It's Jim. He's her younger brother.'</div>
+    <div class="fill-line">6. 'Do you know <span class="isel-wrap"><select class="isel" id="ex8_6" data-ans="whose" onchange="checkSelect(this)"><option value="">—</option><option>whose</option><option>who's</option></select></span> house that is?' — 'Yes, Mr Jones lives there.'</div>
+    <div class="ex-feedback" id="ex8-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex8')">↺ Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     READING
+═══════════════════════════════════════════ -->
+<div id="reading" class="section">
+  <div class="section-title">Reading</div>
+  <div class="section-sub">Menna and Jen – Paralympic Skiers</div>
+
+  <!-- FULL READING TEXT -->
+  <div class="reading-card">
+    <h2>Menna and Jen – <em>Paralympic skiers</em></h2>
+    <span class="subtitle">Best friends and brilliant athletes</span>
+    <div class="reading-intro">
+      Menna Fitzpatrick and Jennifer Kehoe are the most successful Paralympians ever, and they're best friends. They won four medals, including a gold, at the 2018 Paralympics in South Korea. What is the secret of their incredible success?
+    </div>
+
+    <div class="reading-section">
+      <h3>1 · Thanks to her parents</h3>
+      <p><strong>Menna</strong> was born with less than 5% vision, but her parents didn't want her to feel different to other children. She did the same sports as her older sisters and started skiing when she was only five years old. She followed her father down the slopes. Sometimes he forgot Menna was behind him and he took her down difficult slopes and even off-piste*! She was clearly a 'natural'. In 2010 a ski coach noticed her and she started training with the British Parasnowsport team.</p>
+    </div>
+
+    <div class="reading-section">
+      <h3>2 · Ears become eyes</h3>
+      <p>Skiing at 110 kph is not easy even when you can see clearly – but imagine skiing with less than 5% vision. Menna says that it's like skiing in thick fog. Your eyes can't see, so your ears are everything – you need to hear what your guide is saying. During competitions, the crowds can't make any noise – they stay completely silent.</p>
+    </div>
+
+    <div class="reading-section">
+      <h3>3 · A friend and guide</h3>
+      <p><strong>Jen</strong> is an Army Officer in the Royal Engineers. She loved skiing and raced with the Army Ski Team. In 2013, a coach asked her to become a guide for the British Parasnowsport team. She agreed and two years later she was paired with Menna. The two girls immediately became best friends. It was not just the beginning of a friendship, but also a great sporting partnership. They say that they are like sisters who don't fight.</p>
+    </div>
+
+    <div class="reading-section">
+      <h3>4 · It came good in the end</h3>
+      <p>In March 2018, at the Winter Paralympic Games in South Korea, the girls crashed out in their opening race. But they didn't give up. They continued to fight and went on to win a bronze and two silver medals. That was good, but then on the final day Menna and Jen won a gold medal – the UK's only gold of the Games! Jen proudly said, 'we fought right to the very end.'</p>
+    </div>
+
+    <div class="reading-section">
+      <h3>5 · Friends forever</h3>
+      <p>Menna and Jen are going to continue skiing together in the future and hope for more success. However, when their skiing partnership does finally end, the girls know that they are going to be friends forever.</p>
+    </div>
+
+    <div class="glossary"><strong>off-piste</strong> – away from the ski tracks</div>
+  </div>
+
+  <!-- Exercises -->
+  <div class="ex-card" id="ex9">
+    <span class="ex-number">Exercise 9</span>
+    <p class="ex-instruction">Read the text above. Write the headings in the correct place (1–5).</p>
+    <div class="word-box"><strong>Ears become eyes · A friend and guide · It came good in the end · Friends forever · Thanks to her parents</strong></div>
+    <div class="fill-line">Paragraph 1: <span class="isel-wrap"><select class="isel" id="ex9_1" data-ans="Thanks to her parents" onchange="checkSelect(this)" style="min-width:200px"><option value="">—</option><option>Thanks to her parents</option><option>Ears become eyes</option><option>A friend and guide</option><option>It came good in the end</option><option>Friends forever</option></select></span></div>
+    <div class="fill-line">Paragraph 2: <span class="isel-wrap"><select class="isel" id="ex9_2" data-ans="Ears become eyes" onchange="checkSelect(this)" style="min-width:200px"><option value="">—</option><option>Thanks to her parents</option><option>Ears become eyes</option><option>A friend and guide</option><option>It came good in the end</option><option>Friends forever</option></select></span></div>
+    <div class="fill-line">Paragraph 3: <span class="isel-wrap"><select class="isel" id="ex9_3" data-ans="A friend and guide" onchange="checkSelect(this)" style="min-width:200px"><option value="">—</option><option>Thanks to her parents</option><option>Ears become eyes</option><option>A friend and guide</option><option>It came good in the end</option><option>Friends forever</option></select></span></div>
+    <div class="fill-line">Paragraph 4: <span class="isel-wrap"><select class="isel" id="ex9_4" data-ans="It came good in the end" onchange="checkSelect(this)" style="min-width:200px"><option value="">—</option><option>Thanks to her parents</option><option>Ears become eyes</option><option>A friend and guide</option><option>It came good in the end</option><option>Friends forever</option></select></span></div>
+    <div class="fill-line">Paragraph 5: <span class="isel-wrap"><select class="isel" id="ex9_5" data-ans="Friends forever" onchange="checkSelect(this)" style="min-width:200px"><option value="">—</option><option>Thanks to her parents</option><option>Ears become eyes</option><option>A friend and guide</option><option>It came good in the end</option><option>Friends forever</option></select></span></div>
+    <div class="ex-feedback" id="ex9-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex9')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex10">
+    <span class="ex-number">Exercise 10</span>
+    <p class="ex-instruction">Complete the questions about Menna and Jen.</p>
+    <div class="fill-line">1. 'How many medals <em>did</em> they <em>win</em>?' — 'Four.' ✓</div>
+    <div class="fill-line">2. 'When <span class="isel-wrap"><select class="isel" id="ex10_2a" data-ans="did" onchange="checkSelect(this)"><option value="">—</option><option>did</option><option>does</option><option>was</option></select></span> Menna <span class="isel-wrap"><select class="isel" id="ex10_2b" data-ans="start" onchange="checkSelect(this)"><option value="">—</option><option>start</option><option>started</option><option>starting</option></select></span> skiing?' — 'When she was five.'</div>
+    <div class="fill-line">3. 'Why <span class="isel-wrap"><select class="isel" id="ex10_3a" data-ans="are" onchange="checkSelect(this)"><option value="">—</option><option>are</option><option>do</option><option>did</option></select></span> the crowds <span class="isel-wrap"><select class="isel" id="ex10_3b" data-ans="silent" onchange="checkSelect(this)"><option value="">—</option><option>silent</option><option>noisy</option><option>quiet</option></select></span> at competitions?' — 'So that the skier can hear instructions.'</div>
+    <div class="fill-line">4. 'What <span class="isel-wrap"><select class="isel" id="ex10_4a" data-ans="does" onchange="checkSelect(this)"><option value="">—</option><option>does</option><option>did</option><option>is</option></select></span> Jen <span class="isel-wrap"><select class="isel" id="ex10_4b" data-ans="do" onchange="checkSelect(this)"><option value="">—</option><option>do</option><option>doing</option><option>done</option></select></span>?' — 'She's an army officer.'</div>
+    <div class="fill-line">5. '<span class="isel-wrap"><select class="isel" id="ex10_5a" data-ans="Did" onchange="checkSelect(this)"><option value="">—</option><option>Did</option><option>Do</option><option>Were</option></select></span> Menna and Jen <span class="isel-wrap"><select class="isel" id="ex10_5b" data-ans="become" onchange="checkSelect(this)"><option value="">—</option><option>become</option><option>became</option><option>becoming</option></select></span> best friends immediately?' — 'Yes, they did.'</div>
+    <div class="fill-line">6. '<span class="isel-wrap"><select class="isel" id="ex10_6a" data-ans="Did" onchange="checkSelect(this)"><option value="">—</option><option>Did</option><option>Do</option><option>Have</option></select></span> the girls <span class="isel-wrap"><select class="isel" id="ex10_6b" data-ans="win" onchange="checkSelect(this)"><option value="">—</option><option>win</option><option>won</option><option>winning</option></select></span> their first race at the Games?' — 'No, they didn't. They crashed out.'</div>
+    <div class="fill-line">7. 'Why <span class="isel-wrap"><select class="isel" id="ex10_7" data-ans="is" onchange="checkSelect(this)"><option value="">—</option><option>is</option><option>was</option><option>does</option></select></span> Jen proud?' — 'Because they won gold.'</div>
+    <div class="fill-line">8. '<span class="isel-wrap"><select class="isel" id="ex10_8a" data-ans="Are" onchange="checkSelect(this)"><option value="">—</option><option>Are</option><option>Do</option><option>Did</option></select></span> they <span class="isel-wrap"><select class="isel" id="ex10_8b" data-ans="going to" onchange="checkSelect(this)"><option value="">—</option><option>going to</option><option>going</option><option>go to</option></select></span> continue to ski together?' — 'Yes, they are. And they're hoping for more success.'</div>
+    <div class="ex-feedback" id="ex10-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex10')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="ex11">
+    <span class="ex-number">Exercise 11</span>
+    <p class="ex-instruction">Complete the sentences with one word each time.</p>
+    <div class="fill-line">1. Menna's parents <span class="isel-wrap"><select class="isel" id="ex11_1" data-ans="wanted" onchange="checkSelect(this)"><option value="">—</option><option>wanted</option><option>helped</option><option>told</option></select></span> her to feel the same as her sisters.</div>
+    <div class="fill-line">2. Menna <span class="isel-wrap"><select class="isel" id="ex11_2a" data-ans="isn't" onchange="checkSelect(this)"><option value="">—</option><option>isn't</option><option>is</option><option>wasn't</option></select></span> an only child; she <span class="isel-wrap"><select class="isel" id="ex11_2b" data-ans="has" onchange="checkSelect(this)"><option value="">—</option><option>has</option><option>had</option><option>have</option></select></span> two older sisters.</div>
+    <div class="fill-line">3. Her father sometimes <span class="isel-wrap"><select class="isel" id="ex11_3" data-ans="forgot" onchange="checkSelect(this)"><option value="">—</option><option>forgot</option><option>remembered</option><option>noticed</option></select></span> that she was behind him.</div>
+    <div class="fill-line">4. Menna <span class="isel-wrap"><select class="isel" id="ex11_4" data-ans="listens" onchange="checkSelect(this)"><option value="">—</option><option>listens</option><option>looks</option><option>watches</option></select></span> to her guide carefully when she's skiing.</div>
+    <div class="fill-line">5. Jen <span class="isel-wrap"><select class="isel" id="ex11_5" data-ans="became" onchange="checkSelect(this)"><option value="">—</option><option>became</option><option>was</option><option>found</option></select></span> Menna's guide in 2015.</div>
+    <div class="fill-line">6. The UK <span class="isel-wrap"><select class="isel" id="ex11_6" data-ans="won" onchange="checkSelect(this)"><option value="">—</option><option>won</option><option>lost</option><option>had</option></select></span> just one gold medal in South Korea.</div>
+    <div class="fill-line">7. The girls are <span class="isel-wrap"><select class="isel" id="ex11_7" data-ans="going" onchange="checkSelect(this)"><option value="">—</option><option>going</option><option>hoping</option><option>wanting</option></select></span> to be friends forever.</div>
+    <div class="ex-feedback" id="ex11-fb"></div>
+    <button class="reset-btn" onclick="resetCard('ex11')">↺ Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     VOCABULARY
+═══════════════════════════════════════════ -->
+<div id="vocab" class="section">
+  <div class="section-title">Vocabulary</div>
+  <div class="section-sub">Right Word, Wrong Word</div>
+
+  <div class="ex-card" id="exv1">
+    <span class="ex-number">Exercise V1</span>
+    <p class="ex-instruction">Choose the correct verb for each pair.</p>
+
+    <div class="vocab-label">play / go</div>
+    <div class="fill-line">1. Do you want to <em>play</em> tennis? &nbsp; I <em>go</em> ice-skating once a week. ✓</div>
+
+    <div class="vocab-label">do / make</div>
+    <div class="fill-line">2. Good luck in the exam! <span class="isel-wrap"><select class="isel" id="exv1_2a" data-ans="Do" onchange="checkSelect(this)"><option value="">—</option><option>Do</option><option>Make</option></select></span> your best! &nbsp; I <span class="isel-wrap"><select class="isel" id="exv1_2b" data-ans="make" onchange="checkSelect(this)"><option value="">—</option><option>make</option><option>do</option></select></span> my own bread every morning.</div>
+
+    <div class="vocab-label">say / speak</div>
+    <div class="fill-line">3. Eduard doesn't <span class="isel-wrap"><select class="isel" id="exv1_3a" data-ans="speak" onchange="checkSelect(this)"><option value="">—</option><option>speak</option><option>say</option></select></span> English very well. &nbsp; I always <span class="isel-wrap"><select class="isel" id="exv1_3b" data-ans="say" onchange="checkSelect(this)"><option value="">—</option><option>say</option><option>speak</option></select></span> hello when I see her.</div>
+
+    <div class="vocab-label">watch / look</div>
+    <div class="fill-line">4. Can I <span class="isel-wrap"><select class="isel" id="exv1_4a" data-ans="look" onchange="checkSelect(this)"><option value="">—</option><option>look</option><option>watch</option></select></span> at your wedding photos? &nbsp; Did you <span class="isel-wrap"><select class="isel" id="exv1_4b" data-ans="watch" onchange="checkSelect(this)"><option value="">—</option><option>watch</option><option>look</option></select></span> the match last night on TV?</div>
+
+    <div class="vocab-label">lend / borrow</div>
+    <div class="fill-line">5. Can I <span class="isel-wrap"><select class="isel" id="exv1_5a" data-ans="borrow" onchange="checkSelect(this)"><option value="">—</option><option>borrow</option><option>lend</option></select></span> some money? I'll give it back tomorrow. &nbsp; Jack is going to <span class="isel-wrap"><select class="isel" id="exv1_5b" data-ans="lend" onchange="checkSelect(this)"><option value="">—</option><option>lend</option><option>borrow</option></select></span> us his car for the weekend.</div>
+
+    <div class="vocab-label">teach / learn</div>
+    <div class="fill-line">6. Can you <span class="isel-wrap"><select class="isel" id="exv1_6a" data-ans="teach" onchange="checkSelect(this)"><option value="">—</option><option>teach</option><option>learn</option></select></span> me how to cook? I'm rubbish! &nbsp; Do you want to <span class="isel-wrap"><select class="isel" id="exv1_6b" data-ans="learn" onchange="checkSelect(this)"><option value="">—</option><option>learn</option><option>teach</option></select></span> French with me? I'm starting a beginners class next week.</div>
+
+    <div class="ex-feedback" id="exv1-fb"></div>
+    <button class="reset-btn" onclick="resetCard('exv1')">↺ Reset</button>
+  </div>
+
+  <div class="ex-card" id="exv3">
+    <span class="ex-number">Exercise V3</span>
+    <p class="ex-instruction">Complete the sentences with the correct preposition.</p>
+    <div class="word-box"><strong>in · about · for · at (×2) · to · with · of (×2) · from</strong></div>
+    <div class="fill-line">1. Look <em>at</em> that picture! Isn't it beautiful! ✓</div>
+    <div class="fill-line">2. I'm waiting <span class="isel-wrap"><select class="isel" id="exv3_2" data-ans="for" onchange="checkSelect(this)"><option value="">—</option><option>for</option><option>to</option><option>at</option></select></span> the postman to arrive.</div>
+    <div class="fill-line">3. I'm excited <span class="isel-wrap"><select class="isel" id="exv3_3" data-ans="about" onchange="checkSelect(this)"><option value="">—</option><option>about</option><option>for</option><option>of</option></select></span> my holiday.</div>
+    <div class="fill-line">4. Are you good <span class="isel-wrap"><select class="isel" id="exv3_4" data-ans="at" onchange="checkSelect(this)"><option value="">—</option><option>at</option><option>in</option><option>with</option></select></span> maths?</div>
+    <div class="fill-line">5. Wikipedia is full <span class="isel-wrap"><select class="isel" id="exv3_5" data-ans="of" onchange="checkSelect(this)"><option value="">—</option><option>of</option><option>with</option><option>in</option></select></span> useful information.</div>
+    <div class="fill-line">6. Are you interested <span class="isel-wrap"><select class="isel" id="exv3_6" data-ans="in" onchange="checkSelect(this)"><option value="">—</option><option>in</option><option>about</option><option>of</option></select></span> politics?</div>
+    <div class="fill-line">7. You're so right. I totally agree <span class="isel-wrap"><select class="isel" id="exv3_7" data-ans="with" onchange="checkSelect(this)"><option value="">—</option><option>with</option><option>to</option><option>about</option></select></span> you.</div>
+    <div class="fill-line">8. The station isn't far <span class="isel-wrap"><select class="isel" id="exv3_8" data-ans="from" onchange="checkSelect(this)"><option value="">—</option><option>from</option><option>of</option><option>to</option></select></span> here.</div>
+    <div class="fill-line">9. Can I speak <span class="isel-wrap"><select class="isel" id="exv3_9" data-ans="to" onchange="checkSelect(this)"><option value="">—</option><option>to</option><option>with</option><option>at</option></select></span> you for a minute?</div>
+    <div class="fill-line">10. I'm afraid <span class="isel-wrap"><select class="isel" id="exv3_10" data-ans="of" onchange="checkSelect(this)"><option value="">—</option><option>of</option><option>about</option><option>from</option></select></span> dogs.</div>
+    <div class="ex-feedback" id="exv3-fb"></div>
+    <button class="reset-btn" onclick="resetCard('exv3')">↺ Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     EVERYDAY ENGLISH
+═══════════════════════════════════════════ -->
+<div id="everyday" class="section">
+  <div class="section-title">Everyday English</div>
+  <div class="section-sub">Social Expressions</div>
+
+  <div class="ex-card" id="exee1">
+    <span class="ex-number">Social Expressions</span>
+    <p class="ex-instruction">Complete the conversations using one word each time.</p>
+
+    <div style="background:#f5f0e8;border-radius:10px;padding:13px;margin-bottom:11px">
+      <div class="fill-line"><strong>A:</strong> Thank you so much for your help.</div>
+      <div class="fill-line"><strong>B:</strong> You're <em>welcome</em>. It was no <span class="isel-wrap"><select class="isel" id="ee_1" data-ans="trouble" onchange="checkSelect(this)"><option value="">—</option><option>trouble</option><option>problem</option><option>thing</option></select></span> at all.</div>
+    </div>
+    <div style="background:#f5f0e8;border-radius:10px;padding:13px;margin-bottom:11px">
+      <div class="fill-line"><strong>A:</strong> Hi, Laura. Sorry I'm <span class="isel-wrap"><select class="isel" id="ee_2a" data-ans="late" onchange="checkSelect(this)"><option value="">—</option><option>late</option><option>busy</option><option>tired</option></select></span>. Bad traffic!</div>
+      <div class="fill-line"><strong>B:</strong> That's OK. It doesn't <span class="isel-wrap"><select class="isel" id="ee_2b" data-ans="matter" onchange="checkSelect(this)"><option value="">—</option><option>matter</option><option>mind</option><option>worry</option></select></span>. The film doesn't start for another 15 minutes.</div>
+    </div>
+    <div style="background:#f5f0e8;border-radius:10px;padding:13px;margin-bottom:11px">
+      <div class="fill-line"><strong>A:</strong> Can you come to dinner on Saturday?</div>
+      <div class="fill-line"><strong>B:</strong> I'm <span class="isel-wrap"><select class="isel" id="ee_3a" data-ans="afraid" onchange="checkSelect(this)"><option value="">—</option><option>afraid</option><option>sorry</option><option>worried</option></select></span>, I can't. I'm busy.</div>
+      <div class="fill-line"><strong>A:</strong> <span class="isel-wrap"><select class="isel" id="ee_3b" data-ans="Never" onchange="checkSelect(this)"><option value="">—</option><option>Never</option><option>No</option><option>Don't</option></select></span> mind. Perhaps <span class="isel-wrap"><select class="isel" id="ee_3c" data-ans="another" onchange="checkSelect(this)"><option value="">—</option><option>another</option><option>other</option><option>next</option></select></span> time.</div>
+    </div>
+    <div style="background:#f5f0e8;border-radius:10px;padding:13px;margin-bottom:11px">
+      <div class="fill-line"><strong>A:</strong> Excuse me. <span class="isel-wrap"><select class="isel" id="ee_4a" data-ans="Can" onchange="checkSelect(this)"><option value="">—</option><option>Can</option><option>Could</option><option>Are</option></select></span> you <span class="isel-wrap"><select class="isel" id="ee_4b" data-ans="help" onchange="checkSelect(this)"><option value="">—</option><option>help</option><option>assist</option><option>give</option></select></span> me with this exercise? It's really difficult.</div>
+      <div class="fill-line"><strong>B:</strong> <span class="isel-wrap"><select class="isel" id="ee_4c" data-ans="Of" onchange="checkSelect(this)"><option value="">—</option><option>Of</option><option>Yes</option><option>Sure</option></select></span> course. What don't you understand?</div>
+      <div class="fill-line"><strong>A:</strong> All of it!</div>
+    </div>
+    <div style="background:#f5f0e8;border-radius:10px;padding:13px">
+      <div class="fill-line"><strong>A:</strong> Bye, Stella. <span class="isel-wrap"><select class="isel" id="ee_5a" data-ans="Have" onchange="checkSelect(this)"><option value="">—</option><option>Have</option><option>Enjoy</option><option>Get</option></select></span> a good weekend.</div>
+      <div class="fill-line"><strong>B:</strong> Thanks! <span class="isel-wrap"><select class="isel" id="ee_5b" data-ans="Same" onchange="checkSelect(this)"><option value="">—</option><option>Same</option><option>Back</option><option>You</option></select></span> to you, Ashley. Are you <span class="isel-wrap"><select class="isel" id="ee_5c" data-ans="doing" onchange="checkSelect(this)"><option value="">—</option><option>doing</option><option>going</option><option>making</option></select></span> anything nice?</div>
+      <div class="fill-line"><strong>A:</strong> Yes. I'm meeting an old school friend <span class="isel-wrap"><select class="isel" id="ee_5d" data-ans="for" onchange="checkSelect(this)"><option value="">—</option><option>for</option><option>at</option><option>to</option></select></span> dinner on Saturday.</div>
+      <div class="fill-line"><strong>B:</strong> Lovely! Have <span class="isel-wrap"><select class="isel" id="ee_5e" data-ans="fun" onchange="checkSelect(this)"><option value="">—</option><option>fun</option><option>good</option><option>great</option></select></span>!</div>
+    </div>
+    <div class="ex-feedback" id="exee1-fb"></div>
+    <button class="reset-btn" onclick="resetCard('exee1')">↺ Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     REVIEW
+═══════════════════════════════════════════ -->
+<div id="review" class="section">
+  <div class="section-title">Review</div>
+  <div class="section-sub">Grammar & Vocabulary</div>
+
+  <div class="ex-card" id="exr1">
+    <span class="ex-number">Review – Grammar</span>
+    <p class="ex-instruction">Put the words in the correct order.</p>
+    <div class="mc-row">1. [that / bag / is / Whose / green / ?]
+      <div class="mc-group" id="exr1_1"><button class="mc-btn" onclick="checkMC(this,'a')">a Whose green bag is that?</button><button class="mc-btn" onclick="checkMC(this,'a')">b Is that whose bag green?</button><button class="mc-btn" onclick="checkMC(this,'a')">c That bag is whose green?</button></div></div>
+    <div class="mc-row">2. [I / well / exams / didn't / my / do / in]
+      <div class="mc-group" id="exr1_2"><button class="mc-btn" onclick="checkMC(this,'a')">a I didn't do well in my exams.</button><button class="mc-btn" onclick="checkMC(this,'a')">b I in my exams didn't well do.</button></div></div>
+    <div class="mc-row">3. [studying / Why / you / English / are / ?]
+      <div class="mc-group" id="exr1_3"><button class="mc-btn" onclick="checkMC(this,'a')">a Why are you studying English?</button><button class="mc-btn" onclick="checkMC(this,'a')">b Why you are studying English?</button></div></div>
+    <div class="mc-row">4. [many / How / do / have / children / they / ?]
+      <div class="mc-group" id="exr1_4"><button class="mc-btn" onclick="checkMC(this,'a')">a How many children do they have?</button><button class="mc-btn" onclick="checkMC(this,'a')">b How children many do they have?</button></div></div>
+    <div class="mc-row">5. [going / visit / Glasgow / friends / We're / weekend / at / to]
+      <div class="mc-group" id="exr1_5"><button class="mc-btn" onclick="checkMC(this,'a')">a We're going to visit friends in Glasgow at the weekend.</button><button class="mc-btn" onclick="checkMC(this,'a')">b We're at the weekend visit friends Glasgow going.</button></div></div>
+    <div class="mc-row">6. [Lara / Scotland / comes / working / moment / she's / at / London / the]
+      <div class="mc-group" id="exr1_6"><button class="mc-btn" onclick="checkMC(this,'a')">a Lara comes from Scotland but she's working in London at the moment.</button><button class="mc-btn" onclick="checkMC(this,'a')">b Lara from Scotland comes but at the moment she's London working.</button></div></div>
+    <div class="mc-row">7. [you / last / get / for / What / birthday / did / your / ?]
+      <div class="mc-group" id="exr1_7"><button class="mc-btn" onclick="checkMC(this,'a')">a What did you get for your last birthday?</button><button class="mc-btn" onclick="checkMC(this,'a')">b What you did get your last birthday for?</button></div></div>
+    <div class="mc-row">8. [like / dogs / Martha / doesn't / she's / because / of / scared / them]
+      <div class="mc-group" id="exr1_8"><button class="mc-btn" onclick="checkMC(this,'a')">a Martha doesn't like dogs because she's scared of them.</button><button class="mc-btn" onclick="checkMC(this,'a')">b Martha scared of dogs doesn't like because them.</button></div></div>
+  </div>
+
+  <div class="ex-card" id="exr2">
+    <span class="ex-number">Review – Vocabulary</span>
+    <p class="ex-instruction">Underline the correct word.</p>
+    <div class="mc-row">1. I want to ___ dancing tonight.
+      <div class="mc-group" id="exr2_1"><button class="mc-btn" onclick="checkMC(this,'a')">a go</button><button class="mc-btn" onclick="checkMC(this,'a')">b play</button></div></div>
+    <div class="mc-row">2. Marco is mad ___ tennis. He plays every week.
+      <div class="mc-group" id="exr2_2"><button class="mc-btn" onclick="checkMC(this,'b')">a of</button><button class="mc-btn" onclick="checkMC(this,'b')">b about</button></div></div>
+    <div class="mc-row">3. This is a photo ___ my dad when he was young.
+      <div class="mc-group" id="exr2_3"><button class="mc-btn" onclick="checkMC(this,'b')">a about</button><button class="mc-btn" onclick="checkMC(this,'b')">b of</button></div></div>
+    <div class="mc-row">4. My journey to work was so ___ this morning. It took two hours!
+      <div class="mc-group" id="exr2_4"><button class="mc-btn" onclick="checkMC(this,'b')">a busy</button><button class="mc-btn" onclick="checkMC(this,'b')">b long</button></div></div>
+    <div class="mc-row">5. Henry is very clever. He can ___ English, Spanish and Italian.
+      <div class="mc-group" id="exr2_5"><button class="mc-btn" onclick="checkMC(this,'b')">a say</button><button class="mc-btn" onclick="checkMC(this,'b')">b speak</button></div></div>
+    <div class="mc-row">6. My husband never ___ the housework.
+      <div class="mc-group" id="exr2_6"><button class="mc-btn" onclick="checkMC(this,'b')">a makes</button><button class="mc-btn" onclick="checkMC(this,'b')">b does</button></div></div>
+    <div class="mc-row">7. I live ___ a small two bedroom apartment ___ my sister.
+      <div class="mc-group" id="exr2_7"><button class="mc-btn" onclick="checkMC(this,'a')">a in / with</button><button class="mc-btn" onclick="checkMC(this,'a')">b on / about</button></div></div>
+    <div class="mc-row">8. Nick is very ___. He studies all day and then works at a restaurant at night.
+      <div class="mc-group" id="exr2_8"><button class="mc-btn" onclick="checkMC(this,'a')">a busy</button><button class="mc-btn" onclick="checkMC(this,'a')">b important</button></div></div>
+    <div class="mc-row">9. I like Helena's new boyfriend – he's very ___.
+      <div class="mc-group" id="exr2_9"><button class="mc-btn" onclick="checkMC(this,'a')">a interesting</button><button class="mc-btn" onclick="checkMC(this,'a')">b interested</button></div></div>
+    <div class="mc-row">10. Can you ___ me how to ride a bike?
+      <div class="mc-group" id="exr2_10"><button class="mc-btn" onclick="checkMC(this,'b')">a learn</button><button class="mc-btn" onclick="checkMC(this,'b')">b teach</button></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+const LS_KEY = 'headway_unit1';
+
+// ── SCORE STATE ────────────────────────────
+let totalRight = 0, totalDone = 0;
+
+function updateHeader() {
+  document.getElementById('scoreDisplay').textContent = totalRight;
+  document.getElementById('totalDisplay').textContent = totalDone;
+  const pct = totalDone ? Math.round(totalRight / totalDone * 100) : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+// ── TABS ────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  buildMatch('ex7');
+}
+
+// ── INLINE SELECT ───────────────────────────
+function checkSelect(sel) {
+  const ans = sel.dataset.ans;
+  const chosen = sel.value;
+  if (!chosen) return;
+
+  sel.classList.remove('correct', 'wrong');
+
+  if (chosen === ans) {
+    sel.classList.add('correct');
+    sel.style.pointerEvents = 'none';
+    if (!sel.dataset.scored) {
+      sel.dataset.scored = '1';
+      totalRight++;
+      totalDone++;
+      updateHeader();
+    }
+  } else {
+    sel.classList.add('wrong');
+    if (!sel.dataset.scored) {
+      sel.dataset.scored = '1';
+      totalDone++;
+      updateHeader();
+    }
+  }
+
+  saveState();
+  updateCardFeedback(sel.closest('.ex-card'));
+}
+
+function updateCardFeedback(card) {
+  if (!card) return;
+  const sels = card.querySelectorAll('.isel');
+  if (sels.length === 0) return;
+  const allCorrect = [...sels].every(s => s.classList.contains('correct'));
+  if (!allCorrect) return;
+  const fb = document.getElementById(card.id + '-fb');
+  if (fb) { fb.className = 'ex-feedback show good'; fb.textContent = '🎉 Mükemmel! Tüm cevaplar doğru!'; }
+}
+
+function resetCard(exId) {
+  const card = document.getElementById(exId);
+  card.querySelectorAll('.isel').forEach(sel => {
+    sel.value = '';
+    sel.className = 'isel';
+    sel.style.pointerEvents = '';
+    delete sel.dataset.scored;
+  });
+  const fb = document.getElementById(exId + '-fb');
+  if (fb) { fb.className = 'ex-feedback'; fb.textContent = ''; }
+  recalcScore();
+  saveState();
+}
+
+// ── STANDALONE MC ───────────────────────────
+function checkMC(btn, correctLetter) {
+  const group = btn.parentElement;
+  if (group.dataset.done) return;
+  group.dataset.done = '1';
+  const letters = ['a', 'b', 'c', 'd', 'e'];
+  const all = group.querySelectorAll('.mc-btn');
+  const idx = Array.from(all).indexOf(btn);
+  const clicked = letters[idx];
+  all.forEach((b, i) => {
+    b.style.pointerEvents = 'none';
+    if (letters[i] === correctLetter) b.classList.add('correct');
+    else if (b === btn) b.classList.add('wrong');
+  });
+  if (clicked === correctLetter) totalRight++;
+  totalDone++;
+  updateHeader();
+  saveState();
+}
+
+// ── MATCH ───────────────────────────────────
+const matchAnswers = { ex7: ['e', 'd', 'i', 'g', 'j', 'b', 'a', 'c', 'h', 'f'] };
+const matchOptions = { ex7: [
+  { val: 'a', label: 'a – £45' }, { val: 'b', label: 'b – Three' },
+  { val: 'c', label: 'c – Fine, thanks. And you?' }, { val: 'd', label: 'd – My friend Alex' },
+  { val: 'e', label: "e – I'm a teacher" }, { val: 'f', label: 'f – Vodafone' },
+  { val: 'g', label: 'g – April 22nd' }, { val: 'h', label: "h – It's mine. Thanks" },
+  { val: 'i', label: 'i – In a flat in the centre of town' },
+  { val: 'j', label: "j – I'm going to a friend's wedding" },
+]};
+
+function buildMatch(exId) {
+  const cont = document.getElementById(exId + '-selects');
+  if (!cont || cont.children.length > 0) return;
+  matchAnswers[exId].forEach((_, i) => {
+    const sel = document.createElement('select');
+    sel.className = 'match-select';
+    sel.id = exId + '_match_' + i;
+    sel.innerHTML = '<option value="">— choose —</option>';
+    matchOptions[exId].forEach(o => sel.innerHTML += `<option value="${o.val}">${o.label}</option>`);
+    cont.appendChild(sel);
+  });
+  // restore saved match
+  const saved = loadRaw();
+  if (saved.match && saved.match[exId]) {
+    const vals = saved.match[exId];
+    cont.querySelectorAll('.match-select').forEach((sel, i) => { sel.value = vals[i] || ''; });
+    if (saved.matchChecked && saved.matchChecked[exId]) applyMatchColors(exId);
+  }
+}
+
+function checkMatch(exId) {
+  const sels = document.querySelectorAll(`#${exId}-selects .match-select`);
+  const ans = matchAnswers[exId];
+  let ok = 0;
+  sels.forEach((s, i) => {
+    s.classList.remove('correct', 'wrong');
+    if (s.value === ans[i]) { s.classList.add('correct'); ok++; }
+    else s.classList.add('wrong');
+  });
+  const fb = document.getElementById(exId + '-fb');
+  if (fb) {
+    fb.classList.add('show');
+    if (ok === ans.length) { fb.className = 'ex-feedback show good'; fb.textContent = '🎉 Mükemmel! Tüm eşleştirmeler doğru!'; }
+    else { fb.className = 'ex-feedback show bad'; fb.textContent = `${ok}/${ans.length} doğru. Kırmızıları tekrar dene.`; }
+  }
+  saveState();
+}
+
+function applyMatchColors(exId) {
+  const sels = document.querySelectorAll(`#${exId}-selects .match-select`);
+  const ans = matchAnswers[exId];
+  sels.forEach((s, i) => {
+    s.classList.remove('correct', 'wrong');
+    if (s.value && s.value === ans[i]) s.classList.add('correct');
+    else if (s.value) s.classList.add('wrong');
+  });
+}
+
+function resetMatch(exId) {
+  const cont = document.getElementById(exId + '-selects');
+  if (cont) cont.querySelectorAll('.match-select').forEach(s => { s.value = ''; s.classList.remove('correct', 'wrong'); });
+  const fb = document.getElementById(exId + '-fb');
+  if (fb) { fb.className = 'ex-feedback'; fb.textContent = ''; }
+  saveState();
+}
+
+// ── LOCAL STORAGE ───────────────────────────
+function saveState() {
+  const state = { selects: {}, mc: {}, match: {}, matchChecked: {} };
+
+  // isel dropdowns
+  document.querySelectorAll('.isel').forEach(sel => {
+    if (sel.id) state.selects[sel.id] = {
+      value: sel.value,
+      scored: sel.dataset.scored || '',
+      correct: sel.classList.contains('correct'),
+      wrong: sel.classList.contains('wrong'),
+      locked: sel.style.pointerEvents === 'none'
+    };
+  });
+
+  // mc buttons
+  document.querySelectorAll('.mc-group').forEach(group => {
+    if (group.id && group.dataset.done) {
+      const btns = [...group.querySelectorAll('.mc-btn')];
+      state.mc[group.id] = {
+        done: group.dataset.done,
+        correct: btns.map(b => b.classList.contains('correct')),
+        wrong: btns.map(b => b.classList.contains('wrong'))
+      };
+    }
+  });
+
+  // match
+  ['ex7'].forEach(exId => {
+    const sels = document.querySelectorAll(`#${exId}-selects .match-select`);
+    if (sels.length) {
+      state.match[exId] = [...sels].map(s => s.value);
+      state.matchChecked[exId] = [...sels].some(s => s.classList.contains('correct') || s.classList.contains('wrong'));
+    }
+  });
+
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+}
+
+function loadRaw() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { return {}; }
+}
+
+function loadState() {
+  const state = loadRaw();
+  totalRight = 0; totalDone = 0;
+
+  // restore selects
+  if (state.selects) {
+    Object.entries(state.selects).forEach(([id, data]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+      sel.value = data.value || '';
+      sel.dataset.scored = data.scored || '';
+      if (data.correct) { sel.classList.add('correct'); sel.style.pointerEvents = 'none'; }
+      else if (data.wrong) { sel.classList.add('wrong'); }
+      if (data.scored) {
+        totalDone++;
+        if (data.correct) totalRight++;
+      }
+    });
+  }
+
+  // restore mc
+  if (state.mc) {
+    Object.entries(state.mc).forEach(([id, data]) => {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.dataset.done = data.done;
+      const btns = group.querySelectorAll('.mc-btn');
+      btns.forEach((b, i) => {
+        b.style.pointerEvents = 'none';
+        if (data.correct[i]) b.classList.add('correct');
+        if (data.wrong[i]) b.classList.add('wrong');
+      });
+      totalDone++;
+      if (data.correct.some(v => v)) totalRight++;
+    });
+  }
+
+  // check card feedbacks
+  document.querySelectorAll('.ex-card').forEach(card => updateCardFeedback(card));
+
+  updateHeader();
+}
+
+function recalcScore() {
+  totalRight = 0; totalDone = 0;
+  document.querySelectorAll('.isel').forEach(sel => {
+    if (sel.dataset.scored) {
+      totalDone++;
+      if (sel.classList.contains('correct')) totalRight++;
+    }
+  });
+  document.querySelectorAll('.mc-group').forEach(group => {
+    if (group.dataset.done) {
+      totalDone++;
+      if ([...group.querySelectorAll('.mc-btn')].some(b => b.classList.contains('correct'))) totalRight++;
+    }
+  });
+  updateHeader();
+}
+
+// ── GLOBAL RESET ───────────────────────────
+function globalReset() {
+  if (!confirm('Tüm cevaplar silinecek. Emin misin?')) return;
+  localStorage.removeItem(LS_KEY);
+
+  document.querySelectorAll('.isel').forEach(sel => {
+    sel.value = ''; sel.className = 'isel';
+    sel.style.pointerEvents = '';
+    delete sel.dataset.scored;
+  });
+  document.querySelectorAll('.mc-group').forEach(group => {
+    delete group.dataset.done;
+    group.querySelectorAll('.mc-btn').forEach(b => {
+      b.classList.remove('correct', 'wrong');
+      b.style.pointerEvents = '';
+    });
+  });
+  ['ex7'].forEach(exId => {
+    document.querySelectorAll(`#${exId}-selects .match-select`).forEach(s => {
+      s.value = ''; s.classList.remove('correct', 'wrong');
+    });
+    const fb = document.getElementById(exId + '-fb');
+    if (fb) { fb.className = 'ex-feedback'; fb.textContent = ''; }
+  });
+  document.querySelectorAll('.ex-feedback').forEach(fb => { fb.className = 'ex-feedback'; fb.textContent = ''; });
+
+  totalRight = 0; totalDone = 0;
+  updateHeader();
+}
+
+// ── INIT ───────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildMatch('ex7');
+  loadState();
+});
+</script>
+</body>
+</html>
