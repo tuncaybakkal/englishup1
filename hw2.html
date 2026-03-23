@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 2: Let's get together</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8520A;
+    --dark: #1A1208;
+    --cream: #FAF6EE;
+    --warm: #F2EAD8;
+    --muted: #7A6B55;
+    --answer-bg: #FFF3C4;
+    --answer-border: #E8A012;
+    --answer-text: #6B4000;
+    --section-line: #D4C4A8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page-header {
+    background: var(--orange);
+    color: white;
+    padding: 2.5rem 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '2';
+    position: absolute;
+    right: 2rem;
+    top: -0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem;
+    opacity: 0.15;
+    line-height: 1;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    letter-spacing: -0.01em;
+  }
+  .page-header .subtitle {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .legend {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.9rem 3rem;
+    background: var(--dark);
+    color: white;
+    font-size: 0.78rem;
+    align-items: center;
+    letter-spacing: 0.03em;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .legend-box {
+    width: 18px; height: 14px;
+    border-radius: 3px;
+  }
+  .legend-box.ans { background: var(--answer-bg); border: 1.5px solid var(--answer-border); }
+  .legend-box.blank { background: white; border: 1.5px solid #aaa; }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--orange);
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sub-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Q&A blocks */
+  .qa-block {
+    background: white;
+    border-left: 3px solid var(--section-line);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  .question {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.35rem;
+  }
+  .q-label {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 400;
+    margin-right: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .answer {
+    background: var(--answer-bg);
+    border: 1.5px solid var(--answer-border);
+    border-radius: 4px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.92rem;
+    color: var(--answer-text);
+    font-style: italic;
+    display: inline-block;
+    margin-top: 0.1rem;
+  }
+
+  /* Fill in the blank style */
+  .blank-sentence {
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+    background: white;
+    border-left: 3px solid var(--section-line);
+    border-radius: 0 6px 6px 0;
+    padding: 0.8rem 1.2rem;
+  }
+  .blank-num {
+    font-weight: 600;
+    color: var(--muted);
+    margin-right: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .filled {
+    background: var(--answer-bg);
+    border: 1.5px solid var(--answer-border);
+    border-radius: 4px;
+    padding: 0.1rem 0.6rem;
+    color: var(--answer-text);
+    font-style: italic;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* Grid for simple lists */
+  .answer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .grid-item {
+    background: white;
+    border-left: 3px solid var(--section-line);
+    border-radius: 0 5px 5px 0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  .grid-item .num {
+    font-weight: 600;
+    color: var(--muted);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* vocab matching */
+  .match-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .match-table thead {
+    background: var(--dark);
+    color: white;
+  }
+  .match-table th {
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .match-table td {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--warm);
+    vertical-align: top;
+  }
+  .match-table tr:last-child td { border-bottom: none; }
+  .match-table tr:nth-child(even) td { background: var(--cream); }
+
+  .tag {
+    background: var(--answer-bg);
+    border: 1.5px solid var(--answer-border);
+    border-radius: 4px;
+    padding: 0.1rem 0.55rem;
+    font-size: 0.83rem;
+    color: var(--answer-text);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  /* grammar spot examples */
+  .example-box {
+    background: var(--warm);
+    border-radius: 6px;
+    padding: 1rem 1.3rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+  .ex-label {
+    font-weight: 600;
+    color: var(--orange);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.4rem;
+  }
+  .ex-item { display: block; padding: 0.1rem 0; }
+  .ex-item em { color: var(--muted); font-size: 0.8rem; }
+
+  /* writing linking words */
+  .writing-group {
+    margin-bottom: 1.2rem;
+  }
+  .writing-variants {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
+  .variant {
+    background: white;
+    border-left: 3px solid var(--answer-border);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.88rem;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .page-break { page-break-before: always; }
+
+  @media print {
+    body { background: white; }
+    .legend { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="subtitle">Headway Pre-intermediate 5th Edition · Student's Book</div>
+  <h1>Unit 2: Let's get together</h1>
+  <div class="subtitle" style="margin-top:0.6rem;">Soru & Cevap Özeti</div>
+</div>
+
+<div class="legend">
+  <span>Gösterim:</span>
+  <span class="legend-item"><span class="legend-box ans"></span> Doğru cevap</span>
+  <span class="legend-item"><span class="legend-box blank"></span> Boşluk → sarı kutu içinde dolu</span>
+</div>
+
+<div class="container">
+
+  <!-- ===================== GRAMMAR ===================== -->
+  <div class="section">
+    <div class="section-title">Grammar – Present Tenses &amp; have/have got</div>
+
+    <!-- Being a twin - reading questions -->
+    <div class="sub-title">Being a twin – Okuma Soruları</div>
+
+    <div class="qa-block">
+      <div class="question"><span class="q-label">S.2</span>Hangi kız daha az zaman geçirmek istiyor? Neden?</div>
+      <div class="answer">Chloe – because they're getting older and they can't live together when they're grown-ups.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">S.3</span>Liam ve Dylan neden çok zaman geçirmiyor?</div>
+      <div class="answer">Because they're at different universities.</div>
+    </div>
+
+    <!-- Grammar Spot -->
+    <div class="sub-title">Grammar Spot</div>
+
+    <div class="example-box">
+      <div class="ex-label">1 – Present Simple örnekleri (metinden)</div>
+      <span class="ex-item">We've got similar personalities… / I always want to be with Chloe.</span>
+      <span class="ex-item">I don't like it when I'm not with Leah… / We don't feel so competitive now…</span>
+      <span class="ex-item">But I still really want to beat him at sports!</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">1 – Present Continuous örnekleri (metinden)</div>
+      <span class="ex-item">People say we're starting to look more different now…</span>
+      <span class="ex-item">We're getting older… / Dylan's studying Drama in Manchester and I'm doing Physics in Leeds.</span>
+      <span class="ex-item">… we're living very different lives.</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">2 – Fark</div>
+      <span class="ex-item"><strong>They wear the same clothes. / They live in the UK.</strong> <em>→ her zaman (all time) = Present Simple</em></span>
+      <span class="ex-item"><strong>They're wearing jeans and a T-shirt. / Dylan's living in Manchester.</strong> <em>→ şu an (now) = Present Continuous</em></span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">3 – have / have got örnekleri</div>
+      <span class="ex-item">We've got similar personalities / I've got a best friend / I've got a lovely girlfriend</span>
+      <span class="ex-item">They have an older brother / They don't have any other brothers or sisters</span>
+      <span class="ex-item"><em>have got → daha gayri resmi ve konuşma diline özgü</em></span>
+    </div>
+
+    <!-- Q&A Exercise 4 -->
+    <div class="sub-title">Alıştırma 4 – Soru &amp; Cevap (İkili Çalışma)</div>
+
+    <div class="sub-title" style="color:var(--dark);font-size:0.85rem;">Chloe ve Leah</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1</span>How do they feel when they're together?</div>
+      <div class="answer">Much braver.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2</span>Why does Leah always want to be with Chloe?</div>
+      <div class="answer">Because she never feels sad when she's with her.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">3</span>Do they always wear the same clothes?</div>
+      <div class="answer">No, not always, but they usually do.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">4</span>Are they starting to look different now?</div>
+      <div class="answer">Yes, they are.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">5</span>How does Leah feel about that?</div>
+      <div class="answer">She hates it.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">6</span>Why does Chloe think it's good to spend more time apart?</div>
+      <div class="answer">Because they're getting older.</div>
+    </div>
+
+    <div class="sub-title" style="color:var(--dark);font-size:0.85rem;">Liam ve Dylan</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">7</span>Why doesn't Dylan like being a twin?</div>
+      <div class="answer">Because people don't see what's special about you.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">8</span>What does Dylan never order in a restaurant?</div>
+      <div class="answer">The same thing as Liam.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">9</span>Where are Liam and Dylan living?</div>
+      <div class="answer">Liam is living in Leeds and Dylan is living in Manchester.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">10</span>What are they studying?</div>
+      <div class="answer">Liam is studying Physics and Dylan is studying Drama.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">11</span>Why don't they feel so competitive now?</div>
+      <div class="answer">Because they're living different lives.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">12</span>Which twin has got a girlfriend?</div>
+      <div class="answer">Dylan.</div>
+    </div>
+
+    <!-- Listening Exercise 5 -->
+    <div class="sub-title">Alıştırma 5 – Dinleme: Boşlukları Doldurun (Chloe &amp; Leah)</div>
+
+    <div class="blank-sentence">
+      <span class="blank-num">1</span>We <span class="filled">are practising</span> for a school play at the moment.
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">2</span><span class="filled">Do</span> you both sometimes <span class="filled">know</span> how the other person <span class="filled">is feeling</span>?
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">3</span>And I see you <span class="filled">are wearing</span> the same clothes today.
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">4</span>Leah <span class="filled">likes</span> wearing dresses, but sometimes I <span class="filled">want</span> to wear jeans!
+    </div>
+
+    <!-- Listening Exercise 6 -->
+    <div class="sub-title">Alıştırma 6 – Dinleme: Boşlukları Doldurun (Liam &amp; Dylan)</div>
+
+    <div class="blank-sentence">
+      <span class="blank-num">1</span>I often <span class="filled">think</span> people only <span class="filled">see</span> me as a twin.
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">2</span>And we <span class="filled">are living</span> in different cities, so we <span class="filled">have</span> different friends.
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">3</span>Well, I always <span class="filled">want</span> to do things better than Liam!
+    </div>
+    <div class="blank-sentence">
+      <span class="blank-num">4</span>But you can't be competitive when you <span class="filled">are doing</span> completely different things.
+    </div>
+  </div>
+
+  <!-- ===================== PRACTICE ===================== -->
+  <div class="section">
+    <div class="section-title">Practice</div>
+
+    <div class="sub-title">Talking about you – Alıştırma 1</div>
+    <div class="qa-block">
+      <div class="question">have ve have got'ın soru, olumsuz ve kısa cevapta farkı nedir?</div>
+      <div class="answer">You don't use the auxiliary <em>do</em> in questions, short answers, and negatives with <em>have got</em>. (Have you got…? / Yes, I have. | Do you have…? / Yes, I do.)</div>
+    </div>
+
+    <!-- Speaking exercise 3 -->
+    <div class="sub-title">Alıştırma 3 – Speaking: Candela &amp; Kim and Ethan Hakkında Sorular</div>
+
+    <div class="sub-title" style="color:var(--dark);font-size:0.85rem;">Candela</div>
+    <div class="qa-block">
+      <div class="question">Where does Candela come from?</div>
+      <div class="answer">She comes from Argentina.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Where does she live?</div>
+      <div class="answer">She lives in a flat in Rosario.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Does she have / Has she got a big family?</div>
+      <div class="answer">Yes – she has (got) two brothers and sisters.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What does she do?</div>
+      <div class="answer">She's a student / studying politics.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What does she like doing in her free time?</div>
+      <div class="answer">She likes going to football matches, dancing, and chatting with friends.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What is she doing now?</div>
+      <div class="answer">She's watching her football team play.</div>
+    </div>
+
+    <div class="sub-title" style="color:var(--dark);font-size:0.85rem;">Kim ve Ethan</div>
+    <div class="qa-block">
+      <div class="question">Where do Kim and Ethan come from?</div>
+      <div class="answer">They come from the United States.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Where do they live?</div>
+      <div class="answer">They live in a big house in Connecticut.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Do they have / Have they got a big family?</div>
+      <div class="answer">No – they just have one daughter.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What do they do?</div>
+      <div class="answer">Kim is a teacher and Ethan is a fireman.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What do they like doing in their free time?</div>
+      <div class="answer">They like walking in the woods, going swimming, and going to concerts.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">What are they doing now?</div>
+      <div class="answer">They are having a meal in a restaurant.</div>
+    </div>
+
+    <!-- State verbs -->
+    <div class="sub-title">Alıştırma 4 – State Verbs: Boşlukları Doldurun</div>
+
+    <div class="blank-sentence"><span class="blank-num">1</span>'Is this the way to the bus station?' 'I <span class="filled">don't know</span>. Sorry.'</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>I <span class="filled">love</span> your dress! Where did you get it?</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>I'm not good at being on my own. I <span class="filled">need</span> to be with people.</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>'I <span class="filled">think</span> grammar is really boring.' 'I <span class="filled">don't agree</span>. I find it interesting.'</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>I'm sorry, I <span class="filled">don't understand</span>. I don't speak French.</div>
+    <div class="blank-sentence"><span class="blank-num">6</span>He's very rich. He <span class="filled">owns</span> three houses in London.</div>
+    <div class="blank-sentence"><span class="blank-num">7</span>You <span class="filled">look</span> sad! What's wrong?</div>
+    <div class="blank-sentence"><span class="blank-num">8</span>'Sorry, I'm late.' 'Don't worry. It <span class="filled">doesn't matter</span>.'</div>
+    <div class="blank-sentence"><span class="blank-num">9</span>'It's my seventieth birthday tomorrow.' 'I <span class="filled">don't believe</span> you! You don't look a day over 60!'</div>
+    <div class="blank-sentence"><span class="blank-num">10</span>I don't know that word, <em>solitary</em>. What <span class="filled">does</span> it <span class="filled">mean</span>?</div>
+
+    <!-- Check it -->
+    <div class="sub-title">Alıştırma 5 – Check it: Doğru Cümleyi İşaretleyin</div>
+    <div class="answer-grid">
+      <div class="grid-item"><span class="num">1 ✓</span>Karina <strong>lives</strong> with her parents.</div>
+      <div class="grid-item"><span class="num">2 ✓</span>Who do you go walking <strong>with</strong>?</div>
+      <div class="grid-item"><span class="num">3 ✓</span>He <strong>doesn't see</strong> his brother often.</div>
+      <div class="grid-item"><span class="num">4 ✓</span>I'm at Don's house. I'm <strong>waiting</strong> for a taxi.</div>
+      <div class="grid-item"><span class="num">5 ✓</span>She <strong>likes</strong> black coffee.</div>
+      <div class="grid-item"><span class="num">6 ✓</span>They <strong>haven't got</strong> a dog.</div>
+    </div>
+  </div>
+
+  <!-- ===================== VOCABULARY ===================== -->
+  <div class="section">
+    <div class="section-title">Vocabulary – My Perfect Day</div>
+
+    <div class="sub-title">Alıştırma 1 – Verb + Phrase Eşleştirme</div>
+    <div class="example-box" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div>
+        <div class="ex-label">A</div>
+        play → <strong>games on my phone</strong><br>
+        do → <strong>puzzles</strong><br>
+        go → <strong>to the gym</strong><br>
+        have → <strong>a lie-in</strong>
+      </div>
+      <div>
+        <div class="ex-label">B</div>
+        meet → <strong>friends for a drink</strong><br>
+        watch → <strong>dramas on TV</strong><br>
+        chat → <strong>on the phone</strong><br>
+        go out → <strong>for a meal</strong>
+      </div>
+      <div>
+        <div class="ex-label">C</div>
+        listen to → <strong>music</strong><br>
+        do → <strong>nothing</strong><br>
+        take → <strong>photos</strong><br>
+        read → <strong>magazines</strong>
+      </div>
+      <div>
+        <div class="ex-label">D</div>
+        have → <strong>a barbecue</strong><br>
+        go → <strong>for a long walk</strong><br>
+        visit → <strong>other cities</strong><br>
+        shop → <strong>for clothes</strong>
+      </div>
+    </div>
+
+    <div class="sub-title">Alıştırma 3 – Cümleleri Tamamlayın</div>
+    <div class="blank-sentence"><span class="blank-num">1</span>I don't feel like cooking tonight. Shall we <span class="filled">go out for a meal</span>?</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>I always <span class="filled">listen to music</span> on headphones when I'm on the train to work.</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>I never <span class="filled">shop for clothes</span> online – I like to try things on first.</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>I sometimes <span class="filled">do nothing</span> all day on Sundays – I'm so busy the rest of the week!</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>On Saturdays, I <span class="filled">have a lie-in</span> – I stay in bed till 11.00 sometimes!</div>
+    <div class="blank-sentence"><span class="blank-num">6</span>It's a lovely day! Let's invite some friends round and <span class="filled">have a barbecue</span> in the garden.</div>
+    <div class="blank-sentence"><span class="blank-num">7</span>I often <span class="filled">meet friends for a drink</span> in the pub near my office after work.</div>
+    <div class="blank-sentence"><span class="blank-num">8</span>Let's <span class="filled">go for a long walk</span> in the countryside this afternoon!</div>
+    <div class="blank-sentence"><span class="blank-num">9</span>You <span class="filled">take</span> really good <span class="filled">photos</span>. Do you use a camera, or just your phone?</div>
+    <div class="blank-sentence"><span class="blank-num">10</span>I like doing <span class="filled">crossword</span> <span class="filled">puzzles</span> with my wife – I try to get the answers first!</div>
+  </div>
+
+  <!-- ===================== READING ===================== -->
+  <div class="section">
+    <div class="section-title">Reading – Vocabulary (Alıştırma 5)</div>
+    <div class="sub-title">İfadeleri anlamlarıyla eşleştirin</div>
+    <table class="match-table">
+      <thead>
+        <tr><th>#</th><th>İfade</th><th>Anlam</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>to enjoy your own company</td><td><span class="tag">e</span> to be happy when you're alone</td></tr>
+        <tr><td>2</td><td>What's the point of it?</td><td><span class="tag">f</span> How is it useful?</td></tr>
+        <tr><td>3</td><td>to have a go at something</td><td><span class="tag">g</span> to try to do something that might not work</td></tr>
+        <tr><td>4</td><td>to suit you</td><td><span class="tag">b</span> to look good on you</td></tr>
+        <tr><td>5</td><td>to keep something to yourself</td><td><span class="tag">h</span> to not tell anyone something</td></tr>
+        <tr><td>6</td><td>to feel confident</td><td><span class="tag">d</span> to feel sure of yourself</td></tr>
+        <tr><td>7</td><td>to go round to someone's</td><td><span class="tag">c</span> to visit someone in their home</td></tr>
+        <tr><td>8</td><td>to think again</td><td><span class="tag">a</span> to change your mind about something</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===================== LISTENING ===================== -->
+  <div class="section">
+    <div class="section-title">Listening – Getting on with the Neighbours</div>
+
+    <div class="sub-title">Alıştırma 2 – "Good fences make good neighbours" ne anlama gelir?</div>
+    <div class="qa-block">
+      <div class="answer">It could be interpreted in various ways. One way: neighbours should respect each other's property and boundaries. A less literal interpretation: keep some distance and don't become too friendly with your neighbour.</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 6 – Mrs Crumble vs Alfie (Sorular &amp; Cevaplar)</div>
+
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1</span>Where is Alfie's flat?</div>
+      <div class="answer">It's below Mrs Crumble's flat.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2</span>Do Alfie and Mrs Crumble speak to each other?</div>
+      <div class="answer">Mrs Crumble says Alfie never says hello. Alfie says he always says hello but she never replies – he thinks she's deaf.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">3</span>What does Alfie wear? What doesn't he wear?</div>
+      <div class="answer">He wears jeans and a T-shirt. He doesn't wear a suit. Mrs Crumble says he never looks smart.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">4</span>Has he got a job?</div>
+      <div class="answer">Mrs Crumble says he hasn't got a job, but Alfie is a musician.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">5</span>What time does he go to bed and get up?</div>
+      <div class="answer">Mrs Crumble says he doesn't get up until the afternoon. Alfie says he sleeps from three till eleven.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">6</span>How many people are staying in Alfie's flat?</div>
+      <div class="answer">Mrs Crumble thinks maybe four or five. Alfie says only him – but band members keep instruments there.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">7</span>Has he got a girlfriend? Where does she live?</div>
+      <div class="answer">Yes, he has. She lives on the other side of town.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">8</span>Why does he make so much noise? What's he doing right now?</div>
+      <div class="answer">Mrs Crumble says he's very noisy, listening to music. Alfie admits he makes noise – he's practising his saxophone now.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">9</span>What does Alfie think of Mrs Crumble?</div>
+      <div class="answer">He feels sorry for her and says he's kind to her, but she's suspicious of young people.</div>
+    </div>
+  </div>
+
+  <!-- ===================== EVERYDAY ENGLISH ===================== -->
+  <div class="section">
+    <div class="section-title">Everyday English – Making Conversation</div>
+
+    <div class="sub-title">Alıştırma 3 – Eşleştirme (A → B)</div>
+    <table class="match-table">
+      <thead>
+        <tr><th>A</th><th>Cevap (B)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1 What a lovely day it is today!</td><td><span class="tag">b</span> Yes, beautiful, isn't it!</td></tr>
+        <tr><td>2 Are you having a good time in Edinburgh?</td><td><span class="tag">f</span> Yes, I am.</td></tr>
+        <tr><td>3 Have a good weekend!</td><td><span class="tag">c</span> Thanks, that's very kind of you. I will.</td></tr>
+        <tr><td>4 Did you have a nice weekend?</td><td><span class="tag">g</span> Yes, I did – despite the weather!</td></tr>
+        <tr><td>5 What are you doing tonight?</td><td><span class="tag">i</span> Nothing special.</td></tr>
+        <tr><td>6 How's your mother these days?</td><td><span class="tag">e</span> She's OK, thanks.</td></tr>
+        <tr><td>7 Did you watch that new crime drama last night?</td><td><span class="tag">a</span> No I didn't. I was out.</td></tr>
+        <tr><td>8 I like your shoes!</td><td><span class="tag">d</span> Thank you! They're new!</td></tr>
+        <tr><td>9 If you have any problems, just ask.</td><td><span class="tag">h</span> Thanks. You too!</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">Alıştırma 2 – Konuşmayı Sürdürme Teknikleri (Conversation 2'den Örnekler)</div>
+    <div class="example-box">
+      <div class="ex-label">Yorum ekleme (Comment adding)</div>
+      <span class="ex-item">I'm French. I live in Paris – Paris as you say in English – but I'm from the south, from Provence.</span>
+      <span class="ex-item">I'm an architect. I design very expensive houses for rich people.</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">Soru sorma (Asking questions)</div>
+      <span class="ex-item">Do you know the south of France? / So Maggie, where are you from?</span>
+      <span class="ex-item">So what do you do when you're not teaching, Maggie?</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">İlgi gösterme (Expressing interest)</div>
+      <span class="ex-item">Oh, really! That's interesting! / Oh, brilliant! That's my class. You're my teacher!</span>
+    </div>
+  </div>
+
+  <!-- ===================== WRITING ===================== -->
+  <div class="section">
+    <div class="section-title">Writing – Linking Words</div>
+
+    <div class="sub-title">but / although / however – Kural Özeti</div>
+    <div class="example-box">
+      <span class="ex-item"><strong>but</strong> → iki cümleyi birleştirir; ikinci cümleden önce gelir (virgülle).</span>
+      <span class="ex-item"><strong>although</strong> → cümle başında veya ortasında kullanılabilir; şaşırtıcı bir zıtlık belirtir.</span>
+      <span class="ex-item"><strong>however</strong> → iki ayrı cümleyi bağlar; nokta + However, … şeklinde.</span>
+    </div>
+
+    <div class="sub-title">Alıştırma 3 – Cümle Dönüştürme</div>
+
+    <div class="writing-group">
+      <strong>1</strong> I love ice cream. I try not to eat it too often.
+      <div class="writing-variants">
+        <div class="variant">I love ice cream, <span class="filled">but</span> I try not to eat it too often.</div>
+        <div class="variant"><span class="filled">Although</span> I love ice cream, I try not to eat it too often.</div>
+        <div class="variant">I try not to eat ice cream too often, <span class="filled">although</span> I love it.</div>
+        <div class="variant">I love ice cream. <span class="filled">However,</span> I try not to eat it too often.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>2</strong> Alex is a good friend. We don't have a lot in common.
+      <div class="writing-variants">
+        <div class="variant">Alex is a good friend, <span class="filled">but</span> we don't have a lot in common.</div>
+        <div class="variant"><span class="filled">Although</span> Alex is a good friend, we don't have a lot in common.</div>
+        <div class="variant">Alex is a good friend, <span class="filled">although</span> we don't have a lot in common.</div>
+        <div class="variant">Alex is a good friend. <span class="filled">However,</span> we don't have a lot in common.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>3</strong> I live near Zoe. I don't see her very often.
+      <div class="writing-variants">
+        <div class="variant">I live near Zoe, <span class="filled">but</span> I don't see her very often.</div>
+        <div class="variant"><span class="filled">Although</span> I live near Zoe, I don't see her very often.</div>
+        <div class="variant">I don't see Zoe very often, <span class="filled">although</span> I live near her.</div>
+        <div class="variant">I live near Zoe. <span class="filled">However,</span> I don't see her very often.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>4</strong> It rained a lot. We had a really good holiday.
+      <div class="writing-variants">
+        <div class="variant">It rained a lot, <span class="filled">but</span> we had a really good holiday.</div>
+        <div class="variant"><span class="filled">Although</span> it rained a lot, we had a really good holiday.</div>
+        <div class="variant">We had a really good holiday, <span class="filled">although</span> it rained a lot.</div>
+        <div class="variant">It rained a lot. <span class="filled">However,</span> we had a really good holiday.</div>
+      </div>
+    </div>
+
+    <div class="sub-title">so / because – Kural Özeti</div>
+    <div class="example-box">
+      <span class="ex-item"><strong>so</strong> → önce sebep, sonra sonuç (Cause → Result).</span>
+      <span class="ex-item"><strong>because</strong> → önce sonuç, sonra sebep (Result → Cause).</span>
+    </div>
+
+    <div class="sub-title">Alıştırma 5 – so / because ile Dönüştürme</div>
+    <div class="writing-group">
+      <strong>1</strong><div class="writing-variants">
+        <div class="variant">I don't like broccoli, <span class="filled">so</span> I don't eat it.</div>
+        <div class="variant">I don't eat broccoli <span class="filled">because</span> I don't like it.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>2</strong><div class="writing-variants">
+        <div class="variant">She was tired, <span class="filled">so</span> she went home.</div>
+        <div class="variant">She went home <span class="filled">because</span> she was tired.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>3</strong><div class="writing-variants">
+        <div class="variant">The train was very expensive, <span class="filled">so</span> we went by bus.</div>
+        <div class="variant">We went by bus <span class="filled">because</span> the train was very expensive.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>4</strong><div class="writing-variants">
+        <div class="variant">It started to rain, <span class="filled">so</span> we had to stop the tennis match.</div>
+        <div class="variant">We had to stop the tennis match <span class="filled">because</span> it started to rain.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>5</strong><div class="writing-variants">
+        <div class="variant">My grandmother's ill, <span class="filled">so</span> I'm going to visit her.</div>
+        <div class="variant">I'm going to visit my grandmother <span class="filled">because</span> she's ill.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>6</strong><div class="writing-variants">
+        <div class="variant">I really like the teacher, <span class="filled">so</span> I enjoy history lessons.</div>
+        <div class="variant">I enjoy history lessons <span class="filled">because</span> I really like the teacher.</div>
+      </div>
+    </div>
+
+    <div class="sub-title">Alıştırma 6 – E-posta Boşlukları (but / although / however / so / because)</div>
+    <div class="answer-grid">
+      <div class="grid-item"><span class="num">1</span><span class="filled">although</span></div>
+      <div class="grid-item"><span class="num">2</span><span class="filled">but</span></div>
+      <div class="grid-item"><span class="num">3</span><span class="filled">so</span></div>
+      <div class="grid-item"><span class="num">4</span><span class="filled">so</span></div>
+      <div class="grid-item"><span class="num">5</span><span class="filled">However</span></div>
+      <div class="grid-item"><span class="num">6</span><span class="filled">because</span></div>
+      <div class="grid-item"><span class="num">7</span><span class="filled">although</span></div>
+      <div class="grid-item"><span class="num">8</span><span class="filled">because</span></div>
+      <div class="grid-item"><span class="num">9</span><span class="filled">although</span></div>
+      <div class="grid-item"><span class="num">10</span><span class="filled">so</span></div>
+      <div class="grid-item"><span class="num">11</span><span class="filled">but</span></div>
+      <div class="grid-item"><span class="num">12</span><span class="filled">because</span></div>
+      <div class="grid-item"><span class="num">13</span><span class="filled">However</span></div>
+      <div class="grid-item"><span class="num">14</span><span class="filled">so</span></div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>
