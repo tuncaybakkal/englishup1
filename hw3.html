@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 3: Good news, bad news!</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8520A;
+    --dark: #1A1208;
+    --cream: #FAF6EE;
+    --warm: #F2EAD8;
+    --muted: #7A6B55;
+    --answer-bg: #FFF3C4;
+    --answer-border: #E8A012;
+    --answer-text: #6B4000;
+    --section-line: #D4C4A8;
+    --true-bg: #E8F5E9;
+    --true-border: #66BB6A;
+    --true-text: #1B5E20;
+    --false-bg: #FFEBEE;
+    --false-border: #EF9A9A;
+    --false-text: #B71C1C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page-header {
+    background: var(--orange);
+    color: white;
+    padding: 2.5rem 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '3';
+    position: absolute;
+    right: 2rem;
+    top: -0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem;
+    opacity: 0.15;
+    line-height: 1;
+  }
+  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: -0.01em; }
+  .page-header .subtitle { font-size: 0.9rem; opacity: 0.85; margin-top: 0.3rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .legend {
+    display: flex; gap: 1.5rem; padding: 0.9rem 3rem;
+    background: var(--dark); color: white; font-size: 0.78rem;
+    align-items: center; letter-spacing: 0.03em; flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+  .legend-box { width: 18px; height: 14px; border-radius: 3px; }
+  .legend-box.ans { background: var(--answer-bg); border: 1.5px solid var(--answer-border); }
+  .legend-box.tr { background: var(--true-bg); border: 1.5px solid var(--true-border); }
+  .legend-box.fa { background: var(--false-bg); border: 1.5px solid var(--false-border); }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+  .section { margin-bottom: 3rem; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 1.35rem;
+    color: var(--orange); border-bottom: 2px solid var(--orange);
+    padding-bottom: 0.4rem; margin-bottom: 1.5rem;
+  }
+
+  .sub-title {
+    font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 0.95rem;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 1rem; margin-top: 1.5rem;
+  }
+
+  .qa-block {
+    background: white; border-left: 3px solid var(--section-line);
+    border-radius: 0 6px 6px 0; padding: 1rem 1.3rem; margin-bottom: 0.8rem;
+  }
+  .question { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.35rem; }
+  .q-label { color: var(--muted); font-size: 0.78rem; font-weight: 400; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .answer {
+    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
+    border-radius: 4px; padding: 0.35rem 0.75rem; font-size: 0.92rem;
+    color: var(--answer-text); font-style: italic; display: inline-block; margin-top: 0.1rem;
+  }
+
+  .blank-sentence {
+    font-size: 0.95rem; margin-bottom: 0.7rem; background: white;
+    border-left: 3px solid var(--section-line); border-radius: 0 6px 6px 0; padding: 0.8rem 1.2rem;
+  }
+  .blank-num { font-weight: 600; color: var(--muted); margin-right: 0.5rem; font-size: 0.82rem; }
+  .filled {
+    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
+    border-radius: 4px; padding: 0.1rem 0.6rem; color: var(--answer-text);
+    font-style: italic; font-weight: 600; display: inline-block;
+    min-width: 60px; text-align: center; font-size: 0.9rem;
+  }
+
+  .answer-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem; margin-bottom: 0.8rem;
+  }
+  .grid-item {
+    background: white; border-left: 3px solid var(--section-line);
+    border-radius: 0 5px 5px 0; padding: 0.55rem 0.9rem; font-size: 0.9rem;
+  }
+  .grid-item .num { font-weight: 600; color: var(--muted); margin-right: 0.5rem; font-size: 0.8rem; }
+
+  .match-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: white; border-radius: 6px; overflow: hidden; }
+  .match-table thead { background: var(--dark); color: white; }
+  .match-table th { padding: 0.6rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .match-table td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--warm); vertical-align: top; }
+  .match-table tr:last-child td { border-bottom: none; }
+  .match-table tr:nth-child(even) td { background: var(--cream); }
+  .tag {
+    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
+    border-radius: 4px; padding: 0.1rem 0.55rem; font-size: 0.83rem;
+    color: var(--answer-text); font-weight: 600; font-style: italic;
+  }
+
+  .example-box {
+    background: var(--warm); border-radius: 6px; padding: 1rem 1.3rem;
+    margin-bottom: 0.8rem; font-size: 0.88rem; line-height: 1.8;
+  }
+  .ex-label { font-weight: 600; color: var(--orange); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .ex-item { display: block; padding: 0.1rem 0; }
+
+  /* True/False */
+  .tf-item {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    padding: 0.7rem 1rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.9rem;
+  }
+  .tf-item.true { background: var(--true-bg); border-left: 3px solid var(--true-border); color: var(--true-text); }
+  .tf-item.false { background: var(--false-bg); border-left: 3px solid var(--false-border); }
+  .tf-badge {
+    font-weight: 700; font-size: 0.78rem; padding: 0.15rem 0.5rem;
+    border-radius: 3px; white-space: nowrap; margin-top: 0.15rem;
+    letter-spacing: 0.03em; flex-shrink: 0;
+  }
+  .tf-item.true .tf-badge { background: var(--true-border); color: white; }
+  .tf-item.false .tf-badge { background: var(--false-border); color: white; }
+  .tf-correction { display: block; font-style: italic; font-size: 0.85rem; color: var(--answer-text); margin-top: 0.3rem; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.8rem; }
+  @media(max-width:600px){ .two-col{ grid-template-columns:1fr; } }
+
+  .verb-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: white; border-radius: 6px; overflow: hidden; margin-bottom: 1rem; }
+  .verb-table thead { background: var(--dark); color: white; }
+  .verb-table th { padding: 0.5rem 0.9rem; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .verb-table td { padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--warm); }
+  .verb-table tr:last-child td { border-bottom: none; }
+  .verb-table tr:nth-child(even) td { background: var(--cream); }
+
+  .writing-group { margin-bottom: 1.2rem; }
+  .writing-variants { display: grid; grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.4rem; }
+  .variant { background: white; border-left: 3px solid var(--answer-border); padding: 0.4rem 0.9rem; font-size: 0.88rem; border-radius: 0 4px 4px 0; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="subtitle">Headway Pre-intermediate 5th Edition · Student's Book</div>
+  <h1>Unit 3: Good news, bad news!</h1>
+  <div class="subtitle" style="margin-top:0.6rem;">Soru &amp; Cevap Özeti</div>
+</div>
+
+<div class="legend">
+  <span>Gösterim:</span>
+  <span class="legend-item"><span class="legend-box ans"></span> Doğru cevap / dolu boşluk</span>
+  <span class="legend-item"><span class="legend-box tr"></span> True (doğru)</span>
+  <span class="legend-item"><span class="legend-box fa"></span> False (yanlış) + düzeltme</span>
+</div>
+
+<div class="container">
+
+  <!-- ===================== UNIT OPENER ===================== -->
+  <div class="section">
+    <div class="section-title">Unit Opener – Fotoğraf Soruları</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">S.1</span>Who are these people?</div>
+      <div class="answer">Photographers and journalists.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">S.2</span>Why might they be taking photographs?</div>
+      <div class="answer">A celebrity could be arriving somewhere, a press conference, a politician could be speaking.</div>
+    </div>
+  </div>
+
+  <!-- ===================== GRAMMAR ===================== -->
+  <div class="section">
+    <div class="section-title">Grammar – Narrative Tenses (Past Simple &amp; Past Continuous)</div>
+
+    <div class="sub-title">Starter – Fiil Listesi: Regular vs Irregular</div>
+    <table class="verb-table">
+      <thead><tr><th>Regular (düzenli)</th><th>Past Simple</th><th>Irregular (düzensiz)</th><th>Past Simple</th></tr></thead>
+      <tbody>
+        <tr><td>clean</td><td><span class="filled">cleaned</span></td><td>become</td><td><span class="filled">became</span></td></tr>
+        <tr><td>die</td><td><span class="filled">died</span></td><td>feed</td><td><span class="filled">fed</span></td></tr>
+        <tr><td>hope</td><td><span class="filled">hoped</span></td><td>feel</td><td><span class="filled">felt</span></td></tr>
+        <tr><td>pass</td><td><span class="filled">passed</span></td><td>find</td><td><span class="filled">found</span></td></tr>
+        <tr><td>stay</td><td><span class="filled">stayed</span></td><td>give</td><td><span class="filled">gave</span></td></tr>
+        <tr><td>try</td><td><span class="filled">tried</span></td><td>go</td><td><span class="filled">went</span></td></tr>
+        <tr><td>want</td><td><span class="filled">wanted</span></td><td>grow</td><td><span class="filled">grew</span></td></tr>
+        <tr><td></td><td></td><td>hear</td><td><span class="filled">heard</span></td></tr>
+        <tr><td></td><td></td><td>take</td><td><span class="filled">took</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- A good news story -->
+    <div class="sub-title">A Good News Story – Alıştırma 1</div>
+    <div class="qa-block">
+      <div class="question">Why is this a good news story?</div>
+      <div class="answer">Because a man helped to save a penguin and the penguin travels back to see him.</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 2 – Kim/Ne/Nerede?</div>
+    <div class="qa-block">
+      <div class="question">Who is João Pereira de Souza? Who is Dindim?</div>
+      <div class="answer">João is a retired bricklayer who still works part-time as a fisherman. Dindim is a penguin.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Where did João find Dindim?</div>
+      <div class="answer">On the beach near his home.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Where does Dindim swim to every year?</div>
+      <div class="answer">He swims to visit João every year (2,500 miles to Argentina or Chile, then back).</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 3 – Metni Tamamlayın (Past Simple fiilleri)</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>João <span class="filled">felt</span> sorry for the sick, little bird…</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>…so he <span class="filled">took</span> him back to his home.</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>He cleaned him and <span class="filled">fed</span> him sardines…</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>…and he <span class="filled">gave</span> him the name Dindim.</div>
+    <div class="blank-sentence"><span class="blank-num">6</span>The penguin soon <span class="filled">became</span> strong and healthy again.</div>
+    <div class="blank-sentence"><span class="blank-num">7</span>After a week or two, João <span class="filled">went</span> down to the seashore…</div>
+    <div class="blank-sentence"><span class="blank-num">8</span>…and <span class="filled">tried</span> to put Dindim back into the water.</div>
+    <div class="blank-sentence"><span class="blank-num">9</span>Beautiful new feathers <span class="filled">grew</span> on his back.</div>
+    <div class="blank-sentence"><span class="blank-num">10</span>…when suddenly he <span class="filled">heard</span> a familiar 'honking' sound – Dindim was back.</div>
+
+    <div class="sub-title">Alıştırma 4 – Bold cümlelerin zamanı nedir?</div>
+    <div class="qa-block">
+      <div class="answer">The tense in bold is <strong>Past Continuous</strong>.</div>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">Past Continuous örnekleri (metinden)</div>
+      <span class="ex-item">…when he <strong>was fishing</strong></span>
+      <span class="ex-item">the poor bird <strong>was dying</strong></span>
+      <span class="ex-item">because he <strong>was enjoying</strong> the company of his new friend</span>
+      <span class="ex-item">João <strong>was walking</strong> sadly home from the beach</span>
+    </div>
+
+    <div class="sub-title">Alıştırma 5 – Soru &amp; Cevap</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1</span>What did João find?</div>
+      <div class="answer">A tiny, sick penguin.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2</span>What was he doing when he found it?</div>
+      <div class="answer">He was fishing.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">3</span>Where did he take the penguin?</div>
+      <div class="answer">He took it home.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">4</span>What did he feed it?</div>
+      <div class="answer">Sardines.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">5</span>How long did Dindim stay?</div>
+      <div class="answer">Eight months.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">6</span>Why was João happy?</div>
+      <div class="answer">Because he was enjoying the penguin's company.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">7</span>Which month did Dindim disappear?</div>
+      <div class="answer">February.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">8</span>Which month did he return?</div>
+      <div class="answer">June.</div>
+    </div>
+
+    <!-- Grammar Spot -->
+    <div class="sub-title">Grammar Spot – Alıştırma 2</div>
+    <div class="blank-sentence">
+      Where <span class="filled">did</span> he take the penguin? &nbsp;&nbsp; The penguin <span class="filled">didn't</span> want to go.
+    </div>
+
+    <!-- Spelling -->
+    <div class="sub-title">Alıştırma 6 – Spelling: Regular Past Simple</div>
+    <table class="verb-table">
+      <thead><tr><th>Fiil</th><th>Past Simple</th><th>Fiil</th><th>Past Simple</th></tr></thead>
+      <tbody>
+        <tr><td><strong>a)</strong> work</td><td><span class="filled">worked</span></td><td><strong>c)</strong> arrive</td><td><span class="filled">arrived</span></td></tr>
+        <tr><td>stay</td><td><span class="filled">stayed</span></td><td>live</td><td><span class="filled">lived</span></td></tr>
+        <tr><td>want</td><td><span class="filled">wanted</span></td><td>hope</td><td><span class="filled">hoped</span></td></tr>
+        <tr><td><strong>b)</strong> try</td><td><span class="filled">tried</span></td><td><strong>d)</strong> stop</td><td><span class="filled">stopped</span></td></tr>
+        <tr><td>study</td><td><span class="filled">studied</span></td><td>plan</td><td><span class="filled">planned</span></td></tr>
+      </tbody>
+    </table>
+    <div class="example-box">
+      <div class="ex-label">Kural Soruları</div>
+      <span class="ex-item"><strong>1</strong> Regular past tense nasıl oluşturulur? → by adding <strong>-ed</strong></span>
+      <span class="ex-item"><strong>2</strong> Ünsüz + -y ile biten fiiller? → drop the y and add <strong>-ied</strong></span>
+      <span class="ex-item"><strong>3</strong> Son sessiz harf ikiye ne zaman katlanır? → when there is a short vowel sound followed by a single consonant (e.g. stop → stopped)</span>
+    </div>
+
+    <!-- Pronunciation -->
+    <div class="sub-title">Alıştırma 7 – Telaffuz: -ed Sonu /t/ /d/ /ɪd/</div>
+    <div class="example-box">
+      <div class="ex-label">/t/</div>
+      <span class="ex-item">looked · worked · passed · hoped</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">/d/</div>
+      <span class="ex-item">stayed · cleaned · played · phoned · answered · enjoyed</span>
+    </div>
+    <div class="example-box">
+      <div class="ex-label">/ɪd/</div>
+      <span class="ex-item">visited · wanted</span>
+    </div>
+  </div>
+
+  <!-- ===================== PRACTICE ===================== -->
+  <div class="section">
+    <div class="section-title">Practice</div>
+
+    <div class="sub-title">Alıştırma 1 – Discussing Grammar: Fark nedir?</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1a</span>When we arrived, she <strong>was making</strong> coffee.</div>
+      <div class="answer">She was in the process of making coffee when they arrived. (devam eden eylem)</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1b</span>When we arrived, she <strong>made</strong> coffee.</div>
+      <div class="answer">They arrived first, and then she made coffee. (tamamlanan eylem)</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2a</span>What <strong>were you doing</strong> when you saw the accident?</div>
+      <div class="answer">Asks what activity you were doing at the time the accident happened.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2b</span>What <strong>did you do</strong> when you saw the accident?</div>
+      <div class="answer">Asks what action you took after the accident happened.</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 2 – Doğru Fiil Formunu Seçin</div>
+    <div class="blank-sentence"><span class="blank-num">1</span>I <span class="filled">saw</span> a good film yesterday.</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>While I <span class="filled">was shopping</span> this morning, I <span class="filled">lost</span> my wallet.</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>The police <span class="filled">stopped</span> me on the motorway because I <span class="filled">was driving</span> too fast.</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>'How <span class="filled">did you break</span> your leg?' 'I <span class="filled">was skiing</span> and I <span class="filled">hit</span> a tree.'</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>I <span class="filled">cut</span> my finger while I <span class="filled">was cooking</span> dinner.</div>
+    <div class="blank-sentence"><span class="blank-num">6</span><span class="filled">Did you have</span> a good holiday?</div>
+
+    <div class="sub-title">Alıştırma 5 – News Headlines (In Your Own Words)</div>
+    <div class="qa-block">
+      <div class="question">Rat's tail found in sandwich</div>
+      <div class="answer">A man bought a sandwich from a food and drink stall on the High Street. He took a bite and threw it in the rubbish bin.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Woman injured while texting</div>
+      <div class="answer">She was walking in the town square texting and chatting to her friend, and she fell head first into a fountain. Someone was taking a video and put it on YouTube.</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 7 – Good news or bad news? (S.7)</div>
+    <div class="qa-block">
+      <div class="answer">Good news (both stories).</div>
+    </div>
+
+    <!-- Story A & B verb fill -->
+    <div class="sub-title">Alıştırma 9 – Boşlukları Doldurun: Brotherly Love (Student A)</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>…they <span class="filled">went</span> to London to compete…</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>He <span class="filled">thought</span> to himself, 'This is perfect…'</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>…Alistair <span class="filled">saw</span> that Jonny was in trouble.</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>Alistair <span class="filled">ran</span> up to his brother.</div>
+    <div class="blank-sentence"><span class="blank-num">6</span>He <span class="filled">put</span> his arm round him…</div>
+    <div class="blank-sentence"><span class="blank-num">7</span>…Jonny <span class="filled">fell</span> to the ground.</div>
+    <div class="blank-sentence"><span class="blank-num">8</span>Their parents <span class="filled">felt</span> very proud of both their sons.</div>
+
+    <div class="sub-title">Alıştırma 9 – Boşlukları Doldurun: Sorry Nate! (Student B)</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>Nate immediately <span class="filled">fell</span> in love with it…</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>…his mum <span class="filled">told</span> her sad little boy…</div>
+    <div class="blank-sentence"><span class="blank-num">4</span>…he <span class="filled">found</span> a cardboard box…</div>
+    <div class="blank-sentence"><span class="blank-num">5</span>…and <span class="filled">wrote</span> a message on it…</div>
+    <div class="blank-sentence"><span class="blank-num">6</span>They <span class="filled">felt</span> sorry for the boy…</div>
+    <div class="blank-sentence"><span class="blank-num">7</span>…so they clubbed together and <span class="filled">bought</span> the toy for him.</div>
+    <div class="blank-sentence"><span class="blank-num">8</span>Tracey <span class="filled">saw</span> the post…</div>
+
+    <div class="sub-title">Regular Verbs (her iki hikayede)</div>
+    <div class="example-box">
+      <span class="ex-item"><strong>Brotherly Love:</strong> started, pushed</span>
+      <span class="ex-item"><strong>Sorry Nate!:</strong> spotted, picked, noticed, clubbed, posted, returned, turned</span>
+    </div>
+  </div>
+
+  <!-- ===================== READING & LISTENING ===================== -->
+  <div class="section">
+    <div class="section-title">Reading &amp; Listening – A Spy Story (James Bond)</div>
+
+    <div class="sub-title">Alıştırma 4 – Sorular &amp; Cevaplar</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1</span>Name the people in the pictures. Where are they?</div>
+      <div class="answer">James Bond, Mary Goodnight, Scaramanga – they are in a hotel room.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2</span>How did Mary Goodnight get into the room?</div>
+      <div class="answer">Through the window.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">3</span>Why did she come to James Bond?</div>
+      <div class="answer">To give him an important message from headquarters – a top KGB man (Hendriks) is staying in the same hotel and is looking for him, and so is Hendriks' gunman, Scaramanga.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">4</span>Where did they go to talk?</div>
+      <div class="answer">The bathroom.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">5</span>What did Scaramanga say? What did he do?</div>
+      <div class="answer">'This is not your lucky day, Mr Bond. Come here both of you and put your hands up.' He turned on the lights and pointed his golden gun at James Bond.</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 5 – Resimler ile Metni Eşleştirin</div>
+    <div class="qa-block">
+      <div class="question">Picture 1</div>
+      <div class="answer">James Bond got back to his hotel room at midnight. The windows were closed and the air-conditioning was on. Bond switched it off and opened the windows.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 2</div>
+      <div class="answer">At 3.30 he was dreaming, not very peacefully, of three black-coated men with red eyes and angry white teeth. Suddenly he woke up. He listened. There was a noise. James Bond took his gun from under his pillow.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 3</div>
+      <div class="answer">James Bond got quietly out of bed, and crept slowly along the wall towards the window. Someone was breathing heavily behind the curtain.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 4</div>
+      <div class="answer">Bond pulled it back with one quick movement … golden hair shone in the moonlight.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 5</div>
+      <div class="answer">Bond put down his gun and tried to pull her through the open window.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 6</div>
+      <div class="answer">He quickly led her across the room to the bathroom. First he turned on the light then the shower. They sat down together on the side of the bath.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 7</div>
+      <div class="answer">Bond turned off the shower and opened the bathroom door. 'Now, come on!'</div>
+    </div>
+    <div class="qa-block">
+      <div class="question">Picture 8</div>
+      <div class="answer">Suddenly, a voice came from the darkness of the bedroom. Scaramanga walked to the door and turned on the lights. His golden gun was pointing straight at James Bond.</div>
+    </div>
+
+    <!-- True / False -->
+    <div class="sub-title">Alıştırma 6 – True (✓) / False (✗)</div>
+
+    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>1 James Bond felt happy to be back in his hotel room.</span></div>
+    <div class="tf-item false">
+      <span class="tf-badge">✗ FALSE</span>
+      <span>2 Bond was dreaming about Mary Goodnight.
+        <span class="tf-correction">He was dreaming of three black-coated men with red eyes and angry white teeth.</span>
+      </span>
+    </div>
+    <div class="tf-item false">
+      <span class="tf-badge">✗ FALSE</span>
+      <span>3 A man with a gun woke Bond at 3.30 a.m.
+        <span class="tf-correction">Mary Goodnight woke Bond at 3.30 a.m.</span>
+      </span>
+    </div>
+    <div class="tf-item false">
+      <span class="tf-badge">✗ FALSE</span>
+      <span>4 Bond was very pleased to see Mary Goodnight.
+        <span class="tf-correction">He was annoyed / irritated to see Mary Goodnight.</span>
+      </span>
+    </div>
+    <div class="tf-item false">
+      <span class="tf-badge">✗ FALSE</span>
+      <span>5 Bond's gun went off while he was pulling Mary through the window.
+        <span class="tf-correction">The window banged shut while he was pulling Mary through.</span>
+      </span>
+    </div>
+    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>6 They talked while the shower was going.</span></div>
+    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>7 Bond knew that Hendriks was looking for him.</span></div>
+    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>8 Bond was trying to help Mary get out of the hotel.</span></div>
+
+    <!-- Language work -->
+    <div class="sub-title">Alıştırma 7 – Language Work: Fiillerin Geçmiş Formu</div>
+    <div class="answer-grid">
+      <div class="grid-item"><span class="num">1 get →</span><span class="filled">got</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">2 breathe →</span><span class="filled">breathed</span></div>
+      <div class="grid-item"><span class="num">3 wake up →</span><span class="filled">woke up</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">4 take →</span><span class="filled">took</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">5 creep →</span><span class="filled">crept</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">6 shine →</span><span class="filled">shone</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">7 whisper →</span><span class="filled">whispered</span></div>
+      <div class="grid-item"><span class="num">8 put →</span><span class="filled">put</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">9 try →</span><span class="filled">tried</span></div>
+      <div class="grid-item"><span class="num">10 lead →</span><span class="filled">led</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">11 give →</span><span class="filled">gave</span> (düzensiz)</div>
+      <div class="grid-item"><span class="num">12 stand up →</span><span class="filled">stood up</span> (düzensiz)</div>
+    </div>
+  </div>
+
+  <!-- ===================== VOCABULARY ===================== -->
+  <div class="section">
+    <div class="section-title">Vocabulary – Adverbs (Zarflar)</div>
+
+    <div class="sub-title">Alıştırma 1 – Fiil + Zarf Eşleştirme</div>
+    <div class="example-box">
+      <span class="ex-item">dream → <strong>peacefully</strong></span>
+      <span class="ex-item">wake up → <strong>suddenly / slowly</strong></span>
+      <span class="ex-item">whisper → <strong>quietly / slowly / urgently</strong></span>
+      <span class="ex-item">creep → <strong>quietly / slowly</strong></span>
+      <span class="ex-item">get out of bed → <strong>quietly / suddenly / slowly</strong></span>
+      <span class="ex-item">breathe → <strong>slowly / heavily / quietly</strong></span>
+    </div>
+
+    <div class="sub-title">Alıştırma 2 – Sıfatlardan Zarf Türetme</div>
+    <div class="answer-grid">
+      <div class="grid-item">clear → <span class="filled">clearly</span></div>
+      <div class="grid-item">noisy → <span class="filled">noisily</span></div>
+      <div class="grid-item">careful → <span class="filled">carefully</span></div>
+      <div class="grid-item">easy → <span class="filled">easily</span></div>
+      <div class="grid-item">complete → <span class="filled">completely</span></div>
+      <div class="grid-item">good → <span class="filled">well</span> (düzensiz!)</div>
+      <div class="grid-item">bad → <span class="filled">badly</span></div>
+      <div class="grid-item">fluent → <span class="filled">fluently</span></div>
+    </div>
+
+    <div class="sub-title">Alıştırma 3 – Cümleleri Tamamlayın</div>
+    <div class="blank-sentence"><span class="blank-num">1</span>play a game <span class="filled">badly</span> and lose</div>
+    <div class="blank-sentence"><span class="blank-num">2</span>play a game <span class="filled">well</span> and win</div>
+    <div class="blank-sentence"><span class="blank-num">3</span>explain the rules <span class="filled">clearly</span></div>
+    <div class="blank-sentence"><span class="blank-num">4</span>eat something <span class="filled">noisily</span></div>
+    <div class="blank-sentence"><span class="blank-num">5</span>forget something <span class="filled">completely</span></div>
+    <div class="blank-sentence"><span class="blank-num">6</span>drive <span class="filled">carefully</span></div>
+    <div class="blank-sentence"><span class="blank-num">7</span>speak Spanish <span class="filled">fluently</span></div>
+    <div class="blank-sentence"><span class="blank-num">8</span>pass an exam <span class="filled">easily</span></div>
+
+    <div class="sub-title">Alıştırma 4 – Sıfat mı Zarf mı?</div>
+    <table class="match-table">
+      <thead><tr><th>Cümle</th><th>fast / hard / early →</th><th>Görev</th></tr></thead>
+      <tbody>
+        <tr><td>Is this a <strong>fast</strong> train to London?</td><td></td><td><span class="tag">adjective</span></td></tr>
+        <tr><td>Slow down! You drive too <strong>fast</strong>!</td><td></td><td><span class="tag">adverb</span></td></tr>
+        <tr><td>I work <strong>hard</strong> and play <strong>hard</strong>.</td><td></td><td><span class="tag">adverb</span></td></tr>
+        <tr><td>She's a very <strong>hard</strong> worker.</td><td></td><td><span class="tag">adjective</span></td></tr>
+        <tr><td>I got up <strong>early</strong> this morning.</td><td></td><td><span class="tag">adverb</span></td></tr>
+        <tr><td>We caught the <strong>early</strong> train.</td><td></td><td><span class="tag">adjective</span></td></tr>
+      </tbody>
+    </table>
+    <div class="example-box" style="margin-top:0.8rem;">
+      <span class="ex-item">📌 fast, hard, early → sıfat ve zarf olarak <strong>aynı yazılır</strong>, ancak cümledeki konumları farklıdır.</span>
+    </div>
+
+    <div class="sub-title">Alıştırma 5 – Word Order: Zarfları Doğru Yere Koyun</div>
+    <div class="writing-group">
+      <strong>1</strong> (peacefully, suddenly)
+      <div class="writing-variants">
+        <div class="variant">I was dreaming <span class="filled">peacefully</span>, when <span class="filled">suddenly</span> a loud noise woke me up.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>2</strong> (early, hard)
+      <div class="writing-variants">
+        <div class="variant">I got up <span class="filled">early</span> in the morning and worked <span class="filled">hard</span> all day.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>3</strong> (nearly, still, regularly)
+      <div class="writing-variants">
+        <div class="variant">My grandma is <span class="filled">nearly</span> 80 and she <span class="filled">still</span> goes swimming <span class="filled">regularly</span>.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>4</strong> (just, really, loudly)
+      <div class="writing-variants">
+        <div class="variant">I was <span class="filled">just</span> relaxing with a <span class="filled">really</span> good book when someone knocked <span class="filled">loudly</span> on the door.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>5</strong> (only, already, well)
+      <div class="writing-variants">
+        <div class="variant">My sister is <span class="filled">only</span> three, but she can <span class="filled">already</span> read and write <span class="filled">well</span>.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>6</strong> (continually, even)
+      <div class="writing-variants">
+        <div class="variant">Some of my friends are <span class="filled">continually</span> on Facebook. <span class="filled">Even</span> my dad's on Facebook.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>7</strong> (really, of course, passionately)
+      <div class="writing-variants">
+        <div class="variant">'Do you <span class="filled">really</span> love me?' 'Of <span class="filled">course</span> I do. I love you <span class="filled">passionately</span>.'</div>
+      </div>
+    </div>
+
+    <div class="sub-title">Alıştırma 6 – A Sad Poem: Başlık Hangisi?</div>
+    <div class="qa-block">
+      <div class="answer">A couple have split up – one of them has done something to feel guilty about. Best title = <strong>Love's a Cruel Game!</strong></div>
+    </div>
+  </div>
+
+  <!-- ===================== EVERYDAY ENGLISH ===================== -->
+  <div class="section">
+    <div class="section-title">Everyday English – Saying When</div>
+
+    <div class="sub-title">Alıştırma 2 – Tarihleri İki Şekilde Söyleyin</div>
+    <div class="answer-grid">
+      <div class="grid-item"><span class="num">1</span>the <strong>third of February</strong> / February the third</div>
+      <div class="grid-item"><span class="num">2</span>the <strong>sixth of July</strong> / July the sixth</div>
+      <div class="grid-item"><span class="num">3</span>the <strong>twelfth of June</strong> / June the twelfth</div>
+      <div class="grid-item"><span class="num">4</span>the <strong>twenty-fifth of December</strong> / December the twenty-fifth</div>
+      <div class="grid-item"><span class="num">5</span>the <strong>sixteenth of August</strong> / August the sixteenth</div>
+      <div class="grid-item"><span class="num">6</span>the <strong>first of May</strong> / May the first</div>
+      <div class="grid-item"><span class="num">7</span>the <strong>thirteenth of January</strong> / January the thirteenth</div>
+      <div class="grid-item"><span class="num">8</span>the <strong>thirty-first of October</strong> / October the thirty-first</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 3 – İngiliz ve Amerikan İngilizcesi Farkı</div>
+    <div class="qa-block">
+      <div class="answer">Americans don't use 'the' before the date and they say the month first. (e.g. July twentieth, 1969)</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 4 – Yılları Söyleyin</div>
+    <div class="answer-grid">
+      <div class="grid-item">2012 → <span class="filled">twenty twelve</span></div>
+      <div class="grid-item">2002 → <span class="filled">two thousand and two</span></div>
+      <div class="grid-item">2018 → <span class="filled">twenty eighteen</span></div>
+      <div class="grid-item">2025 → <span class="filled">twenty twenty-five</span></div>
+      <div class="grid-item">1980 → <span class="filled">nineteen eighty</span></div>
+      <div class="grid-item">1969 → <span class="filled">nineteen sixty-nine</span></div>
+      <div class="grid-item">1994 → <span class="filled">nineteen ninety-four</span></div>
+      <div class="grid-item">1848 → <span class="filled">eighteen forty-eight</span></div>
+    </div>
+
+    <div class="sub-title">Alıştırma 5 – Önemli Tarihler (Dinleme)</div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">1</span>When did man first land on the moon?</div>
+      <div class="answer">On July the twentieth, 1969.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">2</span>When's your wedding anniversary?</div>
+      <div class="answer">November the eighth.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">3</span>When did the Berlin Wall come down?</div>
+      <div class="answer">The ninth of November, 1989.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">4</span>When was your son born?</div>
+      <div class="answer">December the nineteenth, 2014.</div>
+    </div>
+    <div class="qa-block">
+      <div class="question"><span class="q-label">5</span>What's the expiry date on your credit card?</div>
+      <div class="answer">06 25</div>
+    </div>
+
+    <div class="sub-title">Alıştırma 6 – Time Expressions: in / at / on / (–)</div>
+    <div class="answer-grid">
+      <div class="grid-item"><span class="num">1</span><span class="filled">at</span> six o'clock</div>
+      <div class="grid-item"><span class="num">2</span><span class="filled">–</span> last night</div>
+      <div class="grid-item"><span class="num">3</span><span class="filled">in</span> the evening</div>
+      <div class="grid-item"><span class="num">4</span><span class="filled">in</span> the 1960s</div>
+      <div class="grid-item"><span class="num">5</span><span class="filled">on</span> Saturday</div>
+      <div class="grid-item"><span class="num">6</span><span class="filled">in</span> April</div>
+      <div class="grid-item"><span class="num">7</span><span class="filled">in</span> summer</div>
+      <div class="grid-item"><span class="num">8</span><span class="filled">–</span> this morning</div>
+      <div class="grid-item"><span class="num">9</span><span class="filled">in</span> 2015</div>
+      <div class="grid-item"><span class="num">10</span><span class="filled">at</span> the weekend</div>
+      <div class="grid-item"><span class="num">11</span><span class="filled">on</span> January 18</div>
+      <div class="grid-item"><span class="num">12</span><span class="filled">–</span> the other day</div>
+      <div class="grid-item"><span class="num">13</span><span class="filled">on</span> Monday morning</div>
+      <div class="grid-item"><span class="num">14</span><span class="filled">–</span> yesterday evening</div>
+      <div class="grid-item"><span class="num">15</span><span class="filled">–</span> two weeks ago</div>
+      <div class="grid-item"><span class="num">16</span><span class="filled">at</span> midnight</div>
+    </div>
+    <div class="example-box">
+      <span class="ex-item">📌 NB: Amerikan İngilizcesinde "at the weekend" yerine "on the weekend" kullanılır.</span>
+    </div>
+  </div>
+
+  <!-- ===================== WRITING ===================== -->
+  <div class="section">
+    <div class="section-title">Writing – Picture Stories / Narrative Writing</div>
+
+    <div class="sub-title">Alıştırma 1 – Sıfat ve Zarfları Doğru Yere Koyun</div>
+
+    <div class="writing-group">
+      <strong>1</strong> A dog jumped up at me. (large, suddenly)
+      <div class="writing-variants">
+        <div class="variant">A <span class="filled">large</span> dog <span class="filled">suddenly</span> jumped up at me. / <span class="filled">Suddenly</span>, a <span class="filled">large</span> dog jumped up at me.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>2</strong> Thank you for your invitation. I can't come. (kind, unfortunately)
+      <div class="writing-variants">
+        <div class="variant">Thank you for your <span class="filled">kind</span> invitation. <span class="filled">Unfortunately</span>, I can't come. / I can't come, <span class="filled">unfortunately</span>.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>3</strong> I got out of bed and went to make a cup of tea. (downstairs, nice)
+      <div class="writing-variants">
+        <div class="variant">I got out of bed and went <span class="filled">downstairs</span> to make a <span class="filled">nice</span> cup of tea.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>4</strong> We had a meal and we went to the theatre. (lovely, then)
+      <div class="writing-variants">
+        <div class="variant">We had a <span class="filled">lovely</span> meal and <span class="filled">then</span> we went to the theatre.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>5</strong> I was sitting at home when something happened. (last Thursday evening, very strange)
+      <div class="writing-variants">
+        <div class="variant">I was sitting at home <span class="filled">last Thursday evening</span> when something <span class="filled">very strange</span> happened.</div>
+        <div class="variant"><span class="filled">Last Thursday evening</span>, I was sitting at home when something <span class="filled">very strange</span> happened.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>6</strong> He's got three sisters, and I've got three older sisters. (older, too)
+      <div class="writing-variants">
+        <div class="variant">He's got three <span class="filled">older</span> sisters, and I've got three older sisters, <span class="filled">too</span>.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>7</strong> There's a programme on TV tonight that I want to see. (interesting, very much)
+      <div class="writing-variants">
+        <div class="variant">There's an <span class="filled">interesting</span> programme on TV tonight that I want to see <span class="filled">very much</span>. / …that I <span class="filled">very much</span> want to see.</div>
+      </div>
+    </div>
+    <div class="writing-group">
+      <strong>8</strong> I worked all week. (really hard, last)
+      <div class="writing-variants">
+        <div class="variant">I worked <span class="filled">really hard</span> all <span class="filled">last</span> week. / <span class="filled">Last</span> week, I worked <span class="filled">really hard</span>.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>
