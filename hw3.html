@@ -3,756 +3,913 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Headway Pre-intermediate – Unit 3: Good news, bad news!</title>
+<title>Headway Unit 3 – Good news, bad news!</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --orange: #E8520A;
-    --dark: #1A1208;
-    --cream: #FAF6EE;
-    --warm: #F2EAD8;
-    --muted: #7A6B55;
-    --answer-bg: #FFF3C4;
-    --answer-border: #E8A012;
-    --answer-text: #6B4000;
-    --section-line: #D4C4A8;
-    --true-bg: #E8F5E9;
-    --true-border: #66BB6A;
-    --true-text: #1B5E20;
-    --false-bg: #FFEBEE;
-    --false-border: #EF9A9A;
-    --false-text: #B71C1C;
+    --orange:#E8520A; --dark:#1A1208; --cream:#FAF6EE; --warm:#F2EAD8; --muted:#7A6B55;
+    --ans-bg:#FFF3C4; --ans-border:#E8A012; --ans-text:#6B4000;
+    --self-bg:#E3F2FD; --self-border:#90CAF9; --self-color:#1565C0;
+    --line:#D4C4A8;
+    --true-bg:#E8F5E9; --true-b:#66BB6A; --true-t:#1B5E20;
+    --false-bg:#FFEBEE; --false-b:#EF9A9A;
   }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--dark);font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.75}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* HEADER */
+  .hdr{background:var(--orange);color:#fff;padding:2.2rem 2.5rem 1.8rem;position:relative;overflow:hidden}
+  .hdr::after{content:'3';position:absolute;right:1.5rem;top:-1rem;font-family:'Playfair Display',serif;font-size:10rem;opacity:.13;line-height:1}
+  .hdr h1{font-family:'Playfair Display',serif;font-size:2rem}
+  .hdr .sub{font-size:.8rem;opacity:.85;margin-top:.3rem;letter-spacing:.05em;text-transform:uppercase}
 
-  body {
-    background: var(--cream);
-    color: var(--dark);
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 300;
-    line-height: 1.7;
-  }
+  /* LEGEND */
+  .legend{display:flex;gap:1.1rem;padding:.8rem 2.5rem;background:var(--dark);color:#fff;font-size:.74rem;align-items:center;flex-wrap:wrap}
+  .li{display:flex;align-items:center;gap:.4rem}
+  .lb{width:15px;height:11px;border-radius:3px}
+  .lb.a{background:var(--ans-bg);border:1.5px solid var(--ans-border)}
+  .lb.s{background:var(--self-bg);border:1.5px solid var(--self-border)}
+  .lb.t{background:var(--true-bg);border:1.5px solid var(--true-b)}
+  .lb.f{background:var(--false-bg);border:1.5px solid var(--false-b)}
 
-  .page-header {
-    background: var(--orange);
-    color: white;
-    padding: 2.5rem 3rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-header::after {
-    content: '3';
-    position: absolute;
-    right: 2rem;
-    top: -0.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 10rem;
-    opacity: 0.15;
-    line-height: 1;
-  }
-  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: -0.01em; }
-  .page-header .subtitle { font-size: 0.9rem; opacity: 0.85; margin-top: 0.3rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .wrap{max-width:900px;margin:0 auto;padding:1.8rem 1.6rem 4rem}
 
-  .legend {
-    display: flex; gap: 1.5rem; padding: 0.9rem 3rem;
-    background: var(--dark); color: white; font-size: 0.78rem;
-    align-items: center; letter-spacing: 0.03em; flex-wrap: wrap;
-  }
-  .legend-item { display: flex; align-items: center; gap: 0.5rem; }
-  .legend-box { width: 18px; height: 14px; border-radius: 3px; }
-  .legend-box.ans { background: var(--answer-bg); border: 1.5px solid var(--answer-border); }
-  .legend-box.tr { background: var(--true-bg); border: 1.5px solid var(--true-border); }
-  .legend-box.fa { background: var(--false-bg); border: 1.5px solid var(--false-border); }
+  /* SECTION */
+  .sec{margin-bottom:2.6rem}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--orange);border-bottom:2px solid var(--orange);padding-bottom:.35rem;margin-bottom:1.1rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+  .pg{font-family:'Source Serif 4',serif;font-size:.68rem;font-weight:600;background:var(--orange);color:#fff;padding:.1rem .5rem;border-radius:3px;letter-spacing:.04em;white-space:nowrap}
+  .sub{font-weight:600;font-size:.87rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;margin-top:1.2rem}
 
-  .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  /* QA */
+  .qa{background:#fff;border-left:3px solid var(--line);border-radius:0 6px 6px 0;padding:.8rem 1.1rem;margin-bottom:.65rem}
+  .q{font-size:.91rem;font-weight:600;margin-bottom:.28rem}
+  .ql{color:var(--muted);font-size:.74rem;font-weight:400;margin-right:.35rem;text-transform:uppercase;letter-spacing:.05em}
+  .ans{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.28rem .65rem;font-size:.89rem;color:var(--ans-text);font-style:italic;display:inline-block;margin-top:.08rem}
+  .ans.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
 
-  .section { margin-bottom: 3rem; }
+  /* BLANK */
+  .bl{font-size:.91rem;margin-bottom:.58rem;background:#fff;border-left:3px solid var(--line);border-radius:0 6px 6px 0;padding:.68rem 1rem}
+  .bn{font-weight:600;color:var(--muted);margin-right:.35rem;font-size:.78rem}
+  .fi{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.08rem .5rem;color:var(--ans-text);font-style:italic;font-weight:600;display:inline-block;min-width:52px;text-align:center;font-size:.87rem}
+  .fi.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
 
-  .section-title {
-    font-family: 'Playfair Display', serif; font-size: 1.35rem;
-    color: var(--orange); border-bottom: 2px solid var(--orange);
-    padding-bottom: 0.4rem; margin-bottom: 1.5rem;
-  }
+  /* GRID */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.42rem;margin-bottom:.7rem}
+  .gi{background:#fff;border-left:3px solid var(--line);border-radius:0 5px 5px 0;padding:.48rem .82rem;font-size:.87rem}
+  .gi.s{border-left-color:var(--self-border);background:var(--self-bg);color:var(--self-color)}
+  .gi .n{font-weight:600;color:var(--muted);margin-right:.35rem;font-size:.76rem}
 
-  .sub-title {
-    font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 0.95rem;
-    color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em;
-    margin-bottom: 1rem; margin-top: 1.5rem;
-  }
+  /* EXAMPLE BOX */
+  .ex{background:var(--warm);border-radius:6px;padding:.85rem 1.1rem;margin-bottom:.68rem;font-size:.86rem;line-height:1.78}
+  .ex.s{background:var(--self-bg);border:1px solid var(--self-border);color:var(--self-color)}
+  .exl{font-weight:600;color:var(--orange);text-transform:uppercase;font-size:.71rem;letter-spacing:.07em;margin-bottom:.32rem}
+  .ex.s .exl{color:var(--self-color)}
+  .ei{display:block;padding:.07rem 0}
 
-  .qa-block {
-    background: white; border-left: 3px solid var(--section-line);
-    border-radius: 0 6px 6px 0; padding: 1rem 1.3rem; margin-bottom: 0.8rem;
-  }
-  .question { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.35rem; }
-  .q-label { color: var(--muted); font-size: 0.78rem; font-weight: 400; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
-  .answer {
-    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
-    border-radius: 4px; padding: 0.35rem 0.75rem; font-size: 0.92rem;
-    color: var(--answer-text); font-style: italic; display: inline-block; margin-top: 0.1rem;
-  }
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.87rem;background:#fff;border-radius:6px;overflow:hidden;margin-bottom:.85rem}
+  .tbl thead{background:var(--dark);color:#fff}
+  .tbl th{padding:.52rem .85rem;text-align:left;font-size:.77rem;text-transform:uppercase;letter-spacing:.05em}
+  .tbl td{padding:.48rem .85rem;border-bottom:1px solid var(--warm);vertical-align:top}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl tr:nth-child(even) td{background:var(--cream)}
+  .tag{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.08rem .48rem;font-size:.8rem;color:var(--ans-text);font-weight:600;font-style:italic}
+  .tag.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
 
-  .blank-sentence {
-    font-size: 0.95rem; margin-bottom: 0.7rem; background: white;
-    border-left: 3px solid var(--section-line); border-radius: 0 6px 6px 0; padding: 0.8rem 1.2rem;
-  }
-  .blank-num { font-weight: 600; color: var(--muted); margin-right: 0.5rem; font-size: 0.82rem; }
-  .filled {
-    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
-    border-radius: 4px; padding: 0.1rem 0.6rem; color: var(--answer-text);
-    font-style: italic; font-weight: 600; display: inline-block;
-    min-width: 60px; text-align: center; font-size: 0.9rem;
-  }
+  /* TRUE/FALSE */
+  .tf{display:flex;gap:.6rem;align-items:flex-start;padding:.62rem .88rem;border-radius:6px;margin-bottom:.42rem;font-size:.88rem}
+  .tf.t{background:var(--true-bg);border-left:3px solid var(--true-b);color:var(--true-t)}
+  .tf.f{background:var(--false-bg);border-left:3px solid var(--false-b)}
+  .tfb{font-weight:700;font-size:.73rem;padding:.12rem .42rem;border-radius:3px;white-space:nowrap;margin-top:.14rem;flex-shrink:0}
+  .tf.t .tfb{background:var(--true-b);color:#fff}
+  .tf.f .tfb{background:var(--false-b);color:#fff}
+  .tfc{display:block;font-style:italic;font-size:.83rem;color:var(--ans-text);margin-top:.22rem}
 
-  .answer-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.5rem; margin-bottom: 0.8rem;
-  }
-  .grid-item {
-    background: white; border-left: 3px solid var(--section-line);
-    border-radius: 0 5px 5px 0; padding: 0.55rem 0.9rem; font-size: 0.9rem;
-  }
-  .grid-item .num { font-weight: 600; color: var(--muted); margin-right: 0.5rem; font-size: 0.8rem; }
+  /* VARIANT */
+  .vg{margin-bottom:1.1rem}
+  .vr{background:#fff;border-left:3px solid var(--ans-border);padding:.38rem .85rem;font-size:.87rem;border-radius:0 4px 4px 0;margin-top:.35rem}
+  .vr.s{border-left-color:var(--self-border);background:var(--self-bg);color:var(--self-color)}
 
-  .match-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: white; border-radius: 6px; overflow: hidden; }
-  .match-table thead { background: var(--dark); color: white; }
-  .match-table th { padding: 0.6rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
-  .match-table td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--warm); vertical-align: top; }
-  .match-table tr:last-child td { border-bottom: none; }
-  .match-table tr:nth-child(even) td { background: var(--cream); }
-  .tag {
-    background: var(--answer-bg); border: 1.5px solid var(--answer-border);
-    border-radius: 4px; padding: 0.1rem 0.55rem; font-size: 0.83rem;
-    color: var(--answer-text); font-weight: 600; font-style: italic;
-  }
+  /* TRANSLATE BUTTON */
+  .tr-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--orange);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:.72rem;font-weight:700;margin-left:.45rem;vertical-align:middle;flex-shrink:0;transition:background .2s}
+  .tr-btn:hover{background:#c43d00}
+  .tr-btn.s{background:var(--self-color)}
+  .tr-btn.s:hover{background:#0d47a1}
 
-  .example-box {
-    background: var(--warm); border-radius: 6px; padding: 1rem 1.3rem;
-    margin-bottom: 0.8rem; font-size: 0.88rem; line-height: 1.8;
-  }
-  .ex-label { font-weight: 600; color: var(--orange); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
-  .ex-item { display: block; padding: 0.1rem 0; }
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal{background:#fff;border-radius:10px;padding:1.8rem 2rem;max-width:520px;width:92%;max-height:80vh;overflow-y:auto;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.22)}
+  .modal h3{font-family:'Playfair Display',serif;color:var(--orange);font-size:1.1rem;margin-bottom:.9rem;padding-right:2rem}
+  .modal p{font-size:.93rem;line-height:1.75;color:var(--dark)}
+  .modal .close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);line-height:1}
+  .modal .close:hover{color:var(--dark)}
+  .modal .orig{font-size:.82rem;color:var(--muted);margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--line);font-style:italic}
 
-  /* True/False */
-  .tf-item {
-    display: flex; gap: 0.7rem; align-items: flex-start;
-    padding: 0.7rem 1rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.9rem;
-  }
-  .tf-item.true { background: var(--true-bg); border-left: 3px solid var(--true-border); color: var(--true-text); }
-  .tf-item.false { background: var(--false-bg); border-left: 3px solid var(--false-border); }
-  .tf-badge {
-    font-weight: 700; font-size: 0.78rem; padding: 0.15rem 0.5rem;
-    border-radius: 3px; white-space: nowrap; margin-top: 0.15rem;
-    letter-spacing: 0.03em; flex-shrink: 0;
-  }
-  .tf-item.true .tf-badge { background: var(--true-border); color: white; }
-  .tf-item.false .tf-badge { background: var(--false-border); color: white; }
-  .tf-correction { display: block; font-style: italic; font-size: 0.85rem; color: var(--answer-text); margin-top: 0.3rem; }
-
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.8rem; }
-  @media(max-width:600px){ .two-col{ grid-template-columns:1fr; } }
-
-  .verb-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: white; border-radius: 6px; overflow: hidden; margin-bottom: 1rem; }
-  .verb-table thead { background: var(--dark); color: white; }
-  .verb-table th { padding: 0.5rem 0.9rem; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
-  .verb-table td { padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--warm); }
-  .verb-table tr:last-child td { border-bottom: none; }
-  .verb-table tr:nth-child(even) td { background: var(--cream); }
-
-  .writing-group { margin-bottom: 1.2rem; }
-  .writing-variants { display: grid; grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.4rem; }
-  .variant { background: white; border-left: 3px solid var(--answer-border); padding: 0.4rem 0.9rem; font-size: 0.88rem; border-radius: 0 4px 4px 0; }
+  @media(max-width:580px){.grid{grid-template-columns:1fr 1fr}.tbl{font-size:.8rem}}
 </style>
 </head>
 <body>
 
-<div class="page-header">
-  <div class="subtitle">Headway Pre-intermediate 5th Edition · Student's Book</div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">×</button>
+    <h3 id="modal-title">Türkçe Çeviri</h3>
+    <p id="modal-body"></p>
+    <div class="orig" id="modal-orig"></div>
+  </div>
+</div>
+
+<div class="hdr">
+  <div class="sub">Headway Pre-intermediate 5th Edition · Student's Book</div>
   <h1>Unit 3: Good news, bad news!</h1>
-  <div class="subtitle" style="margin-top:0.6rem;">Soru &amp; Cevap Özeti</div>
+  <div class="sub" style="margin-top:.5rem">Tam Soru &amp; Cevap Sayfası · Sayfa Referanslı</div>
 </div>
 
 <div class="legend">
   <span>Gösterim:</span>
-  <span class="legend-item"><span class="legend-box ans"></span> Doğru cevap / dolu boşluk</span>
-  <span class="legend-item"><span class="legend-box tr"></span> True (doğru)</span>
-  <span class="legend-item"><span class="legend-box fa"></span> False (yanlış) + düzeltme</span>
+  <span class="li"><span class="lb a"></span>Cevap anahtarından</span>
+  <span class="li"><span class="lb s"></span>Kendim cevapladım (mavi)</span>
+  <span class="li"><span class="lb t"></span>True ✓</span>
+  <span class="li"><span class="lb f"></span>False ✗</span>
+  <span class="li"><span style="background:var(--orange);color:#fff;padding:.1rem .45rem;border-radius:50%;font-size:.72rem;font-weight:700">?</span>Türkçe çeviri</span>
 </div>
 
-<div class="container">
+<div class="wrap">
 
-  <!-- ===================== UNIT OPENER ===================== -->
-  <div class="section">
-    <div class="section-title">Unit Opener – Fotoğraf Soruları</div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">S.1</span>Who are these people?</div>
-      <div class="answer">Photographers and journalists.</div>
+<!-- ══════════════════════════════════════════════
+     UNIT OPENER (s.29)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.29</span> Unit Opener – Fotoğraf Soruları</div>
+
+  <div class="qa">
+    <div class="q"><span class="ql">S.1</span>Who are these people?
+      <button class="tr-btn" onclick="tr('Soru 1','Bu insanlar kim?','Who are these people?')">?</button>
     </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">S.2</span>Why might they be taking photographs?</div>
-      <div class="answer">A celebrity could be arriving somewhere, a press conference, a politician could be speaking.</div>
-    </div>
+    <div class="ans">Photographers and journalists. (Fotoğrafçılar ve gazeteciler.)</div>
   </div>
 
-  <!-- ===================== GRAMMAR ===================== -->
-  <div class="section">
-    <div class="section-title">Grammar – Narrative Tenses (Past Simple &amp; Past Continuous)</div>
-
-    <div class="sub-title">Starter – Fiil Listesi: Regular vs Irregular</div>
-    <table class="verb-table">
-      <thead><tr><th>Regular (düzenli)</th><th>Past Simple</th><th>Irregular (düzensiz)</th><th>Past Simple</th></tr></thead>
-      <tbody>
-        <tr><td>clean</td><td><span class="filled">cleaned</span></td><td>become</td><td><span class="filled">became</span></td></tr>
-        <tr><td>die</td><td><span class="filled">died</span></td><td>feed</td><td><span class="filled">fed</span></td></tr>
-        <tr><td>hope</td><td><span class="filled">hoped</span></td><td>feel</td><td><span class="filled">felt</span></td></tr>
-        <tr><td>pass</td><td><span class="filled">passed</span></td><td>find</td><td><span class="filled">found</span></td></tr>
-        <tr><td>stay</td><td><span class="filled">stayed</span></td><td>give</td><td><span class="filled">gave</span></td></tr>
-        <tr><td>try</td><td><span class="filled">tried</span></td><td>go</td><td><span class="filled">went</span></td></tr>
-        <tr><td>want</td><td><span class="filled">wanted</span></td><td>grow</td><td><span class="filled">grew</span></td></tr>
-        <tr><td></td><td></td><td>hear</td><td><span class="filled">heard</span></td></tr>
-        <tr><td></td><td></td><td>take</td><td><span class="filled">took</span></td></tr>
-      </tbody>
-    </table>
-
-    <!-- A good news story -->
-    <div class="sub-title">A Good News Story – Alıştırma 1</div>
-    <div class="qa-block">
-      <div class="question">Why is this a good news story?</div>
-      <div class="answer">Because a man helped to save a penguin and the penguin travels back to see him.</div>
+  <div class="qa">
+    <div class="q"><span class="ql">S.2</span>Think of as many reasons as possible why they are taking photographs.
+      <button class="tr-btn" onclick="tr('Soru 2','Neden fotoğraf çekiyor olabilirler? Olabildiğince çok neden düşünün.','Think of as many reasons as possible why they are taking photographs.')">?</button>
     </div>
-
-    <div class="sub-title">Alıştırma 2 – Kim/Ne/Nerede?</div>
-    <div class="qa-block">
-      <div class="question">Who is João Pereira de Souza? Who is Dindim?</div>
-      <div class="answer">João is a retired bricklayer who still works part-time as a fisherman. Dindim is a penguin.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Where did João find Dindim?</div>
-      <div class="answer">On the beach near his home.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Where does Dindim swim to every year?</div>
-      <div class="answer">He swims to visit João every year (2,500 miles to Argentina or Chile, then back).</div>
-    </div>
-
-    <div class="sub-title">Alıştırma 3 – Metni Tamamlayın (Past Simple fiilleri)</div>
-    <div class="blank-sentence"><span class="blank-num">2</span>João <span class="filled">felt</span> sorry for the sick, little bird…</div>
-    <div class="blank-sentence"><span class="blank-num">3</span>…so he <span class="filled">took</span> him back to his home.</div>
-    <div class="blank-sentence"><span class="blank-num">4</span>He cleaned him and <span class="filled">fed</span> him sardines…</div>
-    <div class="blank-sentence"><span class="blank-num">5</span>…and he <span class="filled">gave</span> him the name Dindim.</div>
-    <div class="blank-sentence"><span class="blank-num">6</span>The penguin soon <span class="filled">became</span> strong and healthy again.</div>
-    <div class="blank-sentence"><span class="blank-num">7</span>After a week or two, João <span class="filled">went</span> down to the seashore…</div>
-    <div class="blank-sentence"><span class="blank-num">8</span>…and <span class="filled">tried</span> to put Dindim back into the water.</div>
-    <div class="blank-sentence"><span class="blank-num">9</span>Beautiful new feathers <span class="filled">grew</span> on his back.</div>
-    <div class="blank-sentence"><span class="blank-num">10</span>…when suddenly he <span class="filled">heard</span> a familiar 'honking' sound – Dindim was back.</div>
-
-    <div class="sub-title">Alıştırma 4 – Bold cümlelerin zamanı nedir?</div>
-    <div class="qa-block">
-      <div class="answer">The tense in bold is <strong>Past Continuous</strong>.</div>
-    </div>
-    <div class="example-box">
-      <div class="ex-label">Past Continuous örnekleri (metinden)</div>
-      <span class="ex-item">…when he <strong>was fishing</strong></span>
-      <span class="ex-item">the poor bird <strong>was dying</strong></span>
-      <span class="ex-item">because he <strong>was enjoying</strong> the company of his new friend</span>
-      <span class="ex-item">João <strong>was walking</strong> sadly home from the beach</span>
-    </div>
-
-    <div class="sub-title">Alıştırma 5 – Soru &amp; Cevap</div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">1</span>What did João find?</div>
-      <div class="answer">A tiny, sick penguin.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">2</span>What was he doing when he found it?</div>
-      <div class="answer">He was fishing.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">3</span>Where did he take the penguin?</div>
-      <div class="answer">He took it home.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">4</span>What did he feed it?</div>
-      <div class="answer">Sardines.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">5</span>How long did Dindim stay?</div>
-      <div class="answer">Eight months.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">6</span>Why was João happy?</div>
-      <div class="answer">Because he was enjoying the penguin's company.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">7</span>Which month did Dindim disappear?</div>
-      <div class="answer">February.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">8</span>Which month did he return?</div>
-      <div class="answer">June.</div>
-    </div>
-
-    <!-- Grammar Spot -->
-    <div class="sub-title">Grammar Spot – Alıştırma 2</div>
-    <div class="blank-sentence">
-      Where <span class="filled">did</span> he take the penguin? &nbsp;&nbsp; The penguin <span class="filled">didn't</span> want to go.
-    </div>
-
-    <!-- Spelling -->
-    <div class="sub-title">Alıştırma 6 – Spelling: Regular Past Simple</div>
-    <table class="verb-table">
-      <thead><tr><th>Fiil</th><th>Past Simple</th><th>Fiil</th><th>Past Simple</th></tr></thead>
-      <tbody>
-        <tr><td><strong>a)</strong> work</td><td><span class="filled">worked</span></td><td><strong>c)</strong> arrive</td><td><span class="filled">arrived</span></td></tr>
-        <tr><td>stay</td><td><span class="filled">stayed</span></td><td>live</td><td><span class="filled">lived</span></td></tr>
-        <tr><td>want</td><td><span class="filled">wanted</span></td><td>hope</td><td><span class="filled">hoped</span></td></tr>
-        <tr><td><strong>b)</strong> try</td><td><span class="filled">tried</span></td><td><strong>d)</strong> stop</td><td><span class="filled">stopped</span></td></tr>
-        <tr><td>study</td><td><span class="filled">studied</span></td><td>plan</td><td><span class="filled">planned</span></td></tr>
-      </tbody>
-    </table>
-    <div class="example-box">
-      <div class="ex-label">Kural Soruları</div>
-      <span class="ex-item"><strong>1</strong> Regular past tense nasıl oluşturulur? → by adding <strong>-ed</strong></span>
-      <span class="ex-item"><strong>2</strong> Ünsüz + -y ile biten fiiller? → drop the y and add <strong>-ied</strong></span>
-      <span class="ex-item"><strong>3</strong> Son sessiz harf ikiye ne zaman katlanır? → when there is a short vowel sound followed by a single consonant (e.g. stop → stopped)</span>
-    </div>
-
-    <!-- Pronunciation -->
-    <div class="sub-title">Alıştırma 7 – Telaffuz: -ed Sonu /t/ /d/ /ɪd/</div>
-    <div class="example-box">
-      <div class="ex-label">/t/</div>
-      <span class="ex-item">looked · worked · passed · hoped</span>
-    </div>
-    <div class="example-box">
-      <div class="ex-label">/d/</div>
-      <span class="ex-item">stayed · cleaned · played · phoned · answered · enjoyed</span>
-    </div>
-    <div class="example-box">
-      <div class="ex-label">/ɪd/</div>
-      <span class="ex-item">visited · wanted</span>
-    </div>
+    <div class="ans">A celebrity could be arriving somewhere · a press conference · a politician could be speaking.</div>
   </div>
 
-  <!-- ===================== PRACTICE ===================== -->
-  <div class="section">
-    <div class="section-title">Practice</div>
+  <div class="qa">
+    <div class="q"><span class="ql">S.3</span>Which of the reasons are 'good news' stories? Which are 'bad news'?
+      <button class="tr-btn" onclick="tr('Soru 3','Bu nedenlerden hangisi \"iyi haber\" hangisi \"kötü haber\" hikâyesi?','Which of the reasons are good news stories? Which are bad news?')">?</button>
+    </div>
+    <div class="ans s">Öğrencilerin kendi cevapları beklenir. Örnek iyi haber: bir ünlünün geliş töreni. Kötü haber: kaza, siyasi kriz.</div>
+  </div>
+</div>
 
-    <div class="sub-title">Alıştırma 1 – Discussing Grammar: Fark nedir?</div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">1a</span>When we arrived, she <strong>was making</strong> coffee.</div>
-      <div class="answer">She was in the process of making coffee when they arrived. (devam eden eylem)</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">1b</span>When we arrived, she <strong>made</strong> coffee.</div>
-      <div class="answer">They arrived first, and then she made coffee. (tamamlanan eylem)</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">2a</span>What <strong>were you doing</strong> when you saw the accident?</div>
-      <div class="answer">Asks what activity you were doing at the time the accident happened.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">2b</span>What <strong>did you do</strong> when you saw the accident?</div>
-      <div class="answer">Asks what action you took after the accident happened.</div>
-    </div>
+<!-- ══════════════════════════════════════════════
+     GRAMMAR STARTER (s.30)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.30</span> Grammar – Starter: Past Simple (Regular &amp; Irregular)</div>
 
-    <div class="sub-title">Alıştırma 2 – Doğru Fiil Formunu Seçin</div>
-    <div class="blank-sentence"><span class="blank-num">1</span>I <span class="filled">saw</span> a good film yesterday.</div>
-    <div class="blank-sentence"><span class="blank-num">2</span>While I <span class="filled">was shopping</span> this morning, I <span class="filled">lost</span> my wallet.</div>
-    <div class="blank-sentence"><span class="blank-num">3</span>The police <span class="filled">stopped</span> me on the motorway because I <span class="filled">was driving</span> too fast.</div>
-    <div class="blank-sentence"><span class="blank-num">4</span>'How <span class="filled">did you break</span> your leg?' 'I <span class="filled">was skiing</span> and I <span class="filled">hit</span> a tree.'</div>
-    <div class="blank-sentence"><span class="blank-num">5</span>I <span class="filled">cut</span> my finger while I <span class="filled">was cooking</span> dinner.</div>
-    <div class="blank-sentence"><span class="blank-num">6</span><span class="filled">Did you have</span> a good holiday?</div>
+  <div class="sub">Alıştırma 1 – Fiilleri Regular / Irregular olarak sınıflandırın</div>
+  <table class="tbl">
+    <thead><tr><th>Regular (Düzenli)</th><th>Past Simple</th><th>Irregular (Düzensiz)</th><th>Past Simple</th></tr></thead>
+    <tbody>
+      <tr><td>clean</td><td><span class="tag">cleaned</span></td><td>become</td><td><span class="tag">became</span></td></tr>
+      <tr><td>die</td><td><span class="tag">died</span></td><td>feed</td><td><span class="tag">fed</span></td></tr>
+      <tr><td>hope</td><td><span class="tag">hoped</span></td><td>feel</td><td><span class="tag">felt</span></td></tr>
+      <tr><td>pass</td><td><span class="tag">passed</span></td><td>find</td><td><span class="tag">found</span></td></tr>
+      <tr><td>stay</td><td><span class="tag">stayed</span></td><td>give</td><td><span class="tag">gave</span></td></tr>
+      <tr><td>try</td><td><span class="tag">tried</span></td><td>go</td><td><span class="tag">went</span></td></tr>
+      <tr><td>want</td><td><span class="tag">wanted</span></td><td>grow</td><td><span class="tag">grew</span></td></tr>
+      <tr><td></td><td></td><td>hear</td><td><span class="tag">heard</span></td></tr>
+      <tr><td></td><td></td><td>take</td><td><span class="tag">took</span></td></tr>
+    </tbody>
+  </table>
+</div>
 
-    <div class="sub-title">Alıştırma 5 – News Headlines (In Your Own Words)</div>
-    <div class="qa-block">
-      <div class="question">Rat's tail found in sandwich</div>
-      <div class="answer">A man bought a sandwich from a food and drink stall on the High Street. He took a bite and threw it in the rubbish bin.</div>
+<!-- ══════════════════════════════════════════════
+     A GOOD NEWS STORY (s.30)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.30</span> Grammar – "A Good News Story" (Penguin)</div>
+
+  <div class="sub">Alıştırma 1 – Neden iyi haber?</div>
+  <div class="qa">
+    <div class="q">Look at the photos, title, and map. Why is this a good news story?
+      <button class="tr-btn" onclick="tr('Alıştırma 1','Fotoğraflara, başlığa ve haritaya bakın. Bu neden iyi bir haber hikâyesi?','Look at the photos, title, and map. Why is this a good news story?')">?</button>
     </div>
-    <div class="qa-block">
-      <div class="question">Woman injured while texting</div>
-      <div class="answer">She was walking in the town square texting and chatting to her friend, and she fell head first into a fountain. Someone was taking a video and put it on YouTube.</div>
-    </div>
-
-    <div class="sub-title">Alıştırma 7 – Good news or bad news? (S.7)</div>
-    <div class="qa-block">
-      <div class="answer">Good news (both stories).</div>
-    </div>
-
-    <!-- Story A & B verb fill -->
-    <div class="sub-title">Alıştırma 9 – Boşlukları Doldurun: Brotherly Love (Student A)</div>
-    <div class="blank-sentence"><span class="blank-num">2</span>…they <span class="filled">went</span> to London to compete…</div>
-    <div class="blank-sentence"><span class="blank-num">3</span>He <span class="filled">thought</span> to himself, 'This is perfect…'</div>
-    <div class="blank-sentence"><span class="blank-num">4</span>…Alistair <span class="filled">saw</span> that Jonny was in trouble.</div>
-    <div class="blank-sentence"><span class="blank-num">5</span>Alistair <span class="filled">ran</span> up to his brother.</div>
-    <div class="blank-sentence"><span class="blank-num">6</span>He <span class="filled">put</span> his arm round him…</div>
-    <div class="blank-sentence"><span class="blank-num">7</span>…Jonny <span class="filled">fell</span> to the ground.</div>
-    <div class="blank-sentence"><span class="blank-num">8</span>Their parents <span class="filled">felt</span> very proud of both their sons.</div>
-
-    <div class="sub-title">Alıştırma 9 – Boşlukları Doldurun: Sorry Nate! (Student B)</div>
-    <div class="blank-sentence"><span class="blank-num">2</span>Nate immediately <span class="filled">fell</span> in love with it…</div>
-    <div class="blank-sentence"><span class="blank-num">3</span>…his mum <span class="filled">told</span> her sad little boy…</div>
-    <div class="blank-sentence"><span class="blank-num">4</span>…he <span class="filled">found</span> a cardboard box…</div>
-    <div class="blank-sentence"><span class="blank-num">5</span>…and <span class="filled">wrote</span> a message on it…</div>
-    <div class="blank-sentence"><span class="blank-num">6</span>They <span class="filled">felt</span> sorry for the boy…</div>
-    <div class="blank-sentence"><span class="blank-num">7</span>…so they clubbed together and <span class="filled">bought</span> the toy for him.</div>
-    <div class="blank-sentence"><span class="blank-num">8</span>Tracey <span class="filled">saw</span> the post…</div>
-
-    <div class="sub-title">Regular Verbs (her iki hikayede)</div>
-    <div class="example-box">
-      <span class="ex-item"><strong>Brotherly Love:</strong> started, pushed</span>
-      <span class="ex-item"><strong>Sorry Nate!:</strong> spotted, picked, noticed, clubbed, posted, returned, turned</span>
-    </div>
+    <div class="ans">Because a man helped to save a penguin and the penguin travels back to see him every year.</div>
   </div>
 
-  <!-- ===================== READING & LISTENING ===================== -->
-  <div class="section">
-    <div class="section-title">Reading &amp; Listening – A Spy Story (James Bond)</div>
-
-    <div class="sub-title">Alıştırma 4 – Sorular &amp; Cevaplar</div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">1</span>Name the people in the pictures. Where are they?</div>
-      <div class="answer">James Bond, Mary Goodnight, Scaramanga – they are in a hotel room.</div>
+  <div class="sub">Alıştırma 2 – Hızlı okuma soruları</div>
+  <div class="qa">
+    <div class="q">Who is João Pereira de Souza? Who is Dindim?
+      <button class="tr-btn" onclick="tr('Soru','João Pereira de Souza kim? Dindim kim?','Who is João Pereira de Souza? Who is Dindim?')">?</button>
     </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">2</span>How did Mary Goodnight get into the room?</div>
-      <div class="answer">Through the window.</div>
+    <div class="ans">João is a retired bricklayer who still works part-time as a fisherman. Dindim is a penguin.</div>
+  </div>
+  <div class="qa">
+    <div class="q">Where did João find Dindim?
+      <button class="tr-btn" onclick="tr('Soru','João, Dindim\'i nerede buldu?','Where did João find Dindim?')">?</button>
     </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">3</span>Why did she come to James Bond?</div>
-      <div class="answer">To give him an important message from headquarters – a top KGB man (Hendriks) is staying in the same hotel and is looking for him, and so is Hendriks' gunman, Scaramanga.</div>
+    <div class="ans">On the beach near his home.</div>
+  </div>
+  <div class="qa">
+    <div class="q">Where does Dindim swim to every year?
+      <button class="tr-btn" onclick="tr('Soru','Dindim her yıl nereye yüzer?','Where does Dindim swim to every year?')">?</button>
     </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">4</span>Where did they go to talk?</div>
-      <div class="answer">The bathroom.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">5</span>What did Scaramanga say? What did he do?</div>
-      <div class="answer">'This is not your lucky day, Mr Bond. Come here both of you and put your hands up.' He turned on the lights and pointed his golden gun at James Bond.</div>
-    </div>
-
-    <div class="sub-title">Alıştırma 5 – Resimler ile Metni Eşleştirin</div>
-    <div class="qa-block">
-      <div class="question">Picture 1</div>
-      <div class="answer">James Bond got back to his hotel room at midnight. The windows were closed and the air-conditioning was on. Bond switched it off and opened the windows.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 2</div>
-      <div class="answer">At 3.30 he was dreaming, not very peacefully, of three black-coated men with red eyes and angry white teeth. Suddenly he woke up. He listened. There was a noise. James Bond took his gun from under his pillow.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 3</div>
-      <div class="answer">James Bond got quietly out of bed, and crept slowly along the wall towards the window. Someone was breathing heavily behind the curtain.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 4</div>
-      <div class="answer">Bond pulled it back with one quick movement … golden hair shone in the moonlight.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 5</div>
-      <div class="answer">Bond put down his gun and tried to pull her through the open window.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 6</div>
-      <div class="answer">He quickly led her across the room to the bathroom. First he turned on the light then the shower. They sat down together on the side of the bath.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 7</div>
-      <div class="answer">Bond turned off the shower and opened the bathroom door. 'Now, come on!'</div>
-    </div>
-    <div class="qa-block">
-      <div class="question">Picture 8</div>
-      <div class="answer">Suddenly, a voice came from the darkness of the bedroom. Scaramanga walked to the door and turned on the lights. His golden gun was pointing straight at James Bond.</div>
-    </div>
-
-    <!-- True / False -->
-    <div class="sub-title">Alıştırma 6 – True (✓) / False (✗)</div>
-
-    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>1 James Bond felt happy to be back in his hotel room.</span></div>
-    <div class="tf-item false">
-      <span class="tf-badge">✗ FALSE</span>
-      <span>2 Bond was dreaming about Mary Goodnight.
-        <span class="tf-correction">He was dreaming of three black-coated men with red eyes and angry white teeth.</span>
-      </span>
-    </div>
-    <div class="tf-item false">
-      <span class="tf-badge">✗ FALSE</span>
-      <span>3 A man with a gun woke Bond at 3.30 a.m.
-        <span class="tf-correction">Mary Goodnight woke Bond at 3.30 a.m.</span>
-      </span>
-    </div>
-    <div class="tf-item false">
-      <span class="tf-badge">✗ FALSE</span>
-      <span>4 Bond was very pleased to see Mary Goodnight.
-        <span class="tf-correction">He was annoyed / irritated to see Mary Goodnight.</span>
-      </span>
-    </div>
-    <div class="tf-item false">
-      <span class="tf-badge">✗ FALSE</span>
-      <span>5 Bond's gun went off while he was pulling Mary through the window.
-        <span class="tf-correction">The window banged shut while he was pulling Mary through.</span>
-      </span>
-    </div>
-    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>6 They talked while the shower was going.</span></div>
-    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>7 Bond knew that Hendriks was looking for him.</span></div>
-    <div class="tf-item true"><span class="tf-badge">✓ TRUE</span><span>8 Bond was trying to help Mary get out of the hotel.</span></div>
-
-    <!-- Language work -->
-    <div class="sub-title">Alıştırma 7 – Language Work: Fiillerin Geçmiş Formu</div>
-    <div class="answer-grid">
-      <div class="grid-item"><span class="num">1 get →</span><span class="filled">got</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">2 breathe →</span><span class="filled">breathed</span></div>
-      <div class="grid-item"><span class="num">3 wake up →</span><span class="filled">woke up</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">4 take →</span><span class="filled">took</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">5 creep →</span><span class="filled">crept</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">6 shine →</span><span class="filled">shone</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">7 whisper →</span><span class="filled">whispered</span></div>
-      <div class="grid-item"><span class="num">8 put →</span><span class="filled">put</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">9 try →</span><span class="filled">tried</span></div>
-      <div class="grid-item"><span class="num">10 lead →</span><span class="filled">led</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">11 give →</span><span class="filled">gave</span> (düzensiz)</div>
-      <div class="grid-item"><span class="num">12 stand up →</span><span class="filled">stood up</span> (düzensiz)</div>
-    </div>
+    <div class="ans">He swims 2,500 miles to the coast of Argentina or Chile and then 2,500 miles back to João. (5,000 miles total)</div>
   </div>
 
-  <!-- ===================== VOCABULARY ===================== -->
-  <div class="section">
-    <div class="section-title">Vocabulary – Adverbs (Zarflar)</div>
+  <div class="sub">Alıştırma 3 – Metni Tamamlayın (Past Simple boşluklar)</div>
 
-    <div class="sub-title">Alıştırma 1 – Fiil + Zarf Eşleştirme</div>
-    <div class="example-box">
-      <span class="ex-item">dream → <strong>peacefully</strong></span>
-      <span class="ex-item">wake up → <strong>suddenly / slowly</strong></span>
-      <span class="ex-item">whisper → <strong>quietly / slowly / urgently</strong></span>
-      <span class="ex-item">creep → <strong>quietly / slowly</strong></span>
-      <span class="ex-item">get out of bed → <strong>quietly / suddenly / slowly</strong></span>
-      <span class="ex-item">breathe → <strong>slowly / heavily / quietly</strong></span>
-    </div>
-
-    <div class="sub-title">Alıştırma 2 – Sıfatlardan Zarf Türetme</div>
-    <div class="answer-grid">
-      <div class="grid-item">clear → <span class="filled">clearly</span></div>
-      <div class="grid-item">noisy → <span class="filled">noisily</span></div>
-      <div class="grid-item">careful → <span class="filled">carefully</span></div>
-      <div class="grid-item">easy → <span class="filled">easily</span></div>
-      <div class="grid-item">complete → <span class="filled">completely</span></div>
-      <div class="grid-item">good → <span class="filled">well</span> (düzensiz!)</div>
-      <div class="grid-item">bad → <span class="filled">badly</span></div>
-      <div class="grid-item">fluent → <span class="filled">fluently</span></div>
-    </div>
-
-    <div class="sub-title">Alıştırma 3 – Cümleleri Tamamlayın</div>
-    <div class="blank-sentence"><span class="blank-num">1</span>play a game <span class="filled">badly</span> and lose</div>
-    <div class="blank-sentence"><span class="blank-num">2</span>play a game <span class="filled">well</span> and win</div>
-    <div class="blank-sentence"><span class="blank-num">3</span>explain the rules <span class="filled">clearly</span></div>
-    <div class="blank-sentence"><span class="blank-num">4</span>eat something <span class="filled">noisily</span></div>
-    <div class="blank-sentence"><span class="blank-num">5</span>forget something <span class="filled">completely</span></div>
-    <div class="blank-sentence"><span class="blank-num">6</span>drive <span class="filled">carefully</span></div>
-    <div class="blank-sentence"><span class="blank-num">7</span>speak Spanish <span class="filled">fluently</span></div>
-    <div class="blank-sentence"><span class="blank-num">8</span>pass an exam <span class="filled">easily</span></div>
-
-    <div class="sub-title">Alıştırma 4 – Sıfat mı Zarf mı?</div>
-    <table class="match-table">
-      <thead><tr><th>Cümle</th><th>fast / hard / early →</th><th>Görev</th></tr></thead>
-      <tbody>
-        <tr><td>Is this a <strong>fast</strong> train to London?</td><td></td><td><span class="tag">adjective</span></td></tr>
-        <tr><td>Slow down! You drive too <strong>fast</strong>!</td><td></td><td><span class="tag">adverb</span></td></tr>
-        <tr><td>I work <strong>hard</strong> and play <strong>hard</strong>.</td><td></td><td><span class="tag">adverb</span></td></tr>
-        <tr><td>She's a very <strong>hard</strong> worker.</td><td></td><td><span class="tag">adjective</span></td></tr>
-        <tr><td>I got up <strong>early</strong> this morning.</td><td></td><td><span class="tag">adverb</span></td></tr>
-        <tr><td>We caught the <strong>early</strong> train.</td><td></td><td><span class="tag">adjective</span></td></tr>
-      </tbody>
-    </table>
-    <div class="example-box" style="margin-top:0.8rem;">
-      <span class="ex-item">📌 fast, hard, early → sıfat ve zarf olarak <strong>aynı yazılır</strong>, ancak cümledeki konumları farklıdır.</span>
-    </div>
-
-    <div class="sub-title">Alıştırma 5 – Word Order: Zarfları Doğru Yere Koyun</div>
-    <div class="writing-group">
-      <strong>1</strong> (peacefully, suddenly)
-      <div class="writing-variants">
-        <div class="variant">I was dreaming <span class="filled">peacefully</span>, when <span class="filled">suddenly</span> a loud noise woke me up.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>2</strong> (early, hard)
-      <div class="writing-variants">
-        <div class="variant">I got up <span class="filled">early</span> in the morning and worked <span class="filled">hard</span> all day.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>3</strong> (nearly, still, regularly)
-      <div class="writing-variants">
-        <div class="variant">My grandma is <span class="filled">nearly</span> 80 and she <span class="filled">still</span> goes swimming <span class="filled">regularly</span>.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>4</strong> (just, really, loudly)
-      <div class="writing-variants">
-        <div class="variant">I was <span class="filled">just</span> relaxing with a <span class="filled">really</span> good book when someone knocked <span class="filled">loudly</span> on the door.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>5</strong> (only, already, well)
-      <div class="writing-variants">
-        <div class="variant">My sister is <span class="filled">only</span> three, but she can <span class="filled">already</span> read and write <span class="filled">well</span>.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>6</strong> (continually, even)
-      <div class="writing-variants">
-        <div class="variant">Some of my friends are <span class="filled">continually</span> on Facebook. <span class="filled">Even</span> my dad's on Facebook.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>7</strong> (really, of course, passionately)
-      <div class="writing-variants">
-        <div class="variant">'Do you <span class="filled">really</span> love me?' 'Of <span class="filled">course</span> I do. I love you <span class="filled">passionately</span>.'</div>
-      </div>
-    </div>
-
-    <div class="sub-title">Alıştırma 6 – A Sad Poem: Başlık Hangisi?</div>
-    <div class="qa-block">
-      <div class="answer">A couple have split up – one of them has done something to feel guilty about. Best title = <strong>Love's a Cruel Game!</strong></div>
-    </div>
+  <div class="ex">
+    <div class="exl">Makale metni (çeviri için ? butonlarına tıklayın)</div>
+    <span class="ei">
+      João Pereira de Souza, 71, lives on an island near Rio de Janeiro, Brazil.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','João Pereira de Souza, 71 yaşında, Brezilya\'nın Rio de Janeiro şehri yakınlarındaki bir adada yaşamaktadır.','João Pereira de Souza, 71, lives on an island near Rio de Janeiro, Brazil.')">?</button>
+    </span>
+    <span class="ei">
+      He is a retired bricklayer but still works as a part-time fisherman.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Emekli bir duvarcıdır; ancak hâlâ yarı zamanlı balıkçı olarak çalışmaktadır.','He is a retired bricklayer but still works as a part-time fisherman.')">?</button>
+    </span>
+    <span class="ei">
+      One day, about five years ago, he <strong>¹ found</strong> a tiny, sick penguin on the beach near his home.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Yaklaşık beş yıl önce bir gün, evinin yakınındaki sahilde küçücük, hasta bir penguen buldu.','One day, about five years ago, he found a tiny, sick penguin on the beach near his home.')">?</button>
+    </span>
+    <span class="ei">
+      The penguin's feathers were covered in oil. João <span class="fi">² felt</span> sorry for the sick, little bird,
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Penguenin tüyleri yağla kaplıydı. João, hasta küçük kuşa acıdı.','The penguin feathers were covered in oil. João felt sorry for the sick, little bird.')">?</button>
+    </span>
+    <span class="ei">
+      and so he <span class="fi">³ took</span> him back to his home. He cleaned him and <span class="fi">⁴ fed</span> him sardines,
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','ve onu evine götürdü. Onu temizledi ve sardalye ile besledi.','and so he took him back to his home. He cleaned him and fed him sardines.')">?</button>
+    </span>
+    <span class="ei">
+      and he <span class="fi">⁵ gave</span> him the name Dindim. The penguin soon <span class="fi">⁶ became</span> strong and healthy again.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','ve ona Dindim adını verdi. Penguen kısa sürede güçlü ve sağlıklı hale geldi.','and he gave him the name Dindim. The penguin soon became strong and healthy again.')">?</button>
+    </span>
+    <span class="ei" style="margin-top:.5rem">
+      After a week or two, João <span class="fi">⁷ went</span> down to the seashore and <span class="fi">⁸ tried</span> to put Dindim back into the water.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Bir iki hafta sonra João sahile indi ve Dindim\'i tekrar suya bırakmaya çalıştı.','After a week or two, João went down to the seashore and tried to put Dindim back into the water.')">?</button>
+    </span>
+    <span class="ei">
+      The penguin didn't want to go. Beautiful new feathers <span class="fi">⁹ grew</span> on his back.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Penguen gitmek istemedi. Sırtında güzel yeni tüyler çıktı.','The penguin did not want to go. Beautiful new feathers grew on his back.')">?</button>
+    </span>
+    <span class="ei">
+      Eight months passed. Then one day in February, Dindim disappeared.
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Sekiz ay geçti. Sonra bir Şubat günü Dindim kayboldu.','Eight months passed. Then one day in February, Dindim disappeared.')">?</button>
+    </span>
+    <span class="ei">
+      Four more months passed, when suddenly he <span class="fi">¹⁰ heard</span> a familiar 'honking' sound – Dindim was back!
+      <button class="tr-btn" onclick="tr('Cümle çevirisi','Dört ay daha geçti, tam o sırada tanıdık bir \"vak vak\" sesi duydu – Dindim geri dönmüştü!','Four more months passed, when suddenly he heard a familiar honking sound – Dindim was back!')">?</button>
+    </span>
   </div>
 
-  <!-- ===================== EVERYDAY ENGLISH ===================== -->
-  <div class="section">
-    <div class="section-title">Everyday English – Saying When</div>
-
-    <div class="sub-title">Alıştırma 2 – Tarihleri İki Şekilde Söyleyin</div>
-    <div class="answer-grid">
-      <div class="grid-item"><span class="num">1</span>the <strong>third of February</strong> / February the third</div>
-      <div class="grid-item"><span class="num">2</span>the <strong>sixth of July</strong> / July the sixth</div>
-      <div class="grid-item"><span class="num">3</span>the <strong>twelfth of June</strong> / June the twelfth</div>
-      <div class="grid-item"><span class="num">4</span>the <strong>twenty-fifth of December</strong> / December the twenty-fifth</div>
-      <div class="grid-item"><span class="num">5</span>the <strong>sixteenth of August</strong> / August the sixteenth</div>
-      <div class="grid-item"><span class="num">6</span>the <strong>first of May</strong> / May the first</div>
-      <div class="grid-item"><span class="num">7</span>the <strong>thirteenth of January</strong> / January the thirteenth</div>
-      <div class="grid-item"><span class="num">8</span>the <strong>thirty-first of October</strong> / October the thirty-first</div>
+  <div class="sub">Alıştırma 4 – Kalın (bold) fiillerin zamanı nedir?</div>
+  <div class="qa">
+    <div class="q">
+      "the poor bird <strong>was dying</strong>" / "he <strong>was enjoying</strong>" / "he <strong>was fishing</strong>" / "João <strong>was walking</strong>"
+      <button class="tr-btn" onclick="tr('Alıştırma 4 – Kalın fiillerin zamanı','Bu fiillerin zamanı Past Continuous\'tur (Geçmişte süregelen eylem). Geçmişte o anda devam eden bir hareketi anlatır.','Past Continuous tense')">?</button>
+      — Bu fiillerin zamanı nedir?
     </div>
-
-    <div class="sub-title">Alıştırma 3 – İngiliz ve Amerikan İngilizcesi Farkı</div>
-    <div class="qa-block">
-      <div class="answer">Americans don't use 'the' before the date and they say the month first. (e.g. July twentieth, 1969)</div>
-    </div>
-
-    <div class="sub-title">Alıştırma 4 – Yılları Söyleyin</div>
-    <div class="answer-grid">
-      <div class="grid-item">2012 → <span class="filled">twenty twelve</span></div>
-      <div class="grid-item">2002 → <span class="filled">two thousand and two</span></div>
-      <div class="grid-item">2018 → <span class="filled">twenty eighteen</span></div>
-      <div class="grid-item">2025 → <span class="filled">twenty twenty-five</span></div>
-      <div class="grid-item">1980 → <span class="filled">nineteen eighty</span></div>
-      <div class="grid-item">1969 → <span class="filled">nineteen sixty-nine</span></div>
-      <div class="grid-item">1994 → <span class="filled">nineteen ninety-four</span></div>
-      <div class="grid-item">1848 → <span class="filled">eighteen forty-eight</span></div>
-    </div>
-
-    <div class="sub-title">Alıştırma 5 – Önemli Tarihler (Dinleme)</div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">1</span>When did man first land on the moon?</div>
-      <div class="answer">On July the twentieth, 1969.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">2</span>When's your wedding anniversary?</div>
-      <div class="answer">November the eighth.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">3</span>When did the Berlin Wall come down?</div>
-      <div class="answer">The ninth of November, 1989.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">4</span>When was your son born?</div>
-      <div class="answer">December the nineteenth, 2014.</div>
-    </div>
-    <div class="qa-block">
-      <div class="question"><span class="q-label">5</span>What's the expiry date on your credit card?</div>
-      <div class="answer">06 25</div>
-    </div>
-
-    <div class="sub-title">Alıştırma 6 – Time Expressions: in / at / on / (–)</div>
-    <div class="answer-grid">
-      <div class="grid-item"><span class="num">1</span><span class="filled">at</span> six o'clock</div>
-      <div class="grid-item"><span class="num">2</span><span class="filled">–</span> last night</div>
-      <div class="grid-item"><span class="num">3</span><span class="filled">in</span> the evening</div>
-      <div class="grid-item"><span class="num">4</span><span class="filled">in</span> the 1960s</div>
-      <div class="grid-item"><span class="num">5</span><span class="filled">on</span> Saturday</div>
-      <div class="grid-item"><span class="num">6</span><span class="filled">in</span> April</div>
-      <div class="grid-item"><span class="num">7</span><span class="filled">in</span> summer</div>
-      <div class="grid-item"><span class="num">8</span><span class="filled">–</span> this morning</div>
-      <div class="grid-item"><span class="num">9</span><span class="filled">in</span> 2015</div>
-      <div class="grid-item"><span class="num">10</span><span class="filled">at</span> the weekend</div>
-      <div class="grid-item"><span class="num">11</span><span class="filled">on</span> January 18</div>
-      <div class="grid-item"><span class="num">12</span><span class="filled">–</span> the other day</div>
-      <div class="grid-item"><span class="num">13</span><span class="filled">on</span> Monday morning</div>
-      <div class="grid-item"><span class="num">14</span><span class="filled">–</span> yesterday evening</div>
-      <div class="grid-item"><span class="num">15</span><span class="filled">–</span> two weeks ago</div>
-      <div class="grid-item"><span class="num">16</span><span class="filled">at</span> midnight</div>
-    </div>
-    <div class="example-box">
-      <span class="ex-item">📌 NB: Amerikan İngilizcesinde "at the weekend" yerine "on the weekend" kullanılır.</span>
-    </div>
+    <div class="ans">These verbs are in the <strong>Past Continuous</strong> tense. (Geçmişte süren eylemler)</div>
   </div>
 
-  <!-- ===================== WRITING ===================== -->
-  <div class="section">
-    <div class="section-title">Writing – Picture Stories / Narrative Writing</div>
+  <div class="sub">Alıştırma 5 – Soru &amp; Cevap</div>
 
-    <div class="sub-title">Alıştırma 1 – Sıfat ve Zarfları Doğru Yere Koyun</div>
+  <div class="qa">
+    <div class="q"><span class="ql">1</span>What did João find?
+      <button class="tr-btn" onclick="tr('Soru 1','João ne buldu?','What did João find?')">?</button>
+    </div>
+    <div class="ans">A tiny, sick penguin.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">2</span>What was he doing when he found it?
+      <button class="tr-btn" onclick="tr('Soru 2','Onu bulduğunda ne yapıyordu?','What was he doing when he found it?')">?</button>
+    </div>
+    <div class="ans">He was fishing.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">3</span>Where did he take the penguin?
+      <button class="tr-btn" onclick="tr('Soru 3','Pengueni nereye götürdü?','Where did he take the penguin?')">?</button>
+    </div>
+    <div class="ans">He took it home.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">4</span>What did he feed it?
+      <button class="tr-btn" onclick="tr('Soru 4','Onu ne ile besledi?','What did he feed it?')">?</button>
+    </div>
+    <div class="ans">Sardines. (Sardalye)</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">5</span>How long did Dindim stay?
+      <button class="tr-btn" onclick="tr('Soru 5','Dindim ne kadar kaldı?','How long did Dindim stay?')">?</button>
+    </div>
+    <div class="ans">Eight months.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">6</span>Why was João happy?
+      <button class="tr-btn" onclick="tr('Soru 6','João neden mutluydu?','Why was João happy?')">?</button>
+    </div>
+    <div class="ans">Because he was enjoying the penguin's company.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">7</span>Which month did Dindim disappear?
+      <button class="tr-btn" onclick="tr('Soru 7','Dindim hangi ayda kayboldu?','Which month did Dindim disappear?')">?</button>
+    </div>
+    <div class="ans">February. (Şubat)</div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="ql">8</span>Which month did he return?
+      <button class="tr-btn" onclick="tr('Soru 8','Hangi ayda geri döndü?','Which month did he return?')">?</button>
+    </div>
+    <div class="ans">June. (Haziran)</div>
+  </div>
+</div>
 
-    <div class="writing-group">
-      <strong>1</strong> A dog jumped up at me. (large, suddenly)
-      <div class="writing-variants">
-        <div class="variant">A <span class="filled">large</span> dog <span class="filled">suddenly</span> jumped up at me. / <span class="filled">Suddenly</span>, a <span class="filled">large</span> dog jumped up at me.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>2</strong> Thank you for your invitation. I can't come. (kind, unfortunately)
-      <div class="writing-variants">
-        <div class="variant">Thank you for your <span class="filled">kind</span> invitation. <span class="filled">Unfortunately</span>, I can't come. / I can't come, <span class="filled">unfortunately</span>.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>3</strong> I got out of bed and went to make a cup of tea. (downstairs, nice)
-      <div class="writing-variants">
-        <div class="variant">I got out of bed and went <span class="filled">downstairs</span> to make a <span class="filled">nice</span> cup of tea.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>4</strong> We had a meal and we went to the theatre. (lovely, then)
-      <div class="writing-variants">
-        <div class="variant">We had a <span class="filled">lovely</span> meal and <span class="filled">then</span> we went to the theatre.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>5</strong> I was sitting at home when something happened. (last Thursday evening, very strange)
-      <div class="writing-variants">
-        <div class="variant">I was sitting at home <span class="filled">last Thursday evening</span> when something <span class="filled">very strange</span> happened.</div>
-        <div class="variant"><span class="filled">Last Thursday evening</span>, I was sitting at home when something <span class="filled">very strange</span> happened.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>6</strong> He's got three sisters, and I've got three older sisters. (older, too)
-      <div class="writing-variants">
-        <div class="variant">He's got three <span class="filled">older</span> sisters, and I've got three older sisters, <span class="filled">too</span>.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>7</strong> There's a programme on TV tonight that I want to see. (interesting, very much)
-      <div class="writing-variants">
-        <div class="variant">There's an <span class="filled">interesting</span> programme on TV tonight that I want to see <span class="filled">very much</span>. / …that I <span class="filled">very much</span> want to see.</div>
-      </div>
-    </div>
-    <div class="writing-group">
-      <strong>8</strong> I worked all week. (really hard, last)
-      <div class="writing-variants">
-        <div class="variant">I worked <span class="filled">really hard</span> all <span class="filled">last</span> week. / <span class="filled">Last</span> week, I worked <span class="filled">really hard</span>.</div>
-      </div>
-    </div>
+<!-- ══════════════════════════════════════════════
+     GRAMMAR SPOT (s.31)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.31</span> Grammar Spot</div>
+
+  <div class="sub">1 – Past Simple: tamamlanan eylem</div>
+  <div class="ex">
+    <span class="ei">Five years ago, João <strong>found</strong> a sick penguin on the beach.
+      <button class="tr-btn" onclick="tr('Örnek cümle','Beş yıl önce João sahilde hasta bir penguen buldu.','Five years ago, João found a sick penguin on the beach.')">?</button>
+    </span>
+    <span class="ei">He <strong>cleaned</strong> him and <strong>fed</strong> him sardines.
+      <button class="tr-btn" onclick="tr('Örnek cümle','Onu temizledi ve sardalye ile besledi.','He cleaned him and fed him sardines.')">?</button>
+    </span>
   </div>
 
-</div><!-- /container -->
+  <div class="sub">2 – Soru ve Olumsuz (Grammar Spot)</div>
+  <div class="bl">
+    Where <span class="fi">did</span> he take the penguin? &nbsp;&nbsp; The penguin <span class="fi">didn't</span> want to go.
+  </div>
+
+  <div class="sub">3 – Past Continuous: geçmişte süren eylem</div>
+  <div class="ex">
+    <span class="ei">He <strong>was fishing</strong> when he found the penguin.
+      <button class="tr-btn" onclick="tr('Örnek cümle','Pengueni bulduğunda balık tutuyordu.','He was fishing when he found the penguin.')">?</button>
+    </span>
+    <span class="ei">I <strong>had</strong> a bath last night. (= tamamlanan eylem)
+      <button class="tr-btn" onclick="tr('Örnek cümle','Dün gece banyo yaptım. (tamamlanmış eylem)','I had a bath last night.')">?</button>
+    </span>
+    <span class="ei">I <strong>was having</strong> a bath when my phone rang. (= kesilen eylem)
+      <button class="tr-btn" onclick="tr('Örnek cümle','Telefon çaldığında banyo yapıyordum. (kesilen eylem)','I was having a bath when my phone rang.')">?</button>
+    </span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SPELLING (s.31)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.31</span> Spelling – Regular Past Simple Yazımı</div>
+
+  <div class="sub">Alıştırma 6 – Past Simple formlarını yazın</div>
+  <table class="tbl">
+    <thead><tr><th>Grup</th><th>Fiil</th><th>Past Simple</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3"><strong>a)</strong> +ed</td><td>work</td><td><span class="tag">worked</span></td></tr>
+      <tr><td>stay</td><td><span class="tag">stayed</span></td></tr>
+      <tr><td>want</td><td><span class="tag">wanted</span></td></tr>
+      <tr><td rowspan="2"><strong>b)</strong> y→ied</td><td>try</td><td><span class="tag">tried</span></td></tr>
+      <tr><td>study</td><td><span class="tag">studied</span></td></tr>
+      <tr><td rowspan="3"><strong>c)</strong> e+d</td><td>arrive</td><td><span class="tag">arrived</span></td></tr>
+      <tr><td>live</td><td><span class="tag">lived</span></td></tr>
+      <tr><td>hope</td><td><span class="tag">hoped</span></td></tr>
+      <tr><td rowspan="2"><strong>d)</strong> çift ünsüz</td><td>stop</td><td><span class="tag">stopped</span></td></tr>
+      <tr><td>plan</td><td><span class="tag">planned</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub">Kural Soruları</div>
+  <div class="qa">
+    <div class="q">1 – How is the regular past tense formed?
+      <button class="tr-btn" onclick="tr('Kural Sorusu 1','Düzenli geçmiş zaman nasıl oluşturulur?','How is the regular past tense formed?')">?</button>
+    </div>
+    <div class="ans">By adding <strong>-ed</strong> to the base form. (-ed eklenerek)</div>
+  </div>
+  <div class="qa">
+    <div class="q">2 – How is the past tense formed when the verb ends in a consonant + -y?
+      <button class="tr-btn" onclick="tr('Kural Sorusu 2','Ünsüz + y ile biten fiillerde geçmiş zaman nasıl oluşturulur?','How is the past tense formed when the verb ends in a consonant + y?')">?</button>
+    </div>
+    <div class="ans">Drop the <strong>y</strong> and add <strong>-ied</strong>. (y düşer, -ied eklenir)</div>
+  </div>
+  <div class="qa">
+    <div class="q">3 – When do we double the final consonant?
+      <button class="tr-btn" onclick="tr('Kural Sorusu 3','Son sessiz harf ne zaman ikiye katlanır?','When do we double the final consonant?')">?</button>
+    </div>
+    <div class="ans">When there is a short vowel sound followed by a single consonant. (e.g. stop→stopped, plan→planned)</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PRONUNCIATION (s.31)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.31</span> Pronunciation – -ed Sonu Telaffuzu</div>
+
+  <div class="sub">Alıştırma 7 – Fiilleri doğru satıra yazın</div>
+  <div class="ex">
+    <div class="exl">/t/ — sonsuz ünsüz + voiceless</div>
+    <span class="ei"><span class="tag">looked</span> &nbsp; <span class="tag">worked</span> &nbsp; <span class="tag">passed</span> &nbsp; <span class="tag">hoped</span></span>
+  </div>
+  <div class="ex">
+    <div class="exl">/d/ — sesli harf veya voiced ünsüz sonrası</div>
+    <span class="ei"><span class="tag">stayed</span> &nbsp; <span class="tag">cleaned</span> &nbsp; <span class="tag">played</span> &nbsp; <span class="tag">phoned</span> &nbsp; <span class="tag">answered</span> &nbsp; <span class="tag">enjoyed</span></span>
+  </div>
+  <div class="ex">
+    <div class="exl">/ɪd/ — t veya d ile biten fiiller</div>
+    <span class="ei"><span class="tag">visited</span> &nbsp; <span class="tag">wanted</span></span>
+  </div>
+
+  <div class="sub">Alıştırma 8 – was / were telaffuzu (stressli ve stressiz)</div>
+  <div class="ex s">
+    <div class="exl">Kural (kendim cevapladım)</div>
+    <span class="ei"><strong>Stressiz (zayıf):</strong> He was /wəz/ walking home. &nbsp; They were /wə/ playing football.</span>
+    <span class="ei"><strong>Stressli (güçlü):</strong> What was /wɒz/ he doing? &nbsp; What were /wɜː/ they doing?</span>
+    <span class="ei"><strong>Olumsuz:</strong> He wasn't /wɒznt/ listening. &nbsp; They weren't /wɜːnt/ enjoying the party.</span>
+    <button class="tr-btn s" onclick="tr('was/were telaffuzu','Stressiz formlar konuşmada zayıf söylenir: was → /wəz/, were → /wə/. Stressli (vurgulu) formlar: was → /wɒz/, were → /wɜː/. Olumsuz: wasn\'t → /wɒznt/, weren\'t → /wɜːnt/.','Pronunciation of was/were')">?</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PRACTICE – DISCUSSING GRAMMAR (s.32)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.32</span> Practice – Discussing Grammar</div>
+
+  <div class="sub">Alıştırma 1 – Cümle çiftleri arasındaki fark nedir?</div>
+
+  <div class="qa">
+    <div class="q">
+      1a — When we arrived, she <strong>was making</strong> coffee.
+      <button class="tr-btn" onclick="tr('Cümle 1a','Biz vardığımızda o kahve yapıyordu. (biz geldiğimizde eylem zaten devam ediyordu)','When we arrived, she was making coffee.')">?</button>
+    </div>
+    <div class="ans">She was in the process of making coffee when they arrived. (Devam eden eylem — Past Continuous)</div>
+  </div>
+  <div class="qa">
+    <div class="q">
+      1b — When we arrived, she <strong>made</strong> coffee.
+      <button class="tr-btn" onclick="tr('Cümle 1b','Biz vardık, sonra o kahve yaptı. (önce varış, sonra kahve yapma)','When we arrived, she made coffee.')">?</button>
+    </div>
+    <div class="ans">They arrived first, and then she made coffee. (Ardışık tamamlanan eylem — Past Simple)</div>
+  </div>
+  <div class="qa">
+    <div class="q">
+      2a — What <strong>were you doing</strong> when you saw the accident?
+      <button class="tr-btn" onclick="tr('Cümle 2a','Kazayı gördüğünde ne yapıyordun? (o andaki faaliyet sorgulanıyor)','What were you doing when you saw the accident?')">?</button>
+    </div>
+    <div class="ans">Asks what activity you were doing at the time the accident happened.</div>
+  </div>
+  <div class="qa">
+    <div class="q">
+      2b — What <strong>did you do</strong> when you saw the accident?
+      <button class="tr-btn" onclick="tr('Cümle 2b','Kazayı gördükten sonra ne yaptın? (kazadan sonra alınan aksiyon sorgulanıyor)','What did you do when you saw the accident?')">?</button>
+    </div>
+    <div class="ans">Asks what action you took after the accident happened.</div>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Doğru fiil formunu seçin</div>
+  <div class="bl"><span class="bn">1</span>I <span class="fi">saw</span> a good film yesterday.</div>
+  <div class="bl"><span class="bn">2</span>While I <span class="fi">was shopping</span> this morning, I <span class="fi">lost</span> my wallet.</div>
+  <div class="bl"><span class="bn">3</span>The police <span class="fi">stopped</span> me on the motorway because I <span class="fi">was driving</span> too fast.</div>
+  <div class="bl"><span class="bn">4</span>'How <span class="fi">did you break</span> your leg?' 'I <span class="fi">was skiing</span> and I <span class="fi">hit</span> a tree.'</div>
+  <div class="bl"><span class="bn">5</span>I <span class="fi">cut</span> my finger while I <span class="fi">was cooking</span> dinner.</div>
+  <div class="bl"><span class="bn">6</span><span class="fi">Did you have</span> a good holiday?</div>
+
+  <div class="sub">Alıştırma 3 – Talking about you: truth or lies? (Serbest konuşma)</div>
+  <div class="qa">
+    <div class="q">
+      Write two sentences about where you were and what you were doing at these times. One true, one lie.
+      <button class="tr-btn" onclick="tr('Alıştırma 3','Bu saatlerde nerede olduğunuz ve ne yaptığınız hakkında iki cümle yazın: biri doğru, biri yalan. Ortağınız hangisinin doğru olduğunu tahmin etsin.','Write two sentences about where you were and what you were doing at these times.')">?</button>
+    </div>
+    <div class="ans s">Bu alıştırma kişisel cevap gerektirir. Örnek: "At 7.15 this morning, I was running in the park." / "At 9.00, I was having breakfast at home." — Birini doğru, birini yalan yapın; ortağınız tahmin etsin.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     IN YOUR OWN WORDS – NEWS HEADLINES (s.32)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.32</span> Practice – In Your Own Words (Haberler)</div>
+
+  <div class="sub">Alıştırma 4 – Bu başlıklar ne hakkında?</div>
+
+  <div class="qa">
+    <div class="q"><strong>Woman injured while texting</strong>
+      <button class="tr-btn" onclick="tr('Başlık','Mesaj yazarken kadın yaralandı','Woman injured while texting')">?</button>
+    </div>
+    <div class="ans s">She was walking in the town square texting and chatting to her friend, and she fell head first into a fountain. Someone was taking a video of the square and put it on YouTube.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><strong>Rat's tail found in sandwich</strong>
+      <button class="tr-btn" onclick="tr('Başlık','Sandviçte sıçan kuyruğu bulundu','Rat\'s tail found in sandwich')">?</button>
+    </div>
+    <div class="ans s">A man bought a sandwich from a food and drink stall on the High Street. He took a bite, presumably discovered the rat's tail, and threw it in the rubbish bin.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><strong>Teenage party ends in tears</strong>
+      <button class="tr-btn" onclick="tr('Başlık','Genç partisi gözyaşıyla bitti','Teenage party ends in tears')">?</button>
+    </div>
+    <div class="ans s">A teenager threw a party while their parents were away. Things got out of control; the house was damaged and the party ended badly.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><strong>Boy, 5, stops robbers</strong>
+      <button class="tr-btn" onclick="tr('Başlık','5 yaşındaki çocuk soyguncuları durdurdu','Boy, 5, stops robbers')">?</button>
+    </div>
+    <div class="ans s">A five-year-old boy somehow alerted people or called for help, which stopped robbers from completing their crime.</div>
+  </div>
+  <div class="qa">
+    <div class="q"><strong>Vase bought for £5 – sold for £50 million!</strong>
+      <button class="tr-btn" onclick="tr('Başlık','5 sterline alınan vazo 50 milyon sterline satıldı!','Vase bought for £5 – sold for £50 million!')">?</button>
+    </div>
+    <div class="ans s">Someone bought an old vase cheaply, not knowing its real value. It turned out to be a rare antique and sold at auction for an enormous sum.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     GOOD NEWS OR BAD NEWS? – STORIES (s.33)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.33</span> Good News or Bad News? – İki Hikâye</div>
+
+  <div class="sub">Alıştırma 7 – İyi haber mı kötü haber mi?</div>
+  <div class="qa">
+    <div class="q">Read the two stories quickly. Are they good news or bad news?
+      <button class="tr-btn" onclick="tr('Soru','İki hikâyeyi hızlıca okuyun. İyi haber mi kötü haber mi?','Read the two stories quickly. Are they good news or bad news?')">?</button>
+    </div>
+    <div class="ans">Both stories are <strong>good news</strong>.</div>
+  </div>
+
+  <!-- Brotherly Love text -->
+  <div class="sub">Hikâye 1 – "Brotherly Love – He Did It for Mum!" (Metin)</div>
+  <div class="ex">
+    <div class="exl">Tam metin (? ile satır satır çeviri)</div>
+    <span class="ei">Brothers Alistair and Jonny Brownlee were just six and eight years old when they <span class="fi">¹ began</span> doing triathlons.
+      <button class="tr-btn" onclick="tr('Cümle','Kardeşler Alistair ve Jonny Brownlee, triatlon yapmaya altı ve sekiz yaşındayken başladılar.','Brothers Alistair and Jonny Brownlee were just six and eight years old when they began doing triathlons.')">?</button>
+    </span>
+    <span class="ei">Two years ago, they <span class="fi">² went</span> to London to compete in the Triathlon World Series.
+      <button class="tr-btn" onclick="tr('Cümle','İki yıl önce Triathlon Dünya Serisi\'nde yarışmak için Londra\'ya gittiler.','Two years ago, they went to London to compete in the Triathlon World Series.')">?</button>
+    </span>
+    <span class="ei">It was a hot day, but the boys were doing well. Alistair was running behind his younger brother. He <span class="fi">³ thought</span> to himself, 'This is perfect – Jonny's going to win, and I'm going to come second or third.'
+      <button class="tr-btn" onclick="tr('Cümle','Sıcak bir gündü ama erkekler iyi gidiyordu. Alistair küçük kardeşinin arkasında koşuyordu. Kendi kendine düşündü: "Harika – Jonny kazanacak, ben de ikinci ya da üçüncü geleceğim."','It was a hot day... He thought to himself, This is perfect.')">?</button>
+    </span>
+    <span class="ei">Suddenly, with only 700 metres to go, Alistair <span class="fi">⁴ saw</span> that Jonny was in trouble.
+      <button class="tr-btn" onclick="tr('Cümle','Birden, sadece 700 metre kala, Alistair Jonny\'nin zor durumda olduğunu gördü.','Suddenly, with only 700 metres to go, Alistair saw that Jonny was in trouble.')">?</button>
+    </span>
+    <span class="ei">He wasn't running, and he couldn't breathe. Alistair <span class="fi">⁵ ran</span> up to his brother. He <span class="fi">⁶ put</span> his arm round him and started to run with him to the finishing line.
+      <button class="tr-btn" onclick="tr('Cümle','Koşmuyordu ve nefes alamıyordu. Alistair kardeşinin yanına koştu. Kolunu onun etrafına sardı ve birlikte bitiş çizgisine koşmaya başladı.','He was not running and he could not breathe. Alistair ran up to his brother.')">?</button>
+    </span>
+    <span class="ei">Their worried parents, Keith and Kathy, were at home in Yorkshire – they were watching the race on TV when Alistair finally pushed his brother over the line and Jonny <span class="fi">⁷ fell</span> to the ground.
+      <button class="tr-btn" onclick="tr('Cümle','Endişeli ebeveynleri Keith ve Kathy Yorkshire\'daki evlerinde televizyondan yarışı izliyordu. Alistair nihayet kardeşini çizgiden ittiğinde Jonny yere düştü.','Their worried parents were watching the race on TV when Alistair pushed his brother over the line and Jonny fell to the ground.')">?</button>
+    </span>
+    <span class="ei">Fortunately, Jonny was soon well and running again. Their parents <span class="fi">⁸ felt</span> very proud of both their sons.
+      <button class="tr-btn" onclick="tr('Cümle','Neyse ki Jonny kısa sürede iyileşti ve yeniden koşmaya başladı. Ebeveynleri her iki oğullarıyla da çok gurur duydu.','Fortunately, Jonny was soon well and running again. Their parents felt very proud of both their sons.')">?</button>
+    </span>
+  </div>
+
+  <!-- Sorry Nate text -->
+  <div class="sub">Hikâye 2 – "Sorry Nate! Not Until Payday!" (Metin)</div>
+  <div class="ex">
+    <span class="ei">Nate Williams, ten, was shopping with his mum, Tracey, in an ASDA supermarket in Liverpool when he spotted a huge toy panda – it <span class="fi">¹ cost</span> £15.
+      <button class="tr-btn" onclick="tr('Cümle','10 yaşındaki Nate Williams, annesi Tracey ile Liverpool\'daki bir ASDA süpermarketinde alışveriş yapıyordu. O sırada büyük bir oyuncak panda gördü – fiyatı 15 sterlinmiş.','Nate Williams was shopping with his mum when he spotted a huge toy panda – it cost £15.')">?</button>
+    </span>
+    <span class="ei">Nate immediately <span class="fi">² fell</span> in love with it – he picked it up and carried it.
+      <button class="tr-btn" onclick="tr('Cümle','Nate hemen ona aşık oldu – onu kaldırıp taşıdı.','Nate immediately fell in love with it – he picked it up and carried it.')">?</button>
+    </span>
+    <span class="ei">But at the checkout, his mum <span class="fi">³ told</span> her sad little boy that she couldn't afford the panda until her next payday.
+      <button class="tr-btn" onclick="tr('Cümle','Ama kasada annesi, üzgün küçük oğluna bir sonraki maaş gününe kadar pandayı alamayacağını söyledi.','But at the checkout, his mum told her sad little boy that she could not afford the panda until her next payday.')">?</button>
+    </span>
+    <span class="ei">Nate didn't want to say goodbye to his new friend 'Pandy'. So he <span class="fi">⁴ found</span> a cardboard box and <span class="fi">⁵ wrote</span> a message on it for other shoppers to read.
+      <button class="tr-btn" onclick="tr('Cümle','Nate yeni arkadaşı Pandy\'ye veda etmek istemedi. Bu yüzden bir karton kutu buldu ve üzerine diğer alışverişçilerin okuyabileceği bir mesaj yazdı.','Nate did not want to say goodbye to Pandy. So he found a cardboard box and wrote a message on it.')">?</button>
+    </span>
+    <span class="ei">Some shop workers noticed Nate's message. They <span class="fi">⁶ felt</span> sorry for the boy, and so they clubbed together and <span class="fi">⁷ bought</span> the toy for him.
+      <button class="tr-btn" onclick="tr('Cümle','Bazı mağaza çalışanları Nate\'in mesajını fark etti. Çocuğa üzüldüler ve para toplayarak oyuncağı onun için satın aldılar.','Some shop workers noticed the message. They felt sorry for the boy and bought the toy for him.')">?</button>
+    </span>
+    <span class="ei">They posted a message on Facebook to try and find him. Tracey <span class="fi">⁸ saw</span> the post, and they returned to the shop to get 'Pandy'.
+      <button class="tr-btn" onclick="tr('Cümle','Onu bulmak için Facebook\'ta mesaj paylaştılar. Tracey paylaşımı gördü ve Pandy\'yi almak için mağazaya geri döndüler.','They posted on Facebook. Tracey saw the post and they returned to get Pandy.')">?</button>
+    </span>
+  </div>
+
+  <div class="sub">Alıştırma 9 – Regular verbs (her iki hikâyede)</div>
+  <div class="ex">
+    <span class="ei"><strong>Brotherly Love:</strong> <span class="tag">started</span> · <span class="tag">pushed</span></span>
+    <span class="ei"><strong>Sorry Nate!:</strong> <span class="tag">spotted</span> · <span class="tag">picked</span> · <span class="tag">noticed</span> · <span class="tag">clubbed</span> · <span class="tag">posted</span> · <span class="tag">returned</span> · <span class="tag">turned</span></span>
+  </div>
+
+  <div class="sub">Alıştırma 10 – Past Continuous satırlarını hikâyeye yerleştirin</div>
+  <table class="tbl">
+    <thead><tr><th>Past Continuous Satırı</th><th>Hangi Hikâye?</th></tr></thead>
+    <tbody>
+      <tr><td>they were watching the race on TV <button class="tr-btn" onclick="tr('Satır','televizyondan yarışı izliyorlardı','they were watching the race on TV')">?</button></td><td><span class="tag">Brotherly Love</span></td></tr>
+      <tr><td>they were nearing the finishing line <button class="tr-btn" onclick="tr('Satır','bitiş çizgisine yaklaşıyorlardı','they were nearing the finishing line')">?</button></td><td><span class="tag">Brotherly Love</span></td></tr>
+      <tr><td>he was finding it difficult to walk <button class="tr-btn" onclick="tr('Satır','yürümekte güçlük çekiyordu','he was finding it difficult to walk')">?</button></td><td><span class="tag">Brotherly Love</span></td></tr>
+      <tr><td>when we were leaving the shop <button class="tr-btn" onclick="tr('Satır','mağazadan çıkarken','when we were leaving the shop')">?</button></td><td><span class="tag">Sorry Nate!</span></td></tr>
+      <tr><td>while they were doing their shopping <button class="tr-btn" onclick="tr('Satır','alışveriş yaparlarken','while they were doing their shopping')">?</button></td><td><span class="tag">Sorry Nate!</span></td></tr>
+      <tr><td>when she was paying <button class="tr-btn" onclick="tr('Satır','ödeme yaparken','when she was paying')">?</button></td><td><span class="tag">Sorry Nate!</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub">Alıştırma 11 – Sorular kurun ve cevaplayın</div>
+  <div class="qa"><div class="q">When did the brothers begin racing? <button class="tr-btn" onclick="tr('Örnek soru','Kardeşler ne zaman yarışmaya başladı?','When did the brothers begin racing?')">?</button></div><div class="ans">They began racing when they were six and eight years old.</div></div>
+  <div class="qa"><div class="q">How much did Nate's panda cost? <button class="tr-btn" onclick="tr('Örnek soru','Nate\'in pandası ne kadara mal oldu?','How much did Nate\'s panda cost?')">?</button></div><div class="ans">It cost £15.</div></div>
+  <div class="qa"><div class="q s">Where did the race take place? <button class="tr-btn s" onclick="tr('Soru (kendim)','Yarış nerede gerçekleşti?','Where did the race take place?')">?</button></div><div class="ans s">The race took place in London (Triathlon World Series).</div></div>
+  <div class="qa"><div class="q s">Who bought the toy panda for Nate? <button class="tr-btn s" onclick="tr('Soru (kendim)','Nate için oyuncak pandayı kim satın aldı?','Who bought the toy panda for Nate?')">?</button></div><div class="ans s">The shop workers clubbed together and bought it for him.</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     READING & LISTENING – SPY STORY (s.34–35)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.34–35</span> Reading &amp; Listening – A Spy Story (James Bond)</div>
+
+  <div class="sub">Alıştırma 4 – Dinleme soruları</div>
+  <div class="qa"><div class="q"><span class="ql">1</span>Name the people in the pictures. Where are they? <button class="tr-btn" onclick="tr('Soru 1','Resimlerdeki kişileri adlandırın. Neredeler?','Name the people in the pictures. Where are they?')">?</button></div><div class="ans">James Bond, Mary Goodnight, Scaramanga – they are in a hotel room.</div></div>
+  <div class="qa"><div class="q"><span class="ql">2</span>How did Mary Goodnight get into the room? <button class="tr-btn" onclick="tr('Soru 2','Mary Goodnight odaya nasıl girdi?','How did Mary Goodnight get into the room?')">?</button></div><div class="ans">Through the window. (Pencereden)</div></div>
+  <div class="qa"><div class="q"><span class="ql">3</span>Why did she come to James Bond? <button class="tr-btn" onclick="tr('Soru 3','Neden James Bond\'a geldi?','Why did she come to James Bond?')">?</button></div><div class="ans">To give him an important message from HQ – a top KGB man (Hendriks) is staying in the same hotel and looking for him; so is Hendriks' gunman, Scaramanga.</div></div>
+  <div class="qa"><div class="q"><span class="ql">4</span>Where did they go to talk? <button class="tr-btn" onclick="tr('Soru 4','Konuşmak için nereye gittiler?','Where did they go to talk?')">?</button></div><div class="ans">The bathroom. (Banyo)</div></div>
+  <div class="qa"><div class="q"><span class="ql">5</span>What did Scaramanga say? What did he do? <button class="tr-btn" onclick="tr('Soru 5','Scaramanga ne dedi? Ne yaptı?','What did Scaramanga say? What did he do?')">?</button></div><div class="ans">"This is not your lucky day, Mr Bond. Come here both of you and put your hands up." He turned on the lights and pointed his golden gun at James Bond.</div></div>
+
+  <div class="sub">Alıştırma 5 – Resimlerle metni eşleştirin</div>
+
+  <div class="ex">
+    <div class="exl">Hikâye metninden satırlar (? ile Türkçe)</div>
+    <span class="ei"><strong>Resim 1:</strong> James Bond got back to his hotel room at midnight. The windows were closed and the air-conditioning was on. Bond switched it off and opened the windows.
+      <button class="tr-btn" onclick="tr('Resim 1','James Bond gece yarısı otel odasına döndü. Pencereler kapalıydı ve klima çalışıyordu. Bond onu kapattı ve pencereleri açtı.','James Bond got back to his hotel room at midnight. Bond switched off the air-conditioning and opened the windows.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 2:</strong> At 3.30 he was dreaming, not very peacefully, of three black-coated men with red eyes and angry white teeth. Suddenly he woke up. James Bond took his gun from under his pillow.
+      <button class="tr-btn" onclick="tr('Resim 2','Saat 3.30\'da pek huzurlu olmayan bir şekilde kırmızı gözlü, beyaz dişli, siyah ceketli üç adamı rüyasında görüyordu. Birden uyandı. James Bond yastığının altındaki silahını aldı.','At 3.30 he was dreaming of three black-coated men. Suddenly he woke up. Bond took his gun.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 3:</strong> James Bond got quietly out of bed, and crept slowly along the wall towards the window. Someone was breathing heavily behind the curtain.
+      <button class="tr-btn" onclick="tr('Resim 3','James Bond yataktan sessizce kalktı ve duvara yaslanarak yavaşça pencereye doğru ilerledi. Perdenin arkasında biri ağır ağır nefes alıyordu.','Bond got quietly out of bed and crept slowly along the wall. Someone was breathing heavily behind the curtain.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 4:</strong> Bond pulled it back with one quick movement … golden hair shone in the moonlight.
+      <button class="tr-btn" onclick="tr('Resim 4','Bond onu tek bir hızlı hareketle geri çekti… Altın sarısı saçlar ay ışığında parladı.','Bond pulled it back with one quick movement. Golden hair shone in the moonlight.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 5:</strong> Bond put down his gun and tried to pull her through the open window.
+      <button class="tr-btn" onclick="tr('Resim 5','Bond silahını bıraktı ve onu açık pencereden içeri çekmeye çalıştı.','Bond put down his gun and tried to pull her through the open window.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 6:</strong> He quickly led her across the room to the bathroom. First he turned on the light then the shower. They sat down together on the side of the bath.
+      <button class="tr-btn" onclick="tr('Resim 6','Onu hızla odanın karşısındaki banyoya götürdü. Önce ışığı, sonra duşu açtı. Küvetin kenarına birlikte oturdular.','He quickly led her to the bathroom. He turned on the light then the shower. They sat on the side of the bath.')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 7:</strong> Bond turned off the shower and opened the bathroom door. 'Now, come on!'
+      <button class="tr-btn" onclick="tr('Resim 7','Bond duşu kapattı ve banyo kapısını açtı. "Haydi, gelin!"','Bond turned off the shower and opened the bathroom door. Now, come on!')">?</button>
+    </span>
+    <span class="ei"><strong>Resim 8:</strong> Suddenly, a voice came from the darkness of the bedroom. Scaramanga walked to the door and turned on the lights. His golden gun was pointing straight at James Bond.
+      <button class="tr-btn" onclick="tr('Resim 8','Birden yatak odasının karanlığından bir ses geldi. Scaramanga kapıya yürüdü ve ışıkları yaktı. Altın tabancası doğrudan James Bond\'a nişan alıyordu.','Scaramanga walked to the door and turned on the lights. His golden gun was pointing straight at James Bond.')">?</button>
+    </span>
+  </div>
+
+  <div class="sub">Alıştırma 6 – True (✓) / False (✗)</div>
+
+  <div class="tf t"><span class="tfb">✓ TRUE</span><span>1 James Bond felt happy to be back in his hotel room. <button class="tr-btn" onclick="tr('Cümle 1','James Bond otel odasına geri dönmekten mutluydu. → DOĞRU','James Bond felt happy to be back in his hotel room.')">?</button></span></div>
+  <div class="tf f"><span class="tfb">✗ FALSE</span><span>2 Bond was dreaming about Mary Goodnight. <button class="tr-btn" onclick="tr('Cümle 2','Bond Mary Goodnight\'ı rüyasında görüyordu. → YANLIŞ','Bond was dreaming about Mary Goodnight.')">?</button><span class="tfc">Correction: He was dreaming of three black-coated men with red eyes and angry white teeth.</span></span></div>
+  <div class="tf f"><span class="tfb">✗ FALSE</span><span>3 A man with a gun woke Bond at 3.30 a.m. <button class="tr-btn" onclick="tr('Cümle 3','Silahlı bir adam Bond\'u saat 3.30\'da uyandırdı. → YANLIŞ','A man with a gun woke Bond at 3.30 a.m.')">?</button><span class="tfc">Correction: Mary Goodnight woke Bond at 3.30 a.m.</span></span></div>
+  <div class="tf f"><span class="tfb">✗ FALSE</span><span>4 Bond was very pleased to see Mary Goodnight. <button class="tr-btn" onclick="tr('Cümle 4','Bond Mary Goodnight\'ı görmekten çok memnun oldu. → YANLIŞ','Bond was very pleased to see Mary Goodnight.')">?</button><span class="tfc">Correction: He was annoyed / irritated to see Mary Goodnight.</span></span></div>
+  <div class="tf f"><span class="tfb">✗ FALSE</span><span>5 Bond's gun went off while he was pulling Mary through the window. <button class="tr-btn" onclick="tr('Cümle 5','Bond, Mary\'yi pencereden çekerken silahı patladı. → YANLIŞ','Bond\'s gun went off while he was pulling Mary through the window.')">?</button><span class="tfc">Correction: The window banged shut while he was pulling Mary through.</span></span></div>
+  <div class="tf t"><span class="tfb">✓ TRUE</span><span>6 They talked while the shower was going. <button class="tr-btn" onclick="tr('Cümle 6','Duş çalışırken konuştular. → DOĞRU','They talked while the shower was going.')">?</button></span></div>
+  <div class="tf t"><span class="tfb">✓ TRUE</span><span>7 Bond knew that Hendriks was looking for him. <button class="tr-btn" onclick="tr('Cümle 7','Bond, Hendriks\'in onu aradığını biliyordu. → DOĞRU','Bond knew that Hendriks was looking for him.')">?</button></span></div>
+  <div class="tf t"><span class="tfb">✓ TRUE</span><span>8 Bond was trying to help Mary get out of the hotel. <button class="tr-btn" onclick="tr('Cümle 8','Bond, Mary\'yi otelden çıkarmaya çalışıyordu. → DOĞRU','Bond was trying to help Mary get out of the hotel.')">?</button></span></div>
+
+  <div class="sub">Alıştırma 7 – Language Work: Fiillerin Geçmiş Formu</div>
+  <div class="grid">
+    <div class="gi"><span class="n">1 get →</span><span class="tag">got</span> (düzensiz)</div>
+    <div class="gi"><span class="n">2 breathe →</span><span class="tag">breathed</span></div>
+    <div class="gi"><span class="n">3 wake up →</span><span class="tag">woke up</span> (düzensiz)</div>
+    <div class="gi"><span class="n">4 take →</span><span class="tag">took</span> (düzensiz)</div>
+    <div class="gi"><span class="n">5 creep →</span><span class="tag">crept</span> (düzensiz)</div>
+    <div class="gi"><span class="n">6 shine →</span><span class="tag">shone</span> (düzensiz)</div>
+    <div class="gi"><span class="n">7 whisper →</span><span class="tag">whispered</span></div>
+    <div class="gi"><span class="n">8 put →</span><span class="tag">put</span> (düzensiz)</div>
+    <div class="gi"><span class="n">9 try →</span><span class="tag">tried</span></div>
+    <div class="gi"><span class="n">10 lead →</span><span class="tag">led</span> (düzensiz)</div>
+    <div class="gi"><span class="n">11 give →</span><span class="tag">gave</span> (düzensiz)</div>
+    <div class="gi"><span class="n">12 stand up →</span><span class="tag">stood up</span> (düzensiz)</div>
+  </div>
+
+  <div class="sub">Alıştırma 8 – "What do you think?" Tartışma soruları</div>
+  <div class="qa"><div class="q">Who is Scaramanga? <button class="tr-btn" onclick="tr('Soru','Scaramanga kim?','Who is Scaramanga?')">?</button></div><div class="ans s">An assassin hired to kill James Bond.</div></div>
+  <div class="qa"><div class="q">Who is Mary Goodnight? <button class="tr-btn" onclick="tr('Soru','Mary Goodnight kim?','Who is Mary Goodnight?')">?</button></div><div class="ans s">A secret agent (colleague of James Bond).</div></div>
+  <div class="qa"><div class="q">What happens next in the story? <button class="tr-btn" onclick="tr('Soru','Hikâyede sırada ne olur?','What happens next in the story?')">?</button></div><div class="ans s">Scaramanga captures Mary and takes her to a secret island.</div></div>
+  <div class="qa"><div class="q">What happens in the end? <button class="tr-btn" onclick="tr('Soru','Sonunda ne olur?','What happens in the end?')">?</button></div><div class="ans s">James Bond saves the world and gets the girl.</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VOCABULARY – ADVERBS (s.36)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.36</span> Vocabulary – Adverbs (Zarflar)</div>
+
+  <div class="sub">Alıştırma 1 – Fiil + Zarf Eşleştirme (James Bond metninden)</div>
+  <div class="ex">
+    <span class="ei">dream → <span class="tag">peacefully</span> <button class="tr-btn" onclick="tr('Eşleştirme','rüya görmek → huzurla / sakin bir şekilde','dream – peacefully')">?</button></span>
+    <span class="ei">wake up → <span class="tag">suddenly</span> / <span class="tag">slowly</span> <button class="tr-btn" onclick="tr('Eşleştirme','uyanmak → aniden / yavaşça','wake up – suddenly / slowly')">?</button></span>
+    <span class="ei">whisper → <span class="tag">quietly</span> / <span class="tag">slowly</span> / <span class="tag">urgently</span> <button class="tr-btn" onclick="tr('Eşleştirme','fısıldamak → sessizce / yavaşça / acilen','whisper – quietly / slowly / urgently')">?</button></span>
+    <span class="ei">creep → <span class="tag">quietly</span> / <span class="tag">slowly</span> <button class="tr-btn" onclick="tr('Eşleştirme','gizlice ilerlemek → sessizce / yavaşça','creep – quietly / slowly')">?</button></span>
+    <span class="ei">get out of bed → <span class="tag">quietly</span> / <span class="tag">suddenly</span> / <span class="tag">slowly</span> <button class="tr-btn" onclick="tr('Eşleştirme','yataktan kalkmak → sessizce / aniden / yavaşça','get out of bed – quietly / suddenly / slowly')">?</button></span>
+    <span class="ei">breathe → <span class="tag">slowly</span> / <span class="tag">heavily</span> / <span class="tag">quietly</span> <button class="tr-btn" onclick="tr('Eşleştirme','nefes almak → yavaşça / ağır ağır / sessizce','breathe – slowly / heavily / quietly')">?</button></span>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Sıfatlardan Zarf Türetme</div>
+  <div class="grid">
+    <div class="gi">clear → <span class="tag">clearly</span></div>
+    <div class="gi">noisy → <span class="tag">noisily</span></div>
+    <div class="gi">careful → <span class="tag">carefully</span></div>
+    <div class="gi">easy → <span class="tag">easily</span></div>
+    <div class="gi">complete → <span class="tag">completely</span></div>
+    <div class="gi">good → <span class="tag">well</span> ⚠️ düzensiz</div>
+    <div class="gi">bad → <span class="tag">badly</span></div>
+    <div class="gi">fluent → <span class="tag">fluently</span></div>
+  </div>
+
+  <div class="sub">Alıştırma 3 – Zarfları cümlede kullanın</div>
+  <div class="bl"><span class="bn">1</span>play a game <span class="fi">badly</span> and lose</div>
+  <div class="bl"><span class="bn">2</span>play a game <span class="fi">well</span> and win</div>
+  <div class="bl"><span class="bn">3</span>explain the rules <span class="fi">clearly</span></div>
+  <div class="bl"><span class="bn">4</span>eat something <span class="fi">noisily</span></div>
+  <div class="bl"><span class="bn">5</span>forget something <span class="fi">completely</span></div>
+  <div class="bl"><span class="bn">6</span>drive <span class="fi">carefully</span></div>
+  <div class="bl"><span class="bn">7</span>speak Spanish <span class="fi">fluently</span></div>
+  <div class="bl"><span class="bn">8</span>pass an exam <span class="fi">easily</span></div>
+
+  <div class="sub">Alıştırma 4 – Sıfat mı Zarf mı? (fast / hard / early)</div>
+  <div class="ex">
+    <div class="exl">📌 Bu kelimeler sıfat ve zarf olarak aynı yazılır — cümledeki konumları farklıdır.</div>
+  </div>
+  <table class="tbl">
+    <thead><tr><th>Cümle</th><th>Türkçe</th><th>Görev</th></tr></thead>
+    <tbody>
+      <tr><td>Is this a <strong>fast</strong> train to London? <button class="tr-btn" onclick="tr('Cümle','Bu Londra\'ya giden hızlı bir tren mi?','Is this a fast train to London?')">?</button></td><td>Londra\'ya hızlı tren mi bu?</td><td><span class="tag">adjective (sıfat)</span></td></tr>
+      <tr><td>Slow down! You drive too <strong>fast</strong>! <button class="tr-btn" onclick="tr('Cümle','Yavaşla! Çok hızlı sürüyorsun!','Slow down! You drive too fast!')">?</button></td><td>Çok hızlı sürüyorsun</td><td><span class="tag">adverb (zarf)</span></td></tr>
+      <tr><td>I work <strong>hard</strong> and play <strong>hard</strong>. <button class="tr-btn" onclick="tr('Cümle','Sıkı çalışır, sıkı oynarım.','I work hard and play hard.')">?</button></td><td>Sıkı çalışır, sıkı oynarım</td><td><span class="tag">adverb (zarf)</span></td></tr>
+      <tr><td>She's a very <strong>hard</strong> worker. <button class="tr-btn" onclick="tr('Cümle','O çok çalışkan bir işçidir.','She is a very hard worker.')">?</button></td><td>Çok çalışkan</td><td><span class="tag">adjective (sıfat)</span></td></tr>
+      <tr><td>I got up <strong>early</strong> this morning. <button class="tr-btn" onclick="tr('Cümle','Bu sabah erken kalktım.','I got up early this morning.')">?</button></td><td>Erken kalktım</td><td><span class="tag">adverb (zarf)</span></td></tr>
+      <tr><td>We caught the <strong>early</strong> train. <button class="tr-btn" onclick="tr('Cümle','Erken trene yetiştik.','We caught the early train.')">?</button></td><td>Erken trene yetiştik</td><td><span class="tag">adjective (sıfat)</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub">Alıştırma 5 – Word Order: Zarfları doğru yere koyun</div>
+  <div class="vg"><strong>1</strong> (peacefully, suddenly) <div class="vr">I was dreaming <span class="fi">peacefully</span>, when <span class="fi">suddenly</span> a loud noise woke me up. <button class="tr-btn" onclick="tr('Cümle','Huzurla rüya görüyordum, derken aniden yüksek bir ses beni uyandırdı.','I was dreaming peacefully, when suddenly a loud noise woke me up.')">?</button></div></div>
+  <div class="vg"><strong>2</strong> (early, hard) <div class="vr">I got up <span class="fi">early</span> in the morning and worked <span class="fi">hard</span> all day. <button class="tr-btn" onclick="tr('Cümle','Sabah erken kalktım ve bütün gün sıkı çalıştım.','I got up early in the morning and worked hard all day.')">?</button></div></div>
+  <div class="vg"><strong>3</strong> (nearly, still, regularly) <div class="vr">My grandma is <span class="fi">nearly</span> 80 and she <span class="fi">still</span> goes swimming <span class="fi">regularly</span>. <button class="tr-btn" onclick="tr('Cümle','Büyükannem neredeyse 80 yaşında ve hâlâ düzenli olarak yüzmeye gidiyor.','My grandma is nearly 80 and she still goes swimming regularly.')">?</button></div></div>
+  <div class="vg"><strong>4</strong> (just, really, loudly) <div class="vr">I was <span class="fi">just</span> relaxing with a <span class="fi">really</span> good book when someone knocked <span class="fi">loudly</span> on the door. <button class="tr-btn" onclick="tr('Cümle','Gerçekten güzel bir kitapla dinleniyordum ki biri kapıyı şiddetle çaldı.','I was just relaxing with a really good book when someone knocked loudly on the door.')">?</button></div></div>
+  <div class="vg"><strong>5</strong> (only, already, well) <div class="vr">My sister is <span class="fi">only</span> three, but she can <span class="fi">already</span> read and write <span class="fi">well</span>. <button class="tr-btn" onclick="tr('Cümle','Kız kardeşim henüz üç yaşında ama artık okuyup yazabiliyor ve bunu iyi yapıyor.','My sister is only three, but she can already read and write well.')">?</button></div></div>
+  <div class="vg"><strong>6</strong> (continually, even) <div class="vr">Some of my friends are <span class="fi">continually</span> on Facebook. <span class="fi">Even</span> my dad's on Facebook. <button class="tr-btn" onclick="tr('Cümle','Arkadaşlarımdan bazıları sürekli Facebook\'ta. Hatta babam bile Facebook\'ta.','Some of my friends are continually on Facebook. Even my dad is on Facebook.')">?</button></div></div>
+  <div class="vg"><strong>7</strong> (really, of course, passionately) <div class="vr">'Do you <span class="fi">really</span> love me?' 'Of course I do. I love you <span class="fi">passionately</span>.' <button class="tr-btn" onclick="tr('Cümle','\"Beni gerçekten seviyor musun?\" \"Elbette. Seni tutkuyla seviyorum.\"','Do you really love me? Of course I do. I love you passionately.')">?</button></div></div>
+
+  <div class="sub">Alıştırma 6 – A Sad Poem: En uygun başlık hangisi?</div>
+  <div class="qa">
+    <div class="q">Which title suits the poem best? <button class="tr-btn" onclick="tr('Şiir Sorusu','Şiire en uygun başlık hangisi?','Which title suits the poem best?')">?</button></div>
+    <div class="ans">Best title = <strong>'Love's a Cruel Game!'</strong> — A couple have split up; one of them has done something to feel guilty about.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     EVERYDAY ENGLISH – SAYING WHEN (s.37)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.37</span> Everyday English – Saying When (Tarih &amp; Zaman)</div>
+
+  <div class="sub">Alıştırma 1 – Dinleme: Tarihler</div>
+  <div class="ex s">
+    <div class="exl">Konuşma özeti (Dinleme 3.11)</div>
+    <span class="ei">A: What's the date today? → B: It's April the twenty-third. <button class="tr-btn s" onclick="tr('Diyalog','A: Bugün tarih ne? → B: Nisan\'ın yirmi üçü.','What is the date today? It is April the twenty-third.')">?</button></span>
+    <span class="ei">A: What year were you born? → B: 1999. <button class="tr-btn s" onclick="tr('Diyalog','A: Hangi yıl doğdunuz? → B: 1999.','What year were you born? 1999.')">?</button></span>
+    <span class="ei">A: What's your date of birth? → B: The seventeenth of the tenth, nineteen ninety-nine. <button class="tr-btn s" onclick="tr('Diyalog','A: Doğum tarihiniz nedir? → B: On yedinci on, bin dokuz yüz doksan dokuz (17/10/1999).','What is your date of birth? The seventeenth of the tenth, nineteen ninety-nine.')">?</button></span>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Tarihleri iki şekilde söyleyin</div>
+  <div class="grid">
+    <div class="gi"><span class="n">1</span>the third of February / February the third</div>
+    <div class="gi"><span class="n">2</span>the sixth of July / July the sixth</div>
+    <div class="gi"><span class="n">3</span>the twelfth of June / June the twelfth</div>
+    <div class="gi"><span class="n">4</span>the twenty-fifth of December / December the twenty-fifth</div>
+    <div class="gi"><span class="n">5</span>the sixteenth of August / August the sixteenth</div>
+    <div class="gi"><span class="n">6</span>the first of May / May the first</div>
+    <div class="gi"><span class="n">7</span>the thirteenth of January / January the thirteenth</div>
+    <div class="gi"><span class="n">8</span>the thirty-first of October / October the thirty-first</div>
+  </div>
+
+  <div class="sub">Alıştırma 3 – İngiliz ve Amerikan İngilizcesi farkı</div>
+  <div class="qa">
+    <div class="q">What's the difference? <button class="tr-btn" onclick="tr('Fark','İngilizler: \"the twentieth of July\" / Amerikalılar: \"July twentieth\" — \'the\' kullanmazlar ve önce ayı söylerler.','British vs American date format difference')">?</button></div>
+    <div class="ans">Americans don't use 'the' before the date and they say the month first. (e.g. July twentieth, 1969)</div>
+  </div>
+
+  <div class="sub">Alıştırma 4 – Yılları söyleyin</div>
+  <div class="grid">
+    <div class="gi">2012 → <span class="tag">twenty twelve</span></div>
+    <div class="gi">2002 → <span class="tag">two thousand and two</span></div>
+    <div class="gi">2018 → <span class="tag">twenty eighteen</span></div>
+    <div class="gi">2025 → <span class="tag">twenty twenty-five</span></div>
+    <div class="gi">1980 → <span class="tag">nineteen eighty</span></div>
+    <div class="gi">1969 → <span class="tag">nineteen sixty-nine</span></div>
+    <div class="gi">1994 → <span class="tag">nineteen ninety-four</span></div>
+    <div class="gi">1848 → <span class="tag">eighteen forty-eight</span></div>
+  </div>
+
+  <div class="sub">Alıştırma 5 – Önemli Tarihler (Dinleme 3.14)</div>
+  <div class="qa"><div class="q"><span class="ql">1</span>When did man first land on the moon? <button class="tr-btn" onclick="tr('Soru','İnsanlık aya ilk ne zaman ayak bastı?','When did man first land on the moon?')">?</button></div><div class="ans">On July the twentieth, 1969.</div></div>
+  <div class="qa"><div class="q"><span class="ql">2</span>When's your wedding anniversary? <button class="tr-btn" onclick="tr('Soru','Evlilik yıl dönümünüz ne zaman?','When is your wedding anniversary?')">?</button></div><div class="ans">November the eighth.</div></div>
+  <div class="qa"><div class="q"><span class="ql">3</span>When did the Berlin Wall come down? <button class="tr-btn" onclick="tr('Soru','Berlin Duvarı ne zaman yıkıldı?','When did the Berlin Wall come down?')">?</button></div><div class="ans">The ninth of November, 1989.</div></div>
+  <div class="qa"><div class="q"><span class="ql">4</span>When was your son born? <button class="tr-btn" onclick="tr('Soru','Oğlunuz ne zaman doğdu?','When was your son born?')">?</button></div><div class="ans">December the nineteenth, 2014.</div></div>
+  <div class="qa"><div class="q"><span class="ql">5</span>What's the expiry date on your credit card? <button class="tr-btn" onclick="tr('Soru','Kredi kartınızın son kullanım tarihi ne?','What is the expiry date on your credit card?')">?</button></div><div class="ans">06 / 25</div></div>
+
+  <div class="sub">Alıştırma 6 – Time Expressions: in / at / on / (–)</div>
+  <div class="grid">
+    <div class="gi"><span class="n">1</span><span class="tag">at</span> six o'clock</div>
+    <div class="gi"><span class="n">2</span><span class="tag">–</span> last night</div>
+    <div class="gi"><span class="n">3</span><span class="tag">in</span> the evening</div>
+    <div class="gi"><span class="n">4</span><span class="tag">in</span> the 1960s</div>
+    <div class="gi"><span class="n">5</span><span class="tag">on</span> Saturday</div>
+    <div class="gi"><span class="n">6</span><span class="tag">in</span> April</div>
+    <div class="gi"><span class="n">7</span><span class="tag">in</span> summer</div>
+    <div class="gi"><span class="n">8</span><span class="tag">–</span> this morning</div>
+    <div class="gi"><span class="n">9</span><span class="tag">in</span> 2015</div>
+    <div class="gi"><span class="n">10</span><span class="tag">at</span> the weekend</div>
+    <div class="gi"><span class="n">11</span><span class="tag">on</span> January 18</div>
+    <div class="gi"><span class="n">12</span><span class="tag">–</span> the other day</div>
+    <div class="gi"><span class="n">13</span><span class="tag">on</span> Monday morning</div>
+    <div class="gi"><span class="n">14</span><span class="tag">–</span> yesterday evening</div>
+    <div class="gi"><span class="n">15</span><span class="tag">–</span> two weeks ago</div>
+    <div class="gi"><span class="n">16</span><span class="tag">at</span> midnight</div>
+  </div>
+  <div class="ex s"><span class="ei">📌 Not: Amerikan İngilizcesinde "at the weekend" yerine "on the weekend" kullanılır.</span></div>
+
+  <div class="sub">Alıştırma 7–9 – Talking about you (Serbest konuşma)</div>
+  <div class="qa"><div class="q">What days are national holidays in your country? <button class="tr-btn" onclick="tr('Soru','Ülkenizde millî tatil günleri hangileri?','What days are national holidays in your country?')">?</button></div><div class="ans s">Öğrenci cevabı. Türkiye örneği: 29 Ekim Cumhuriyet Bayramı, 23 Nisan Ulusal Egemenlik ve Çocuk Bayramı, 19 Mayıs Atatürk'ü Anma Gençlik ve Spor Bayramı.</div></div>
+  <div class="qa"><div class="q">When did you last see a film / send a text / play a sport…? <button class="tr-btn" onclick="tr('Soru','En son ne zaman film izlediniz / mesaj attınız / spor yaptınız…?','When did you last see a film / send a text / play a sport?')">?</button></div><div class="ans s">Kişisel cevap gerektirir. Örnek: "I went to the cinema two weeks ago."</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     WRITING (s.38)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.38</span> Writing – Picture Stories / Narrative Writing</div>
+
+  <div class="sub">Alıştırma 1 – Sıfat ve Zarfları Doğru Yere Koyun</div>
+
+  <div class="vg"><strong>1</strong> A dog jumped up at me. (<em>large, suddenly</em>) <button class="tr-btn" onclick="tr('Soru','Bir köpek üstüme atladı. (büyük, aniden)','A dog jumped up at me. large, suddenly')">?</button>
+    <div class="vr">A <span class="fi">large</span> dog <span class="fi">suddenly</span> jumped up at me. / <em>Suddenly,</em> a large dog jumped up at me.</div>
+  </div>
+  <div class="vg"><strong>2</strong> Thank you for your invitation. I can't come. (<em>kind, unfortunately</em>) <button class="tr-btn" onclick="tr('Soru','Davetiniz için teşekkürler. Gelemiyorum. (nazik, ne yazık ki)','Thank you for your invitation. I cannot come. kind, unfortunately')">?</button>
+    <div class="vr">Thank you for your <span class="fi">kind</span> invitation. <span class="fi">Unfortunately</span>, I can't come. / I can't come, unfortunately.</div>
+  </div>
+  <div class="vg"><strong>3</strong> I got out of bed and went to make a cup of tea. (<em>downstairs, nice</em>) <button class="tr-btn" onclick="tr('Soru','Yataktan kalktım ve bir fincan çay yapmaya gittim. (aşağıya, güzel)','I got out of bed and went to make a cup of tea. downstairs, nice')">?</button>
+    <div class="vr">I got out of bed and went <span class="fi">downstairs</span> to make a <span class="fi">nice</span> cup of tea.</div>
+  </div>
+  <div class="vg"><strong>4</strong> We had a meal and we went to the theatre. (<em>lovely, then</em>) <button class="tr-btn" onclick="tr('Soru','Yemek yedik ve tiyatroya gittik. (güzel, sonra)','We had a meal and we went to the theatre. lovely, then')">?</button>
+    <div class="vr">We had a <span class="fi">lovely</span> meal and <span class="fi">then</span> we went to the theatre.</div>
+  </div>
+  <div class="vg"><strong>5</strong> I was sitting at home when something happened. (<em>last Thursday evening, very strange</em>) <button class="tr-btn" onclick="tr('Soru','Evde oturuyordum, bir şey oldu. (geçen Perşembe akşamı, çok garip)','I was sitting at home when something happened. last Thursday evening, very strange')">?</button>
+    <div class="vr">I was sitting at home <span class="fi">last Thursday evening</span> when something <span class="fi">very strange</span> happened. / Last Thursday evening, I was sitting at home when something very strange happened.</div>
+  </div>
+  <div class="vg"><strong>6</strong> He's got three sisters, and I've got three older sisters. (<em>older, too</em>) <button class="tr-btn" onclick="tr('Soru','Onun üç kız kardeşi var, benim de üç kız kardeşim var. (büyük, de/da)','He has three sisters, and I have got three older sisters. older, too')">?</button>
+    <div class="vr">He's got three <span class="fi">older</span> sisters, and I've got three older sisters, <span class="fi">too</span>.</div>
+  </div>
+  <div class="vg"><strong>7</strong> There's a programme on TV tonight that I want to see. (<em>interesting, very much</em>) <button class="tr-btn" onclick="tr('Soru','Bu akşam televizyonda görmek istediğim bir program var. (ilginç, çok)','There is a programme on TV tonight that I want to see. interesting, very much')">?</button>
+    <div class="vr">There's an <span class="fi">interesting</span> programme on TV tonight that I want to see <span class="fi">very much</span>. / …that I very much want to see.</div>
+  </div>
+  <div class="vg"><strong>8</strong> I worked all week. (<em>really hard, last</em>) <button class="tr-btn" onclick="tr('Soru','Bütün hafta çalıştım. (gerçekten sıkı, geçen)','I worked all week. really hard, last')">?</button>
+    <div class="vr">I worked <span class="fi">really hard</span> all <span class="fi">last</span> week. / Last week, I worked really hard.</div>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Aunt Camilla's Portrait (Resimlerden hikâye yazın)</div>
+  <div class="ex s">
+    <div class="exl">Örnek hikâye (kendim yazdım)</div>
+    <span class="ei"><strong>Picture 1:</strong> My Aunt Camilla was old and very vain. One day she looked in the mirror and suddenly decided that she wanted a portrait of herself. Immediately, she contacted the world-famous portrait painter, Rolf Unwin. <button class="tr-btn s" onclick="tr('Resim 1','Teyzem Camilla yaşlı ve çok kibirliydi. Bir gün aynaya baktı ve aniden kendisinin bir portresini istediğine karar verdi. Hemen dünyaca ünlü portre ressamı Rolf Unwin ile iletişime geçti.','My Aunt Camilla was old and very vain. One day she looked in the mirror and decided she wanted a portrait of herself.')">?</button></span>
+    <span class="ei"><strong>Picture 2:</strong> Twice a week she visited his studio. Rolf slowly painted her portrait. He didn't want her to see the picture until it was finished. <button class="tr-btn s" onclick="tr('Resim 2','Haftada iki kez onun stüdyosunu ziyaret etti. Rolf yavaşça portresini çizdi. Tablo bitene kadar resmi görmesini istemedi.','Twice a week she visited his studio. Rolf painted her portrait. He did not want her to see the picture until it was finished.')">?</button></span>
+    <span class="ei"><strong>Picture 3:</strong> Finally the portrait was ready. My aunt was excited and hurried to the studio. The portrait looked exactly like my aunt. Unfortunately she was furious and refused to accept it. She ordered him to paint a new one! <button class="tr-btn s" onclick="tr('Resim 3','Sonunda tablo hazırdı. Teyzem heyecanlandı ve stüdyoya koştu. Tablo teyzemin tıpkısının aynısıydı. Ne yazık ki öfkeden deliye döndü ve kabul etmeyi reddetti. Onu yeni bir tane yapmakla görevlendirdi!','Finally the portrait was ready. My aunt was excited. The portrait looked exactly like her. She was furious and refused it. She ordered him to paint a new one.')">?</button></span>
+    <span class="ei"><strong>Picture 4:</strong> This time my aunt didn't visit the studio. After another few months the portrait was ready and my aunt came to see it. The face was a beautiful, young girl. It didn't look like my aunt at all – but she absolutely loved it. She paid Rolf a fortune! <button class="tr-btn s" onclick="tr('Resim 4','Bu sefer teyzem stüdyoyu ziyaret etmedi. Birkaç ay daha sonra tablo hazırdı ve teyzem onu görmeye geldi. Yüz güzel, genç bir kızdı. Teyzeye hiç benzermiyordu ama o tabloyu çok sevdi. Rolf\'a servet ödedi!','This time my aunt did not visit the studio. After some months the portrait was ready. The face was a beautiful young girl. It did not look like my aunt at all – but she loved it. She paid Rolf a fortune!')">?</button></span>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function tr(title, body, orig) {
+  document.getElementById('modal-title').textContent = '🇹🇷 ' + title;
+  document.getElementById('modal-body').textContent = body;
+  document.getElementById('modal-orig').textContent = orig ? '🇬🇧 ' + orig : '';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 </body>
 </html>
