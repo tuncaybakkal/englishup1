@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Unit 4 – Food for thought</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#E8520A; --dark:#1A1208; --cream:#FAF6EE; --warm:#F2EAD8; --muted:#7A6B55;
+    --ans-bg:#FFF3C4; --ans-border:#E8A012; --ans-text:#6B4000;
+    --self-bg:#E3F2FD; --self-border:#90CAF9; --self-color:#1565C0;
+    --line:#D4C4A8;
+    --true-bg:#E8F5E9; --true-b:#66BB6A; --true-t:#1B5E20;
+    --false-bg:#FFEBEE; --false-b:#EF9A9A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--dark);font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.75}
+
+  .hdr{background:var(--orange);color:#fff;padding:2.2rem 2.5rem 1.8rem;position:relative;overflow:hidden}
+  .hdr::after{content:'4';position:absolute;right:1.5rem;top:-1rem;font-family:'Playfair Display',serif;font-size:10rem;opacity:.13;line-height:1}
+  .hdr h1{font-family:'Playfair Display',serif;font-size:2rem}
+  .hdr .sub{font-size:.8rem;opacity:.85;margin-top:.3rem;letter-spacing:.05em;text-transform:uppercase}
+
+  .legend{display:flex;gap:1.1rem;padding:.8rem 2.5rem;background:var(--dark);color:#fff;font-size:.74rem;align-items:center;flex-wrap:wrap}
+  .li{display:flex;align-items:center;gap:.4rem}
+  .lb{width:15px;height:11px;border-radius:3px}
+  .lb.a{background:var(--ans-bg);border:1.5px solid var(--ans-border)}
+  .lb.s{background:var(--self-bg);border:1.5px solid var(--self-border)}
+
+  .wrap{max-width:900px;margin:0 auto;padding:1.8rem 1.6rem 4rem}
+
+  .sec{margin-bottom:2.6rem}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--orange);border-bottom:2px solid var(--orange);padding-bottom:.35rem;margin-bottom:1.1rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+  .pg{font-family:'Source Serif 4',serif;font-size:.68rem;font-weight:600;background:var(--orange);color:#fff;padding:.1rem .5rem;border-radius:3px;letter-spacing:.04em;white-space:nowrap}
+  .sub{font-weight:600;font-size:.87rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;margin-top:1.2rem}
+
+  /* QA block */
+  .qa{background:#fff;border-left:3px solid var(--line);border-radius:0 6px 6px 0;padding:.8rem 1.1rem;margin-bottom:.65rem}
+  .q{font-size:.91rem;font-weight:600;margin-bottom:.28rem;display:flex;align-items:flex-start;gap:.4rem;flex-wrap:wrap}
+  .q-text{flex:1}
+  .ql{color:var(--muted);font-size:.74rem;font-weight:400;margin-right:.35rem;text-transform:uppercase;letter-spacing:.05em}
+  
+  .ans-row{display:flex;align-items:flex-start;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+  .ans{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.28rem .65rem;font-size:.89rem;color:var(--ans-text);font-style:italic;flex:1}
+  .ans.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
+
+  /* BLANK */
+  .bl{font-size:.91rem;margin-bottom:.58rem;background:#fff;border-left:3px solid var(--line);border-radius:0 6px 6px 0;padding:.68rem 1rem;display:flex;align-items:flex-start;gap:.5rem;flex-wrap:wrap}
+  .bl-text{flex:1}
+  .bn{font-weight:600;color:var(--muted);margin-right:.35rem;font-size:.78rem}
+  .fi{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.08rem .5rem;color:var(--ans-text);font-style:italic;font-weight:600;display:inline-block;min-width:52px;text-align:center;font-size:.87rem}
+  .fi.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
+
+  /* GRID */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.42rem;margin-bottom:.7rem}
+  .gi{background:#fff;border-left:3px solid var(--line);border-radius:0 5px 5px 0;padding:.48rem .82rem;font-size:.87rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+  .gi.s{border-left-color:var(--self-border);background:var(--self-bg);color:var(--self-color)}
+  .gi .n{font-weight:600;color:var(--muted);font-size:.76rem;margin-right:.2rem}
+
+  /* EXAMPLE BOX */
+  .ex{background:var(--warm);border-radius:6px;padding:.85rem 1.1rem;margin-bottom:.68rem;font-size:.86rem;line-height:1.78}
+  .ex.s{background:var(--self-bg);border:1px solid var(--self-border);color:var(--self-color)}
+  .exl{font-weight:600;color:var(--orange);text-transform:uppercase;font-size:.71rem;letter-spacing:.07em;margin-bottom:.32rem}
+  .ex.s .exl{color:var(--self-color)}
+  .ei{display:flex;align-items:flex-start;gap:.4rem;padding:.07rem 0;flex-wrap:wrap}
+  .ei-text{flex:1}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.87rem;background:#fff;border-radius:6px;overflow:hidden;margin-bottom:.85rem}
+  .tbl thead{background:var(--dark);color:#fff}
+  .tbl th{padding:.52rem .85rem;text-align:left;font-size:.77rem;text-transform:uppercase;letter-spacing:.05em}
+  .tbl td{padding:.48rem .85rem;border-bottom:1px solid var(--warm);vertical-align:top}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl tr:nth-child(even) td{background:var(--cream)}
+  .tbl td:last-child{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+  .tag{background:var(--ans-bg);border:1.5px solid var(--ans-border);border-radius:4px;padding:.08rem .48rem;font-size:.8rem;color:var(--ans-text);font-weight:600;font-style:italic}
+  .tag.s{background:var(--self-bg);border-color:var(--self-border);color:var(--self-color)}
+
+  /* VARIANT */
+  .vg{margin-bottom:1.1rem}
+  .vr{background:#fff;border-left:3px solid var(--ans-border);padding:.38rem .85rem;font-size:.87rem;border-radius:0 4px 4px 0;margin-top:.35rem;display:flex;align-items:flex-start;gap:.4rem;flex-wrap:wrap}
+  .vr-text{flex:1}
+  .vr.s{border-left-color:var(--self-border);background:var(--self-bg);color:var(--self-color)}
+
+  /* TRANSLATE BUTTON */
+  .tb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--orange);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:.72rem;font-weight:700;flex-shrink:0;transition:background .2s;vertical-align:middle}
+  .tb:hover{background:#c43d00}
+  .tb.s{background:var(--self-color)}
+  .tb.s:hover{background:#0d47a1}
+
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal{background:#fff;border-radius:10px;padding:1.8rem 2rem;max-width:540px;width:92%;max-height:82vh;overflow-y:auto;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.22)}
+  .modal h3{font-family:'Playfair Display',serif;color:var(--orange);font-size:1.05rem;margin-bottom:.85rem;padding-right:2rem}
+  .modal-section{margin-bottom:.9rem}
+  .modal-section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.3rem}
+  .modal-section-body{font-size:.93rem;line-height:1.72;color:var(--dark);background:var(--cream);padding:.5rem .75rem;border-radius:5px}
+  .modal-section-body.ans-style{background:var(--ans-bg);color:var(--ans-text);font-style:italic}
+  .modal .close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);line-height:1}
+  .modal .close:hover{color:var(--dark)}
+
+  @media(max-width:580px){.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">×</button>
+    <h3 id="modal-title">Türkçe Çeviri</h3>
+    <div class="modal-section" id="modal-q-wrap">
+      <div class="modal-section-title">🇬🇧 Soru / İfade</div>
+      <div class="modal-section-body" id="modal-q"></div>
+    </div>
+    <div class="modal-section" id="modal-q-tr-wrap">
+      <div class="modal-section-title">🇹🇷 Türkçesi</div>
+      <div class="modal-section-body" id="modal-q-tr"></div>
+    </div>
+    <div class="modal-section" id="modal-a-wrap">
+      <div class="modal-section-title">✅ Cevap (İngilizce)</div>
+      <div class="modal-section-body ans-style" id="modal-a"></div>
+    </div>
+    <div class="modal-section" id="modal-a-tr-wrap">
+      <div class="modal-section-title">🇹🇷 Cevabın Türkçesi</div>
+      <div class="modal-section-body ans-style" id="modal-a-tr"></div>
+    </div>
+  </div>
+</div>
+
+<div class="hdr">
+  <div class="sub">Headway Pre-intermediate 5th Edition · Student's Book</div>
+  <h1>Unit 4: Food for thought</h1>
+  <div class="sub" style="margin-top:.5rem">Tam Soru &amp; Cevap · Sayfa Referanslı · Türkçe Çevirili</div>
+</div>
+
+<div class="legend">
+  <span>Gösterim:</span>
+  <span class="li"><span class="lb a"></span>Cevap anahtarından</span>
+  <span class="li"><span class="lb s"></span>Kendim cevapladım (mavi)</span>
+  <span class="li"><span style="background:var(--orange);color:#fff;padding:.1rem .45rem;border-radius:50%;font-size:.72rem;font-weight:700">?</span>Hem soruyu hem cevabı Türkçe göster</span>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════
+     UNIT OPENER (s.39)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.39</span>Unit Opener – Fotoğraf Soruları</div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">S.1</span>Are the foods in the photo healthy or unhealthy?</span>
+      <button class="tb" onclick="tr('Unit Opener S.1','Are the foods in the photo healthy or unhealthy?','Fotoğraftaki yiyecekler sağlıklı mı yoksa sağlıksız mı?','Healthy. They include egg, broccoli, avocado, onion, spinach, ginger, garlic, chillies, almonds.','Sağlıklı. Yumurta, brokoli, avokado, soğan, ıspanak, zencefil, sarımsak, biber ve badem içermektedir.')">?</button>
+    </div>
+    <div class="ans-row">
+      <div class="ans">Healthy. They include egg, broccoli, avocado, onion, spinach, ginger, garlic, chillies, almonds.</div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">S.2</span>Which ones do/don't you like?</span>
+      <button class="tb" onclick="tr('Unit Opener S.2','Which ones do/don\'t you like?','Hangilerini seviyorsunuz / sevmiyorsunuz?','Students\' own answers.','Öğrencilerin kendi cevapları.')">?</button>
+    </div>
+    <div class="ans-row"><div class="ans s">Kişisel cevap gerektirir.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">S.3</span>What is the connection between the photo and the unit title?</span>
+      <button class="tb" onclick="tr('Unit Opener S.3','What is the connection between the photo and the unit title?','Fotoğraf ile ünite başlığı arasındaki bağlantı nedir?','The food types in the picture are all good for the brain. (Food for thought = beyin için yiyecek / düşündürücü)','Resimdeki tüm yiyecekler beyin için iyidir. "Food for thought" hem "beyin için yiyecek" hem de "düşündürücü şey" anlamına gelir.')">?</button>
+    </div>
+    <div class="ans-row"><div class="ans">The food types in the picture are all good for the brain.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GRAMMAR – EXPRESSIONS OF QUANTITY (s.40)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.40</span>Grammar – Expressions of Quantity (She's a supertaster)</div>
+
+  <div class="sub">Alıştırma 1 – Abbie Johnson hakkında sorular</div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">1</span>What's her job?</span>
+      <button class="tb" onclick="tr('S.1','What is her job?','Onun işi nedir?','She eats baby food to test it for a company that makes it.','Üretilen bebek mamasını test etmek için bebek maması yiyor (bebek maması tadımcısı).')">?</button>
+    </div>
+    <div class="ans-row"><div class="ans">She eats baby food to test it for a company that makes it.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">2</span>Why is she good at it?</span>
+      <button class="tb" onclick="tr('S.2','Why is she good at it?','Bu işte neden iyidir?','Because she is a supertaster – she has more taste buds on her tongue than most people.','Çünkü o bir "süper tadımcı" – dilinde çoğu insandan daha fazla tat alma tomurcuğu var.')">?</button>
+    </div>
+    <div class="ans-row"><div class="ans">Because she is a supertaster – she has more taste buds on her tongue than most people.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="q-text"><span class="ql">3</span>What is difficult for her to eat and drink?</span>
+      <button class="tb" onclick="tr('S.3','What is difficult for her to eat and drink?','Yemesi ve içmesi zor olan şeyler nelerdir?','Things with very strong flavours, including alcohol.','Alkol dahil çok güçlü aromalı şeyler.')">?</button>
+    </div>
+    <div class="ans-row"><div class="ans">Things with very strong flavours, including alcohol.</div></div>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Fotoğraf etiketleri (A–R): Countable / Uncountable</div>
+  <div class="ex">
+    <div class="exl">A–R Fotoğraf etiketleri</div>
+    <div class="ei"><span class="ei-text">A coffee · B sprouts · C milk · D sweets · E a glass of white wine · F water · G chocolate · H spinach · I red wine · J spices · K broccoli · L sugar · M vegetables · N peas · O olives · P chillies · Q taste buds · R baby food</span>
+    <button class="tb" onclick="tr('Fotoğraf etiketleri A–R','A coffee B sprouts C milk D sweets E a glass of white wine F water G chocolate H spinach I red wine J spices K broccoli L sugar M vegetables N peas O olives P chillies Q taste buds R baby food','A kahve · B Brüksel lahanası · C süt · D şekerler · E bir bardak beyaz şarap · F su · G çikolata · H ıspanak · I kırmızı şarap · J baharatlar · K brokoli · L şeker · M sebzeler · N bezelye · O zeytinler · P biber (acı) · Q tat alma tomurcukları · R bebek maması','The box on the left is Countable and the box on the right is Uncountable.','Sol kutu Sayılabilir (Countable), sağ kutu ise Sayılamaz (Uncountable) isimlerdir.')">?</button></div>
+    <div class="ei" style="margin-top:.4rem"><span class="ei-text"><strong>Sol kutu = Countable (Sayılabilir) · Sağ kutu = Uncountable (Sayılamaz)</strong></span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GRAMMAR – INTERVIEW (s.41)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.41</span>Grammar – Röportaj Tamamlama (Alıştırma 3)</div>
+
+  <div class="sub">Abbie ile röportaj – boşlukları doldurun</div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">1 I:</span>How much <span class="fi">baby food</span> do you eat in a day?
+    <button class="tb" onclick="tr('Soru 1','How much baby food do you eat in a day?','Günde ne kadar bebek maması yiyorsunuz?','Quite a lot! About 500 spoonfuls. But they\'re small spoons!','Oldukça fazla! Yaklaşık 500 kaşık. Ama küçük kasıklar!')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> Quite a lot! About 500 spoonfuls. But they're small spoons! <button class="tb" onclick="tr('Cevap 1','A: Quite a lot! About 500 spoonfuls. But they are small spoons!','Oldukça fazla! Yaklaşık 500 kaşık. Ama küçük kaşıklar!','','')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">2 I:</span>How many <span class="fi">taste buds</span> do you have?
+    <button class="tb" onclick="tr('Soru 2','How many taste buds do you have?','Kaç tane tat alma tomurcuğunuz var?','A lot! About 10–15,000 – the same as most babies.','Çok! Yaklaşık 10.000–15.000 – çoğu bebek kadar.')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> A lot! About 10–15,000 – the same as most babies. <button class="tb" onclick="tr('Cevap 2','A lot! About 10–15,000 – the same as most babies.','Çok! Yaklaşık 10.000–15.000 – çoğu bebekle aynı sayıda.')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">3 I:</span>At home, do you eat <strong>a lot of</strong> <span class="fi">vegetables</span>?
+    <button class="tb" onclick="tr('Soru 3','At home, do you eat a lot of vegetables?','Evde çok sebze yer misiniz?','Yes, I love peas! But I only eat a little broccoli and spinach, and I can only eat a few sprouts.','Evet, bezelyeyi çok severim! Ama sadece biraz brokoli ve ıspanak yerim; Brüksel lahanasından da sadece birkaç tane yiyebiliyorum.')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> Yes, I love <span class="fi">peas</span>! But I only eat <strong>a little</strong> <span class="fi">broccoli</span> and <span class="fi">spinach</span>, and I can only eat <strong>a few</strong> <span class="fi">sprouts</span>. <button class="tb" onclick="tr('Cevap 3','Yes, I love peas! But I only eat a little broccoli and spinach, and I can only eat a few sprouts.','Evet, bezelyeyi çok severim! Ama sadece biraz brokoli ve ıspanak yerim; Brüksel lahanasından da sadece birkaç tane yiyebiliyorum.')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">4 I:</span>Do you drink <strong>any</strong> <span class="fi">coffee</span>?
+    <button class="tb" onclick="tr('Soru 4','Do you drink any coffee?','Hiç kahve içiyor musunuz?','No, I drink tea, and lots of water to clean my taste buds.','Hayır, çay içiyorum ve tat alma tomurcuklarımı temizlemek için bol su.')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> No, I drink tea, and <strong>lots of</strong> <span class="fi">water</span> to clean my taste buds. <button class="tb" onclick="tr('Cevap 4','No, I drink tea, and lots of water to clean my taste buds.','Hayır, çay içiyorum ve tat alma tomurcuklarımı temizlemek için bol su.')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">5 I:</span>And do you drink <strong>much</strong> <span class="fi">milk</span>?
+    <button class="tb" onclick="tr('Soru 5','And do you drink much milk?','Peki çok süt içiyor musunuz?','I can only drink a little milk – it tastes like cream to me!','Sadece biraz süt içebiliyorum – bana krema gibi geliyor!')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> I can only drink <strong>a little</strong> <span class="fi">milk</span> – it tastes like cream to me! <button class="tb" onclick="tr('Cevap 5','I can only drink a little milk – it tastes like cream to me!','Sadece biraz süt içebiliyorum – bana krema gibi geliyor!')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">6 I:</span>Did you eat <strong>many</strong> <span class="fi">sweets</span> as a child?
+    <button class="tb" onclick="tr('Soru 6','Did you eat many sweets as a child?','Çocukken çok şeker yer miydiniz?','No. I don\'t like many sweet things, but I enjoy a little chocolate, if there isn\'t much sugar in it.','Hayır. Çok fazla tatlı şeyi sevmiyorum ama içinde çok şeker yoksa biraz çikolata yiyorum.')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> No. I don't like <strong>many</strong> sweet things, but I enjoy <strong>a little</strong> <span class="fi">chocolate</span>, if there isn't <strong>much</strong> <span class="fi">sugar</span> in it. <button class="tb" onclick="tr('Cevap 6','No. I don\'t like many sweet things, but I enjoy a little chocolate, if there isn\'t much sugar in it.','Hayır. Çok fazla tatlı şeyi sevmiyorum ama içinde çok şeker yoksa biraz çikolata yiyorum.')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">7 I:</span>Do you use <strong>any</strong> hot <span class="fi">spices</span> in your cooking?
+    <button class="tb" onclick="tr('Soru 7','Do you use any hot spices in your cooking?','Yemeklerinizde hiç acı baharat kullanıyor musunuz?','No, I don\'t and obviously, I don\'t eat any chillies – they\'re too hot for a lot of people!','Hayır, kullanmıyorum ve tabii ki biber de yemiyorum – pek çok insan için çok acı!')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> No, I don't, and obviously, I don't eat <strong>any</strong> <span class="fi">chillies</span> – they're too hot for a lot of people! <button class="tb" onclick="tr('Cevap 7','No, I don\'t eat any chillies – they\'re too hot for a lot of people!','Hayır, biber yemiyorum – pek çok insan için çok acı!')">?</button></span></div>
+
+  <div class="bl">
+    <div class="bl-text"><span class="bn">8 I:</span>And do you drink <strong>any</strong> alcohol?
+    <button class="tb" onclick="tr('Soru 8','And do you drink any alcohol?','Peki hiç alkol içiyor musunuz?','Yes, I drink some. I don\'t drink any red wine, but I have a glass of white wine sometimes. But definitely no beer!','Evet, biraz içiyorum. Kırmızı şarap içmiyorum ama bazen bir kadeh beyaz şarap içiyorum. Ama kesinlikle bira yok!')">?</button></div>
+  </div>
+  <div class="ex" style="margin-top:-.4rem;margin-bottom:.9rem"><span class="ei-text"><strong>A:</strong> Yes, I drink <strong>some</strong>. I don't drink <strong>any</strong> <span class="fi">red wine</span>, but I have <strong>a</strong> <span class="fi">glass of white wine</span> sometimes. But definitely no beer! Bleurgh! <button class="tb" onclick="tr('Cevap 8','Yes, I drink some. I don\'t drink any red wine, but I have a glass of white wine sometimes. But definitely no beer!','Evet, biraz içiyorum. Kırmızı şarap içmiyorum ama bazen bir kadeh beyaz şarap içiyorum. Ama kesinlikle bira yok!')">?</button></span></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GRAMMAR SPOT (s.41)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.41</span>Grammar Spot – Miktar İfadeleri</div>
+
+  <div class="sub">1 – Hangi grup hangisiyle kullanılır?</div>
+  <div class="ex">
+    <div class="ei"><span class="ei-text"><strong>A (How much / not much / a little)</strong> → Uncountable (Sayılamaz isimler)
+    <button class="tb" onclick="tr('Grammar Spot 1A','How much / not much / a little','Ne kadar / çok değil / biraz','Goes with UNCOUNTABLE nouns (e.g. much water, a little milk)','SAYILAMAZ isimlerle kullanılır (ör. much water, a little milk)')">?</button></span></div>
+    <div class="ei"><span class="ei-text"><strong>B (How many / not many / a few)</strong> → Countable Plural (Sayılabilir çoğul)
+    <button class="tb" onclick="tr('Grammar Spot 1B','How many / not many / a few','Kaç tane / çok değil / birkaç','Goes with COUNTABLE PLURAL nouns (e.g. many eggs, a few sprouts)','SAYILABILIR ÇOĞUL isimlerle kullanılır (ör. many eggs, a few sprouts)')">?</button></span></div>
+    <div class="ei"><span class="ei-text"><strong>C (some/any / not any/no / a lot of/lots of)</strong> → Both (Her ikisi)
+    <button class="tb" onclick="tr('Grammar Spot 1C','some/any / not any/no / a lot of/lots of','bazı/hiç / hiç yok / çok fazla','Goes with BOTH countable and uncountable nouns','Hem sayılabilir hem sayılamaz isimlerle kullanılır')">?</button></span></div>
+  </div>
+
+  <div class="sub">2 – Much/many olumlu cümlelerde</div>
+  <div class="qa">
+    <div class="q"><span class="q-text">There are <s>many</s> books in my bag. / There's <s>much</s> homework tonight. — Düzeltme?
+    <button class="tb" onclick="tr('Grammar Spot 2','Correct these sentences in two different ways.','Bu cümleleri iki farklı şekilde düzeltin.','There aren\'t many books in my bag. OR There are a lot of books in my bag. | There isn\'t much homework tonight. OR There\'s a lot of homework tonight.','Çantamda çok fazla kitap yok. VEYA Çantamda bir sürü kitap var. | Bu gece çok fazla ödev yok. VEYA Bu gece bir sürü ödev var.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">There aren't many books in my bag. / There are a lot of books in my bag. <br>There isn't much homework tonight. / There's a lot of homework tonight.</div></div>
+  </div>
+
+  <div class="sub">3 – "some" ile "any" farkı</div>
+  <div class="qa">
+    <div class="q"><span class="q-text">Which is a request? "Do we have any orange juice?" / "Can I have some orange juice?"
+    <button class="tb" onclick="tr('Grammar Spot 3','Which of these sentences is a request?','Bu cümlelerden hangisi bir istek / rica cümlesidir?','Can I have some orange juice? = a request (rica cümlesi)','Can I have some orange juice? = Rica/istek cümlesi. Some, olumlu cümlelerde ve ricaları (requests) ifade ederken kullanılır. Any ise soru ve olumsuz cümlelerde kullanılır.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">"Can I have some orange juice?" = a request (rica). <br><em>some → olumlu cümleler + ricalar · any → sorular + olumsuzlar</em></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PRACTICE – DISCUSSING GRAMMAR (s.42)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.42</span>Practice – Discussing Grammar (Alıştırma 1)</div>
+  <div class="sub">some / any / much / many / a little / a few / a lot of – boşlukları doldurun</div>
+
+  <div class="grid">
+    <div class="gi"><span class="n">1</span><span class="fi">any</span> olives <button class="tb" onclick="tr('1','Have we got __ olives?','Zeytinimiz var mı?','any','any — soru cümlesi, sayılabilir çoğul')">?</button></div>
+    <div class="gi"><span class="n">2</span><span class="fi">some</span> olive oil <button class="tb" onclick="tr('2','We need __ olive oil.','Zeytinyağına ihtiyacımız var.','some','some — olumlu cümle, sayılamaz')">?</button></div>
+    <div class="gi"><span class="n">3</span><span class="fi">some</span> money <button class="tb" onclick="tr('3','Can you lend me __ money?','Bana biraz para borç verebilir misin?','some','some — rica/istek cümlesi')">?</button></div>
+    <div class="gi"><span class="n">4</span><span class="fi">any</span> petrol <button class="tb" onclick="tr('4','Is there __ petrol in the car?','Arabada hiç benzin var mı?','any','any — soru cümlesi, sayılamaz')">?</button></div>
+    <div class="gi"><span class="n">5</span><span class="fi">some</span> cake <button class="tb" onclick="tr('5','Can I have __ cake, please?','Biraz kek alabilir miyim, lütfen?','some','some — rica/istek cümlesi')">?</button></div>
+    <div class="gi"><span class="n">6</span><span class="fi">much</span> homework <button class="tb" onclick="tr('6','Have you got __ homework tonight?','Bu gece çok ödevi var mı?','much','much — soru cümlesi, sayılamaz')">?</button></div>
+    <div class="gi"><span class="n">7</span><span class="fi">many</span> eggs <button class="tb" onclick="tr('7','We don\'t need __ eggs. Six is enough.','O kadar çok yumurtaya ihtiyacımız yok. Altı yeterli.','many','many — olumsuz cümle, sayılabilir çoğul')">?</button></div>
+    <div class="gi"><span class="n">8</span><span class="fi">much</span> traffic <button class="tb" onclick="tr('8','Is there __ traffic in your town?','Şehrinde çok trafik var mı?','much','much — soru cümlesi, sayılamaz')">?</button></div>
+    <div class="gi"><span class="n">9</span><span class="fi">many</span> students <button class="tb" onclick="tr('9','I don\'t know __ of the students in this class.','Bu sınıftaki öğrencilerin çoğunu tanımıyorum.','many','many — olumsuz cümle, sayılabilir çoğul')">?</button></div>
+    <div class="gi"><span class="n">10</span><span class="fi">much</span> time <button class="tb" onclick="tr('10','How __ time have you got?','Ne kadar zamanın var?','much','much — soru cümlesi, sayılamaz')">?</button></div>
+    <div class="gi"><span class="n">11</span><span class="fi">a few</span> close friends <button class="tb" onclick="tr('11','I have __ close friends. Two or three.','İki ya da üç yakın arkadaşım var.','a few','a few — olumlu cümle, sayılabilir çoğul (az ama var)')">?</button></div>
+    <div class="gi"><span class="n">12</span><span class="fi">a few</span> work to do <button class="tb" onclick="tr('12','Daddy has __ work to do, Emma.','Babanın yapacak biraz işi var, Emma.','a few / a little','a little (sayılamaz) ya da a few (sayılabilir)')">?</button></div>
+    <div class="gi"><span class="n">13</span><span class="fi">a lot of</span> ice-cream <button class="tb" onclick="tr('13','Would you like some ice-cream? Just __ please.','Dondurma ister misiniz? Sadece bir miktar lütfen.','a lot of','a lot of — hem sayılabilir hem sayılamaz ile kullanılır')">?</button></div>
+    <div class="gi"><span class="n">14</span><span class="fi">a little</span> minutes <button class="tb" onclick="tr('14','She\'ll be ready in __ minutes.','Birkaç dakika içinde hazır olacak.','a little / a few','a few minutes (sayılabilir)')">?</button></div>
+    <div class="gi"><span class="n">15</span><span class="fi">a little</span> Spanish <button class="tb" onclick="tr('15','He speaks good French, but only __ Spanish.','Fransızcayı iyi konuşuyor ama İspanyolcasını biraz biliyor.','a little','a little — sayılamaz (dil bilgisi)')">?</button></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     something/someone/somewhere (s.42)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.42</span>Practice – something / someone / somewhere (Alıştırma 2)</div>
+
+  <div class="sub">Diyalogları tamamlayın</div>
+
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">1A</span>Did you meet ________ nice at the party?
+    <button class="tb" onclick="tr('Diyalog 1A','Did you meet __ nice at the party?','Partide güzel biriyle tanıştın mı?','anyone','anyone — soru cümlesi')">?</button></span></div>
+    <div class="ans-row"><div class="ans">anyone</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">1B</span>Yes. I met ________ who knows you!
+    <button class="tb" onclick="tr('Diyalog 1B','Yes. I met __ who knows you!','Evet. Seni tanıyan biriyle tanıştım!','someone','someone — olumlu cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">someone</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">2A</span>Ooh! I think I've got ________ in my eye!
+    <button class="tb" onclick="tr('Diyalog 2A','Ooh! I think I\'ve got __ in my eye!','Ah! Sanırım gözüme bir şey kaçtı!','something','something — olumlu cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">something</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">2B</span>Let me look. No, I can't see ________.
+    <button class="tb" onclick="tr('Diyalog 2B','Let me look. No, I can\'t see __.','Bakayım. Hayır, bir şey göremiyorum.','anything','anything — olumsuz cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">anything</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">3A</span>Let's go ________ hot for our holidays!
+    <button class="tb" onclick="tr('Diyalog 3A','Let\'s go __ hot for our holidays!','Tatilimiz için sıcak bir yere gidelim!','somewhere','somewhere — olumlu cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">somewhere</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">3B</span>Fine. But we can't afford to go ________ too expensive.
+    <button class="tb" onclick="tr('Diyalog 3B','But we can\'t afford to go __ too expensive.','Ama çok pahalı bir yere gitmeye gücümüz yetmez.','anywhere','anywhere — olumsuz cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">anywhere</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">4A</span>Where are my glasses? I can't find them ________!
+    <button class="tb" onclick="tr('Diyalog 4A','Where are my glasses? I can\'t find them __!','Gözlüklerim nerede? Hiçbir yerde bulamıyorum!','anywhere','anywhere — olumsuz cümle')">?</button></span></div>
+    <div class="ans-row"><div class="ans">anywhere</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">5A</span>What a wonderful party! ________ had a great time.
+    <button class="tb" onclick="tr('Diyalog 5A','What a wonderful party! __ had a great time.','Ne harika bir parti! Herkes çok iyi vakit geçirdi.','Everyone','Everyone — olumlu cümle (hepsi)')">?</button></span></div>
+    <div class="ans-row"><div class="ans">Everyone</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">5B</span>I know. ________ wanted to go home!
+    <button class="tb" onclick="tr('Diyalog 5B','I know. __ wanted to go home!','Biliyorum. Kimse eve gitmek istemedi!','No one','No one — olumsuz anlam, olumlu yapı')">?</button></span></div>
+    <div class="ans-row"><div class="ans">No one</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">6A</span>Did you buy ________ nice in the sales?
+    <button class="tb" onclick="tr('Diyalog 6A','Did you buy __ nice in the sales?','İndirimlerde güzel bir şey aldın mı?','anything','anything — soru cümlesi')">?</button></span></div>
+    <div class="ans-row"><div class="ans">anything</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">6B</span>No, ________. I couldn't find ________ I liked.
+    <button class="tb" onclick="tr('Diyalog 6B','No, __. I couldn\'t find __ I liked.','Hayır, hiçbir şey. Beğendiğim hiçbir şey bulamadım.','nothing … anything','nothing (hiçbir şey) … anything (hiçbir şey bulmak — olumsuz cümle)')">?</button></span></div>
+    <div class="ans-row"><div class="ans">nothing … anything</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     something and nothing (Listening 4.3) (s.42)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.42</span>Listening 4.3 – "something and nothing" cümlelerini tamamlayın</div>
+  <div class="sub">Doğru kelimeyi seçin</div>
+
+  <div class="bl"><div class="bl-text"><span class="bn">1</span>Do you know <span class="fi">anyone</span> famous? <button class="tb" onclick="tr('1','Do you know … famous?','Ünlü birini tanıyor musun?','anyone','anyone — soru cümlesi')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">2</span>The fridge is empty. There's <span class="fi">nothing</span> to eat! <button class="tb" onclick="tr('2','The fridge is empty. There\'s … to eat!','Buzdolabı boş. Yiyecek hiçbir şey yok!','nothing','nothing — olumsuz anlam, olumlu yapı')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">3</span>There are no lights on. There's <span class="fi">nobody</span> at home. <button class="tb" onclick="tr('3','There are no lights on. There\'s … at home.','Hiç ışık yanmıyor. Evde kimse yok.','nobody','nobody — olumsuz anlam, olumlu yapı')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">4</span>Cintia's a lovely girl. <span class="fi">Everyone</span> likes her. <button class="tb" onclick="tr('4','Cintia\'s a lovely girl. … likes her.','Cintia güzel bir kız. Herkes onu sever.','Everyone','Everyone — olumlu anlam, hepsi')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">5</span>I don't like this café. Let's go <span class="fi">somewhere</span> else. <button class="tb" onclick="tr('5','I don\'t like this café. Let\'s go … else.','Bu kafeyi sevmiyorum. Başka bir yere gidelim.','somewhere','somewhere — olumlu cümle')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">6</span>We're bored! There's <span class="fi">nothing</span> to do! <button class="tb" onclick="tr('6','We\'re bored! There\'s … to do!','Sıkıldık! Yapacak hiçbir şey yok!','nothing','nothing — olumsuz anlam, olumlu yapı')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">7</span>Hello? Is <span class="fi">anybody</span> at home? <button class="tb" onclick="tr('7','Hello? Is … at home?','Merhaba? Evde kimse var mı?','anybody','anybody — soru cümlesi')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">8</span>You're quiet. Haven't you got <span class="fi">anything</span> to say? <button class="tb" onclick="tr('8','You\'re quiet. Haven\'t you got … to say?','Sessizsin. Söyleyecek hiçbir şeyin yok mu?','anything','anything — olumsuz/soru cümlesi')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">9</span>Aaargh! I can't find my keys <span class="fi">anywhere</span>! <button class="tb" onclick="tr('9','Aaargh! I can\'t find my keys …!','Aaargh! Anahtarlarımı hiçbir yerde bulamıyorum!','anywhere','anywhere — olumsuz cümle')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">10</span>Help! Has <span class="fi">anyone</span> seen my keys? <button class="tb" onclick="tr('10','Help! Has … seen my keys?','İmdat! Anahtarlarımı gören var mı?','anyone','anyone — soru cümlesi')">?</button></div></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ARTICLES – THE SECRET TO A LONG LIFE (s.42–43)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.42–43</span>Grammar – Articles (a/an, the) – The Secret to a Long Life</div>
+
+  <div class="sub">Alıştırma 2 – Okuma soruları</div>
+
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">1</span>How long did the grandfather live?
+    <button class="tb" onclick="tr('S.1','How long did the grandfather live?','Büyükbaba kaç yıl yaşadı?','He lived 101 years.','101 yıl yaşadı.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">He lived 101 years.</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">2</span>Where did he live?
+    <button class="tb" onclick="tr('S.2','Where did he live?','Nerede yaşadı?','He lived in an old village near a big, industrial town in the North of England.','İngiltere\'nin kuzeyindeki büyük, sanayi şehrine yakın küçük, eski bir köyde yaşadı.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">He lived in an old village near a big, industrial town in the North of England.</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">3</span>What kind of shop did he have?
+    <button class="tb" onclick="tr('S.3','What kind of shop did he have?','Ne tür bir dükkanı vardı?','He had a fish and chip shop.','Balık-patates kızartması dükkanı vardı.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">He had a fish and chip shop.</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">4</span>How many children did he have?
+    <button class="tb" onclick="tr('S.4','How many children did he have?','Kaç çocuğu vardı?','He had two children (a son and a daughter).','İki çocuğu vardı (bir oğul ve bir kız).')">?</button></span></div>
+    <div class="ans-row"><div class="ans">He had two children (a son and a daughter).</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">5</span>Why did everybody love him?
+    <button class="tb" onclick="tr('S.5','Why did everybody love him?','Herkes neden onu sevdi?','Because he was a happy and contented man.','Çünkü mutlu ve kanaatkâr bir adamdı.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">Because he was a happy and contented man.</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">6</span>When did he stop work?
+    <button class="tb" onclick="tr('S.6','When did he stop work?','Ne zaman çalışmayı bıraktı?','He stopped work when he was 78.','78 yaşında çalışmayı bıraktı.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">He stopped work when he was 78.</div></div>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="q-text"><span class="ql">7</span>What was his secret to a long life?
+    <button class="tb" onclick="tr('S.7','What was his secret to a long life?','Uzun yaşamanın sırrı neydi?','A glass of whisky before going to bed and lots of fish and chips.','Yatmadan önce bir kadeh viski ve bol balık-patates kızartması.')">?</button></span></div>
+    <div class="ans-row"><div class="ans">A glass of whisky before going to bed and lots of fish and chips.</div></div>
+  </div>
+
+  <div class="sub">Grammar Spot – Makale Kuralları (Alıştırma 3)</div>
+  <div class="ex">
+    <div class="exl">İlk kez bahsedilen (first reference) → a/an</div>
+    <div class="ei"><span class="ei-text">a shopkeeper · a fish and chip shop · an old village · a big industrial town · a son · a daughter · a happy and contented man · a long life · a glass of whisky
+    <button class="tb" onclick="tr('İlk referans','First reference – a/an kullanımı','İlk kez bahsedilen isimler → a/an kullanılır','a shopkeeper, a fish and chip shop, an old village, a big industrial town, a son, a daughter, a happy man, a long life, a glass of whisky','bir dükkan sahibi, bir balık-patates dükkanı, eski bir köy, büyük bir sanayi kenti, bir oğul, bir kız, mutlu bir adam, uzun bir hayat, bir bardak viski')">?</button></span></div>
+  </div>
+  <div class="ex">
+    <div class="exl">Konuşmacı ve dinleyicinin zaten bildiği → the</div>
+    <div class="ei"><span class="ei-text">the daughter · the shop · the village · the local pub
+    <button class="tb" onclick="tr('The – bilinen şeyler','Speaker and listener already know → the','Hem konuşmacının hem dinleyicinin zaten bildiği şeyler → the','the daughter, the shop, the village, the local pub','(o) kız, dükkan, köy, yerel pub')">?</button></span></div>
+  </div>
+  <div class="ex">
+    <div class="exl">Tek olan şeyler → the</div>
+    <div class="ei"><span class="ei-text">the North · the whole country · the area · the secret
+    <button class="tb" onclick="tr('The – tek olan','Only one of something → the','Sadece bir tane olan şeyler → the','the North, the whole country, the area, the secret','Kuzey, ülkenin tamamı, bölge, sır')">?</button></span></div>
+  </div>
+  <div class="ex">
+    <div class="exl">Üstünlük sıfatlarıyla → the</div>
+    <div class="ei"><span class="ei-text">the most popular dish · the best fish and chips
+    <button class="tb" onclick="tr('The – üstünlük','With superlative adjectives → the','Üstünlük sıfatlarıyla → the','the most popular dish, the best fish and chips','en popüler yemek, en iyi balık-patates')">?</button></span></div>
+  </div>
+  <div class="ex">
+    <div class="exl">Miktar ifadesiyle → a</div>
+    <div class="ei"><span class="ei-text">once a week
+    <button class="tb" onclick="tr('a – miktar','With expressions of quantity → a','Miktar ifadeleriyle → a','once a week','haftada bir')">?</button></span></div>
+  </div>
+  <div class="ex">
+    <div class="exl">Genel anlamda (çoğul / sayılamaz) → article yok (–)</div>
+    <div class="ei"><span class="ei-text">fish and chips · by bus · to bed · have lunch
+    <button class="tb" onclick="tr('– (article yok)','Before plural/uncountable nouns in general, transport, meals → no article','Genel anlamda çoğul/sayılamaz, ulaşım araçları, öğünler → article yok','fish and chips (genel), by bus, to bed, have lunch','balık-patates (genel), otobüsle, yatağa, öğle yemeği yemek')">?</button></span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PRACTICE – READING ALOUD (s.43)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.43</span>Practice – Reading Aloud (Alıştırma 1)</div>
+  <div class="sub">Büyükbaba cümlelerini a/an, the veya – ile tamamlayın</div>
+
+  <div class="bl"><div class="bl-text">My grandfather was <span class="fi">a</span> shopkeeper. <button class="tb" onclick="tr('1','My grandfather was __ shopkeeper.','Büyükbabam bir bakkal/dükkan sahibiydi.','a','a — ilk kez bahsedilen meslek')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He lived in <span class="fi">the</span> North of England. <button class="tb" onclick="tr('2','He lived in __ North of England.','İngiltere\'nin kuzeyinde yaşadı.','the','the — tek olan coğrafi bölge')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He had a fish and chip shop in <span class="fi">an</span> old village. <button class="tb" onclick="tr('3','He had a fish and chip shop in __ old village.','Eski bir köyde balık-patates dükkanı vardı.','an','an — sesli harfle başlayan sıfat (old)')">?</button></div></div>
+  <div class="bl"><div class="bl-text">His family lived above <span class="fi">the</span> shop. <button class="tb" onclick="tr('4','His family lived above __ shop.','Ailesi dükkanın üst katında yaşadı.','the','the — daha önce bahsedilen dükkan')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He made <span class="fi">the</span> best fish and chips in the area. <button class="tb" onclick="tr('5','He made __ best fish and chips in the area.','Bölgenin en iyi balık-patatesini yapardı.','the','the — üstünlük sıfatıyla (best)')">?</button></div></div>
+  <div class="bl"><div class="bl-text">Some people came by <span class="fi">–</span> bus to the shop. <button class="tb" onclick="tr('6','Some people came by __ bus to the shop.','Bazı insanlar otobüsle dükkanına gelirdi.','– (article yok)','by bus — ulaşım aracı önünde article kullanılmaz')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He closed the shop once <span class="fi">a</span> week. <button class="tb" onclick="tr('7','He closed the shop once __ week.','Dükkanı haftada bir kapatırdı.','a','once a week — miktar ifadesi')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He went to have <span class="fi">–</span> lunch with friends. <button class="tb" onclick="tr('8','He went to have __ lunch with friends.','Arkadaşlarıyla öğle yemeği yemeye giderdi.','– (article yok)','have lunch — öğün ifadelerinde article kullanılmaz')">?</button></div></div>
+  <div class="bl"><div class="bl-text">He liked to have <span class="fi">a</span> little whisky before bed. <button class="tb" onclick="tr('9','He liked to have __ little whisky before bed.','Yatmadan önce biraz viski içmeyi severdi.','a','a little whisky — miktar ifadesi')">?</button></div></div>
+
+  <div class="sub">Alıştırma 2 – a/an, the veya – ile tamamlayın</div>
+
+  <div class="vg"><strong>1</strong>
+    <div class="vr"><div class="vr-text">We have two children, <span class="fi">a</span> boy and <span class="fi">a</span> girl. <span class="fi">The</span> boy is one and <span class="fi">the</span> girl is nine.
+    <button class="tb" onclick="tr('Cümle 1','We have two children, __ boy and __ girl. __ boy is one and __ girl is nine.','İki çocuğumuz var, bir erkek ve bir kız. Erkek bir yaşında, kız dokuz yaşında.','a boy / a girl / The boy / the girl','a — ilk kez tanıtma; the — ikinci kez bahsedilince (artık bilinen)')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>2</strong>
+    <div class="vr"><div class="vr-text">I'm <span class="fi">a</span> student. I'm studying to be <span class="fi">an</span> engineer.
+    <button class="tb" onclick="tr('Cümle 2','I\'m __ student. I\'m studying to be __ engineer.','Ben bir öğrenciyim. Mühendis olmak için okuyorum.','a student / an engineer','a/an — meslek belirtirken; engineer sesli harfle başlar → an')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>3</strong>
+    <div class="vr"><div class="vr-text">Dan always has <span class="fi">–</span> cheese sandwiches for <span class="fi">–</span> dinner.
+    <button class="tb" onclick="tr('Cümle 3','Dan always has __ cheese sandwiches for __ dinner.','Dan her zaman akşam yemeğinde peynirli sandviç yer.','– / –','cheese sandwiches (genel, sayılabilir çoğul) + dinner (öğün) — her ikisinde de article yok')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>4</strong>
+    <div class="vr"><div class="vr-text">I don't go out to <span class="fi">–</span> work. I work at <span class="fi">–</span> home.
+    <button class="tb" onclick="tr('Cümle 4','I don\'t go out to __ work. I work at __ home.','Dışarı işe gitmiyorum. Evden çalışıyorum.','– / –','go to work / at home — kalıplaşmış ifadeler, article yok')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>5</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">A</span> few people came by <span class="fi">–</span> taxi to <span class="fi">the</span> party at Joe's.
+    <button class="tb" onclick="tr('Cümle 5','__ few people came by __ taxi to __ party at Joe\'s.','Birkaç kişi taksiye binerek Joe\'un partisine geldi.','A / – / the','A few — miktar; by taxi — ulaşım (article yok); the party — bilinen, daha önce bahsedilen parti')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>6</strong>
+    <div class="vr"><div class="vr-text">It was <span class="fi">a</span> wonderful holiday. We had <span class="fi">the</span> best time ever.
+    <button class="tb" onclick="tr('Cümle 6','It was __ wonderful holiday. We had __ best time ever.','Harika bir tatildi. Her zamankinden en iyi zamanı geçirdik.','a / the','a wonderful holiday — ilk kez; the best — üstünlük sıfatı')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>7</strong>
+    <div class="vr"><div class="vr-text">I had <span class="fi">a</span> great Sunday. All <span class="fi">the</span> family came for <span class="fi">–</span> lunch.
+    <button class="tb" onclick="tr('Cümle 7','I had __ great Sunday. All __ family came for __ lunch.','Harika bir Pazar geçirdim. Bütün aile öğle yemeğine geldi.','a / the / –','a great Sunday — ilk kez; the family — bilinen aile; lunch — öğün (article yok)')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>8</strong>
+    <div class="vr"><div class="vr-text">I do a lot of shopping on <span class="fi">the</span> Internet. It's <span class="fi">a</span> great way to shop!
+    <button class="tb" onclick="tr('Cümle 8','I do a lot of shopping on __ Internet. It\'s __ great way to shop!','İnternetten çok alışveriş yapıyorum. Alışveriş yapmanın harika bir yolu!','the / a','the Internet — tek olan; a great way — ilk kez bahsedilen yöntem')">?</button></div></div>
+  </div>
+
+  <div class="sub">Check it – Alıştırma 3 (Hataları bulun ve düzeltin)</div>
+
+  <div class="vg"><strong>1</strong> He's <s>postman</s>, so he has breakfast at 5.00 a.m.
+    <div class="vr"><div class="vr-text">He's <span class="fi">a</span> postman, so he has breakfast at 5.00 a.m.
+    <button class="tb" onclick="tr('Hata 1','He\'s postman → He\'s a postman','Postacı → Bir postacı','Add \"a\" before postman (job/profession)','Meslek belirtirken a/an kullanılır: He\'s a postman.')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>2</strong> <s>The love</s> is more important than money.
+    <div class="vr"><div class="vr-text"><span class="fi">Love</span> is more important than money.
+    <button class="tb" onclick="tr('Hata 2','The love is more important → Love is more important','Sevgi paradan daha önemlidir.','Remove \"the\" — love is an abstract concept used in general (no article)','Soyut ve genel kavramlar önünde article kullanılmaz: love, money, happiness...')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>3</strong> I come to school by <s>the bike</s>.
+    <div class="vr"><div class="vr-text">I come to school by <span class="fi">–</span> bike.
+    <button class="tb" onclick="tr('Hata 3','by the bike → by bike','Okula bisikletle geliyorum.','Remove \"the\" — transport phrases: by bike/bus/car (no article)','Ulaşım araçlarından önce article kullanılmaz: by bike, by bus, by car...')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>4</strong> I'm reading <s>one</s> good book at the moment.
+    <div class="vr"><div class="vr-text">I'm reading <span class="fi">a</span> good book at the moment.
+    <button class="tb" onclick="tr('Hata 4','one good book → a good book','Şu an iyi bir kitap okuyorum.','Use \"a\" not \"one\" — one is used for numbers/counting, a/an for articles','Sayı olarak değil belirsiz article olarak: a good book')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>5</strong> 'Where are the children?' 'They're in <s>a</s> garden.'
+    <div class="vr"><div class="vr-text">'Where are the children?' 'They're in <span class="fi">the</span> garden.'
+    <button class="tb" onclick="tr('Hata 5','in a garden → in the garden','Çocuklar bahçede.','Use \"the\" — specific garden (the one belonging to this house)','Belirli bahçe — o evin bahçesi kastediliyor → the garden')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>6</strong> I live in <s>centre</s> of town, near the hospital.
+    <div class="vr"><div class="vr-text">I live in <span class="fi">the</span> centre of town, near the hospital.
+    <button class="tb" onclick="tr('Hata 6','in centre → in the centre','Şehrin merkezinde, hastanenin yakınında yaşıyorum.','Use \"the\" — the centre (only one centre)','Merkez tekil → the centre')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>7</strong> My parents bought <s>the lovely</s> house in the country.
+    <div class="vr"><div class="vr-text">My parents bought <span class="fi">a</span> lovely house in the country.
+    <button class="tb" onclick="tr('Hata 7','the lovely house → a lovely house','Ailem taşrada güzel bir ev satın aldı.','Use \"a\" — first mention of the house','İlk kez bahsedilen ev → a lovely house')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>8</strong> I don't eat cake because I don't like <s>the sweet things</s>.
+    <div class="vr"><div class="vr-text">I don't eat cake because I don't like <span class="fi">–</span> sweet things.
+    <button class="tb" onclick="tr('Hata 8','the sweet things → sweet things','Pasta yemiyorum çünkü tatlı şeyleri sevmiyorum.','Remove \"the\" — general reference to sweet things (no article)','Genel anlamda tatlı şeyler → article yok')">?</button></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     READING – RECIPES FOR SUCCESS (s.44–45)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.44–45</span>Reading – Recipes for Success (Delicious Accidents!)</div>
+
+  <div class="sub">Group A – Ice Lollies (Popsicles)</div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">1</span>What are they called in the US and in the UK? <button class="tb" onclick="tr('Gr.A S.1','What are they called in the US and in the UK?','ABD\'de ve İngiltere\'de ne denir?','Popsicles in the US, ice lollies in the UK.','ABD\'de Popsicles, İngiltere\'de ice lollies.')">?</button></span></div><div class="ans-row"><div class="ans">Popsicles in the US, ice lollies in the UK.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">2</span>Who invented them? When and where? <button class="tb" onclick="tr('Gr.A S.2','Who invented them? When and where?','Kim icat etti? Ne zaman ve nerede?','Frank Epperson, in 1905 in San Francisco.','Frank Epperson, 1905\'te San Francisco\'da.')">?</button></span></div><div class="ans-row"><div class="ans">Frank Epperson, in 1905 in San Francisco.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">3</span>How did the accident happen? <button class="tb" onclick="tr('Gr.A S.3','How did the accident happen?','Kaza nasıl oldu?','He left a drink made with water and flavoured powder outside, with a stick in it – it froze overnight.','İçine çubuk saplandığı halde su ve aromalı tozdan yapılmış bir içeceği dışarıda bıraktı – bir gecede dondu.')">?</button></span></div><div class="ans-row"><div class="ans">He left a drink made with water and flavoured powder outside, with a stick in it – it froze overnight.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">4</span>Who were the first people to try the result? <button class="tb" onclick="tr('Gr.A S.4','Who were the first people to try the result?','Sonucu ilk kim denedi?','Frank\'s friends.','Frank\'ın arkadaşları.')">?</button></span></div><div class="ans-row"><div class="ans">Frank's friends.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">5</span>What did they think of them? <button class="tb" onclick="tr('Gr.A S.5','What did they think of them?','Ne düşündüler?','They liked them.','Beğendiler.')">?</button></span></div><div class="ans-row"><div class="ans">They liked them.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">6</span>Did the person make a lot of money? <button class="tb" onclick="tr('Gr.A S.6','Did the person make a lot of money?','Çok para kazandı mı?','No, because he sold the patent. The Popsicles company is now successful as a result.','Hayır, çünkü patenti sattı. Sonuç olarak Popsicles şirketi şimdi başarılı.')">?</button></span></div><div class="ans-row"><div class="ans">No, because he sold the patent. The Popsicles company is now successful as a result.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">7</span>How many are sold each year in the US? <button class="tb" onclick="tr('Gr.A S.7','How many are sold each year in the US?','ABD\'de yılda kaç tane satılıyor?','2 billion per year are sold in the US.','ABD\'de yılda 2 milyar adet satılıyor.')">?</button></span></div><div class="ans-row"><div class="ans">2 billion per year.</div></div></div>
+
+  <div class="sub">Group B – Crisps (Potato Chips)</div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">1</span>What are they called in the US and in the UK? <button class="tb" onclick="tr('Gr.B S.1','What are they called in the US and in the UK?','ABD\'de ve İngiltere\'de ne denir?','Potato chips in the US, crisps in the UK.','ABD\'de potato chips, İngiltere\'de crisps.')">?</button></span></div><div class="ans-row"><div class="ans">Potato chips in the US, crisps in the UK.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">2</span>Who invented them? When and where? <button class="tb" onclick="tr('Gr.B S.2','Who invented them? When and where?','Kim icat etti? Ne zaman ve nerede?','George Crum, 1853, Saratoga Springs in New York State.','George Crum, 1853, New York Eyaleti\'ndeki Saratoga Springs\'de.')">?</button></span></div><div class="ans-row"><div class="ans">George Crum, 1853, Saratoga Springs in New York State.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">3</span>How did the accident happen? <button class="tb" onclick="tr('Gr.B S.3','How did the accident happen?','Kaza nasıl oldu?','A customer sent fried potato chips back saying they were too thick. Crum made them thinner and thinner until they were hard, crisp and impossible to eat with a fork.','Bir müşteri kızarmış patateslerin çok kalın olduğunu söyleyerek iade etti. Crum onları giderek incelttti; sonunda sert, gevrek ve çatalla yenilemez hale geldiler.')">?</button></span></div><div class="ans-row"><div class="ans">A customer complained the fried potatoes were too thick; Crum made them thinner and thinner until they were hard and crisp.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">4–5</span>Who were the first to try them? What did they think? <button class="tb" onclick="tr('Gr.B S.4-5','Who tried them first? What did they think?','Kim ilk denedi? Ne düşündüler?','The complaining customer – he loved them.','Şikâyet eden müşteri – çok beğendi.')">?</button></span></div><div class="ans-row"><div class="ans">The complaining customer – he loved them.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">6–7</span>Did he make money? Which company is successful? <button class="tb" onclick="tr('Gr.B S.6-7','Did he make money? Which company?','Para kazandı mı? Hangi şirket?','No – he never got a patent. Others saw the opportunity. Lays is now a successful company. Over $1.5 billion worth of crisps every year.','Hayır – patent almadı. Diğerleri fırsatı gördü. Lays şimdi başarılı. Yılda 1,5 milyar dolardan fazla cips satışı.')">?</button></span></div><div class="ans-row"><div class="ans">No – he never got a patent. Lays is now successful. Over $1.5 billion worth of crisps every year.</div></div></div>
+
+  <div class="sub">Group C – Chocolate Chip Cookies (Biscuits)</div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">1</span>What are they called in the US and in the UK? <button class="tb" onclick="tr('Gr.C S.1','What are they called in the US and in the UK?','ABD\'de ve İngiltere\'de ne denir?','Cookies in the US, biscuits in the UK.','ABD\'de cookies, İngiltere\'de biscuits.')">?</button></span></div><div class="ans-row"><div class="ans">Cookies in the US, biscuits in the UK.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">2</span>Who invented them? When and where? <button class="tb" onclick="tr('Gr.C S.2','Who invented them? When and where?','Kim icat etti? Ne zaman ve nerede?','Mary Wakefield, in the 1930s, in Massachusetts, US.','Mary Wakefield, 1930\'larda ABD\'nin Massachusetts eyaletinde.')">?</button></span></div><div class="ans-row"><div class="ans">Mary Wakefield, in the 1930s, in Massachusetts, US.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">3</span>How did the accident happen? <button class="tb" onclick="tr('Gr.C S.3','How did the accident happen?','Kaza nasıl oldu?','She was making chocolate cookies but had no baking chocolate, so she used Nestlé\'s chocolate broken into pieces – it didn\'t melt enough, leaving chocolate chunks in the cookies.','Çikolatalı kurabiye yapıyordu ama pişirme çikolatası yoktu; kırdığı Nestlé çikolatası yeterince erimedi ve kurabiyelerde parçalar kaldı.')">?</button></span></div><div class="ans-row"><div class="ans">She had no baking chocolate, used Nestlé's chocolate instead – it didn't melt, leaving pieces in the cookies.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">4–5</span>Who were the first to try them? What did they think? <button class="tb" onclick="tr('Gr.C S.4-5','Who tried them? What did they think?','Kim denedi? Ne düşündüler?','Mary and her hotel guests – they thought they were delicious.','Mary ve otel konukları – lezzetli buldular.')">?</button></span></div><div class="ans-row"><div class="ans">Mary and her hotel guests – they thought they were delicious.</div></div></div>
+  <div class="qa"><div class="q"><span class="q-text"><span class="ql">6–7</span>Did she make money? <button class="tb" onclick="tr('Gr.C S.6-7','Did she make a lot of money?','Çok para kazandı mı?','No – but she received a lifetime\'s supply of chocolate. Nestlé\'s made a lot of money. 3.5 billion cookies sold in the US every year.','Hayır – ama ömür boyu çikolata tedariki aldı. Nestlé çok para kazandı. ABD\'de yılda 3,5 milyar kurabiye satılıyor.')">?</button></span></div><div class="ans-row"><div class="ans">No – but she received a lifetime's supply of chocolate. Nestlé made a lot of money. 3.5 billion sold per year in the US.</div></div></div>
+
+  <div class="sub">Alıştırma 5 – a/an, the, –, some veya any ile tamamlayın</div>
+  <div class="vg"><strong>1</strong> (Ice Lollies)
+    <div class="vr"><div class="vr-text">Frank left <span class="fi">a</span> drink outside with <span class="fi">–</span> stick in it. In <span class="fi">the</span> morning, <span class="fi">the</span> drink was frozen with <span class="fi">the</span> stick in the middle of it. It was <span class="fi">an</span> ice lolly!
+    <button class="tb" onclick="tr('Cümle 1 cevabı','–, a, the, the, the, an','– (article yok) çubuk; the morning; the drink (artık bilinen); the stick; an ice lolly (sesli harfle)','a drink / – stick / the morning / the drink / the stick / an ice lolly','a drink (ilk kez) / – stick (sayılabilir, genel) / the morning (belirli) / the drink (bilinen) / the stick (bilinen) / an ice lolly (ilk kez, sesli harf)')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>2</strong> (Crisps)
+    <div class="vr"><div class="vr-text">A customer in <span class="fi">–</span> George's restaurant ordered <span class="fi">some</span> French fries. He sent <span class="fi">some</span> fries back and asked for <span class="fi">–</span> thinner ones.
+    <button class="tb" onclick="tr('Cümle 2 cevabı','–, some, some, –','George\'nin restoranında bir müşteri biraz Fransız kızartması ısmarladı. Bazı kızartmaları geri gönderdi ve daha incelerini istedi.','– George\'s restaurant / some French fries / some fries back / – thinner ones','– (özel isim önünde) / some (belirsiz miktar) / some (belirsiz miktar) / – (genel sıfat önünde)')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>3</strong> (Chocolate Chip Cookies)
+    <div class="vr"><div class="vr-text">Mary wanted to make <span class="fi">some</span> chocolate cookies, but she didn't have <span class="fi">any</span> baking chocolate. <span class="fi">The</span> chocolate she used didn't melt, and <span class="fi">the</span> result was <span class="fi">–</span> chocolate chip cookies.
+    <button class="tb" onclick="tr('Cümle 3 cevabı','some, any, The, the, –','Mary biraz çikolatalı kurabiye yapmak istedi ama hiç pişirme çikolatası yoktu. Kullandığı çikolata erimedi ve sonuç çikolata parçalı kurabiyelerdi.','some chocolate cookies / any baking chocolate / The chocolate / the result / – chocolate chip cookies','some (belirsiz miktar) / any (olumsuz cümle) / The chocolate (artık bilinen) / the result (sonuç) / – chocolate chip cookies (genel/isim olarak)')">?</button></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VOCABULARY – A PIECE OF CAKE (s.46)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.46</span>Vocabulary – A Piece of Cake</div>
+
+  <div class="sub">Alıştırma 1 – Miktarları eşleştirin</div>
+  <div class="ex">
+    <div class="exl">Doğru eşleştirmeler</div>
+    <div class="ei"><span class="ei-text">
+      a bag of → <span class="tag">crisps / sweets</span> &nbsp;
+      a bottle of → <span class="tag">beer / Coke / milk / wine</span> &nbsp;
+      a box of → <span class="tag">matches / tissues</span>
+      <button class="tb" onclick="tr('Eşleştirme 1','a bag of / a bottle of / a box of','bir torba / bir şişe / bir kutu','crisps/sweets | beer/Coke/milk/wine | matches/tissues','cips/şeker | bira/kola/süt/şarap | kibrit/mendil')">?</button>
+    </span></div>
+    <div class="ei"><span class="ei-text">
+      a bunch of → <span class="tag">bananas / flowers</span> &nbsp;
+      a can of → <span class="tag">beer / Coke / tuna</span> &nbsp;
+      a loaf of → <span class="tag">bread</span>
+      <button class="tb" onclick="tr('Eşleştirme 2','a bunch of / a can of / a loaf of','bir demet / bir kutu / bir somun','bananas/flowers | beer/Coke/tuna | bread','muz/çiçek | bira/kola/ton balığı | ekmek')">?</button>
+    </span></div>
+    <div class="ei"><span class="ei-text">
+      a packet of → <span class="tag">chewing gum / crisps / ham / tissues / sweets</span> &nbsp;
+      a pair of → <span class="tag">jeans / socks</span>
+      <button class="tb" onclick="tr('Eşleştirme 3','a packet of / a pair of','bir paket / bir çift','chewing gum/crisps/ham/tissues/sweets | jeans/socks','sakız/cips/jambon/mendil/şeker | kot pantolon/çorap')">?</button>
+    </span></div>
+    <div class="ei"><span class="ei-text">
+      a piece of → <span class="tag">bread / cake / paper</span> &nbsp;
+      a slice of → <span class="tag">bread / ham / cake</span>
+      <button class="tb" onclick="tr('Eşleştirme 4','a piece of / a slice of','bir parça / bir dilim','bread/cake/paper | bread/ham/cake','ekmek/kek/kağıt | ekmek/jambon/kek')">?</button>
+    </span></div>
+  </div>
+
+  <div class="sub">Alıştırma 4 – At the Shops: Hangi dükkan?</div>
+  <div class="grid">
+    <div class="gi"><span class="n">1</span><span class="tag">a newsagent's</span> <button class="tb" onclick="tr('Dükkan 1','Conversation 1','Diyalog 1','a newsagent\'s','gazete bayii')">?</button></div>
+    <div class="gi"><span class="n">2</span><span class="tag">a clothes shop</span> <button class="tb" onclick="tr('Dükkan 2','Conversation 2','Diyalog 2','a clothes shop','giyim mağazası')">?</button></div>
+    <div class="gi"><span class="n">3</span><span class="tag">a café</span> <button class="tb" onclick="tr('Dükkan 3','Conversation 3','Diyalog 3','a café','kafe')">?</button></div>
+    <div class="gi"><span class="n">4</span><span class="tag">a chemist's</span> <button class="tb" onclick="tr('Dükkan 4','Conversation 4','Diyalog 4','a chemist\'s','eczane')">?</button></div>
+    <div class="gi"><span class="n">5</span><span class="tag">an off-licence</span> <button class="tb" onclick="tr('Dükkan 5','Conversation 5','Diyalog 5','an off-licence','içki dükkanı (alkol satış ruhsatlı)')">?</button></div>
+    <div class="gi"><span class="n">6</span><span class="tag">a delicatessen</span> <button class="tb" onclick="tr('Dükkan 6','Conversation 6','Diyalog 6','a delicatessen','şarküteri')">?</button></div>
+  </div>
+
+  <div class="sub">Alıştırma 5 – Ne satın alındı &amp; ne ödendi?</div>
+  <table class="tbl">
+    <thead><tr><th>#</th><th>Dükkan</th><th>Satın alınanlar</th><th>Fiyat</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Newsagent's</td><td><span>The Times, a box of matches, a packet of chewing gum <button class="tb" onclick="tr('Dükkan 1 alışveriş','The Times newspaper, a box of matches, a packet of chewing gum','The Times gazetesi, bir kutu kibrit, bir paket sakız','£2.90','2 pound 90 peni')">?</button></span></td><td>£2.90</td></tr>
+      <tr><td>2</td><td>Clothes shop</td><td><span>a pair of shorts <button class="tb" onclick="tr('Dükkan 2 alışveriş','A pair of shorts','Bir şort','£19.99','19 pound 99 peni')">?</button></span></td><td>£19.99</td></tr>
+      <tr><td>3</td><td>Café</td><td><span>two lattes, a bottle of sparkling water, three slices of chocolate cake <button class="tb" onclick="tr('Dükkan 3 alışveriş','Two lattes, a bottle of sparkling water, three slices of chocolate cake','İki latte, bir şişe maden suyu, üç dilim çikolatalı kek','£16.10','16 pound 10 peni')">?</button></span></td><td>£16.10</td></tr>
+      <tr><td>4</td><td>Chemist's</td><td><span>two packets of paracetamol, a box of tissues <button class="tb" onclick="tr('Dükkan 4 alışveriş','Two packets of paracetamol, a box of tissues','İki paket parasetamol, bir kutu kağıt mendil','£2.98','2 pound 98 peni')">?</button></span></td><td>£2.98</td></tr>
+      <tr><td>5</td><td>Off-licence</td><td><span>three packets of crisps, four cans of Coke <button class="tb" onclick="tr('Dükkan 5 alışveriş','Three packets of crisps, four cans of Coke','Üç paket cips, dört kutu kola','£5.30','5 pound 30 peni')">?</button></span></td><td>£5.30</td></tr>
+      <tr><td>6</td><td>Delicatessen</td><td><span>four slices of ham, a piece of blue cheese, a loaf of white bread <button class="tb" onclick="tr('Dükkan 6 alışveriş','Four slices of ham, a piece of blue cheese, a loaf of white bread','Dört dilim jambon, bir parça mavi peynir, bir somun beyaz ekmek','£14.20','14 pound 20 peni')">?</button></span></td><td>£14.20</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub">Alıştırma 6 – Nerede söylendi? Ne hakkında?</div>
+  <div class="grid">
+    <div class="gi"><span class="n">1</span><em>"Have you got any in blue?"</em> → <span class="tag">clothes shop</span> – shorts <button class="tb" onclick="tr('6.1','"Have you got any in blue?"','Maviden var mı?','clothes shop – shorts','giyim mağazası – şort')">?</button></div>
+    <div class="gi"><span class="n">2</span><em>"I'll try the brown pair on, then."</em> → <span class="tag">clothes shop</span> – shorts <button class="tb" onclick="tr('6.2','"I\'ll try the brown pair on, then."','O zaman kahverengiyi deneyeyim.','clothes shop – shorts','giyim mağazası – şort')">?</button></div>
+    <div class="gi"><span class="n">3</span><em>"To have here, or take away?"</em> → <span class="tag">café</span> – latte <button class="tb" onclick="tr('6.3','"To have here, or take away?"','Burada mı içeceksiniz, paket mi?','café – latte','kafe – latte')">?</button></div>
+    <div class="gi"><span class="n">4</span><em>"It looks good."</em> → <span class="tag">café</span> – chocolate cake <button class="tb" onclick="tr('6.4','"It looks good."','Güzel görünüyor.','café – chocolate cake','kafe – çikolatalı kek')">?</button></div>
+    <div class="gi"><span class="n">5</span><em>"Do you want a bottle or packet?"</em> → <span class="tag">chemist's</span> – paracetamol <button class="tb" onclick="tr('6.5','"Do you want a bottle or packet?"','Şişe mi istersiniz paket mi?','chemist\'s – paracetamol','eczane – parasetamol')">?</button></div>
+    <div class="gi"><span class="n">6</span><em>"Have you got any ID?"</em> → <span class="tag">off-licence</span> – beer <button class="tb" onclick="tr('6.6','"Have you got any ID?"','Kimliğiniz var mı?','off-licence – beer','içki dükkanı – bira')">?</button></div>
+    <div class="gi"><span class="n">7</span><em>"It'll go well with this lovely white loaf."</em> → <span class="tag">delicatessen</span> – blue cheese <button class="tb" onclick="tr('6.7','"It\'ll go well with this lovely white loaf."','Bu güzel beyaz ekmekle çok iyi gider.','delicatessen – blue cheese','şarküteri – mavi peynir')">?</button></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     EVERYDAY ENGLISH – CAN YOU COME FOR DINNER? (s.47)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.47</span>Everyday English – Can you come for dinner?</div>
+
+  <div class="sub">Alıştırma 1 – Fotoğraf sorusu</div>
+  <div class="qa">
+    <div class="q"><span class="q-text">What's happening in the photo? What are the people eating and drinking?
+    <button class="tb" onclick="tr('Fotoğraf sorusu','What\'s happening in the photo? What are the people eating and drinking?','Fotoğrafta ne oluyor? İnsanlar ne yiyip içiyor?','A family is having a dinner together. They appear to be eating a roast dinner with vegetables and drinking wine/juice.','Bir aile birlikte akşam yemeği yiyor. Sebzeli fırın yemeği yiyor gibi görünüyorlar ve şarap/meyve suyu içiyorlar.')">?</button></span></div>
+    <div class="ans-row"><div class="ans s">A family is having dinner together – roast chicken/meat with vegetables. They are drinking wine and juice.</div></div>
+  </div>
+
+  <div class="sub">Alıştırma 2 – Eşleştirme (A → B)</div>
+  <table class="tbl">
+    <thead><tr><th>A (Soru)</th><th>B (Cevap)</th></tr></thead>
+    <tbody>
+      <tr><td>1 Mm! This soup's lovely! Would you mind giving me the recipe? <button class="tb" onclick="tr('Soru 1','Mm! This soup\'s lovely! Would you mind giving me the recipe?','Mm! Bu çorba harika! Tarifi verir misiniz?','a — Not at all. I found it online – I\'ll email you a link to it.','a — Tabii ki. İnternette buldum – size link göndereceğim.')">?</button></td><td><span class="tag">a</span> Not at all. I found it online – I'll email you a link. <button class="tb" onclick="tr('Cevap 1','Not at all. I found it online – I\'ll email you a link to it.','Hiç sorun değil. İnternette buldum – size bir link göndereceğim.')">?</button></td></tr>
+      <tr><td>2 Could you pass the salt, please? <button class="tb" onclick="tr('Soru 2','Could you pass the salt, please?','Tuzu uzatır mısınız lütfen?','f — Yes, of course. Do you want the pepper, too?','f — Tabii ki. Biberi de ister misiniz?')">?</button></td><td><span class="tag">f</span> Yes, of course. Do you want the pepper, too? <button class="tb" onclick="tr('Cevap 2','Yes, of course. Do you want the pepper, too?','Tabii ki. Biberi de ister misiniz?')">?</button></td></tr>
+      <tr><td>3 Anyone for seconds? <button class="tb" onclick="tr('Soru 3','Anyone for seconds?','İkinci porsiyon isteyen var mı?','h — No, thanks. It\'s delicious, but I couldn\'t eat another thing!','h — Hayır teşekkürler. Çok lezzetli ama bir şey daha yiyemem!')">?</button></td><td><span class="tag">h</span> No, thanks. It's delicious, but I couldn't eat another thing! <button class="tb" onclick="tr('Cevap 3','No, thanks. It\'s delicious, but I couldn\'t eat another thing!','Hayır teşekkürler. Çok lezzetli ama bir şey daha yiyemem!')">?</button></td></tr>
+      <tr><td>4 Can I have some water, please? <button class="tb" onclick="tr('Soru 4','Can I have some water, please?','Biraz su alabilir miyim lütfen?','e — Sure. Do you want still or sparkling?','e — Tabii ki. Sade mi köpüklü mü istersiniz?')">?</button></td><td><span class="tag">e</span> Sure. Do you want still or sparkling? <button class="tb" onclick="tr('Cevap 4','Sure. Do you want still or sparkling?','Tabii ki. Sade mi köpüklü mü istersiniz?')">?</button></td></tr>
+      <tr><td>5 Has everyone got room for dessert? <button class="tb" onclick="tr('Soru 5','Has everyone got room for dessert?','Herkesin tatlı için yeri var mı?','a — Well, I have! It looks fantastic! Did you make it yourself?','a — Ben varım! Harika görünüyor! Kendiniz mi yaptınız?')">?</button></td><td><span class="tag">a</span> Well, I have! It looks fantastic! Did you make it yourself? <button class="tb" onclick="tr('Cevap 5','Well, I have! It looks fantastic! Did you make it yourself?','Ben varım! Harika görünüyor! Kendiniz mi yaptınız?')">?</button></td></tr>
+      <tr><td>6 Would anyone like some more ice cream? <button class="tb" onclick="tr('Soru 6','Would anyone like some more ice cream?','Daha fazla dondurma ister misiniz?','c — Yes, please! I\'d love another spoonful of the strawberry.','c — Evet lütfen! Çilekten bir kaşık daha yesem.')">?</button></td><td><span class="tag">c</span> Yes, please! I'd love another spoonful of the strawberry. <button class="tb" onclick="tr('Cevap 6','Yes, please! I\'d love another spoonful of the strawberry.','Evet lütfen! Çilekten bir kaşık daha yesem.')">?</button></td></tr>
+      <tr><td>7 How would you like your coffee? <button class="tb" onclick="tr('Soru 7','How would you like your coffee?','Kahvenizi nasıl istersiniz?','g — Black with no sugar, please. Do you have any decaf?','g — Şekersiz siyah lütfen. Kafeinsiz var mı?')">?</button></td><td><span class="tag">g</span> Black with no sugar, please. Do you have any decaf? <button class="tb" onclick="tr('Cevap 7','Black with no sugar, please. Do you have any decaf?','Şekersiz siyah lütfen. Kafeinsiz var mı?')">?</button></td></tr>
+      <tr><td>8 Can I get you some more wine? <button class="tb" onclick="tr('Soru 8','Can I get you some more wine?','Biraz daha şarap alayım mı?','d — Just a drop, please. I\'m driving.','d — Sadece birkaç damla lütfen. Araba kullanıyorum.')">?</button></td><td><span class="tag">d</span> Just a drop, please. I'm driving. <button class="tb" onclick="tr('Cevap 8','Just a drop, please. I\'m driving.','Sadece birkaç damla lütfen. Araba kullanıyorum.')">?</button></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub">Alıştırma 3 – Can/Could I …? / Can/Could you …? ile tamamlayın</div>
+
+  <div class="bl"><div class="bl-text"><span class="bn">1</span><span class="fi">Can I</span> have some apple juice, please? <button class="tb" onclick="tr('Rica 1','Can I have some apple juice, please?','Biraz elma suyu alabilir miyim lütfen?','Can I / Could I','Can I veya Could I kullanılabilir (Rica: bir şey istemek)')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">2</span><span class="fi">Could you</span> tell me where the toilets are? <button class="tb" onclick="tr('Rica 2','Could you tell me where the toilets are?','Tuvaletlerin nerede olduğunu söyler misiniz?','Could you','Could you — nazikçe yön sormak')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">3</span><span class="fi">Can I</span> see the menu? <button class="tb" onclick="tr('Rica 3','Can I see the menu?','Menüye bakabilir miyim?','Can I / Could I','Can I veya Could I')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">4</span><span class="fi">Could I</span> use your phone to make a call, please? <button class="tb" onclick="tr('Rica 4','Could I use your phone to make a call, please?','Telefon görüşmesi yapmak için telefonunuzu kullanabilir miyim lütfen?','Could I','Could I — izin istemek')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">5</span><span class="fi">Could you</span> lend me an umbrella, please? <button class="tb" onclick="tr('Rica 5','Could you lend me an umbrella, please?','Şemsiyenizi ödünç verir misiniz lütfen?','Could you','Could you — birine bir şey yaptırmak')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">6</span><span class="fi">Can you</span> take me to the station? <button class="tb" onclick="tr('Rica 6','Can you take me to the station?','Beni istasyona götürür müsünüz?','Can you / Could you','Can you veya Could you')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">7</span><span class="fi">Could you</span> help me with this homework, please? <button class="tb" onclick="tr('Rica 7','Could you help me with this homework, please?','Bu ödevde bana yardım eder misiniz lütfen?','Could you','Could you — kibar rica')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">8</span><span class="fi">Can you</span> give me a lift to the airport? <button class="tb" onclick="tr('Rica 8','Can you give me a lift to the airport?','Beni havaalanına bırakabilir misiniz?','Can you / Could you','Can you veya Could you')">?</button></div></div>
+  <div class="bl"><div class="bl-text"><span class="bn">9</span><span class="fi">Could you</span> explain that again, please? <button class="tb" onclick="tr('Rica 9','Could you explain that again, please?','Bunu tekrar açıklar mısınız lütfen?','Could you','Could you — kibar, tekrar açıklama isteği')">?</button></div></div>
+
+  <div class="sub">Alıştırma 4 – Daha nazik ricalar (Could I possibly / Would you mind + -ing)</div>
+
+  <div class="vg"><strong>4</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Could I possibly</span> use your phone to make a call? / Would you mind if I used your phone? <button class="tb" onclick="tr('Nazik Rica 4','Could I possibly use your phone to make a call?','Telefon görüşmesi yapmak için telefonunuzu kullanabilir miyim acaba?','Could I possibly use your phone? / Would you mind if I used your phone?','Could I possibly... / Would you mind if I... — çok nazik izin isteme')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>5</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Could you possibly</span> lend me an umbrella? / Would you mind lending me an umbrella? <button class="tb" onclick="tr('Nazik Rica 5','Could you possibly lend me an umbrella?','Şemsiyenizi ödünç verir misiniz acaba?','Could you possibly lend me an umbrella? / Would you mind lending me an umbrella?','Çok nazik rica kalıpları')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>6</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Would you mind</span> taking me to the station? / Could you possibly take me? <button class="tb" onclick="tr('Nazik Rica 6','Would you mind taking me to the station?','Beni istasyona götürür müsünüz acaba?','Would you mind taking me to the station? / Could you possibly take me to the station?','Would you mind + -ing = çok nazik rica')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>7</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Would you mind</span> helping me with this homework? / Could you possibly help me? <button class="tb" onclick="tr('Nazik Rica 7','Would you mind helping me with this homework?','Bu ödevde bana yardım eder misiniz acaba?','Would you mind helping me with this homework?','Would you mind + -ing')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>8</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Could you possibly</span> give me a lift to the airport? / Would you mind giving me a lift? <button class="tb" onclick="tr('Nazik Rica 8','Could you possibly give me a lift to the airport?','Beni havaalanına kadar götürür müsünüz acaba?','Could you possibly give me a lift to the airport? / Would you mind giving me a lift?','Could you possibly... / Would you mind + -ing')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>9</strong>
+    <div class="vr"><div class="vr-text"><span class="fi">Would you mind</span> explaining that again, please? / Could you possibly explain that again? <button class="tb" onclick="tr('Nazik Rica 9','Would you mind explaining that again, please?','Bunu tekrar açıklar mısınız acaba?','Would you mind explaining that again, please? / Could you possibly explain that again?','Would you mind + -ing / Could you possibly...')">?</button></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     WRITING – WRITING A POSTCARD (s.48)
+══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title"><span class="pg">s.48</span>Writing – Writing a Postcard (Style and Synonyms)</div>
+
+  <div class="sub">Alıştırma 1 – Ruby ve Lucas nerede? Ne tür tatil? Yazım sorunu ne?</div>
+  <div class="qa">
+    <div class="q"><span class="q-text">Where are Ruby and Lucas? What kind of holiday are they having? What is wrong with the style?
+    <button class="tb" onclick="tr('Alıştırma 1','Where are they? What kind of holiday? What is wrong with the style?','Neredeler? Ne tür tatil? Yazım stiliyle ne sorun var?','They\'re in France, in the Alps, near Mont Blanc. They\'re having a hiking holiday. The problem is that they overuse the word "nice" (11 times).','Fransa\'da, Alpler\'de, Mont Blanc yakınındalar. Yürüyüş tatili yapıyorlar. Sorun, "nice" kelimesini aşırı kullanmaları (11 kez).')">?</button></span></div>
+    <div class="ans-row"><div class="ans">They're in France, in the Alps, near Mont Blanc, having a hiking holiday. The problem is they overuse the word "nice" – it appears 11 times.</div></div>
+  </div>
+
+  <div class="sub">Alıştırma 2 – "nice" yerine kullanılabilecek kelimeler</div>
+
+  <div class="vg"><strong>1</strong> We're having a/an ________ time in the Alps, near Mont Blanc.
+    <div class="vr"><div class="vr-text"><span class="fi">wonderful / fabulous / lovely / good</span>
+    <button class="tb" onclick="tr('Cümle 1','We\'re having a __ time in the Alps.','Alpler\'de harika/muhteşem/güzel bir zaman geçiriyoruz.','wonderful / fabulous / lovely / good','harika / muhteşem / sevimli / iyi')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>2</strong> The mountains are ________ at this time of year.
+    <div class="vr"><div class="vr-text"><span class="fi">lovely / amazing / wonderful / beautiful</span>
+    <button class="tb" onclick="tr('Cümle 2','The mountains are __ at this time of year.','Dağlar yılın bu döneminde çok güzel/inanılmaz.','lovely / amazing / wonderful / beautiful','sevimli/güzel / inanılmaz / harika / güzel')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>3</strong> There are lots of ________ wild flowers.
+    <div class="vr"><div class="vr-text"><span class="fi">beautiful / amazing / wonderful / lovely</span>
+    <button class="tb" onclick="tr('Cümle 3','There are lots of __ wild flowers.','Çok sayıda güzel/inanılmaz vahşi çiçek var.','beautiful / amazing / wonderful / lovely','güzel / inanılmaz / harika / sevimli')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>4</strong> We had lunch in this ________ restaurant today.
+    <div class="vr"><div class="vr-text"><span class="fi">fabulous / excellent / amazing / wonderful / beautiful / lovely</span>
+    <button class="tb" onclick="tr('Cümle 4','We had lunch in this __ restaurant today.','Bugün bu muhteşem/mükemmel/inanılmaz restoranda öğle yemeği yedik.','fabulous / excellent / amazing / wonderful / beautiful / lovely','muhteşem / mükemmel / inanılmaz / harika / güzel / sevimli')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>5</strong> We wanted to send this postcard because the picture on it is so ________.
+    <div class="vr"><div class="vr-text"><span class="fi">amazing / fabulous / wonderful / beautiful / good</span>
+    <button class="tb" onclick="tr('Cümle 5','The picture on it is so __.','Üzerindeki resim çok inanılmaz/muhteşem.','amazing / fabulous / wonderful / beautiful / good','inanılmaz / muhteşem / harika / güzel / iyi')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>6</strong> The weather was ________, so the view really was ________.
+    <div class="vr"><div class="vr-text"><span class="fi">clear and sunny</span> / excellent / fabulous → view: <span class="fi">spectacular / amazing / beautiful</span>
+    <button class="tb" onclick="tr('Cümle 6','The weather was __ so the view really was __.','Hava çok güzeldi, bu yüzden manzara gerçekten inanılmazdı.','clear and sunny / excellent; spectacular / amazing / beautiful','açık ve güneşli / mükemmel; muhteşem / inanılmaz / güzel')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>7</strong> The food was really ________, too.
+    <div class="vr"><div class="vr-text"><span class="fi">good / delicious</span>
+    <button class="tb" onclick="tr('Cümle 7','The food was really __, too.','Yemek de gerçekten çok iyiydi/lezzetliydi.','good / delicious','iyi / lezzetli')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>8</strong> Lucas said the French fries were ________.
+    <div class="vr"><div class="vr-text"><span class="fi">excellent / fabulous / amazing / wonderful / delicious / out of this world / lovely / good</span>
+    <button class="tb" onclick="tr('Cümle 8','Lucas said the French fries were __.','Lucas patates kızartmasının mükemmel/inanılmaz/lezzetli olduğunu söyledi.','excellent / fabulous / amazing / delicious / out of this world / lovely / good','mükemmel / muhteşem / inanılmaz / lezzetli / dünya dışı / sevimli / iyi')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>9</strong> My 'Grandmother's roast chicken' was ________.
+    <div class="vr"><div class="vr-text"><span class="fi">delicious / excellent / fabulous / amazing / wonderful / out of this world / lovely / good</span>
+    <button class="tb" onclick="tr('Cümle 9','My Grandmother\'s roast chicken was __.','Büyükannemin fırın tavuğu lezzetli/mükemmeldi.','delicious / excellent / fabulous / amazing / wonderful / out of this world','lezzetli / mükemmel / muhteşem / inanılmaz / harika / dünya dışı')">?</button></div></div>
+  </div>
+  <div class="vg"><strong>10</strong> The chocolate 'Dome' with spiced caramel sauce was truly ________.
+    <div class="vr"><div class="vr-text"><span class="fi">out of this world / excellent / fabulous / wonderful / delicious / spectacular</span>
+    <button class="tb" onclick="tr('Cümle 10','The chocolate Dome with spiced caramel sauce was truly __.','Baharatlı karamel soslu çikolatalı Dome gerçekten olağanüstü/muhteşemdi.','out of this world / excellent / fabulous / wonderful / delicious / spectacular','dünya dışı / mükemmel / muhteşem / harika / lezzetli / görkemli')">?</button></div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function tr(title, eng, engTr, ans, ansTr) {
+  document.getElementById('modal-title').textContent = '🔍 ' + title;
+
+  // Soru
+  const qEl = document.getElementById('modal-q');
+  const qWrap = document.getElementById('modal-q-wrap');
+  if (eng) { qEl.textContent = eng; qWrap.style.display = ''; }
+  else { qWrap.style.display = 'none'; }
+
+  // Soru Türkçe
+  const qTrEl = document.getElementById('modal-q-tr');
+  const qTrWrap = document.getElementById('modal-q-tr-wrap');
+  if (engTr) { qTrEl.textContent = engTr; qTrWrap.style.display = ''; }
+  else { qTrWrap.style.display = 'none'; }
+
+  // Cevap
+  const aEl = document.getElementById('modal-a');
+  const aWrap = document.getElementById('modal-a-wrap');
+  if (ans) { aEl.textContent = ans; aWrap.style.display = ''; }
+  else { aWrap.style.display = 'none'; }
+
+  // Cevap Türkçe
+  const aTrEl = document.getElementById('modal-a-tr');
+  const aTrWrap = document.getElementById('modal-a-tr-wrap');
+  if (ansTr) { aTrEl.textContent = ansTr; aTrWrap.style.display = ''; }
+  else { aTrWrap.style.display = 'none'; }
+
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
