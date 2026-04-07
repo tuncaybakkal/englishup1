@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 5: The Future's in Your Hands</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --orange: #e8581a;
+    --orange-light: #f5956a;
+    --orange-pale: #fff3ed;
+    --dark: #1a1208;
+    --mid: #4a3520;
+    --muted: #8a6d50;
+    --line: #e8d8c8;
+    --bg: #fdfaf6;
+    --white: #ffffff;
+    --green: #2e7d5e;
+    --green-light: #e8f5ef;
+    --blue: #1e5a8a;
+    --blue-light: #e8f0f8;
+    --gold: #c89a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--orange);
+    padding: 32px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.18);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-badge {
+    background: white;
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 28px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-text p {
+    color: rgba(255,255,255,0.82);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* NAV */
+  .toc {
+    background: var(--dark);
+    padding: 0 40px;
+  }
+  .toc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  .toc a {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { background: var(--orange); color: white; }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* SECTION HEADERS */
+  .section-label {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .section-page {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 48px 0 36px;
+  }
+
+  /* QUESTION BLOCK */
+  .q-block {
+    margin-bottom: 28px;
+    border-left: 3px solid var(--line);
+    padding-left: 18px;
+  }
+  .q-block:hover { border-left-color: var(--orange-light); }
+
+  .q-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* TEXT WITH TOOLTIP BUTTON */
+  .tl {
+    display: inline;
+  }
+  .tl-text { display: inline; }
+
+  .tr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+    line-height: 1;
+    position: relative;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+  .tr-btn:hover { background: var(--dark); }
+
+  /* POPUP */
+  .tr-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--dark);
+    color: #f5e8d8;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 280px;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,.38);
+    pointer-events: none;
+  }
+  .tr-popup.active { display: block; }
+  .tr-popup::before {
+    content: '🇹🇷';
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
+  /* ANSWER CARD */
+  .answer-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+
+  .answer-row {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5ede2;
+    align-items: flex-start;
+  }
+  .answer-row:last-child { border-bottom: none; }
+  .ans-num {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .ans-text { flex: 1; font-size: 14px; }
+
+  /* FILL-IN style */
+  .fill-sentence {
+    font-size: 14.5px;
+    margin-bottom: 5px;
+    line-height: 1.8;
+  }
+  .blank-ans {
+    display: inline-block;
+    background: var(--orange-pale);
+    border-bottom: 2px solid var(--orange);
+    color: var(--orange);
+    font-weight: 600;
+    padding: 0 8px;
+    border-radius: 4px 4px 0 0;
+    font-size: 14px;
+  }
+
+  /* GRAMMAR SPOT BOX */
+  .grammar-box {
+    background: #fff8f2;
+    border: 2px solid var(--orange-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .grammar-box .gb-title {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* DIALOGUE */
+  .dialogue {
+    background: var(--blue-light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 8px;
+  }
+  .dlg-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .dlg-line:last-child { margin-bottom: 0; }
+  .dlg-speaker {
+    font-weight: 700;
+    color: var(--blue);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+
+  /* PRON TABLE */
+  .pron-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .pron-table th {
+    background: var(--dark);
+    color: white;
+    padding: 8px 14px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .05em;
+  }
+  .pron-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pron-table tr:nth-child(even) td { background: #faf5ef; }
+  .ipa { font-family: monospace; color: var(--green); font-weight: 600; }
+  .word-want { color: var(--blue); font-weight: 600; }
+  .word-wont { color: var(--orange); font-weight: 600; }
+
+  /* VOCAB BOX */
+  .vocab-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .vocab-chip {
+    background: var(--green-light);
+    border: 1px solid #a8d8c0;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* MATCH TABLE */
+  .match-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .match-table th {
+    background: var(--mid);
+    color: white;
+    padding: 8px 14px;
+    font-size: 12px;
+    letter-spacing: .05em;
+    text-align: left;
+  }
+  .match-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .match-table tr:nth-child(even) td { background: #faf5ef; }
+  .match-arrow { color: var(--orange); font-weight: 700; text-align: center; }
+
+  /* CERTAINTY SCALE */
+  .cert-scale {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    align-items: center;
+  }
+  .cert-chip {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 13px;
+    border-radius: 20px;
+  }
+  .cert-yes { background: #e8f5ef; color: var(--green); border: 1px solid #a8d8c0; }
+  .cert-no { background: #fde8e8; color: #b83232; border: 1px solid #f5a8a8; }
+  .cert-maybe { background: #fff3e0; color: #c87020; border: 1px solid #f5c880; }
+
+  /* WRITING NOTES */
+  .writing-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .writing-box li { margin-bottom: 6px; margin-left: 18px; }
+
+  /* AUDIOSCRIPT BOX */
+  .audio-box {
+    background: #f5f0fa;
+    border: 1px solid #c8b0e8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 10px;
+  }
+  .audio-speaker {
+    font-weight: 700;
+    color: #6a3ab8;
+    font-size: 13px;
+  }
+  .audio-name {
+    color: #6a3ab8;
+    font-weight: 600;
+  }
+
+  .info-note {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .site-header { padding: 20px 16px; }
+    .main { padding: 24px 14px 60px; }
+    .section-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">5</div>
+    <div class="header-text">
+      <h1>The Future's in Your Hands</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Student's Book Answer Key</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#grammar1">Grammar: Verb Patterns</a>
+    <a href="#grammar2">Future Forms</a>
+    <a href="#practice1">Practice</a>
+    <a href="#pronunciation">Pronunciation</a>
+    <a href="#listening">Listening</a>
+    <a href="#reading">Reading</a>
+    <a href="#vocabulary">Vocabulary</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing</a>
+    <a href="#audioscript">Audioscript</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  GRAMMAR: VERB PATTERNS                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="grammar1">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Verb Patterns – Hopes and Plans</div>
+  <div class="section-page">(Ders Kitabı s. 50–51 / Cevap Anahtarı s. 1)</div>
+
+  <!-- Exercise 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Look at the photos and describe each person</div>
+    <div class="tl">
+      <span class="tl-text">Possible answers for each character:</span>
+      <button class="tr-btn" onclick="showTip(this, 'Her karakter için olası cevaplar:')">?</button>
+    </div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">Damian</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He is a student. He hates school. He wants to stop doing exams.</span><button class="tr-btn" onclick="showTip(this, 'O bir öğrenci. Okuldan nefret ediyor. Sınav yapmayı bırakmak istiyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Paula</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She is a paramedic. It's a stressful job. She needs a break.</span><button class="tr-btn" onclick="showTip(this, 'O bir paramedik. Stresli bir iş. Bir molaya ihtiyacı var.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Marek</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He works in advertising. He wants to change his job.</span><button class="tr-btn" onclick="showTip(this, 'Reklamcılık sektöründe çalışıyor. İşini değiştirmek istiyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Claire</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She has three children. She is very tired. She wants to go back to work.</span><button class="tr-btn" onclick="showTip(this, 'Üç çocuğu var. Çok yorgun. İşe geri dönmek istiyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Grace</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She is a student. She is worried. She has a lot of debts and hates owing money.</span><button class="tr-btn" onclick="showTip(this, 'O bir öğrenci. Endişeli. Çok borcu var ve borçlu olmaktan nefret ediyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Angus</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He is retired. He is happy. He wants to do his hobbies.</span><button class="tr-btn" onclick="showTip(this, 'Emekli. Mutlu. Hobilerini yapmak istiyor.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Match sentences 1–6 to the correct person</div>
+    <div class="tl">
+      <span class="tl-text">Who says which sentence?</span>
+      <button class="tr-btn" onclick="showTip(this, 'Kim hangi cümleyi söylüyor?')">?</button>
+    </div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Marek</span><button class="tr-btn" onclick="showTip(this, '«New York\'ta büyük bir şirkete başvurmayı düşünüyorum.» → Marek')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Claire</span><button class="tr-btn" onclick="showTip(this, '«Bebek biraz büyüyünce işe dönmeyi sabırsızlıkla bekliyorum.» → Claire')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Damian</span><button class="tr-btn" onclick="showTip(this, '«Hemen ayrılmak ve bir iş bulmak istiyorum.» → Damian')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Angus</span><button class="tr-btn" onclick="showTip(this, '«Her gün balığa gitmeye çalışıyorum ama karım bazen evde yardım etmemi istiyor.» → Angus')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">Paula</span><button class="tr-btn" onclick="showTip(this, '«Neyse ki gelecek ay tatile çıkıyoruz. İspanya\'ya gitmeyi seviyoruz.» → Paula')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">Grace</span><button class="tr-btn" onclick="showTip(this, '«İyi maaşlı bir iş bulmayı umarak sınavlarım için gerçekten sıkı çalışacağım.» → Grace')">?</button></span></span></div>
+    </div>
+    <div class="info-note">
+      <strong>Additional information from audio 5.1:</strong><br>
+      Damian's mum and dad say he can't leave school. · Paula is going to read and sunbathe on holiday. · Marek wants to work in New York for a couple of years. · Grace is going to have a job interview next Friday. · Claire is fed up with staying at home all day. · Angus's wife wants them to go travelling, but he just wants to go fishing.
+    </div>
+  </div>
+
+  <!-- Exercise 3 – fill-in -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Listen again. Complete the lines. Who says them? (5.1)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">
+        1. <span class="tl"><span class="tl-text">I'd love <span class="blank-ans">to work</span> there for a couple of years.</span><button class="tr-btn" onclick="showTip(this, 'Birkaç yıl orada çalışmak isterim.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Marek</span>
+      </div>
+      <div class="fill-sentence">
+        2. <span class="tl"><span class="tl-text">I'm planning <span class="blank-ans">to do</span> nothing but read and sunbathe.</span><button class="tr-btn" onclick="showTip(this, 'Sadece okumak ve güneşlenmekten başka bir şey yapmayı planlamıyorum.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Paula</span>
+      </div>
+      <div class="fill-sentence">
+        3. <span class="tl"><span class="tl-text">I <span class="blank-ans">hate</span> owing so much money.</span><button class="tr-btn" onclick="showTip(this, 'Bu kadar borçlu olmaktan nefret ediyorum.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Grace</span>
+      </div>
+      <div class="fill-sentence">
+        4. <span class="tl"><span class="tl-text">I get fed up with <span class="blank-ans">staying</span> at home all day.</span><button class="tr-btn" onclick="showTip(this, 'Bütün gün evde kalmaktan bıkıp usanıyorum.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Claire</span>
+      </div>
+      <div class="fill-sentence">
+        5. <span class="tl"><span class="tl-text">She <span class="blank-ans">wants</span> us to go travelling, but I'm just happy <span class="blank-ans">spending</span> all day by the river.</span><button class="tr-btn" onclick="showTip(this, 'O bizi seyahate çıkarmak istiyor ama ben sadece nehir kenarında bütün gün geçirmekten mutluyum.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Angus</span>
+      </div>
+      <div class="fill-sentence">
+        6. <span class="tl"><span class="tl-text">My mum and dad say that I <span class="blank-ans">can't</span> leave school.</span><button class="tr-btn" onclick="showTip(this, 'Annem ve babam okuldan ayrılamayacağımı söylüyor.')">?</button></span>
+        <span style="color:var(--muted);font-size:13px;margin-left:6px">→ Damian</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR SPOT -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot</div>
+    <div class="grammar-box">
+      <div class="gb-title">Grammar Spot Answers</div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div><span class="tl"><span class="tl-text">verb + infinitive (with to): <em>want to work, hope to get, plan to do</em></span><button class="tr-btn" onclick="showTip(this, 'fiil + mastar (to ile): want to work, hope to get, plan to do')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">verb + infinitive (without to): <em>can leave, must stop</em></span><button class="tr-btn" onclick="showTip(this, 'fiil + mastar (to\'suz): can leave, must stop')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">verb + -ing: <em>enjoy doing, hate owing, love going</em></span><button class="tr-btn" onclick="showTip(this, 'fiil + -ing: enjoy doing, hate owing, love going')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">prepositions of, with, to + -ing: <em>thinking of going, fed up with staying, looking forward to returning</em></span><button class="tr-btn" onclick="showTip(this, 'of, with, to edatları + -ing: thinking of going, fed up with staying, looking forward to returning')">?</button></span></div>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">"I like working in New York." → refers to NOW (present habit). "I'd like to work in New York." → HYPOTHETICAL / future wish.</span><button class="tr-btn" onclick="showTip(this, '«New York\'ta çalışmaktan hoşlanıyorum.» → ŞİMDİ (alışkanlık). «New York\'ta çalışmak istiyorum.» → HİPOTETİK / gelecek dilekler.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Complete with "work in New York": I hope <u>to work</u> / I'd love <u>to work</u> / I'm thinking of <u>working</u> / I enjoy <u>working</u> / I'm looking forward to <u>working</u> / I'm fed up with <u>working</u> / I can't <u>work</u> in New York.</span><button class="tr-btn" onclick="showTip(this, '«work in New York» ile tamamlama: I hope to work / I\'d love to work / I\'m thinking of working / I enjoy working / I\'m looking forward to working / I\'m fed up with working / I can\'t work in New York.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PRACTICE – DISCUSSING GRAMMAR                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="practice1">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Discussing Grammar</div>
+  <div class="section-page">(Ders Kitabı s. 51 / Cevap Anahtarı s. 2)</div>
+
+  <!-- Ex 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Tick (✓) the correct answers (one or two may be correct)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">I ___ to work in Paris. → <strong>a) want ✓</strong> &nbsp; b) enjoy ✗ &nbsp; <strong>c) 'd like ✓</strong></span><button class="tr-btn" onclick="showTip(this, 'Paris\'te çalışmak ___. → a) istiyorum ✓ · b) çalışmaktan zevk alıyorum ✗ · c) isterim ✓')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I ___ doing housework. → a) 'm fed up with ✓ &nbsp; b) hate ✓ &nbsp; c) don't want ✗ <em>(don't want to do)</em></span><button class="tr-btn" onclick="showTip(this, 'Ev işleri yapmaktan ___. → a) bıktım ✓ · b) nefret ediyorum ✓ · c) istemiyorum ✗ (don\'t want to do olmalı)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">She ___ leave work early tonight. → <strong>c) can't ✓</strong> &nbsp; a) wants ✗ &nbsp; b) 'd like ✗ <em>(+ to)</em></span><button class="tr-btn" onclick="showTip(this, 'Bu gece erken işten ayrılamaz. → c) can\'t ✓ (wants/\'d like to olmalı)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">I ___ to see you again soon. → <strong>a) hope ✓</strong> &nbsp; <strong>b) 'd like ✓</strong> &nbsp; c) 'm looking forward ✗ <em>(+ to seeing)</em></span><button class="tr-btn" onclick="showTip(this, 'Sizi yakında yeniden görmek ___. → a) umuyorum ✓ · b) isterim ✓ · c) dört gözle bekliyorum ✗ (looking forward to seeing olmalı)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">He often ___ playing computer games. → <strong>c) enjoys ✓</strong> &nbsp; a) wants ✗ &nbsp; b) asks ✗</span><button class="tr-btn" onclick="showTip(this, 'Bilgisayar oyunu oynamaktan sıklıkla ___ → c) zevk alıyor ✓')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">We ___ going to Italy for our holidays. → <strong>a) 're hoping ✓</strong> &nbsp; <strong>b) 're thinking of ✓</strong> &nbsp; c) like ✗ <em>(+ going)</em></span><button class="tr-btn" onclick="showTip(this, 'Tatilde İtalya\'ya gitmeyi ___. → a) umuyoruz ✓ · b) düşünüyoruz ✓')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">We ___ having a few days off soon. → <strong>a) 're going ✓</strong> &nbsp; <strong>b) 'd love ✓</strong> &nbsp; c) 're looking forward to ✗ <em>(correct but not an option)</em></span><button class="tr-btn" onclick="showTip(this, 'Yakında birkaç gün izin alacağız / almak isteriz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">Are you ___ learning foreign languages? → <strong>c) good at ✓</strong> &nbsp; a) want ✗ &nbsp; b) like ✗</span><button class="tr-btn" onclick="showTip(this, 'Yabancı dil öğrenmekte ___ misiniz? → c) iyi misiniz ✓')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 2 – corrected sentences -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Correct sentences for the wrong answers in Ex. 1</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">I enjoy <u>working</u> in Paris.</span><button class="tr-btn" onclick="showTip(this, 'Paris\'te çalışmaktan zevk alıyorum.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I don't want <u>to do</u> housework.</span><button class="tr-btn" onclick="showTip(this, 'Ev işi yapmak istemiyorum.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">She wants <u>to leave</u> work early tonight. / She'd like <u>to leave</u> work early tonight.</span><button class="tr-btn" onclick="showTip(this, 'Bu gece işten erken ayrılmak istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">I'm looking forward to <u>seeing</u> you again soon.</span><button class="tr-btn" onclick="showTip(this, 'Sizi yakında yeniden görmeyi sabırsızlıkla bekliyorum.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">He often wants <u>to play</u> / asks <u>to play</u> computer games with his friends.</span><button class="tr-btn" onclick="showTip(this, 'Sıklıkla arkadaşlarıyla bilgisayar oyunu oynamak istiyor / oynamak için izin istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">We're hoping <u>to go</u> to Italy for our holidays.</span><button class="tr-btn" onclick="showTip(this, 'Tatil için İtalya\'ya gitmeyi umuyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">We're going to <u>have</u> / We'd love to <u>have</u> a few days off soon.</span><button class="tr-btn" onclick="showTip(this, 'Yakında birkaç gün izin alacağız / almak isteriz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">Do you want <u>to learn</u> / Do you like <u>learning</u> foreign languages?</span><button class="tr-btn" onclick="showTip(this, 'Yabancı dil öğrenmek istiyor musunuz? / Yabancı dil öğrenmekten hoşlanıyor musunuz?')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 3 – dialogue completion -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Asking for more information: Complete the questions (5.4)</div>
+    <div class="answer-card">
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 1</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">I hope to go to university.</span><button class="tr-btn" onclick="showTip(this, 'Üniversiteye gitmeyi umuyorum.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">What do you want to study?</span></span><button class="tr-btn" onclick="showTip(this, 'Ne okumak istiyorsun?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">I'm going to study philosophy and politics. I'd like to be prime minister.</span><button class="tr-btn" onclick="showTip(this, 'Felsefe ve siyaset okuyacağım. Başbakan olmak istiyorum.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">Really? I think that's the worst job in the world!</span><button class="tr-btn" onclick="showTip(this, 'Gerçekten mi? Bence dünyanın en kötü işi bu!')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 2</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">My favourite hobby is cooking.</span><button class="tr-btn" onclick="showTip(this, 'En sevdiğim hobi yemek pişirmek.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">What do you like making?</span></span><button class="tr-btn" onclick="showTip(this, 'Ne yapmaktan hoşlanıyorsun?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Well, I love baking cakes – all kinds of cakes.</span><button class="tr-btn" onclick="showTip(this, 'Pasta yapmayı çok seviyorum – her türlü pasta.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">OK, can you make me a huge chocolate one for my birthday?</span><button class="tr-btn" onclick="showTip(this, 'Tamam, doğum günüm için bana büyük bir çikolatalı pasta yapabilir misin?')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 3</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">I'm bored.</span><button class="tr-btn" onclick="showTip(this, 'Sıkıldım.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">What would you like to do?</span></span><button class="tr-btn" onclick="showTip(this, 'Ne yapmak istersin?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Nothing. I'm happy being bored.</span><button class="tr-btn" onclick="showTip(this, 'Hiçbir şey. Sıkılmaktan memnunum.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">Well, that's OK then!</span><button class="tr-btn" onclick="showTip(this, 'Peki, o zaman tamam!')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 4</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">I'm looking forward to the party.</span><button class="tr-btn" onclick="showTip(this, 'Partiyi sabırsızlıkla bekliyorum.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Who are you hoping to see there?</span></span><button class="tr-btn" onclick="showTip(this, 'Orada kimi görmeyi umuyorsun?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">No one special. I just like parties.</span><button class="tr-btn" onclick="showTip(this, 'Özel biri yok. Sadece partileri seviyorum.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="fill-sentence"><strong>Conversation 5</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">We're planning our summer holidays.</span><button class="tr-btn" onclick="showTip(this, 'Yaz tatilimizi planlıyoruz.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Where are you thinking of going?</span></span><button class="tr-btn" onclick="showTip(this, 'Nereye gitmeyi düşünüyorsunuz?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">We want to go camping this year.</span><button class="tr-btn" onclick="showTip(this, 'Bu yıl kamp yapmak istiyoruz.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">Ugh! Camping! I hate sleeping in tents.</span><button class="tr-btn" onclick="showTip(this, 'Ugh! Kamp! Çadırda uyumaktan nefret ediyorum.')">?</button></span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  GRAMMAR: FUTURE FORMS                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="grammar2">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Have You Got Any Plans? – going to, will, Present Continuous</div>
+  <div class="section-page">(Ders Kitabı s. 52 / Cevap Anahtarı s. 3)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Who has definite future plans?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">✓</span>
+        <span class="ans-text"><span class="tl"><span class="tl-text">Pete has got definite future plans. Daisy hasn't.</span><button class="tr-btn" onclick="showTip(this, 'Pete\'nin kesin gelecek planları var. Daisy\'nin yok.')">?</button></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Match questions 1–4 with Pete's and Daisy's answers (a–h)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Pete: <strong>d</strong> (I'm meeting Tom for a drink after work.) &nbsp;|&nbsp; Daisy: <strong>h</strong> (I think I'll just stay at home…)</span><button class="tr-btn" onclick="showTip(this, 'Pete: d → Bu akşam ne yapıyorsun? Daisy: h → Sadece evde kalmayı düşünüyorum.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Pete: <strong>c</strong> (Yes, I am. I'm going to my cousin's wedding.) &nbsp;|&nbsp; Daisy: <strong>g</strong> (No, I'm not. Perhaps we can do something together?)</span><button class="tr-btn" onclick="showTip(this, 'Pete: c → Evet, kuzenim\'in düğününe gidiyorum. Daisy: g → Hayır. Belki birlikte bir şeyler yapabiliriz?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Pete: <strong>a</strong> (Of course I am! I'm going to invite all my friends as usual.) &nbsp;|&nbsp; Daisy: <strong>e</strong> (I don't think so. Maybe I will, maybe I won't.)</span><button class="tr-btn" onclick="showTip(this, 'Pete: a → Tabii! Tüm arkadaşlarımı davet edeceğim. Daisy: e → Sanmıyorum. Belki yaparım, belki yapmam.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Pete: <strong>b</strong> (I'm going to have a winter holiday – skiing in the Swiss Alps.) &nbsp;|&nbsp; Daisy: <strong>f</strong> (I'll probably just go to Scotland with my family.)</span><button class="tr-btn" onclick="showTip(this, 'Pete: b → İsviçre Alplerinde kayak tatili. Daisy: f → Muhtemelen ailemi ile İskoçya\'ya gideceğim.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Listen again and answer the questions (5.5)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">To catch up.</span><button class="tr-btn" onclick="showTip(this, 'Ben neden Pete\'i arıyor? → Haber almak / görüşmek için.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Tom is Pete's old school friend. Karen is Pete's cousin.</span><button class="tr-btn" onclick="showTip(this, 'Tom, Pete\'in eski okul arkadaşı. Karen, Pete\'in kuzeni.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">He's working late.</span><button class="tr-btn" onclick="showTip(this, 'Ben neden Pete ve Tom ile çıkamıyor? → Geç saate kadar çalışıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">He wants to meet up with Pete before he goes skiing.</span><button class="tr-btn" onclick="showTip(this, 'Pete kayağa gitmeden önce onunla buluşmak istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">She's going on holiday.</span><button class="tr-btn" onclick="showTip(this, 'Ella hafta sonu neden Daisy\'yi göremez? → Tatile çıkıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">Greece</span><button class="tr-btn" onclick="showTip(this, 'Ella nereye tatile gidiyor? → Yunanistan.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">Spain</span><button class="tr-btn" onclick="showTip(this, 'Daisy tatilde nereye gitmek ister? → İspanya.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">She says she'll come over now, but she won't stay long.</span><button class="tr-btn" onclick="showTip(this, 'Ella, Daisy onu akşam için davet edince ne söylüyor? → Şimdi uğrayacak ama uzun kalmayacak.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Practice: Discussing grammar – future -->
+  <div class="q-block">
+    <div class="q-num">Practice – Discussing Grammar: Choose the correct verb form (5.6)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">B: Oh yes, <span class="blank-ans">I'm going to</span> apply for Oxford.</span><button class="tr-btn" onclick="showTip(this, 'B: Evet, Oxford\'a başvuracağım. (önceden alınmış karar → going to)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">B: Really? <span class="blank-ans">I'll</span> text it to you right now.</span><button class="tr-btn" onclick="showTip(this, 'B: Gerçekten mi? Hemen şimdi mesaj atayım. (anlık karar → will)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">B: <span class="blank-ans">I'm going</span> shopping soon. <span class="blank-ans">I'll</span> get some apples.</span><button class="tr-btn" onclick="showTip(this, 'B: Yakında alışverişe gidiyorum (plan). Biraz elma alırım (anlık karar).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">B: Give it to me. <span class="blank-ans">I'll</span> carry it for you.</span><button class="tr-btn" onclick="showTip(this, 'B: Ver bana. Senin için taşıyayım. (anlık karar → will)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">B: Is he? <span class="blank-ans">I'll</span> give him a call.</span><button class="tr-btn" onclick="showTip(this, 'B: Öyle mi? Onu arayayım. (anlık karar → will)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">B: <span class="blank-ans">I'm going to</span> make Spaghetti Bolognese and salad.</span><button class="tr-btn" onclick="showTip(this, 'B: Spagetti Bolognese ve salata yapacağım. (önceden alınmış karar → going to)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">B: You can tell me. <span class="blank-ans">I won't</span> tell a soul.</span><button class="tr-btn" onclick="showTip(this, 'B: Söyleyebilirsin bana. Kimseye söylemem. (söz verme → won\'t)')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Will you won't you -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Will you, won't you? Match A sentences with B sentences (5.9)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>f</strong> · I think you'll enjoy this film. <u>You won't be disappointed.</u> It's really exciting.</span><button class="tr-btn" onclick="showTip(this, 'Bu filmi beğeneceğini düşünüyorum. Hayal kırıklığına uğramayacaksın. Gerçekten heyecanlı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>d</strong> · I think I'll call Laura. <u>I won't text her.</u> I have too much to tell her.</span><button class="tr-btn" onclick="showTip(this, 'Laura\'yı arayacağımı düşünüyorum. Mesaj atmayacağım. Anlatacak çok şeyim var.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>a</strong> · I think you'll pass your driving test. <u>You won't fail again.</u> It's your fourth time!</span><button class="tr-btn" onclick="showTip(this, 'Direksiyon sınavını geçeceğini düşünüyorum. Bir daha başaramaz olmayacaksın. Dördüncü denemen bu!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>h</strong> · I think my team will win. <u>They won't lose this time.</u> They've got a new manager.</span><button class="tr-btn" onclick="showTip(this, 'Takımımın kazanacağını düşünüyorum. Bu sefer kaybetmeyecekler. Yeni bir menajer aldılar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>c</strong> · I think it'll be warm today. <u>You won't need your jumper,</u> just take a T-shirt.</span><button class="tr-btn" onclick="showTip(this, 'Bugün hava sıcak olacak. Kazağına ihtiyacın olmayacak, sadece bir tişört al.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>b</strong> · I think I'll join a gym. <u>I won't go on a diet.</u> Diets never work for me.</span><button class="tr-btn" onclick="showTip(this, 'Bir spor salonuna katılacağımı düşünüyorum. Diyete girmeyeceğim. Diyetler benim için hiç işe yaramıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>g</strong> · I think they'll get divorced. <u>They won't stay together.</u> They argue all the time.</span><button class="tr-btn" onclick="showTip(this, 'Boşanacaklarını düşünüyorum. Birlikte kalmayacaklar. Sürekli tartışıyorlar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">→ <strong>e</strong> · I think I'll go by train. <u>I won't fly.</u> I hate flying.</span><button class="tr-btn" onclick="showTip(this, 'Trenle gideceğimi düşünüyorum. Uçmayacağım. Uçmaktan nefret ediyorum.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PRONUNCIATION                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="pronunciation">
+  <div class="section-label">Pronunciation</div>
+  <div class="section-title">want or won't?</div>
+  <div class="section-page">(Ders Kitabı s. 53 / Cevap Anahtarı s. 4)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Listen and identify: want /ɒ/ or won't /əʊ/? (5.10 / 5.11)</div>
+    <table class="pron-table">
+      <thead>
+        <tr><th>Cümle</th><th>Türkçe</th><th>Kelime</th><th>Ses</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>We <span class="word-want">want</span> to leave now.</td>
+          <td><span class="tl"><span class="tl-text">Şimdi ayrılmak istiyoruz.</span><button class="tr-btn" onclick="showTip(this, 'Şimdi ayrılmak istiyoruz.')">?</button></span></td>
+          <td><strong>want</strong></td>
+          <td><span class="ipa">/ɒ/</span> &nbsp;<span class="word-want">/wɒnt/</span></td>
+        </tr>
+        <tr>
+          <td>I <span class="word-wont">won't</span> be late.</td>
+          <td><span class="tl"><span class="tl-text">Geç kalmayacağım.</span><button class="tr-btn" onclick="showTip(this, 'Geç kalmayacağım.')">?</button></span></td>
+          <td><strong>won't</strong></td>
+          <td><span class="ipa">/əʊ/</span> &nbsp;<span class="word-wont">/wəʊnt/</span></td>
+        </tr>
+        <tr>
+          <td>She <span class="word-wont">won't</span> marry him.</td>
+          <td><span class="tl"><span class="tl-text">Onunla evlenmeyecek.</span><button class="tr-btn" onclick="showTip(this, 'Onunla evlenmeyecek.')">?</button></span></td>
+          <td><strong>won't</strong></td>
+          <td><span class="ipa">/əʊ/</span> &nbsp;<span class="word-wont">/wəʊnt/</span></td>
+        </tr>
+        <tr>
+          <td>They <span class="word-want">want</span> to have a party.</td>
+          <td><span class="tl"><span class="tl-text">Parti vermek istiyorlar.</span><button class="tr-btn" onclick="showTip(this, 'Parti vermek istiyorlar.')">?</button></span></td>
+          <td><strong>want</strong></td>
+          <td><span class="ipa">/ɒ/</span> &nbsp;<span class="word-want">/wɒnt/</span></td>
+        </tr>
+        <tr>
+          <td>I <span class="word-wont">won't</span> know until tomorrow.</td>
+          <td><span class="tl"><span class="tl-text">Yarına kadar bilmeyeceğim.</span><button class="tr-btn" onclick="showTip(this, 'Yarına kadar bilmeyeceğim.')">?</button></span></td>
+          <td><strong>won't</strong></td>
+          <td><span class="ipa">/əʊ/</span> &nbsp;<span class="word-wont">/wəʊnt/</span></td>
+        </tr>
+        <tr>
+          <td>Tell me what you <span class="word-want">want</span>.</td>
+          <td><span class="tl"><span class="tl-text">Bana ne istediğini söyle.</span><button class="tr-btn" onclick="showTip(this, 'Bana ne istediğini söyle.')">?</button></span></td>
+          <td><strong>want</strong></td>
+          <td><span class="ipa">/ɒ/</span> &nbsp;<span class="word-want">/wɒnt/</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  LISTENING                                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="listening">
+  <div class="section-label">Listening and Speaking</div>
+  <div class="section-title">Different Generations – What Can We Look Forward To?</div>
+  <div class="section-page">(Ders Kitabı s. 53 / Cevap Anahtarı s. 4)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – What is the relationship? Complete the sentences. (5.12)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. Emma is Harry's <span class="blank-ans">aunt</span> and Richard's <span class="blank-ans">daughter</span>. How old is she? → <strong>29</strong> <button class="tr-btn" onclick="showTip(this, 'Emma, Harry\'nin teyzesi ve Richard\'ın kızıdır. 29 yaşında.')">?</button></div>
+      <div class="fill-sentence">2. Harry is Emma's <span class="blank-ans">nephew</span> and Richard's <span class="blank-ans">grandson</span>. How old is he? → <strong>9</strong> <button class="tr-btn" onclick="showTip(this, 'Harry, Emma\'nın yeğeni ve Richard\'ın torunudur. 9 yaşında.')">?</button></div>
+      <div class="fill-sentence">3. Richard is Harry's <span class="blank-ans">grandad</span> and Emma's <span class="blank-ans">dad</span>. How old is he? → <strong>59</strong> <button class="tr-btn" onclick="showTip(this, 'Richard, Harry\'nin dedesi ve Emma\'nın babasıdır. 59 yaşında.')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Listen again and answer the questions (5.12)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">They are all important birthdays (Harry turns 10 / double figures, Emma turns 30, Richard turns 60).</span><button class="tr-btn" onclick="showTip(this, 'Hepsi önemli doğum günleridir. Harry 10 olacak, Emma 30, Richard 60.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Harry is looking forward to his birthday because he'll be in double figures (10). Emma is NOT looking forward to hers because she's going to be 30 and thinks that's old.</span><button class="tr-btn" onclick="showTip(this, 'Harry doğum gününü bekliyor çünkü iki basamaklı yaşa girecek (10). Emma beklemek istemiyor çünkü 30 yaşına girecek ve bunu yaşlı sayıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Harry's good idea is to have a party. Richard and Emma aren't sure about it.</span><button class="tr-btn" onclick="showTip(this, 'Harry\'nin güzel fikri: parti vermek. Richard ve Emma bu konuda emin değil.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Doctor and teacher.</span><button class="tr-btn" onclick="showTip(this, 'Emma\'nın anne-babasının meslekleri: Doktor ve öğretmen.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">Zac is Harry's friend and they're planning to travel the world together.</span><button class="tr-btn" onclick="showTip(this, 'Zac, Harry\'nin arkadaşıdır ve birlikte dünyayı gezmek planlıyorlar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">Emma went to the Galapagos Islands. Harry would like to go.</span><button class="tr-btn" onclick="showTip(this, 'Emma Galapagos Adaları\'na gitti. Harry de gitmek istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">David is Richard's son and Emma's brother. Rosie is Richard's granddaughter and Emma's niece.</span><button class="tr-btn" onclick="showTip(this, 'David, Richard\'ın oğlu ve Emma\'nın kardeşi. Rosie, Richard\'ın torunu ve Emma\'nın yeğeni.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">Being a lawyer and having children.</span><button class="tr-btn" onclick="showTip(this, 'Emma\'nın emin olmadığı şeyler: Avukat olmak ve çocuk sahibi olmak.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">9</span><span class="ans-text"><span class="tl"><span class="tl-text">John is Emma's boyfriend. She'd like to go travelling again before she settles down.</span><button class="tr-btn" onclick="showTip(this, 'John, Emma\'nın erkek arkadaşıdır. Yerleşmeden önce tekrar seyahat etmek istiyor.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  READING                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="reading">
+  <div class="section-label">Reading and Speaking</div>
+  <div class="section-title">He Was Only 16 …</div>
+  <div class="section-page">(Ders Kitabı s. 54–55 / Cevap Anahtarı s. 4–5)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – True (✓) or False (✗)?</div>
+    <div class="answer-card">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px;font-style:italic;">Group A – Adam Mudd &nbsp;|&nbsp; Group B – Joel Kioko</div>
+      <table class="match-table">
+        <thead><tr><th>#</th><th>Statement</th><th>Adam Mudd</th><th>Joel Kioko</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><span class="tl"><span class="tl-text">His family are quite well off.</span><button class="tr-btn" onclick="showTip(this, 'Ailesi oldukça varlıklı.')">?</button></span></td>
+            <td style="text-align:center">✓</td>
+            <td style="text-align:center">✗</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><span class="tl"><span class="tl-text">His special talent could lead to a successful future.</span><button class="tr-btn" onclick="showTip(this, 'Özel yeteneği başarılı bir geleceğe yol açabilir.')">?</button></span></td>
+            <td style="text-align:center">✓</td>
+            <td style="text-align:center">✓</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><span class="tl"><span class="tl-text">After three years of hard work he became rich.</span><button class="tr-btn" onclick="showTip(this, 'Üç yıllık sıkı çalışmanın ardından zengin oldu.')">?</button></span></td>
+            <td style="text-align:center">✓</td>
+            <td style="text-align:center">✗</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><span class="tl"><span class="tl-text">He is going to travel abroad.</span><button class="tr-btn" onclick="showTip(this, 'Yurt dışına seyahat edecek.')">?</button></span></td>
+            <td style="text-align:center">✗</td>
+            <td style="text-align:center">✓</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><span class="tl"><span class="tl-text">He used his talent to help students in his school.</span><button class="tr-btn" onclick="showTip(this, 'Yeteneğini okulundaki öğrencilere yardım etmek için kullandı.')">?</button></span></td>
+            <td style="text-align:center">✗</td>
+            <td style="text-align:center">✓</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><span class="tl"><span class="tl-text">He developed his talent alone without help from others.</span><button class="tr-btn" onclick="showTip(this, 'Yeteneğini başkalarının yardımı olmadan tek başına geliştirdi.')">?</button></span></td>
+            <td style="text-align:center">✓</td>
+            <td style="text-align:center">✗</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><span class="tl"><span class="tl-text">For the next few years, his life will be very different. How?</span><button class="tr-btn" onclick="showTip(this, 'Önümüzdeki birkaç yıl hayatı çok farklı olacak. Nasıl?')">?</button></span></td>
+            <td><span class="tl"><span class="tl-text">✓ He'll be in prison.</span><button class="tr-btn" onclick="showTip(this, '✓ Cezaevinde olacak.')">?</button></span></td>
+            <td><span class="tl"><span class="tl-text">✓ He'll be training at the English National Ballet School in London.</span><button class="tr-btn" onclick="showTip(this, '✓ Londra\'daki İngiliz Ulusal Bale Okulu\'nda eğitim görecek.')">?</button></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Who said each sentence? Why?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">"I didn't do it for the money." → Adam (it was all about status for him).</span><button class="tr-btn" onclick="showTip(this, '«Bunu para için yapmadım.» → Adam (onun için her şey statü ile ilgiliydi)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">"This court does not believe that you didn't know what you were doing." → The judge at Adam's trial.</span><button class="tr-btn" onclick="showTip(this, '«Bu mahkeme ne yaptığını bilmediğine inanmıyor.» → Adam\'ın davasındaki yargıç')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">"Thank you! We love coming to your lessons." → Joel's students.</span><button class="tr-btn" onclick="showTip(this, '«Teşekkür ederiz! Dersinize gelmeyi çok seviyoruz.» → Joel\'in öğrencileri')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">"We had no idea what he was doing. We'll help him all we can now." → Adam's parents.</span><button class="tr-btn" onclick="showTip(this, '«Ne yaptığı hakkında hiçbir fikrimiz yoktu. Şimdi elimizden geldiğince yardım edeceğiz.» → Adam\'ın ebeveynleri')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">"I'm a bit worried about being so far from home." → Joel (he'll be in London, far from Kenya).</span><button class="tr-btn" onclick="showTip(this, '«Evden bu kadar uzakta olmak konusunda biraz endişeliyim.» → Joel (Londra\'da olacak, Kenya\'dan uzak)')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">"You're going to be a big star one day!" → Joel's teacher.</span><button class="tr-btn" onclick="showTip(this, '«Bir gün büyük bir yıldız olacaksın!» → Joel\'in öğretmeni')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">"We tried to make friends with him. We didn't bully him." → Kids at Adam's college.</span><button class="tr-btn" onclick="showTip(this, '«Onunla arkadaş olmaya çalıştık. Onu zorbalıyoruz.» → Adam\'ın okuldaki arkadaşları')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">"I'm going to use my experience to help others." → Could be either boy.</span><button class="tr-btn" onclick="showTip(this, '«Deneyimimi başkalarına yardım etmek için kullanacağım.» → Her iki erkek de olabilir')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Language Work – Find examples of verb patterns in the articles</div>
+    <div class="answer-card">
+      <div style="margin-bottom:12px;">
+        <div style="font-weight:700;color:var(--orange);font-size:13px;margin-bottom:6px;">Adam Mudd:</div>
+        <div class="vocab-box">
+          <span class="vocab-chip">started selling</span>
+          <span class="vocab-chip">explained … by saying</span>
+          <span class="vocab-chip">denied doing</span>
+          <span class="vocab-chip">wanted to make friends</span>
+          <span class="vocab-chip">found it difficult to make friends</span>
+          <span class="vocab-chip">refused to free him</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:var(--green);font-size:13px;margin-bottom:6px;">Joel Kioko:</div>
+        <div class="vocab-box">
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">took up dancing</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">wanted to do</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">invited him to train</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">started teaching</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">dream is to become</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">he'd like to run</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">wants to show them</span>
+          <span class="vocab-chip" style="background:var(--green-light);color:var(--green);border-color:#a8d8c0;">would like to move</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  VOCABULARY                                            -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="vocabulary">
+  <div class="section-label">Vocabulary and Speaking</div>
+  <div class="section-title">Phrasal Verbs – Literal and Idiomatic</div>
+  <div class="section-page">(Ders Kitabı s. 56 / Cevap Anahtarı s. 5–6)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – literal or idiomatic?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">a</span>
+        <span class="ans-text"><span class="tl"><span class="tl-text">"He carried out nearly 600 virus attacks." → <strong>idiomatic</strong> (= performed/conducted)</span><button class="tr-btn" onclick="showTip(this, '«Yaklaşık 600 virüs saldırısı gerçekleştirdi.» → deyimsel (= yaptı/uyguladı)')">?</button></span></span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">b</span>
+        <span class="ans-text"><span class="tl"><span class="tl-text">"I carried out the rubbish to the bin." → <strong>literal</strong> (physically carried)</span><button class="tr-btn" onclick="showTip(this, '«Çöpü çöp kutusuna götürdüm.» → gerçek/literal anlam (fiziksel olarak taşıdı)')">?</button></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Complete literal phrasal verbs with a word from the box</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. Come in and take <span class="blank-ans">off</span> your coat! <button class="tr-btn" onclick="showTip(this, 'Gir ve paltonu çıkar!')">?</button></div>
+      <div class="fill-sentence">2. Put <span class="blank-ans">on</span> something warm. It's cold today. <button class="tr-btn" onclick="showTip(this, 'Üstüne bir şey giy. Bugün hava soğuk.')">?</button></div>
+      <div class="fill-sentence">3. That was our family home. I grew <span class="blank-ans">up</span> there. <button class="tr-btn" onclick="showTip(this, 'Orası bizim aile evimizdi. Ben orada büyüdüm.')">?</button></div>
+      <div class="fill-sentence">4. If you don't feel well, go and lie <span class="blank-ans">down</span>. <button class="tr-btn" onclick="showTip(this, 'İyi hissetmiyorsan git uzan.')">?</button></div>
+      <div class="fill-sentence">5. Look <span class="blank-ans">at</span> the countryside. Isn't it beautiful? <button class="tr-btn" onclick="showTip(this, 'Kırsal alana bak. Güzel değil mi?')">?</button></div>
+      <div class="fill-sentence">6. I'll lend you £20. Pay me <span class="blank-ans">back</span> when you can. <button class="tr-btn" onclick="showTip(this, 'Sana 20 sterlin ödünç vereceğim. Yapabildiğinde geri öde.')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Complete sentences with a phrasal verb from Ex. 3</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. I'm <span class="blank-ans">looking for</span> my glasses. I can't find them anywhere. <button class="tr-btn" onclick="showTip(this, 'Gözlüklerimi arıyorum. Bir türlü bulamıyorum.')">?</button></div>
+      <div class="fill-sentence">2. I like these jeans. Can I <span class="blank-ans">try</span> them <span class="blank-ans">on</span>? <button class="tr-btn" onclick="showTip(this, 'Bu kotları beğendim. Onları deneyebilir miyim?')">?</button></div>
+      <div class="fill-sentence">3. That dress looks great on you. <span class="blank-ans">Turn around</span> so I can see the back! <button class="tr-btn" onclick="showTip(this, 'O elbise sana çok yakışmış. Arkasını görebilmem için dön!')">?</button></div>
+      <div class="fill-sentence">4. Don't drop litter on the floor! <span class="blank-ans">Pick</span> it <span class="blank-ans">up</span>! <button class="tr-btn" onclick="showTip(this, 'Yere çöp atma! Onu kaldır!')">?</button></div>
+      <div class="fill-sentence">5. Don't <span class="blank-ans">throw</span> that newspaper <span class="blank-ans">away</span>. I want to read it. <button class="tr-btn" onclick="showTip(this, 'O gazeteyi atma. Okumak istiyorum.')">?</button></div>
+      <div class="fill-sentence">6. Why are all these lights on? <span class="blank-ans">Turn</span> them <span class="blank-ans">off</span>. <button class="tr-btn" onclick="showTip(this, 'Neden bütün ışıklar açık? Kapat onları.')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Replace the idiomatic phrasal verbs with a phrase from the box</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">He will <strong>give up</strong> dancing if he is homesick. → <span class="blank-ans">stop</span></span><button class="tr-btn" onclick="showTip(this, 'Eğer özlem çekerse dans etmeyi bırakacak.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">She <strong>picked up</strong> Spanish when she worked in Madrid. → <span class="blank-ans">learnt bit by bit</span></span><button class="tr-btn" onclick="showTip(this, 'Madrid\'de çalışırken İspanyolcayı yavaş yavaş öğrendi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Their new business <strong>took off</strong> very quickly. → <span class="blank-ans">became successful</span></span><button class="tr-btn" onclick="showTip(this, 'Yeni işleri çok hızlı başarılı oldu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">I'm just calling to <strong>catch up</strong> with your news. → <span class="blank-ans">get up-to-date</span></span><button class="tr-btn" onclick="showTip(this, 'Sadece haberini almak için arıyorum.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 6 – Match the phrases with the pictures</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">look after a baby</span><button class="tr-btn" onclick="showTip(this, 'bir bebeğe bakmak')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">get on well with somebody</span><button class="tr-btn" onclick="showTip(this, 'biriyle iyi geçinmek')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">run out of petrol</span><button class="tr-btn" onclick="showTip(this, 'benzin tükenmek')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">look up a word</span><button class="tr-btn" onclick="showTip(this, 'bir kelimeye bakmak / araştırmak')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">fall out with someone</span><button class="tr-btn" onclick="showTip(this, 'biriyle küsmek / kavga etmek')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 7 – Complete the sentences with a phrasal verb from Ex. 6</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. 'What does this word mean?' 'I don't know. I'll <span class="blank-ans">look</span> it <span class="blank-ans">up</span>.' <button class="tr-btn" onclick="showTip(this, '«Bu kelimenin anlamı ne?» «Bilmiyorum. Araştırayım.»')">?</button></div>
+      <div class="fill-sentence">2. My boss is a great guy. I <span class="blank-ans">get on</span> very well <span class="blank-ans">with</span> him. <button class="tr-btn" onclick="showTip(this, 'Patronum harika biri. Onunla çok iyi geçiniyorum.')">?</button></div>
+      <div class="fill-sentence">3. Leave little Evie with me. I'll <span class="blank-ans">look after</span> her while you're out. <button class="tr-btn" onclick="showTip(this, 'Küçük Evie\'yi bana bırak. Sen dışarıdayken ona bakacağım.')">?</button></div>
+      <div class="fill-sentence">4. It was a terrible journey – traffic jams all the way, and we nearly <span class="blank-ans">ran out of</span> petrol. <button class="tr-btn" onclick="showTip(this, 'Korkunç bir yolculuktu – boyunca trafik sıkışıklığı ve neredeyse benzinimiz bitmişti.')">?</button></div>
+      <div class="fill-sentence">5. I feel miserable because I <span class="blank-ans">fell out with</span> my best friend last week. <button class="tr-btn" onclick="showTip(this, 'Kendimi berbat hissediyorum çünkü geçen hafta en iyi arkadaşımla küstüm.')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 8 – Talking about you: Complete with a phrasal verb (5.13)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. Do you use a dictionary to <span class="blank-ans">look up</span> new words? <button class="tr-btn" onclick="showTip(this, 'Yeni kelimeleri aramak için sözlük kullanır mısın?')">?</button></div>
+      <div class="fill-sentence">2. How do you usually <span class="blank-ans">catch up</span> with your friends' news? Do you text or call? <button class="tr-btn" onclick="showTip(this, 'Arkadaşlarının haberini genellikle nasıl alırsın? Mesaj mı atarsın yoksa arar mısın?')">?</button></div>
+      <div class="fill-sentence">3. Do you always <span class="blank-ans">get on</span> well with your parents or do you sometimes argue? <button class="tr-btn" onclick="showTip(this, 'Anne-babalarınla her zaman iyi geçinir misin yoksa bazen tartışır mısın?')">?</button></div>
+      <div class="fill-sentence">4. Do you ever <span class="blank-ans">fall out with</span> friends and stop speaking to them? <button class="tr-btn" onclick="showTip(this, 'Hiç arkadaşlarınla küser misin ve onlarla konuşmayı keser misin?')">?</button></div>
+      <div class="fill-sentence">5. Are you good at <span class="blank-ans">picking up</span> foreign languages? <button class="tr-btn" onclick="showTip(this, 'Yabancı dil öğrenmekte iyi misin?')">?</button></div>
+      <div class="fill-sentence">6. Where did you <span class="blank-ans">grow up</span>? Do you still live there? <button class="tr-btn" onclick="showTip(this, 'Nerede büyüdün? Hâlâ orada mı yaşıyorsun?')">?</button></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  EVERYDAY ENGLISH                                      -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">Expressing Doubt and Certainty</div>
+  <div class="section-page">(Ders Kitabı s. 57 / Cevap Anahtarı s. 6–7)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Which phrases agree 100%? Disagree 100%? Not certain?</div>
+    <div class="answer-card">
+      <div style="margin-bottom:10px;">
+        <span class="tl"><span class="tl-text">Agree 100%:</span><button class="tr-btn" onclick="showTip(this, '%100 katılmak:')">?</button></span>
+        <div class="cert-scale" style="margin-top:6px;">
+          <span class="cert-chip cert-yes">Of course he will.</span>
+          <span class="cert-chip cert-yes">Yes, absolutely.</span>
+          <span class="cert-chip cert-yes">Definitely!</span>
+        </div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tl"><span class="tl-text">Disagree 100%:</span><button class="tr-btn" onclick="showTip(this, '%100 katılmamak:')">?</button></span>
+        <div class="cert-scale" style="margin-top:6px;">
+          <span class="cert-chip cert-no">No chance.</span>
+          <span class="cert-chip cert-no">Definitely not.</span>
+          <span class="cert-chip cert-no">Not a chance.</span>
+        </div>
+      </div>
+      <div>
+        <span class="tl"><span class="tl-text">Not certain:</span><button class="tr-btn" onclick="showTip(this, 'Emin değil:')">?</button></span>
+        <div class="cert-scale" style="margin-top:6px;">
+          <span class="cert-chip cert-maybe">He might do.</span>
+          <span class="cert-chip cert-maybe">Mmm … maybe.</span>
+          <span class="cert-chip cert-maybe">I doubt it.</span>
+          <span class="cert-chip cert-maybe">I think so.</span>
+          <span class="cert-chip cert-maybe">I'm not sure.</span>
+          <span class="cert-chip cert-maybe">I don't think so.</span>
+          <span class="cert-chip cert-maybe">Perhaps.</span>
+          <span class="cert-chip cert-maybe">They might do.</span>
+          <span class="cert-chip cert-maybe">Anything's possible.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Complete the conversations (5.14)</div>
+    <div class="answer-card">
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 1 – Do you think Damian will pass his exams?</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Do you think Damian will pass his exams?</span><button class="tr-btn" onclick="showTip(this, 'Damian\'ın sınavlarını geçeceğini düşünüyor musun?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">I doubt it.</span> He's fed up with school.</span><button class="tr-btn" onclick="showTip(this, 'Sanmıyorum. Okuldan bıkmış.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">C:</span><span><span class="tl"><span class="tl-text">I know. He has no chance at all. He wants to leave and get a job.</span><button class="tr-btn" onclick="showTip(this, 'Biliyorum. Hiç şansı yok. Ayrılmak ve iş bulmak istiyor.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 2 – Does Marek earn a lot of money?</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Does Marek earn a lot of money?</span><button class="tr-btn" onclick="showTip(this, 'Marek çok para kazanıyor mu?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Yes, absolutely.</span> He earns a fortune.</span><button class="tr-btn" onclick="showTip(this, 'Kesinlikle evet. Bir servet kazanıyor.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">C:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Mmm … I'm not sure.</span> I've heard he wants to change his job.</span><button class="tr-btn" onclick="showTip(this, 'Mmm... Emin değilim. İşini değiştirmek istediğini duydum.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 3 – Is England going to win the World Cup?</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Is England going to win the World Cup?</span><button class="tr-btn" onclick="showTip(this, 'İngiltere Dünya Kupası\'nı kazanacak mı?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Not a chance.</span> They're not good enough.</span><button class="tr-btn" onclick="showTip(this, 'Hiç şansı yok. Yeterince iyi değiller.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">C:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">They might do.</span> Anything's possible, but I think it's very unlikely.</span><button class="tr-btn" onclick="showTip(this, 'Yapabilirler. Her şey mümkün ama çok zor olduğunu düşünüyorum.')">?</button></span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Are you sure? Complete the conversations (5.15)</div>
+    <div class="answer-card">
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 1</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Paula's job is really stressful, isn't it?</span><button class="tr-btn" onclick="showTip(this, 'Paula\'nın işi gerçekten stresli, değil mi?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Absolutely.</span> She's a paramedic.</span><button class="tr-btn" onclick="showTip(this, 'Kesinlikle. O bir paramedik.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Is she having a holiday soon?</span><button class="tr-btn" onclick="showTip(this, 'Yakında tatile mi çıkıyor?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">I <span class="blank-ans">think so.</span> She says she <span class="blank-ans">might</span> go to Spain.</span><button class="tr-btn" onclick="showTip(this, 'Sanırım öyle. İspanya\'ya gidebileceğini söylüyor.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 2</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Isn't it Emma's birthday next week?</span><button class="tr-btn" onclick="showTip(this, 'Gelecek hafta Emma\'nın doğum günü değil mi?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">Yes, <span class="blank-ans">definitely.</span> It's on the 21st.</span><button class="tr-btn" onclick="showTip(this, 'Evet, kesinlikle. 21\'inde.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">So she's a Capricorn.</span><button class="tr-btn" onclick="showTip(this, 'Öyleyse Oğlak burcu.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">No, I <span class="blank-ans">don't think so.</span> I think she's an Aquarius.</span><button class="tr-btn" onclick="showTip(this, 'Hayır, sanmıyorum. Kova burcu olduğunu düşünüyorum.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="fill-sentence"><strong>Conversation 3</strong></div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Do you think Anita and Paul are in love?</span><button class="tr-btn" onclick="showTip(this, 'Anita ve Paul\'un aşık olduğunu düşünüyor musun?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Definitely.</span> They're going to get married next June in Hawaii.</span><button class="tr-btn" onclick="showTip(this, 'Kesinlikle. Gelecek Haziran\'da Hawaii\'de evlenecekler.')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">Hawaii! Are you going to the wedding?</span><button class="tr-btn" onclick="showTip(this, 'Hawaii! Düğüne gidecek misin?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text"><span class="blank-ans">Not a chance.</span> I can't afford it.</span><button class="tr-btn" onclick="showTip(this, 'Hiç şansım yok. Karşılayamam.')">?</button></span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  WRITING                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Writing for Talking – My Dreams for the Future</div>
+  <div class="section-page">(Ders Kitabı s. 58 / Cevap Anahtarı s. 7)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – What are Susannah's definite plans, uncertainties, hopes, and dreams? (5.17)</div>
+    <div class="writing-box">
+      <ul>
+        <li><span class="tl"><span class="tl-text"><strong>Definite plans:</strong> to visit and spend Christmas with her brother in Australia.</span><button class="tr-btn" onclick="showTip(this, 'Kesin planlar: kardeşini Avustralya\'da ziyaret etmek ve Noel\'i onunla geçirmek.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>Not sure about:</strong> which course to study – fashion design or landscape design.</span><button class="tr-btn" onclick="showTip(this, 'Emin olmadığı: hangi kursu okuyacağı – moda tasarımı mı yoksa peyzaj tasarımı mı.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>Hopes and ambitions:</strong> to have her own business and work for herself; to marry and have children.</span><button class="tr-btn" onclick="showTip(this, 'Umutlar ve hırslar: kendi işine sahip olmak ve kendi hesabına çalışmak; evlenmek ve çocuk sahibi olmak.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>Dreams:</strong> to run a successful gardening company with about 20 employees; to design beautiful gardens; to have a beautiful house, two beautiful children, and a successful husband.</span><button class="tr-btn" onclick="showTip(this, 'Hayaller: yaklaşık 20 çalışanı olan başarılı bir bahçecilik şirketi yönetmek; güzel bahçeler tasarlamak; güzel bir eve, iki güzel çocuğa ve başarılı bir eşe sahip olmak.')">?</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Useful phrases from Susannah's talk to use in your own writing</div>
+    <div class="answer-card">
+      <div class="vocab-box">
+        <span class="vocab-chip">At the moment I'm …</span>
+        <span class="vocab-chip">I often dream about …</span>
+        <span class="vocab-chip">I have big plans and I'd like to …</span>
+        <span class="vocab-chip">My most immediate plans are …</span>
+        <span class="vocab-chip">I'm going to …</span>
+        <span class="vocab-chip">I need to make a final decision about …</span>
+        <span class="vocab-chip">I'm thinking of …</span>
+        <span class="vocab-chip">It's difficult because …</span>
+        <span class="vocab-chip">In five or ten years' time I would like to …</span>
+        <span class="vocab-chip">Perhaps I'll …</span>
+        <span class="vocab-chip">One day I hope to …</span>
+        <span class="vocab-chip">In my dreams I see myself …</span>
+        <span class="vocab-chip">I'll …</span>
+      </div>
+      <div style="margin-top:10px;font-size:13px;color:var(--muted);font-style:italic;">
+        <button class="tr-btn" onclick="showTip(this, 'Şu an ... · Sıklıkla ... hakkında hayal kuruyorum · Büyük planlarım var ve ... istiyorum · En yakın planlarım ... · ... yapacağım · ... hakkında kesin bir karar vermem gerekiyor · ... düşünüyorum · ... zor çünkü · Beş veya on yıl içinde ... istiyorum · Belki ... · Bir gün ... umuyorum · Hayallerimde kendimi ... görüyorum · ... yapacağım')">? Tüm ifadelerin Türkçesi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  AUDIOSCRIPT KEY SECTION                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="audioscript">
+  <div class="section-label">Audioscript</div>
+  <div class="section-title">Unit 5 – Key Audioscript Extracts</div>
+  <div class="section-page">(Pron Kitabı / Audioscript s. 132–134)</div>
+
+  <div class="q-block">
+    <div class="q-num">5.1 – Hopes and Plans (Characters speaking)</div>
+    <div class="audio-box">
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">Paula:</span>
+        <span class="tl"><span class="tl-text"> I'm a paramedic. I love my job, but it's very stressful and I need a break. Fortunately, I'm going on holiday next month. We love going to Spain – we go every year. I'm planning to do nothing but read and sunbathe on the beach for two whole weeks!</span><button class="tr-btn" onclick="showTip(this, 'Ben bir paramedikım. İşimi seviyorum ama çok stresli ve bir molaya ihtiyacım var. Neyse ki gelecek ay tatile çıkıyorum. İspanya\'ya gitmeyi seviyoruz – her yıl gidiyoruz. İki hafta boyunca sadece kumsalda okumak ve güneşlenmekten başka bir şey yapmamayı planlıyorum!')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">Marek:</span>
+        <span class="tl"><span class="tl-text"> I work in advertising. I won an award for one of my ads, but now I need a change. I'm thinking of applying for a job with a big company in New York. I saw it advertised online, and it looks like the job for me. I'd love to work there for a couple of years.</span><button class="tr-btn" onclick="showTip(this, 'Reklamcılık sektöründe çalışıyorum. Bir reklamım için ödül kazandım ama şimdi bir değişikliğe ihtiyacım var. New York\'ta büyük bir şirkete başvurmayı düşünüyorum. İnternette ilanını gördüm ve benim için ideal iş gibi görünüyor. Birkaç yıl orada çalışmak isterim.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">Grace:</span>
+        <span class="tl"><span class="tl-text"> I'm a student in my last year at university. I've got debts of over £35,000. I'm going to study really hard for my exams because I hope to get a well-paid job and pay my debts. I hate owing so much money. I'm going for an interview next Friday. Wish me luck!</span><button class="tr-btn" onclick="showTip(this, 'Üniversitenin son yılında bir öğrenciyim. 35.000 poundun üzerinde borcum var. İyi maaşlı bir iş bulmayı ve borçlarımı ödemeyi umarak sınavlarım için gerçekten çok çalışacağım. Bu kadar borçlu olmaktan nefret ediyorum. Gelecek Cuma bir mülakadıma gidiyorum. Bana şans dile!')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">Claire:</span>
+        <span class="tl"><span class="tl-text"> I've got three kids under five. I love them dearly, but I'm so tired and I miss my work at the hospital. I'm looking forward to returning to my job when the baby's older. I get fed up with staying at home all day, especially in winter.</span><button class="tr-btn" onclick="showTip(this, 'Beş yaşın altında üç çocuğum var. Onları çok seviyorum ama çok yorgunum ve hastanedeki işimi özlüyorum. Bebek biraz büyüyünce işime dönmeyi sabırsızlıkla bekliyorum. Bütün gün evde kalmaktan bıkıp usanıyorum, özellikle kışın.')">?</button></span>
+      </div>
+      <div>
+        <span class="audio-name">Angus:</span>
+        <span class="tl"><span class="tl-text"> I'm retired at last, and I can now enjoy doing my favourite things. I try to go fishing every day, but my wife sometimes asks me to help in the house. She wants us to go travelling now I'm retired, but I'm just happy spending all day by the river.</span><button class="tr-btn" onclick="showTip(this, 'Sonunda emekli oldum ve şimdi en sevdiğim şeyleri yapmanın keyfini çıkarabiliyorum. Her gün balığa gitmeye çalışıyorum ama karım bazen evde yardım etmemi istiyor. Emekli olduğuma göre seyahat etmemizi istiyor ama ben sadece nehir kenarında bütün gün geçirmekten mutluyum.')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">5.12 – Different Generations (Key exchange – Emma, Richard, Harry)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">H (Harry):</span><span><span class="tl"><span class="tl-text">Auntie Emma, are you having a party for your birthday?</span><button class="tr-btn" onclick="showTip(this, 'Teyze Emma, doğum günün için parti mi yapıyorsun?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">E (Emma):</span><span><span class="tl"><span class="tl-text">Oh, I don't know Harry – I really don't want to think about my birthday…</span><button class="tr-btn" onclick="showTip(this, 'Oh, bilmiyorum Harry – Doğum günümü düşünmek gerçekten istemiyorum…')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">R (Richard):</span><span><span class="tl"><span class="tl-text">Come on, Emma, it's a special birthday. We've all got special birthdays this year – Harry's going to be ten, I'm going to be 60, and you're going to be 30!</span><button class="tr-btn" onclick="showTip(this, 'Hadi Emma, bu özel bir doğum günü. Bu yıl hepimizin özel doğum günleri var – Harry on olacak, ben 60 olacağım ve sen 30 olacaksın!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">H:</span><span><span class="tl"><span class="tl-text">Yeah – Granddad, that's really special! I can't wait to be ten. I'll be in double figures!</span><button class="tr-btn" onclick="showTip(this, 'Evet – Dede, bu gerçekten özel! On olmayı sabırsızlıkla bekliyorum. İki basamaklı yaşa gireceğim!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">E:</span><span><span class="tl"><span class="tl-text">Well, I'd love to go travelling again … like I did when I was 23. I went with a friend from university … we went all over the world – Australia, New Zealand, South America. We even spent three weeks on the Galapagos Islands.</span><button class="tr-btn" onclick="showTip(this, 'Peki, tekrar seyahat etmek isterim... 23 yaşındaki gibi. Üniversiteden bir arkadaşımla gittim... dünyanın her yerine gittik – Avustralya, Yeni Zelanda, Güney Amerika. Hatta Galapagos Adaları\'nda üç hafta geçirdik.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-speaker">H:</span><span><span class="tl"><span class="tl-text">I want to do that! Me and my friend, Zac, are going to travel the world together. We're planning it now.</span><button class="tr-btn" onclick="showTip(this, 'Bunu yapmak istiyorum! Ben ve arkadaşım Zac, birlikte dünyayı gezmek istiyoruz. Şimdi planlıyoruz.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- POPUP ELEMENT -->
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+  let hideTimer = null;
+
+  function showTip(btn, text) {
+    clearTimeout(hideTimer);
+    // toggle off if same
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 280;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) {
+      left = rect.left - pw - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + 120 > window.innerHeight) top = window.innerHeight - 130;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) {
+      positionPopup(activeBtn);
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
