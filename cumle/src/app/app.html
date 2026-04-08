@@ -1,0 +1,156 @@
+<div class="min-h-screen bg-slate-50 flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
+  <div class="w-full max-w-3xl space-y-8">
+    
+    <!-- Header -->
+    <div class="text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-slate-900">İngilizce Çeviri Pratiği</h1>
+      <p class="mt-3 text-lg text-slate-600">
+        Günlük hayattan cümleleri çevirerek İngilizceni geliştir.
+      </p>
+    </div>
+
+    <!-- Difficulty Selector -->
+    <div class="flex justify-center">
+      <div class="inline-flex bg-slate-200/50 p-1 rounded-xl">
+        <button 
+          (click)="setDifficulty('basit')"
+          [class.bg-white]="difficulty() === 'basit'"
+          [class.shadow-sm]="difficulty() === 'basit'"
+          [class.text-indigo-700]="difficulty() === 'basit'"
+          [class.text-slate-600]="difficulty() !== 'basit'"
+          class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all hover:text-indigo-600">
+          Basit
+        </button>
+        <button 
+          (click)="setDifficulty('orta')"
+          [class.bg-white]="difficulty() === 'orta'"
+          [class.shadow-sm]="difficulty() === 'orta'"
+          [class.text-indigo-700]="difficulty() === 'orta'"
+          [class.text-slate-600]="difficulty() !== 'orta'"
+          class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all hover:text-indigo-600">
+          Orta
+        </button>
+        <button 
+          (click)="setDifficulty('zor')"
+          [class.bg-white]="difficulty() === 'zor'"
+          [class.shadow-sm]="difficulty() === 'zor'"
+          [class.text-indigo-700]="difficulty() === 'zor'"
+          [class.text-slate-600]="difficulty() !== 'zor'"
+          class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all hover:text-indigo-600">
+          Zor
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      
+      <!-- Sentence Section -->
+      <div class="p-8 border-b border-slate-100 bg-slate-50/50">
+        <div class="flex justify-between items-start mb-4">
+          <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Çevrilecek Cümle</h2>
+          <button 
+            (click)="loadNewSentence()" 
+            [disabled]="isEvaluating()"
+            class="text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 text-sm font-medium transition-colors"
+            title="Yeni Cümle Getir">
+            <mat-icon class="!w-5 !h-5 !text-[20px]">refresh</mat-icon>
+            <span>Yeni Cümle</span>
+          </button>
+        </div>
+        
+        <div class="min-h-[80px] flex items-center justify-center">
+          @if (!currentSentence()) {
+            <div class="flex items-center gap-3 text-slate-400">
+              <mat-icon class="animate-spin !w-6 !h-6 !text-[24px]">autorenew</mat-icon>
+              <span class="text-lg">Yeni cümle hazırlanıyor...</span>
+            </div>
+          } @else {
+            <p class="text-2xl font-medium text-slate-800 text-center leading-relaxed">
+              "{{ currentSentence()?.turkish }}"
+            </p>
+          }
+        </div>
+      </div>
+
+      <!-- Input Section -->
+      <div class="p-8">
+        <label for="translation" class="block text-sm font-semibold text-slate-700 mb-2">Senin Çevirin</label>
+        <textarea 
+          id="translation"
+          [formControl]="translationControl"
+          rows="4" 
+          class="block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg p-4 bg-slate-50 resize-none transition-shadow"
+          placeholder="İngilizce çevirini buraya yaz..."
+          [disabled]="isEvaluating()"
+        ></textarea>
+        
+        <div class="mt-6 flex justify-end">
+          <button 
+            (click)="evaluate()"
+            [disabled]="translationControl.invalid || isEvaluating()"
+            class="inline-flex items-center gap-2 px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+            @if (isEvaluating()) {
+              <mat-icon class="animate-spin !w-5 !h-5 !text-[20px]">autorenew</mat-icon>
+              Değerlendiriliyor...
+            } @else {
+              <mat-icon class="!w-5 !h-5 !text-[20px]">check_circle</mat-icon>
+              Kontrol Et
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feedback Section -->
+    @if (feedback(); as fb) {
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+        
+        <!-- Result Header -->
+        <div class="p-6 border-b border-slate-100 flex items-center gap-4" [class.bg-emerald-50]="fb.isCorrect" [class.bg-amber-50]="!fb.isCorrect">
+          <div class="rounded-full p-2" [class.bg-emerald-100]="fb.isCorrect" [class.bg-amber-100]="!fb.isCorrect">
+            @if (fb.isCorrect) {
+              <mat-icon class="text-emerald-600 !w-8 !h-8 !text-[32px]">task_alt</mat-icon>
+            } @else {
+              <mat-icon class="text-amber-600 !w-8 !h-8 !text-[32px]">lightbulb</mat-icon>
+            }
+          </div>
+          <div>
+            <h3 class="text-xl font-bold" [class.text-emerald-800]="fb.isCorrect" [class.text-amber-800]="!fb.isCorrect">
+              {{ fb.isCorrect ? 'Harika İş Çıkardın!' : 'İşte Doğru Çeviri' }}
+            </h3>
+            <p class="text-sm mt-1" [class.text-emerald-600]="fb.isCorrect" [class.text-amber-600]="!fb.isCorrect">
+              {{ fb.isCorrect ? 'Çevirin tamamen doğru.' : 'Kendi çevirinle karşılaştırabilirsin.' }}
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 space-y-6">
+          <!-- Correct Translation -->
+          <div>
+            <h4 class="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <mat-icon class="text-indigo-500 !w-5 !h-5 !text-[20px]">translate</mat-icon>
+              Doğru Çeviri
+            </h4>
+            <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+              <p class="text-lg font-medium text-indigo-900">{{ fb.correctTranslation }}</p>
+            </div>
+          </div>
+
+          <!-- User Translation (if incorrect) -->
+          @if (!fb.isCorrect) {
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <mat-icon class="text-slate-500 !w-5 !h-5 !text-[20px]">person</mat-icon>
+                Senin Çevirin
+              </h4>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <p class="text-lg text-slate-700">{{ fb.userTranslation }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
