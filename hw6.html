@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 6: History Repeats Itself</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+  :root {
+    --orange:#e8581a; --orange-light:#f5956a; --orange-pale:#fff3ed;
+    --dark:#1a1208; --mid:#4a3520; --muted:#8a6d50; --line:#e8d8c8;
+    --bg:#fdfaf6; --white:#ffffff; --green:#2e7d5e; --green-light:#e8f5ef;
+    --blue:#1e5a8a; --blue-light:#e8f0f8; --red:#8a1e1e; --red-light:#fde8e8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);font-family:'Source Serif 4',Georgia,serif;color:var(--dark);font-size:15px;line-height:1.7;}
+
+  .site-header{background:var(--orange);padding:32px 40px 28px;position:sticky;top:0;z-index:100;box-shadow:0 3px 20px rgba(0,0,0,.18);}
+  .header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:20px;}
+  .header-badge{background:white;color:var(--orange);font-family:'Playfair Display',serif;font-weight:900;font-size:28px;width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .header-text h1{font-family:'Playfair Display',serif;font-weight:900;font-size:22px;color:white;line-height:1.2;}
+  .header-text p{color:rgba(255,255,255,.82);font-size:13px;font-style:italic;}
+
+  .toc{background:var(--dark);padding:0 40px;}
+  .toc-inner{max-width:900px;margin:0 auto;display:flex;gap:4px;flex-wrap:wrap;padding:8px 0;}
+  .toc a{color:rgba(255,255,255,.7);font-size:12px;text-decoration:none;padding:5px 12px;border-radius:6px;transition:all .2s;white-space:nowrap;}
+  .toc a:hover{background:var(--orange);color:white;}
+
+  .main{max-width:900px;margin:0 auto;padding:40px 24px 80px;}
+
+  .section-label{display:inline-block;background:var(--orange);color:white;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:6px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+  .section-page{color:var(--muted);font-size:13px;font-style:italic;margin-bottom:24px;}
+  .section-divider{border:none;border-top:2px solid var(--line);margin:48px 0 36px;}
+
+  .q-block{margin-bottom:28px;border-left:3px solid var(--line);padding-left:18px;}
+  .q-block:hover{border-left-color:var(--orange-light);}
+  .q-num{font-size:12px;font-weight:600;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+
+  .tl{display:inline;} .tl-text{display:inline;}
+  .tr-btn{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:var(--orange);color:white;border:none;border-radius:50%;font-size:10px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;line-height:1;transition:background .15s;flex-shrink:0;}
+  .tr-btn:hover{background:var(--dark);}
+
+  .tr-popup{display:none;position:fixed;z-index:9999;background:var(--dark);color:#f5e8d8;padding:12px 16px;border-radius:10px;font-size:13px;max-width:300px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.38);pointer-events:none;}
+  .tr-popup.active{display:block;}
+  .tr-popup::before{content:'🇹🇷';font-size:11px;margin-right:6px;}
+
+  .answer-card{background:white;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-top:10px;}
+  .answer-row{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #f5ede2;align-items:flex-start;}
+  .answer-row:last-child{border-bottom:none;}
+  .ans-num{color:var(--orange);font-weight:700;font-size:13px;min-width:22px;padding-top:2px;}
+  .ans-text{flex:1;font-size:14px;}
+
+  .fill-sentence{font-size:14.5px;margin-bottom:6px;line-height:1.9;}
+  .blank-ans{display:inline-block;background:var(--orange-pale);border-bottom:2px solid var(--orange);color:var(--orange);font-weight:700;padding:0 8px;border-radius:4px 4px 0 0;font-size:14px;}
+
+  .grammar-box{background:#fff8f2;border:2px solid var(--orange-light);border-radius:12px;padding:18px 22px;margin-top:10px;}
+  .grammar-box .gb-title{font-weight:700;color:var(--orange);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+
+  .dialogue{background:var(--blue-light);border-radius:10px;padding:16px 20px;margin-top:8px;}
+  .dlg-line{display:flex;gap:10px;margin-bottom:8px;font-size:14px;}
+  .dlg-line:last-child{margin-bottom:0;}
+  .dlg-speaker{font-weight:700;color:var(--blue);min-width:20px;flex-shrink:0;}
+
+  /* VERB TABLE */
+  .verb-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .verb-table th{background:var(--dark);color:white;padding:8px 14px;text-align:left;font-size:12px;letter-spacing:.05em;}
+  .verb-table td{padding:8px 14px;border-bottom:1px solid var(--line);}
+  .verb-table tr:nth-child(even) td{background:#faf5ef;}
+  .verb-reg{color:var(--green);font-weight:600;}
+  .verb-irr{color:var(--orange);font-weight:600;}
+
+  /* MATCH TABLE */
+  .match-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .match-table th{background:var(--mid);color:white;padding:8px 14px;font-size:12px;letter-spacing:.05em;text-align:left;}
+  .match-table td{padding:8px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .match-table tr:nth-child(even) td{background:#faf5ef;}
+
+  /* VOCAB CHIP */
+  .vocab-box{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .vocab-chip{background:var(--green-light);border:1px solid #a8d8c0;color:var(--green);font-size:13px;font-weight:600;padding:5px 12px;border-radius:20px;}
+  .vocab-chip-blue{background:var(--blue-light);border:1px solid #a0c0e8;color:var(--blue);font-size:13px;font-weight:600;padding:5px 12px;border-radius:20px;}
+
+  /* WORD PAIRS TABLE */
+  .word-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .word-table th{background:var(--blue);color:white;padding:7px 14px;text-align:left;font-size:12px;}
+  .word-table td{padding:7px 14px;border-bottom:1px solid var(--line);}
+  .word-table tr:nth-child(even) td{background:var(--blue-light);}
+  .stress-mark{text-decoration:underline;font-weight:700;color:var(--orange);}
+
+  /* INFO NOTE */
+  .info-note{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--blue);margin-top:8px;}
+  .info-green{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--green);margin-top:8px;}
+
+  /* AUDIO BOX */
+  .audio-box{background:#f5f0fa;border:1px solid #c8b0e8;border-radius:10px;padding:16px 20px;margin-top:10px;}
+  .audio-name{font-weight:700;color:#6a3ab8;}
+
+  /* WRITING BOX */
+  .writing-box{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:16px 20px;margin-top:10px;font-size:14px;}
+  .writing-box li{margin-bottom:6px;margin-left:18px;}
+
+  /* PARA ORDER */
+  .para-card{background:white;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:13.5px;}
+  .para-num{display:inline-block;background:var(--orange);color:white;font-weight:700;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:12px;margin-right:8px;flex-shrink:0;}
+
+  @media(max-width:600px){.site-header{padding:20px 16px;}.main{padding:24px 14px 60px;}.section-title{font-size:20px;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">6</div>
+    <div class="header-text">
+      <h1>History Repeats Itself</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Student's Book Answer Key</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#starter">Starter</a>
+    <a href="#grammar1">Grammar: for/since</a>
+    <a href="#famous">In Famous Footsteps</a>
+    <a href="#practice1">Practice: How long?</a>
+    <a href="#digging">Digging Up the Past</a>
+    <a href="#practice2">Practice: PP or PS?</a>
+    <a href="#vocabulary">Vocabulary & Pronunciation</a>
+    <a href="#reading">Reading</a>
+    <a href="#listening">Listening</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing</a>
+    <a href="#audioscript">Audioscript</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  UNIT OPENER                               -->
+<!-- ══════════════════════════════════════════ -->
+<section id="starter">
+  <div class="section-label">Unit Opener</div>
+  <div class="section-title">History Repeats Itself – Unit Opener &amp; Starter</div>
+  <div class="section-page">(Ders Kitabı s. 59–60 / Cevap Anahtarı s. 1)</div>
+
+  <div class="q-block">
+    <div class="q-num">Unit Opener – Suggested Answers</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Roman.</span><button class="tr-btn" onclick="showTip(this,'Roma dönemine ait.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">To entertain people, because they enjoy it, because they are interested in history and want other people to be.</span><button class="tr-btn" onclick="showTip(this,'İnsanları eğlendirmek için, zevk aldıkları için, tarihe ilgi duydukları için ve başkalarının da ilgilenmesini istedikleri için.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Students' own answers.</span><button class="tr-btn" onclick="showTip(this,'Öğrencilerin kendi cevapları.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- STARTER 1 – Verb table -->
+  <div class="q-block">
+    <div class="q-num">Starter Exercise 1 – Past Simple &amp; Past Participle of verbs</div>
+    <table class="verb-table">
+      <thead>
+        <tr><th>Base form</th><th>Past Simple</th><th>Past Participle</th><th>Type</th><th>Türkçe</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="verb-reg">live</td><td>lived</td><td>lived</td><td><span class="verb-reg">regular ✓</span></td><td><span class="tl"><span class="tl-text">yaşamak</span><button class="tr-btn" onclick="showTip(this,'live → lived → lived · Düzenli (regular) fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">have</td><td>had</td><td>had</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">sahip olmak</span><button class="tr-btn" onclick="showTip(this,'have → had → had · Düzensiz (irregular) fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">be</td><td>was/were</td><td>been</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">olmak</span><button class="tr-btn" onclick="showTip(this,'be → was/were → been · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">sing</td><td>sang</td><td>sung</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">şarkı söylemek</span><button class="tr-btn" onclick="showTip(this,'sing → sang → sung · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">go</td><td>went</td><td>gone/been</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">gitmek</span><button class="tr-btn" onclick="showTip(this,'go → went → gone/been · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">eat</td><td>ate</td><td>eaten</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">yemek</span><button class="tr-btn" onclick="showTip(this,'eat → ate → eaten · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">know</td><td>knew</td><td>known</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">bilmek</span><button class="tr-btn" onclick="showTip(this,'know → knew → known · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">wear</td><td>wore</td><td>worn</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">giymek</span><button class="tr-btn" onclick="showTip(this,'wear → wore → worn · Düzensiz fiil')">?</button></span></td></tr>
+        <tr><td class="verb-reg">move</td><td>moved</td><td>moved</td><td><span class="verb-reg">regular ✓</span></td><td><span class="tl"><span class="tl-text">taşınmak</span><button class="tr-btn" onclick="showTip(this,'move → moved → moved · Düzenli fiil')">?</button></span></td></tr>
+        <tr><td class="verb-reg">work</td><td>worked</td><td>worked</td><td><span class="verb-reg">regular ✓</span></td><td><span class="tl"><span class="tl-text">çalışmak</span><button class="tr-btn" onclick="showTip(this,'work → worked → worked · Düzenli fiil')">?</button></span></td></tr>
+        <tr><td class="verb-irr">write</td><td>wrote</td><td>written</td><td><span class="verb-irr">irregular</span></td><td><span class="tl"><span class="tl-text">yazmak</span><button class="tr-btn" onclick="showTip(this,'write → wrote → written · Düzensiz fiil')">?</button></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Starter Exercise 2 – Regular or Irregular?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">✓</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><strong>Regular (Düzenli):</strong> live, move, work</span><button class="tr-btn" onclick="showTip(this,'Düzenli fiiller: live, move, work')">?</button></span><br>
+          <span class="tl"><span class="tl-text"><strong>Irregular (Düzensiz):</strong> have, be, sing, go, eat, know, wear, write</span><button class="tr-btn" onclick="showTip(this,'Düzensiz fiiller: have, be, sing, go, eat, know, wear, write')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  IN FAMOUS FOOTSTEPS                       -->
+<!-- ══════════════════════════════════════════ -->
+<section id="famous">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">In Famous Footsteps – Present Perfect &amp; Past Simple</div>
+  <div class="section-page">(Ders Kitabı s. 60–61 / Cevap Anahtarı s. 1–2)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – How are the people related? Which pairs are connected with …?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">Pair 1</span><span class="ans-text"><span class="tl"><span class="tl-text">Steve Irwin &amp; Bindi Irwin – father and daughter, connected with <strong>wildlife</strong>.</span><button class="tr-btn" onclick="showTip(this,'Steve Irwin ve Bindi Irwin – baba ve kız, yaban hayatıyla bağlantılı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">Pair 2</span><span class="ans-text"><span class="tl"><span class="tl-text">Princess Diana &amp; Prince Harry – mother and son, connected with <strong>charity work</strong>.</span><button class="tr-btn" onclick="showTip(this,'Prenses Diana ve Prens Harry – anne ve oğul, hayır çalışmalarıyla bağlantılı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">Pair 3</span><span class="ans-text"><span class="tl"><span class="tl-text">John Lennon &amp; Julian Lennon – father and son, connected with <strong>music</strong>.</span><button class="tr-btn" onclick="showTip(this,'John Lennon ve Julian Lennon – baba ve oğul, müzikle bağlantılı.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Famous people: Who do the sentences refer to? (6.1)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. <span class="blank-ans">John Lennon</span> <span class="tl"><span class="tl-text"><strong>wrote</strong> the famous song, <em>Imagine</em>. <span style="color:var(--muted);font-size:13px">(Past Simple – ölü)</span></span><button class="tr-btn" onclick="showTip(this,'John Lennon ünlü şarkıyı yazdı. Past Simple kullanılır çünkü John Lennon hayatta değil.')">?</button></span></div>
+      <div class="fill-sentence">2. <span class="blank-ans">Prince Harry</span> <span class="tl"><span class="tl-text"><strong>has been</strong> Patron of the HALO Trust since 2013. <span style="color:var(--muted);font-size:13px">(Present Perfect – hâlâ hayatta)</span></span><button class="tr-btn" onclick="showTip(this,'Prens Harry 2013\'ten beri HALO Trust\'ın Hamisiymiş. Present Perfect kullanılır çünkü hâlâ hayatta.')">?</button></span></div>
+      <div class="fill-sentence">3. <span class="blank-ans">Steve Irwin</span> <span class="tl"><span class="tl-text">always <strong>wore</strong> a khaki shirt and shorts. <span style="color:var(--muted);font-size:13px">(Past Simple – ölü)</span></span><button class="tr-btn" onclick="showTip(this,'Steve Irwin her zaman haki gömlek ve şort giyerdi. Past Simple – artık hayatta değil.')">?</button></span></div>
+      <div class="fill-sentence">4. <span class="blank-ans">Bindi Irwin</span> <span class="tl"><span class="tl-text"><strong>has sung</strong> with <em>The Crocmen</em> and <em>The Jungle Girls</em>. <span style="color:var(--muted);font-size:13px">(Present Perfect – hayatta)</span></span><button class="tr-btn" onclick="showTip(this,'Bindi Irwin The Crocmen ve The Jungle Girls ile şarkı söyledi. Present Perfect – hayatta.')">?</button></span></div>
+      <div class="fill-sentence">5. <span class="blank-ans">Princess Diana</span> <span class="tl"><span class="tl-text"><strong>married</strong> Prince Charles in 1981. <span style="color:var(--muted);font-size:13px">(Past Simple – belirli geçmiş zaman)</span></span><button class="tr-btn" onclick="showTip(this,'Prenses Diana 1981\'de Prens Charles ile evlendi. Belirli bir geçmiş zaman → Past Simple.')">?</button></span></div>
+      <div class="fill-sentence">6. <span class="blank-ans">Julian Lennon</span> <span class="tl"><span class="tl-text"><strong>has written</strong> a children's book. <span style="color:var(--muted);font-size:13px">(Present Perfect – hayatta)</span></span><button class="tr-btn" onclick="showTip(this,'Julian Lennon bir çocuk kitabı yazdı. Present Perfect – hayatta.')">?</button></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Put verbs in Past Simple or Present Perfect (6.2)</div>
+    <div class="info-note">Tam metinler audioscript bölümünde verilmiştir (s. 132–134). Aşağıda boşluklar doldurulmuş hâlde verilmiştir.</div>
+
+    <div style="margin-top:14px;font-weight:700;color:var(--orange);font-size:13px;margin-bottom:6px;">Steve &amp; Bindi Irwin</div>
+    <div class="answer-card">
+      <div class="fill-sentence"><span class="tl"><span class="tl-text">Steve <span class="blank-ans">grew</span> (grow) up on his parents' wildlife park in Australia and <span class="blank-ans">became</span> a popular TV personality with his TV series <em>The Crocodile Hunter</em>. He <span class="blank-ans">died</span> (die) in 2006 while filming a programme about stingrays.</span><button class="tr-btn" onclick="showTip(this,'Steve Irwin Avustralya\'daki ebeveynlerinin yaban hayatı parkında büyüdü ve The Crocodile Hunter adlı TV serisiyle ünlü bir TV kişiliği oldu. Vatoz çekerken 2006\'da hayatını kaybetti.')">?</button></span></div>
+      <div class="fill-sentence" style="margin-top:8px;"><span class="tl"><span class="tl-text">Bindi <span class="blank-ans">has been</span> (be) a TV personality since she was two! Since her father died, she <span class="blank-ans">has made</span> (make) many wildlife TV programmes. She <span class="blank-ans">starred</span> (star) in <em>Free Willy 4</em> in 2010, and also <span class="blank-ans">has made</span> (make) five albums with <em>Bindi and the Jungle Girls</em>.</span><button class="tr-btn" onclick="showTip(this,'Bindi iki yaşından beri TV kişiliği. Babası öldüğünden beri pek çok yaban hayatı programı yaptı. 2010\'da Free Willy 4\'te oynadı; Bindi and the Jungle Girls ile beş albüm yaptı.')">?</button></span></div>
+    </div>
+
+    <div style="margin-top:14px;font-weight:700;color:var(--orange);font-size:13px;margin-bottom:6px;">Princess Diana &amp; Prince Harry</div>
+    <div class="answer-card">
+      <div class="fill-sentence"><span class="tl"><span class="tl-text">Diana <span class="blank-ans">did</span> (do) a lot of work with charities in Africa, and she once <span class="blank-ans">walked</span> (walk) through a minefield in Angola to bring attention to the work of HALO. Since 1988, this organisation <span class="blank-ans">has found</span> (find) and destroyed over 1.6 million landmines around the world.</span><button class="tr-btn" onclick="showTip(this,'Diana Afrika\'daki yardım kuruluşlarıyla çok çalıştı; HALO\'nun çalışmalarına dikkat çekmek için Angola\'da bir mayın tarlasından geçti. 1988\'den beri bu kuruluş 1,6 milyondan fazla mayını imha etti.')">?</button></span></div>
+      <div class="fill-sentence" style="margin-top:8px;"><span class="tl"><span class="tl-text">Harry <span class="blank-ans">has done</span> (do) charity work for many years and <span class="blank-ans">has continued</span> (continue) his mother's work with HALO in Africa. He <span class="blank-ans">has visited</span> (visit) minefields in Mozambique and Angola, and in 2017 he <span class="blank-ans">asked</span> (ask) all governments to stop using landmines by the year 2025.</span><button class="tr-btn" onclick="showTip(this,'Harry yıllardır hayır işleri yapıyor ve annesinin HALO ile çalışmasını sürdürüyor. Mozambik ve Angola\'daki mayın tarlalarını ziyaret etti; 2017\'de tüm hükümetlerden 2025\'e kadar kara mayını kullanmayı bırakmalarını istedi.')">?</button></span></div>
+    </div>
+
+    <div style="margin-top:14px;font-weight:700;color:var(--orange);font-size:13px;margin-bottom:6px;">John &amp; Julian Lennon</div>
+    <div class="answer-card">
+      <div class="fill-sentence"><span class="tl"><span class="tl-text">John <span class="blank-ans">wrote</span> (write) most of The Beatles' songs with Paul McCartney. After The Beatles, John <span class="blank-ans">became</span> (become) a solo artist and also <span class="blank-ans">did</span> (do) a lot of work for the peace movement with his wife, Yoko Ono.</span><button class="tr-btn" onclick="showTip(this,'John, The Beatles\'ın şarkılarının büyük bölümünü Paul McCartney ile yazdı. Sonrasında solo sanatçı oldu ve eşi Yoko Ono ile birlikte barış hareketi için çok çalıştı.')">?</button></span></div>
+      <div class="fill-sentence" style="margin-top:8px;"><span class="tl"><span class="tl-text">Julian <span class="blank-ans">began</span> (begin) playing guitar and drums when he was ten, and <span class="blank-ans">has made</span> (make) six solo albums. In 2006, he <span class="blank-ans">produced</span> (produce) a film about the environment, called <em>Whaledreamers</em>, and he <span class="blank-ans">has recently written</span> (write) a children's book called <em>Touch the Earth</em>.</span><button class="tr-btn" onclick="showTip(this,'Julian on yaşında gitar ve davul çalmaya başladı; altı solo albüm yaptı. 2006\'da Whaledreamers adlı çevre filmi çekti; yakın zamanda Touch the Earth adlı çocuk kitabını yazdı.')">?</button></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Questions and Answers (Past Simple or Present Perfect) (6.3)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>Where did Steve Irwin grow up?</strong> (Past Simple – finished action)<br>He grew up on his parents' wildlife park in Australia.</span><button class="tr-btn" onclick="showTip(this,'Steve Irwin nerede büyüdü? (Past Simple – tamamlanmış eylem) Avustralya\'daki ebeveynlerinin yaban hayatı parkında büyüdü.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>When did he die?</strong> (Past Simple)<br>He died in 2006.</span><button class="tr-btn" onclick="showTip(this,'Ne zaman öldü? 2006\'da öldü.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>How many films has Bindi Irwin starred in?</strong> (Present Perfect – experiences in life before now)<br>She's starred in two films.</span><button class="tr-btn" onclick="showTip(this,'Bindi Irwin kaç filmde oynadı? (Present Perfect – hayat deneyimi) İki filmde oynadı.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>How many albums has she made with The Jungle Girls?</strong> (Present Perfect)<br>She's made five albums.</span><button class="tr-btn" onclick="showTip(this,'The Jungle Girls ile kaç albüm yaptı? Beş albüm yaptı.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>Where did Princess Diana walk through a minefield?</strong> (Past Simple – finished action)<br>She walked through a minefield in Angola.</span><button class="tr-btn" onclick="showTip(this,'Prenses Diana nerede bir mayın tarlasından geçti? Angola\'da geçti.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>Where has Prince Harry visited minefields?</strong> (Present Perfect – experiences before now)<br>He's visited minefields in Mozambique and Angola.</span><button class="tr-btn" onclick="showTip(this,'Prens Harry nerede mayın tarlalarını ziyaret etti? Mozambik ve Angola\'da.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>What did Harry ask governments to do in 2017?</strong> (Past Simple – finished action)<br>He asked them to stop using landmines.</span><button class="tr-btn" onclick="showTip(this,'Harry 2017\'de hükümetlerden ne yapmasını istedi? Kara mayını kullanmayı bırakmalarını istedi.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>Who did John Lennon write songs with?</strong> (Past Simple)<br>He wrote songs with Paul McCartney, for The Beatles.</span><button class="tr-btn" onclick="showTip(this,'John Lennon kiminle şarkı yazdı? The Beatles için Paul McCartney ile yazdı.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">9</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>When did Julian Lennon begin playing the guitar?</strong> (Past Simple – point in time)<br>He began playing the guitar when he was ten.</span><button class="tr-btn" onclick="showTip(this,'Julian Lennon ne zaman gitar çalmaya başladı? On yaşında başladı.')">?</button></span>
+      </span></div>
+      <div class="answer-row"><span class="ans-num">10</span><span class="ans-text">
+        <span class="tl"><span class="tl-text"><strong>How many solo albums has Julian made?</strong> (Present Perfect – experiences / continues to present)<br>He's made six solo albums.</span><button class="tr-btn" onclick="showTip(this,'Julian kaç solo albüm yaptı? Altı solo albüm yaptı.')">?</button></span>
+      </span></div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR SPOT -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot</div>
+    <div class="grammar-box">
+      <div class="gb-title">Grammar Spot Answers</div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><strong>Past Simple sentences (1, 3, 5):</strong> wrote, wore, married — used because the people are dead or the action happened at a specific finished time.</span><button class="tr-btn" onclick="showTip(this,'Past Simple cümleler (1, 3, 5): wrote, wore, married — kişiler artık hayatta değil ya da eylem belirli bir geçmiş zamanda tamamlandı.')">?</button></span><br>
+          <span class="tl"><span class="tl-text"><strong>Present Perfect sentences (2, 4, 6):</strong> has been, has sung, has written — used because the people are still alive.</span><button class="tr-btn" onclick="showTip(this,'Present Perfect cümleler (2, 4, 6): has been, has sung, has written — kişiler hâlâ hayatta.')">?</button></span><br>
+          <span class="tl"><span class="tl-text">We form the Present Perfect with <strong>have/has + past participle</strong>.</span><button class="tr-btn" onclick="showTip(this,'Present Perfect şu şekilde kurulur: have/has + geçmiş katılım (past participle).')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><strong>Past Simple</strong> is used in "Steve Irwin <u>made</u>" because he is dead.<br><strong>Present Perfect</strong> is used in "Bindi Irwin <u>has made</u>" because she is still alive.<br>❌ "John Lennon <u>has played</u> with The Beatles for 12 years" is wrong because he is dead — the sentence implies he is still alive.</span><button class="tr-btn" onclick="showTip(this,'Steve Irwin için Past Simple kullanılır çünkü artık hayatta değil. Bindi Irwin için Present Perfect kullanılır çünkü hâlâ hayatta. «John Lennon has played...» yanlış çünkü o hayatta değil — cümle sanki hâlâ yaşıyormuş gibi ima ediyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">We use <strong>for</strong> for a time period: <em>for two hours / six weeks / ten years / a long time</em>.<br>We use <strong>since</strong> for a point in time: <em>since eight o'clock / yesterday / last week / 2010 / she was two</em>.</span><button class="tr-btn" onclick="showTip(this,'FOR: bir zaman dilimi için kullanılır (for two hours, for ten years).\nSINCE: bir zaman noktası için kullanılır (since 2010, since she was two).')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PRACTICE: HOW LONG?                       -->
+<!-- ══════════════════════════════════════════ -->
+<section id="practice1">
+  <div class="section-label">Practice</div>
+  <div class="section-title">How Long …? – for or since</div>
+  <div class="section-page">(Ders Kitabı s. 61 / Cevap Anahtarı s. 3)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Complete time expressions with for or since</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. <span class="blank-ans">for</span> half an hour <button class="tr-btn" onclick="showTip(this,'for yarım saat — zaman dilimi')">?</button></div>
+      <div class="fill-sentence">2. <span class="blank-ans">since</span> 2001 <button class="tr-btn" onclick="showTip(this,'since 2001 — zaman noktası')">?</button></div>
+      <div class="fill-sentence">3. <span class="blank-ans">since</span> I was 14 <button class="tr-btn" onclick="showTip(this,'since I was 14 — zaman noktası (14 yaşında olduğumdan beri)')">?</button></div>
+      <div class="fill-sentence">4. <span class="blank-ans">for</span> a long time <button class="tr-btn" onclick="showTip(this,'for a long time — zaman dilimi (uzun süredir)')">?</button></div>
+      <div class="fill-sentence">5. <span class="blank-ans">since</span> ten o'clock <button class="tr-btn" onclick="showTip(this,'since ten o\'clock — zaman noktası (saat 10\'dan beri)')">?</button></div>
+      <div class="fill-sentence">6. <span class="blank-ans">for</span> three months <button class="tr-btn" onclick="showTip(this,'for three months — zaman dilimi (üç aydır)')">?</button></div>
+      <div class="fill-sentence">7. <span class="blank-ans">since</span> October <button class="tr-btn" onclick="showTip(this,'since October — zaman noktası (Ekimden beri)')">?</button></div>
+      <div class="fill-sentence">8. <span class="blank-ans">since</span> last Tuesday <button class="tr-btn" onclick="showTip(this,'since last Tuesday — zaman noktası (geçen Salıdan beri)')">?</button></div>
+      <div class="fill-sentence">9. <span class="blank-ans">for</span> two weeks <button class="tr-btn" onclick="showTip(this,'for two weeks — zaman dilimi (iki haftadır)')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Match lines A and B, then match with sentence C (6.4)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">I've known John <strong>for many years.</strong> → We met at university.</span><button class="tr-btn" onclick="showTip(this,'John\'u yıllardır tanıyorum. Üniversitede tanıştık.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I last went to the cinema <strong>a month ago.</strong> → The film was really boring.</span><button class="tr-btn" onclick="showTip(this,'Son sinemaya gittiğimde bir ay önce gittim. Film gerçekten sıkıcıydı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">I've had this watch <strong>since I was a child.</strong> → My grandad gave it to me.</span><button class="tr-btn" onclick="showTip(this,'Bu saati çocukluğumdan beri taşıyorum. Dedem bana verdi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">I lived in New York <strong>from 2017 to 2019.</strong> → I had a great time there.</span><button class="tr-btn" onclick="showTip(this,'2017\'den 2019\'a kadar New York\'ta yaşadım. Çok güzel vakit geçirdim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">I've lived in this house <strong>since 2015.</strong> → It's got a beautiful garden.</span><button class="tr-btn" onclick="showTip(this,'2015\'ten beri bu evde yaşıyorum. Güzel bir bahçesi var.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">We last had a holiday <strong>two years ago.</strong> → We went to Spain.</span><button class="tr-btn" onclick="showTip(this,'Son tatilimiz iki yıl önceydi. İspanya\'ya gittik.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">I haven't seen you <strong>for ages.</strong> → What have you been up to?</span><button class="tr-btn" onclick="showTip(this,'Seni çok uzun süredir görmemişim. Ne yapıyordun?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">We haven't had a break <strong>for over an hour.</strong> → I really need a coffee.</span><button class="tr-btn" onclick="showTip(this,'Bir saatten fazladır mola vermedik. Gerçekten bir kahveye ihtiyacım var.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete the interview with Vicki. What tense is each question? (6.5)</div>
+    <div class="dialogue">
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'<strong>Where</strong> do you live, Vicki?'</span><button class="tr-btn" onclick="showTip(this,'Nerede yaşıyorsun, Vicki? — Present Simple')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'In a flat near the town centre.'</span><button class="tr-btn" onclick="showTip(this,'Şehir merkezinin yakınında bir dairede.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'How long <span class="blank-ans">have you lived</span> there?' <span style="color:var(--muted);font-size:12px">(Present Perfect)</span></span><button class="tr-btn" onclick="showTip(this,'Orada ne zamandan beri yaşıyorsun? — Present Perfect')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'<span class="blank-ans">For</span> three years.'</span><button class="tr-btn" onclick="showTip(this,'Üç yıldır.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'So why <span class="blank-ans">did you</span> move there?' <span style="color:var(--muted);font-size:12px">(Past Simple)</span></span><button class="tr-btn" onclick="showTip(this,'Peki neden oraya taşındın? — Past Simple')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'Because I wanted to walk to work.'</span><button class="tr-btn" onclick="showTip(this,'Çünkü işe yürüyerek gitmek istiyordum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'And what <span class="blank-ans">do</span> you <span class="blank-ans">do</span>?' <span style="color:var(--muted);font-size:12px">(Present Simple)</span></span><button class="tr-btn" onclick="showTip(this,'Peki ne iş yapıyorsun? — Present Simple')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'I work for a pharmaceutical firm.'</span><button class="tr-btn" onclick="showTip(this,'Bir ilaç firmasında çalışıyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'How long <span class="blank-ans">have you worked</span> there?' <span style="color:var(--muted);font-size:12px">(Present Perfect)</span></span><button class="tr-btn" onclick="showTip(this,'Orada ne zamandan beri çalışıyorsun? — Present Perfect')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'<span class="blank-ans">Since</span> 2015.'</span><button class="tr-btn" onclick="showTip(this,'2015\'ten beri.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span><span class="tl"><span class="tl-text">'So what <span class="blank-ans">did you</span> do before that?' <span style="color:var(--muted);font-size:12px">(Past Simple)</span></span><button class="tr-btn" onclick="showTip(this,'Peki bundan önce ne yapıyordun? — Past Simple')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span><span class="tl"><span class="tl-text">'I was a student in Edinburgh.'</span><button class="tr-btn" onclick="showTip(this,'Edinburgh\'ta öğrenciydim.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  DIGGING UP THE PAST                       -->
+<!-- ══════════════════════════════════════════ -->
+<section id="digging">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Digging Up the Past – always, ever and never (Frieda Hoffmann)</div>
+  <div class="section-page">(Ders Kitabı s. 62 / Cevap Anahtarı s. 3–4)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – What is Frieda's nationality? Which countries has she been to? What are her passions?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">Frieda Hoffmann is <strong>German</strong>. She's been to <strong>South Africa, China, Algeria, Kenya, and Egypt</strong>. Her passions are <strong>ancient history and writing</strong>.</span><button class="tr-btn" onclick="showTip(this,'Frieda Hoffmann Alman. Güney Afrika, Çin, Cezayir, Kenya ve Mısır\'a gitmiş. Tutkuları: antik tarih ve yazarlık.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Write the questions on the correct line (6.6)</div>
+    <div class="answer-card">
+      <div class="fill-sentence"><strong>Question 1:</strong> <span class="blank-ans">Which countries have you been to?</span> <button class="tr-btn" onclick="showTip(this,'Hangi ülkelere gittiniz?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 2:</strong> <span class="blank-ans">When did you first travel abroad?</span> <button class="tr-btn" onclick="showTip(this,'İlk kez yurt dışına ne zaman gittin?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 3:</strong> <span class="blank-ans">Why did you move there?</span> <button class="tr-btn" onclick="showTip(this,'Neden oraya taşındın?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 4:</strong> <span class="blank-ans">Have you always been interested in archaeology?</span> <button class="tr-btn" onclick="showTip(this,'Her zaman arkeolojiye ilgi duydun mu?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 5:</strong> <span class="blank-ans">How many times have you been to Egypt?</span> <button class="tr-btn" onclick="showTip(this,'Mısır\'a kaç kez gittin?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 6:</strong> <span class="blank-ans">Have you ever made an important discovery?</span> <button class="tr-btn" onclick="showTip(this,'Hiç önemli bir keşif yaptın mı?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 7:</strong> <span class="blank-ans">How many books have you written?</span> <button class="tr-btn" onclick="showTip(this,'Kaç kitap yazdın?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 8:</strong> <span class="blank-ans">How did you travel?</span> <button class="tr-btn" onclick="showTip(this,'Nasıl seyahat ettin?')">?</button></div>
+      <div class="fill-sentence"><strong>Question 9:</strong> <span class="blank-ans">Have you ever been in any dangerous situations?</span> <button class="tr-btn" onclick="showTip(this,'Hiç tehlikeli durumlarla karşılaştın mı?')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Ask and answer questions about Frieda</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Has she ever been to South America? <strong>No, she hasn't.</strong></span><button class="tr-btn" onclick="showTip(this,'Hiç Güney Amerika\'ya gitti mi? Hayır, gitmedi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">When did she move to England? <strong>When she was six.</strong></span><button class="tr-btn" onclick="showTip(this,'İngiltere\'ye ne zaman taşındı? Altı yaşındayken.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Where did her father get a job? <strong>He got a job at Cambridge University.</strong></span><button class="tr-btn" onclick="showTip(this,'Babası nerede iş buldu? Cambridge Üniversitesi\'nde.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">When did she see the Tutankhamun Exhibition? <strong>She saw it when she was ten.</strong></span><button class="tr-btn" onclick="showTip(this,'Tutankhamun Sergisi\'ni ne zaman gördü? On yaşındayken gördü.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">How many times has she been to Egypt? <strong>She's been there 30 times at least.</strong></span><button class="tr-btn" onclick="showTip(this,'Mısır\'a kaç kez gitti? En az 30 kez gitti.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">How many books has she written? <strong>She's written four books.</strong></span><button class="tr-btn" onclick="showTip(this,'Kaç kitap yazdı? Dört kitap yazdı.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Grammar Spot 2 -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot – Present Perfect vs Past Simple</div>
+    <div class="grammar-box">
+      <div class="gb-title">Grammar Spot Answers</div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div><span class="tl"><span class="tl-text">"You've <strong>travelled</strong> a lot in your lifetime." → <strong>Present Perfect</strong> – refers to an experience <em>some time</em> in your life.</span><button class="tr-btn" onclick="showTip(this,'«Hayatınız boyunca çok seyahat ettiniz.» → Present Perfect — hayatınızın herhangi bir dönemindeki deneyim.')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">"Which countries have you <strong>been</strong> to?" → <strong>Present Perfect</strong> – refers to an experience <em>some time</em> in your life.</span><button class="tr-btn" onclick="showTip(this,'«Hangi ülkelere gittiniz?» → Present Perfect — hayatınızın herhangi bir dönemindeki deneyim.')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">"When I was six, my family <strong>moved</strong> to England." → <strong>Past Simple</strong> – refers to a <em>definite</em> time in the past.</span><button class="tr-btn" onclick="showTip(this,'«Altı yaşındayken ailem İngiltere\'ye taşındı.» → Past Simple — geçmişte belirli bir zamana atıfta bulunur.')">?</button></span></div>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The adverbs <strong>always</strong>, <strong>ever</strong>, and <strong>never</strong> are often used with the Present Perfect:<br>• I've <em>always</em> been interested in archaeology.<br>• Have you <em>ever</em> been in danger?<br>• I've <em>never</em> been to South America.</span><button class="tr-btn" onclick="showTip(this,'always, ever ve never zarfları genellikle Present Perfect ile kullanılır:\n• Her zaman arkeolojiye ilgi duydum.\n• Hiç tehlikeyle karşılaştın mı?\n• Hiç Güney Amerika\'ya gitmedim.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PRACTICE: PRESENT PERFECT OR PAST SIMPLE? -->
+<!-- ══════════════════════════════════════════ -->
+<section id="practice2">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Present Perfect or Past Simple? – Frieda Part 2</div>
+  <div class="section-page">(Ders Kitabı s. 63 / Cevap Anahtarı s. 4–5)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Listen and complete lines from the interview with Frieda (6.7)</div>
+    <div class="answer-card">
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:4px;">Dialogue 1</div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">I:</span><span><span class="tl"><span class="tl-text">Do you go back to Germany much?</span><button class="tr-btn" onclick="showTip(this,'Almanya\'ya çok gidiyor musunuz?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">F:</span><span><span class="tl"><span class="tl-text">No, I don't. I <span class="blank-ans">have been</span> back a few times to visit relatives, but I <span class="blank-ans">have never lived</span> there again.</span><button class="tr-btn" onclick="showTip(this,'Hayır, gitmiyorum. Akrabalarımı ziyaret etmek için birkaç kez döndüm ama bir daha orada yaşamadım.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:4px;">Dialogue 2</div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">I:</span><span><span class="tl"><span class="tl-text">What <span class="blank-ans">did</span> you study at university?</span><button class="tr-btn" onclick="showTip(this,'Üniversitede ne okudunuz?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">F:</span><span><span class="tl"><span class="tl-text">I <span class="blank-ans">studied</span> Ancient History at Cambridge.</span><button class="tr-btn" onclick="showTip(this,'Cambridge\'de Antik Tarih okudum.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:4px;">Dialogue 3</div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">I:</span><span><span class="tl"><span class="tl-text">Have you ever <span class="blank-ans">had</span> any other jobs, apart from being an archaeologist?</span><button class="tr-btn" onclick="showTip(this,'Arkeolog olmak dışında başka işlerde çalıştınız mı?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">F:</span><span><span class="tl"><span class="tl-text">Yes, I <span class="blank-ans">have</span>. I <span class="blank-ans">have done</span> all sorts of jobs – I even <span class="blank-ans">worked</span> as a waitress when I was at university.</span><button class="tr-btn" onclick="showTip(this,'Evet, çalıştım. Her türlü işi yaptım – üniversitedeyken garsonluk bile yaptım.')">?</button></span></span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:4px;">Dialogue 4</div>
+        <div class="dialogue">
+          <div class="dlg-line"><span class="dlg-speaker">I:</span><span><span class="tl"><span class="tl-text">What's the most dangerous situation you've ever been in?</span><button class="tr-btn" onclick="showTip(this,'Şimdiye kadar içinde bulunduğunuz en tehlikeli durum neydi?')">?</button></span></span></div>
+          <div class="dlg-line"><span class="dlg-speaker">F:</span><span><span class="tl"><span class="tl-text">Well, I <span class="blank-ans">had</span> a very difficult time in Egypt during the revolution in 2011. I <span class="blank-ans">spent</span> two weeks inside my friend's house – it was too dangerous to go out!</span><button class="tr-btn" onclick="showTip(this,'2011 devriminde Mısır\'da çok zorlu bir dönem geçirdim. İki hafta boyunca arkadaşımın evinde kaldım – dışarı çıkmak çok tehlikeliydi!')">?</button></span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Ask and answer more questions about Frieda (Has she ever…? / When did she…?)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Has she ever worked in a restaurant? <strong>Yes, she has.</strong> When did she do that? <strong>When she was at university.</strong></span><button class="tr-btn" onclick="showTip(this,'Hiç restoranda çalıştı mı? Evet, çalıştı. Ne zaman? Üniversitedeyken.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Has she ever crossed the Sahara? <strong>Yes, she has.</strong> When did she do that? <strong>When she was in her early thirties.</strong></span><button class="tr-btn" onclick="showTip(this,'Hiç Sahra\'yı geçti mi? Evet, geçti. Ne zaman? Otuzlu yaşlarının başındayken.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Has she ever travelled up the Nile? <strong>Yes, she has.</strong> When did she do that? <strong>In 2002.</strong></span><button class="tr-btn" onclick="showTip(this,'Hiç Nil\'de seyahat etti mi? Evet, etti. Ne zaman? 2002\'de.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Has she ever walked the Great Wall of China? <strong>Yes, she has.</strong> When did she do that? <strong>In 2010.</strong></span><button class="tr-btn" onclick="showTip(this,'Hiç Çin Seddi\'ni yürüdü mü? Evet, yürüdü. Ne zaman? 2010\'da.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  VOCABULARY & PRONUNCIATION                -->
+<!-- ══════════════════════════════════════════ -->
+<section id="vocabulary">
+  <div class="section-label">Vocabulary &amp; Pronunciation</div>
+  <div class="section-title">Word Endings and Word Stress</div>
+  <div class="section-page">(Ders Kitabı s. 63 / Cevap Anahtarı s. 5–6)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – What are the endings of the words in italics?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">archaeol<strong>ogist</strong> → <strong>-ist</strong> &nbsp;|&nbsp; a writ<strong>er</strong> → <strong>-er</strong> &nbsp;|&nbsp; a histor<strong>ian</strong> → <strong>-ian</strong></span><button class="tr-btn" onclick="showTip(this,'arkeolog → -ist eki | yazar → -er eki | tarihçi → -ian eki')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Use endings -er, -or, -ist, -ian, -ant to make jobs (6.8)</div>
+    <div class="answer-card">
+      <div class="vocab-box">
+        <span class="vocab-chip">art → <strong>artist</strong></span>
+        <span class="vocab-chip">account → <strong>accountant</strong></span>
+        <span class="vocab-chip">invent → <strong>inventor</strong></span>
+        <span class="vocab-chip">photograph → <strong>photographer</strong></span>
+        <span class="vocab-chip">economy → <strong>economist</strong></span>
+        <span class="vocab-chip">electric → <strong>electrician</strong></span>
+        <span class="vocab-chip">act → <strong>actor</strong></span>
+        <span class="vocab-chip">music → <strong>musician</strong></span>
+        <span class="vocab-chip">farm → <strong>farmer</strong></span>
+        <span class="vocab-chip">politics → <strong>politician</strong></span>
+        <span class="vocab-chip">interpret → <strong>interpreter</strong></span>
+        <span class="vocab-chip">assist → <strong>assistant</strong></span>
+        <span class="vocab-chip">build → <strong>builder</strong></span>
+        <span class="vocab-chip">translate → <strong>translator</strong></span>
+        <span class="vocab-chip">reception → <strong>receptionist</strong></span>
+      </div>
+      <div style="margin-top:10px;">
+        <button class="tr-btn" onclick="showTip(this,'sanatçı / muhasebeci / mucit / fotoğrafçı / ekonomist / elektrikçi / aktör / müzisyen / çiftçi / politikacı / tercüman / asistan / inşaatçı / çevirmen / resepsiyonist')">? Türkçe karşılıklar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Word endings: Complete the chart (Noun ↔ Verb / Noun ↔ Adjective) (6.9)</div>
+    <div class="info-note" style="margin-bottom:10px;">Cevap anahtarında bu iki grup ayrı ayrı listelenmiştir. Sol grup: Noun ↔ Verb. Sağ grup: Noun ↔ Adjective. Satırlar yan yana değil, bağımsız listelerdir.</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
+      <div style="flex:1;min-width:200px;">
+        <table class="word-table">
+          <thead><tr><th>Noun</th><th>Verb</th><th>Türkçe</th></tr></thead>
+          <tbody>
+            <tr><td>reservation</td><td>reserve</td><td><span class="tl"><span class="tl-text">rezervasyon / rezerve etmek</span><button class="tr-btn" onclick="showTip(this,'reservation = rezervasyon · reserve = rezerve etmek')">?</button></span></td></tr>
+            <tr><td>explanation</td><td>explain</td><td><span class="tl"><span class="tl-text">açıklama / açıklamak</span><button class="tr-btn" onclick="showTip(this,'explanation = açıklama · explain = açıklamak')">?</button></span></td></tr>
+            <tr><td>behaviour</td><td>behave</td><td><span class="tl"><span class="tl-text">davranış / davranmak</span><button class="tr-btn" onclick="showTip(this,'behaviour = davranış · behave = davranmak')">?</button></span></td></tr>
+            <tr><td>invitation</td><td>invite</td><td><span class="tl"><span class="tl-text">davet / davet etmek</span><button class="tr-btn" onclick="showTip(this,'invitation = davet · invite = davet etmek')">?</button></span></td></tr>
+            <tr><td>decision</td><td>decide</td><td><span class="tl"><span class="tl-text">karar / karar vermek</span><button class="tr-btn" onclick="showTip(this,'decision = karar · decide = karar vermek')">?</button></span></td></tr>
+            <tr><td>student</td><td>study</td><td><span class="tl"><span class="tl-text">öğrenci / çalışmak</span><button class="tr-btn" onclick="showTip(this,'student = öğrenci · study = çalışmak/ders çalışmak')">?</button></span></td></tr>
+            <tr><td>collection</td><td>collect</td><td><span class="tl"><span class="tl-text">koleksiyon / toplamak</span><button class="tr-btn" onclick="showTip(this,'collection = koleksiyon · collect = toplamak')">?</button></span></td></tr>
+            <tr><td>argument</td><td>argue</td><td><span class="tl"><span class="tl-text">tartışma / tartışmak</span><button class="tr-btn" onclick="showTip(this,'argument = tartışma · argue = tartışmak')">?</button></span></td></tr>
+            <tr><td>discussion</td><td>discuss</td><td><span class="tl"><span class="tl-text">tartışma / tartışmak</span><button class="tr-btn" onclick="showTip(this,'discussion = tartışma (daha resmi) · discuss = tartışmak')">?</button></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="flex:1;min-width:200px;">
+        <table class="word-table">
+          <thead><tr><th>Noun</th><th>Adjective</th><th>Türkçe</th></tr></thead>
+          <tbody>
+            <tr><td>fame</td><td>famous</td><td><span class="tl"><span class="tl-text">şöhret / ünlü</span><button class="tr-btn" onclick="showTip(this,'fame = şöhret · famous = ünlü')">?</button></span></td></tr>
+            <tr><td>difference</td><td>different</td><td><span class="tl"><span class="tl-text">fark / farklı</span><button class="tr-btn" onclick="showTip(this,'difference = fark · different = farklı')">?</button></span></td></tr>
+            <tr><td>expense</td><td>expensive</td><td><span class="tl"><span class="tl-text">masraf / pahalı</span><button class="tr-btn" onclick="showTip(this,'expense = masraf · expensive = pahalı')">?</button></span></td></tr>
+            <tr><td>danger</td><td>dangerous</td><td><span class="tl"><span class="tl-text">tehlike / tehlikeli</span><button class="tr-btn" onclick="showTip(this,'danger = tehlike · dangerous = tehlikeli')">?</button></span></td></tr>
+            <tr><td>success</td><td>successful</td><td><span class="tl"><span class="tl-text">başarı / başarılı</span><button class="tr-btn" onclick="showTip(this,'success = başarı · successful = başarılı')">?</button></span></td></tr>
+            <tr><td>music</td><td>musical</td><td><span class="tl"><span class="tl-text">müzik / müzikal</span><button class="tr-btn" onclick="showTip(this,'music = müzik · musical = müzikal')">?</button></span></td></tr>
+            <tr><td>kindness</td><td>kind</td><td><span class="tl"><span class="tl-text">nezaket / nazik</span><button class="tr-btn" onclick="showTip(this,'kindness = nezaket · kind = nazik')">?</button></span></td></tr>
+            <tr><td>possibility</td><td>possible</td><td><span class="tl"><span class="tl-text">olasılık / mümkün</span><button class="tr-btn" onclick="showTip(this,'possibility = olasılık · possible = mümkün')">?</button></span></td></tr>
+            <tr><td>health</td><td>healthy</td><td><span class="tl"><span class="tl-text">sağlık / sağlıklı</span><button class="tr-btn" onclick="showTip(this,'health = sağlık · healthy = sağlıklı')">?</button></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Different word forms (6.10)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">I collect postcards. → I have a <strong>collection</strong> of postcards.</span><button class="tr-btn" onclick="showTip(this,'Kartpostal topluyorum. → Kartpostal koleksiyonum var.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I've never wanted <strong>fame</strong>. → I've never wanted to be <strong>famous</strong>.</span><button class="tr-btn" onclick="showTip(this,'Hiç şöhret istemedim. → Hiç ünlü olmak istemedim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Can we <strong>discuss</strong> your work? → Can we have a <strong>discussion</strong> about your work?</span><button class="tr-btn" onclick="showTip(this,'Çalışmanızı tartışabilir miyiz? → Çalışmanız hakkında bir tartışma yapabilir miyiz?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Is he <strong>behaving</strong> OK? → Is his <strong>behaviour</strong> OK?</span><button class="tr-btn" onclick="showTip(this,'İyi davranıyor mu? → Davranışları yeterli mi?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text"><strong>Health</strong> is very important. → It's important to be <strong>healthy</strong>.</span><button class="tr-btn" onclick="showTip(this,'Sağlık çok önemlidir. → Sağlıklı olmak önemlidir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">It's time for a <strong>decision</strong>. → It's time to <strong>decide</strong>.</span><button class="tr-btn" onclick="showTip(this,'Karar verme zamanı. → Karar verme zamanı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">I'm not very good at <strong>music</strong>. → I'm not very <strong>musical</strong>.</span><button class="tr-btn" onclick="showTip(this,'Müzikte pek iyi değilim. → Pek müzikal değilim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">We often <strong>argue</strong>. → We often have <strong>arguments</strong>.</span><button class="tr-btn" onclick="showTip(this,'Sık sık tartışırız. → Sık sık tartışmalarımız olur.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Word stress (6.11): Where is the stress?</div>
+    <div class="answer-card">
+      <div style="margin-bottom:10px;font-size:13px;font-weight:600;color:var(--mid);">Two-syllable nouns: <button class="tr-btn" onclick="showTip(this,'İki heceli isimler')">?</button></div>
+      <div class="vocab-box" style="margin-bottom:14px;">
+        <span class="vocab-chip"><span class="stress-mark">dan</span>ger</span>
+        <span class="vocab-chip"><span class="stress-mark">kind</span>ness</span>
+        <span class="vocab-chip"><span class="stress-mark">cri</span>tic</span>
+        <span class="vocab-chip"><span class="stress-mark">ar</span>tist</span>
+        <span class="vocab-chip"><span class="stress-mark">dif</span>ference</span>
+      </div>
+      <div style="margin-bottom:10px;font-size:13px;font-weight:600;color:var(--mid);">Two-syllable adjectives: <button class="tr-btn" onclick="showTip(this,'İki heceli sıfatlar')">?</button></div>
+      <div class="vocab-box" style="margin-bottom:14px;">
+        <span class="vocab-chip"><span class="stress-mark">health</span>y</span>
+        <span class="vocab-chip"><span class="stress-mark">friend</span>ly</span>
+        <span class="vocab-chip"><span class="stress-mark">fa</span>mous</span>
+        <span class="vocab-chip"><span class="stress-mark">dif</span>ferent</span>
+      </div>
+      <div style="margin-bottom:10px;font-size:13px;font-weight:600;color:var(--mid);">Two-syllable verbs: <button class="tr-btn" onclick="showTip(this,'İki heceli fiiller — genellikle ikinci hece vurgulu')">?</button></div>
+      <div class="vocab-box" style="margin-bottom:14px;">
+        <span class="vocab-chip">in<span class="stress-mark">vite</span></span>
+        <span class="vocab-chip">ex<span class="stress-mark">plain</span></span>
+        <span class="vocab-chip">dis<span class="stress-mark">cuss</span></span>
+        <span class="vocab-chip">em<span class="stress-mark">ploy</span></span>
+        <span class="vocab-chip">de<span class="stress-mark">cide</span></span>
+        <span class="vocab-chip">com<span class="stress-mark">pete</span></span>
+      </div>
+      <div style="margin-bottom:10px;font-size:13px;font-weight:600;color:var(--mid);">Nouns ending in -tion and -sion: <button class="tr-btn" onclick="showTip(this,'-tion ve -sion ile biten isimler — vurgu her zaman -tion/-sion\'dan önceki hecede')">?</button></div>
+      <div class="vocab-box">
+        <span class="vocab-chip-blue">invit<span class="stress-mark">a</span>tion</span>
+        <span class="vocab-chip-blue">explan<span class="stress-mark">a</span>tion</span>
+        <span class="vocab-chip-blue">compet<span class="stress-mark">i</span>tion</span>
+        <span class="vocab-chip-blue">amb<span class="stress-mark">i</span>tion</span>
+        <span class="vocab-chip-blue">dec<span class="stress-mark">i</span>sion</span>
+      </div>
+      <div class="info-note" style="margin-top:10px;">-tion / -sion ekinden önceki hece her zaman vurgulu: reser<u>VA</u>tion, explan<u>A</u>tion, compet<u>I</u>tion</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  READING                                   -->
+<!-- ══════════════════════════════════════════ -->
+<section id="reading">
+  <div class="section-label">Reading and Speaking</div>
+  <div class="section-title">The Not So Distant Past</div>
+  <div class="section-page">(Ders Kitabı s. 64–65 / Cevap Anahtarı s. 6–7)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – What does "history repeats itself" mean?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">It means when similar events happen again and again.</span><button class="tr-btn" onclick="showTip(this,'Bu, benzer olayların tekrar tekrar yaşanması anlamına gelir.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Breaking News: Three news topics (6.12)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">Fighting in Iraq; refugees and leaders building walls to keep people out; protests about rich people avoiding tax.</span><button class="tr-btn" onclick="showTip(this,'Irak\'taki çatışma; mülteciler ve liderlerin insanları dışarıda tutmak için duvar inşası; zenginlerin vergiden kaçmasına karşı protestolar.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Same Old Problems: Answer the questions</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">What was modern Iraq called two thousand years ago? → <strong>Mesopotamia.</strong></span><button class="tr-btn" onclick="showTip(this,'Modern Irak iki bin yıl önce nasıl adlandırılıyordu? → Mezopotamya.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Why were Goth refugees trying to get into the Roman Empire? → <strong>To escape the Huns, who were invading their land.</strong></span><button class="tr-btn" onclick="showTip(this,'Got mülteciler neden Roma İmparatorluğu\'na girmeye çalışıyordu? → Topraklarını işgal eden Hunlardan kaçmak için.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Which Roman Emperor built a wall to keep foreigners out? → <strong>Hadrian.</strong></span><button class="tr-btn" onclick="showTip(this,'Hangi Roma İmparatoru yabancıları dışarıda tutmak için duvar inşa etti? → Hadrianus.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Why were taxes so high in ancient Rome? How did rich people avoid them? → <strong>To pay for wars and unemployment. Rich people knew how to move their money to places where the government couldn't tax it.</strong></span><button class="tr-btn" onclick="showTip(this,'Antik Roma\'da vergiler neden bu kadar yüksekti? Zenginler nasıl kaçındı? → Savaşlar ve işsizliği finanse etmek için. Zenginler, devletin vergi koyamayacağı yerlere paralarını nasıl taşıyacaklarını biliyordu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">Why do many things in modern Britain come from the ancient Romans? → <strong>Because the Romans ruled Britain for nearly 400 years.</strong></span><button class="tr-btn" onclick="showTip(this,'Modern Britanya\'daki pek çok şey neden antik Romalılardan geliyor? → Çünkü Romalılar, Britanya\'yı yaklaşık 400 yıl boyunca yönetti.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Correct these false statements about "What good have the Romans done for us?"</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ There are 9,600 km of <s>modern</s> roads → ✓ <strong>There are 9,600 km of old Roman roads</strong> in Britain.</span><button class="tr-btn" onclick="showTip(this,'Britanya\'da 9.600 km\'lik eski Roma yolu vardır.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ The British have <s>never</s> used a global currency → ✓ <strong>The British used a global currency before – Roman coins.</strong></span><button class="tr-btn" onclick="showTip(this,'İngilizler daha önce küresel bir para birimi kullandı – Roma paraları.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ There was <s>only one copy</s> of the first Roman newspapers → ✓ <strong>There were copies of the first Roman newspapers in public places.</strong></span><button class="tr-btn" onclick="showTip(this,'İlk Roma gazetelerinin kopyaları halka açık yerlerde mevcuttu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ The Romans needed to wear <s>lots of pairs of socks</s> → ✓ <strong>The Romans didn't need to wear lots of pairs of socks in their villas.</strong></span><button class="tr-btn" onclick="showTip(this,'Romalıların villalarında çok çift çorap giymeleri gerekmiyordu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ Roman aqueducts in the cities were <s>better than the old British ones</s> → ✓ <strong>Roman aqueducts in the cities were completely new in Britain.</strong></span><button class="tr-btn" onclick="showTip(this,'Şehirlerdeki Roma su kemerleri Britanya\'da tamamen yeniydi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ The British used their <s>own</s> recipes → ✓ <strong>The British used new recipes the Romans brought with them to make food for the Romans.</strong></span><button class="tr-btn" onclick="showTip(this,'İngilizler, Romalıların yanlarında getirdiği yeni tarifleri kullanarak Romalılar için yemek yaptı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">❌ We have <s>added an extra day</s> to the Roman year → ✓ <strong>We have continued to use the Roman year.</strong></span><button class="tr-btn" onclick="showTip(this,'Roma yılını kullanmaya devam ediyoruz.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Vocabulary: Match words A with definitions B</div>
+    <table class="match-table">
+      <thead><tr><th>#</th><th>Word (A)</th><th>Letter</th><th>Definition (B)</th><th>Türkçe</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>to capture</td><td><strong>e</strong></td><td>to catch and take prisoner</td><td><span class="tl"><span class="tl-text">yakalamak, esir almak</span><button class="tr-btn" onclick="showTip(this,'capture = yakalamak, esir almak')">?</button></span></td></tr>
+        <tr><td>2</td><td>to execute</td><td><strong>c</strong></td><td>to kill a prisoner</td><td><span class="tl"><span class="tl-text">idam etmek</span><button class="tr-btn" onclick="showTip(this,'execute = idam etmek')">?</button></span></td></tr>
+        <tr><td>3</td><td>to announce</td><td><strong>g</strong></td><td>to say something publicly</td><td><span class="tl"><span class="tl-text">duyurmak, ilan etmek</span><button class="tr-btn" onclick="showTip(this,'announce = duyurmak, ilan etmek')">?</button></span></td></tr>
+        <tr><td>4</td><td>to avoid</td><td><strong>i</strong></td><td>to find a way not to do something</td><td><span class="tl"><span class="tl-text">kaçınmak</span><button class="tr-btn" onclick="showTip(this,'avoid = kaçınmak')">?</button></span></td></tr>
+        <tr><td>5</td><td>to invade</td><td><strong>f</strong></td><td>to enter as an enemy</td><td><span class="tl"><span class="tl-text">işgal etmek</span><button class="tr-btn" onclick="showTip(this,'invade = işgal etmek')">?</button></span></td></tr>
+        <tr><td>6</td><td>taxes</td><td><strong>h</strong></td><td>money you pay to the government</td><td><span class="tl"><span class="tl-text">vergiler</span><button class="tr-btn" onclick="showTip(this,'taxes = vergiler')">?</button></span></td></tr>
+        <tr><td>7</td><td>a reminder</td><td><strong>a</strong></td><td>something that makes you remember</td><td><span class="tl"><span class="tl-text">hatırlatıcı</span><button class="tr-btn" onclick="showTip(this,'a reminder = hatırlatıcı')">?</button></span></td></tr>
+        <tr><td>8</td><td>to rule</td><td><strong>j</strong></td><td>to control a country</td><td><span class="tl"><span class="tl-text">yönetmek, hükmetmek</span><button class="tr-btn" onclick="showTip(this,'to rule = yönetmek, hükmetmek')">?</button></span></td></tr>
+        <tr><td>9</td><td>minced</td><td><strong>b</strong></td><td>cut into very small pieces</td><td><span class="tl"><span class="tl-text">kıyılmış</span><button class="tr-btn" onclick="showTip(this,'minced = kıyılmış (et vb.)')">?</button></span></td></tr>
+        <tr><td>10</td><td>sewage</td><td><strong>d</strong></td><td>what comes out of toilets</td><td><span class="tl"><span class="tl-text">kanalizasyon/pis su</span><button class="tr-btn" onclick="showTip(this,'sewage = kanalizasyon, atık su')">?</button></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  LISTENING                                 -->
+<!-- ══════════════════════════════════════════ -->
+<section id="listening">
+  <div class="section-label">Listening and Speaking</div>
+  <div class="section-title">Family History – David Taylor Bews (6.13 / 6.14)</div>
+  <div class="section-page">(Ders Kitabı s. 66 / Cevap Anahtarı s. 7–8)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Answer the questions about David Taylor Bews (6.13)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">He's lived in Perth for <strong>nearly ten years</strong>.</span><button class="tr-btn" onclick="showTip(this,'David Perth\'te yaklaşık on yıldır yaşıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">The two 'Alices' in his life are his <strong>daughter and his grandmother</strong>.</span><button class="tr-btn" onclick="showTip(this,'Hayatındaki iki "Alice": kızı ve büyükannesi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">She lives in <strong>Newcastle</strong>.</span><button class="tr-btn" onclick="showTip(this,'Büyükannesinin yaşadığı yer: Newcastle.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">They were all born on the <strong>Orkney Islands</strong>.</span><button class="tr-btn" onclick="showTip(this,'Büyükannesinin erkek ve kız kardeşleri Orkney Adaları\'nda doğdu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">He was a <strong>farmer</strong>.</span><button class="tr-btn" onclick="showTip(this,'Büyükannesinin babasının mesleği: çiftçi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">The family's ancestors came over to Scotland <strong>from Norway</strong>.</span><button class="tr-btn" onclick="showTip(this,'Aile ataları 9. yüzyılda Norveç\'ten İskoçya\'ya geldi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">There are a lot of people with <strong>blonde hair</strong> in the family.</span><button class="tr-btn" onclick="showTip(this,'Bu kökenin sonucu: ailede pek çok sarışın birey var.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">It became <strong>difficult for Alice's great-grandparents to make a living in farming</strong>.</span><button class="tr-btn" onclick="showTip(this,'Ailenin Orkney\'i terk etme nedeni: çiftçilik yaparak geçimini sağlamak giderek zorlaştı.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Listen again. Who said each line and what does it mean? (6.14)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">"… <em>she</em> got married when she was only 17." → <strong>Alice's mother</strong> (David's great-grandmother).</span><button class="tr-btn" onclick="showTip(this,'«… sadece 17 yaşındayken evlendi.» → Alice\'in annesi (David\'in büyük büyükannesi).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">"I can't really remember <em>him</em> at all." → <strong>Alice's father</strong> (he died when Alice was three).</span><button class="tr-btn" onclick="showTip(this,'«Onu gerçekten hiç hatırlamıyorum.» → Alice\'in babası (Alice üç yaşındayken öldü).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">"She had two jobs and all <em>those children</em>!" → <strong>She was a cleaner and a dressmaker. She had nine children.</strong></span><button class="tr-btn" onclick="showTip(this,'«İki işi ve tüm o çocukları vardı!» → Temizlikçi ve terzi olarak çalıştı. Dokuz çocuğu vardı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">"… <em>they</em> got work in the shipyards." → <strong>Alice's two eldest brothers.</strong></span><button class="tr-btn" onclick="showTip(this,'«… tersanelerde iş buldular.» → Alice\'in en büyük iki erkek kardeşi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">"<em>That</em> wasn't unusual in those days." → <strong>Getting married young.</strong></span><button class="tr-btn" onclick="showTip(this,'«Bu o günlerde alışılmadık değildi.» → Genç yaşta evlenmek.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">"<em>They</em> live all over the world." → <strong>Alice's grandchildren and great-grandchildren. They live in Australia, New Zealand, and America.</strong></span><button class="tr-btn" onclick="showTip(this,'«Dünyanın her yerinde yaşıyorlar.» → Alice\'in torunları ve torunlarının çocukları. Avustralya, Yeni Zelanda ve Amerika\'da yaşıyorlar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">"… <em>he</em>'s helped me to keep in touch with you all…" → <strong>David's cousin Peter.</strong></span><button class="tr-btn" onclick="showTip(this,'«… herkesle iletişimde kalmama yardımcı oldu.» → David\'in kuzeni Peter.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">"… <em>it's all</em> really wonderful, isn't it?" → <strong>Using technology like email, Skype, and texting to keep in touch.</strong></span><button class="tr-btn" onclick="showTip(this,'«… hepsi gerçekten harika, değil mi?» → E-posta, Skype ve mesajlaşma gibi teknolojiyi iletişimde kalmak için kullanmak.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  EVERYDAY ENGLISH                          -->
+<!-- ══════════════════════════════════════════ -->
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">Agree with Me! – Question Tags</div>
+  <div class="section-page">(Ders Kitabı s. 67 / Cevap Anahtarı s. 8)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Does the intonation go up or down at the end? (6.15)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">The intonation goes <strong>DOWN</strong> in all sentences (because the speaker expects the listener to agree, not asking a genuine question).</span><button class="tr-btn" onclick="showTip(this,'Tüm cümlelerde tonlama AŞAĞI iner — konuşmacı dinleyicinin aynı fikirde olmasını bekler, gerçek bir soru sormaz.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – How are question tags formed? (6.16)</div>
+    <div class="grammar-box">
+      <div class="gb-title">Question Tag Formation Rules</div>
+      <div class="answer-row" style="border:none;padding:4px 0;">
+        <span class="ans-text">
+          <div><span class="tl"><span class="tl-text">• The question tag uses the <strong>same verb</strong> as the main sentence (auxiliary or modal verb).</span><button class="tr-btn" onclick="showTip(this,'Soru eki, cümlenin ana fiiliyle aynı fiili kullanır (yardımcı veya modal fiil).')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">• We use <strong>do/does</strong> in Present Simple tags, and <strong>did</strong> in Past Simple tags.</span><button class="tr-btn" onclick="showTip(this,'Geniş zamanda do/does, geçmiş zamanda did kullanılır.')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">• If the main clause is <strong>positive</strong> → the tag is <strong>negative</strong>.<br>If the main clause is <strong>negative</strong> → the tag is <strong>positive</strong>.</span><button class="tr-btn" onclick="showTip(this,'Ana cümle olumlu → soru eki olumsuz.\nAna cümle olumsuz → soru eki olumlu.')">?</button></span></div>
+        </span>
+      </div>
+      <div style="margin-top:10px;font-size:13px;font-style:italic;color:var(--muted);">Examples from text: <em>isn't it? · don't we? · didn't we? · was it? · won't she? · doesn't she? · hasn't she?</em></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete the sentences with a question tag (6.17)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. Dominic's party was brilliant, <span class="blank-ans">wasn't it</span>? <button class="tr-btn" onclick="showTip(this,'Dominic\'in partisi harikaydı, değil mi? (was → wasn\'t it)')">?</button></div>
+      <div class="fill-sentence">2. Karen knows a lot about gardens, <span class="blank-ans">doesn't she</span>? <button class="tr-btn" onclick="showTip(this,'Karen bahçeler hakkında çok şey biliyor, değil mi? (knows → doesn\'t she)')">?</button></div>
+      <div class="fill-sentence">3. You went to school with my brother, <span class="blank-ans">didn't you</span>? <button class="tr-btn" onclick="showTip(this,'Erkek kardeşimle aynı okula gittin, değil mi? (went → didn\'t you)')">?</button></div>
+      <div class="fill-sentence">4. Learning a language isn't easy, <span class="blank-ans">is it</span>? <button class="tr-btn" onclick="showTip(this,'Dil öğrenmek kolay değil, değil mi? (isn\'t → is it — olumsuz → olumlu etiket)')">?</button></div>
+      <div class="fill-sentence">5. My English has improved a lot, <span class="blank-ans">hasn't it</span>? <button class="tr-btn" onclick="showTip(this,'İngilizcemi çok geliştirdim, değil mi? (has improved → hasn\'t it)')">?</button></div>
+      <div class="fill-sentence">6. You won't forget to call me, <span class="blank-ans">will you</span>? <button class="tr-btn" onclick="showTip(this,'Beni aramayı unutmayacaksın, değil mi? (won\'t → will you — olumsuz → olumlu etiket)')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Match replies with sentences in Ex. 3</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1 → b</span><span class="ans-text"><span class="tl"><span class="tl-text">Yes, it was. I had a great time on the dance floor!</span><button class="tr-btn" onclick="showTip(this,'Evet, öyleydi. Dans pistinde harika vakit geçirdim!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2 → e</span><span class="ans-text"><span class="tl"><span class="tl-text">Yes, she does. She's helped me a lot with mine.</span><button class="tr-btn" onclick="showTip(this,'Evet, biliyor. Benimkiyle çok yardımcı oldu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3 → a</span><span class="ans-text"><span class="tl"><span class="tl-text">Yes, I did. We've been good friends ever since.</span><button class="tr-btn" onclick="showTip(this,'Evet, gittim. O günden beri iyi arkadaşız.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4 → d</span><span class="ans-text"><span class="tl"><span class="tl-text">No, it isn't. It takes time and lots of practice.</span><button class="tr-btn" onclick="showTip(this,'Hayır, kolay değil. Zaman ve çok pratik gerektiriyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5 → f</span><span class="ans-text"><span class="tl"><span class="tl-text">Yes, it has. You sound much more natural now.</span><button class="tr-btn" onclick="showTip(this,'Evet, geliştirdin. Şimdi çok daha doğal konuşuyorsun.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6 → c</span><span class="ans-text"><span class="tl"><span class="tl-text">No, of course not. I'll call as soon as I get home.</span><button class="tr-btn" onclick="showTip(this,'Hayır, tabii ki unutmayacağım. Eve gelir gelmez arayacağım.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  WRITING                                   -->
+<!-- ══════════════════════════════════════════ -->
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">A Biography – The People's Princess (Princess Diana)</div>
+  <div class="section-page">(Ders Kitabı s. 68 / Cevap Anahtarı s. 8–9)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Put the seven paragraphs in the correct order</div>
+    <div class="answer-card">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:8px;background:var(--orange-pale);padding:8px 16px;border-radius:8px;font-weight:700;font-size:15px;">
+          <span style="color:var(--orange)">1</span>→<span style="color:var(--orange)">2</span>→<span style="color:var(--orange)">3</span>→<span style="color:var(--orange)">4</span>→<span style="color:var(--orange)">5</span>→<span style="color:var(--orange)">6</span>→<span style="color:var(--orange)">7</span>
+          <button class="tr-btn" onclick="showTip(this,'Paragrafların doğru sırası: 1 → 2 → 3 → 4 → 5 → 6 → 7')">?</button>
+        </div>
+      </div>
+
+      <div class="para-card" style="margin-top:14px;">
+        <span class="para-num">1</span>
+        <span class="tl"><span class="tl-text">When Diana Spencer married Prince Charles and became Princess Diana, she also became one of the biggest celebrities of the 80s and 90s.</span><button class="tr-btn" onclick="showTip(this,'Diana Spencer, Prens Charles ile evlenip Prenses Diana olduğunda, 80\'lerin ve 90\'ların en büyük ünlülerinden biri de oldu.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">2</span>
+        <span class="tl"><span class="tl-text">In the 1980s, people lived in fear of the newly discovered AIDS virus … Diana opened Britain's first AIDS hospital ward in 1987.</span><button class="tr-btn" onclick="showTip(this,'1980\'lerde insanlar yeni keşfedilen AIDS virüsünden korkuyla yaşıyordu. Diana, 1987\'de Britanya\'nın ilk AIDS hastane koğuşunu açtı.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">3</span>
+        <span class="tl"><span class="tl-text">Diana did the same for leprosy … Diana sat on their beds and held their hands, showing that you can't catch leprosy through physical contact.</span><button class="tr-btn" onclick="showTip(this,'Diana cüzzam için de aynısını yaptı. Yataklarında onlarla oturdu ve ellerini tuttu; cüzzamın fiziksel temas yoluyla bulaşamayacağını gösterdi.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">4</span>
+        <span class="tl"><span class="tl-text">Two other hospitals that Diana often visited were the Great Ormond Street Hospital for Children and The Royal Marsden.</span><button class="tr-btn" onclick="showTip(this,'Diana\'nın sık sık ziyaret ettiği diğer iki hastane: Great Ormond Street Çocuk Hastanesi ve Royal Marsden.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">5</span>
+        <span class="tl"><span class="tl-text">After her divorce from Prince Charles in 1996, Diana appeared less in public and did less charity work. However, she continued to be patron of some charities, including Centrepoint.</span><button class="tr-btn" onclick="showTip(this,'1996\'daki boşanmadan sonra Diana kamuoyunda daha az göründü ve daha az hayır işi yaptı. Ancak Centrepoint dahil bazı hayır kurumlarının hamisi olmayı sürdürdü.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">6</span>
+        <span class="tl"><span class="tl-text">In the same year as her death, 1997, she visited Angola to bring attention to the problem of landmines.</span><button class="tr-btn" onclick="showTip(this,'Öldüğü yıl olan 1997\'de, kara mayını sorununa dikkat çekmek için Angola\'yı ziyaret etti.')">?</button></span>
+      </div>
+      <div class="para-card">
+        <span class="para-num">7</span>
+        <span class="tl"><span class="tl-text">It was after her death that Diana became known as 'the People's Princess'. Many people wanted to give money to the charities which she supported.</span><button class="tr-btn" onclick="showTip(this,'Diana, ölümünün ardından "Halkın Prensesi" olarak tanınmaya başlandı. Pek çok kişi desteklediği hayır kurumlarına bağış yapmak istedi.')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – How many of Diana's charitable activities did you learn about?</div>
+    <div class="writing-box">
+      <ul>
+        <li><span class="tl"><span class="tl-text">Raising awareness about AIDS – they aren't contagious through touch.</span><button class="tr-btn" onclick="showTip(this,'AIDS hakkında farkındalık yaratmak — fiziksel temas yoluyla bulaşıcı değil.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">Raising awareness about leprosy – they aren't contagious through touch.</span><button class="tr-btn" onclick="showTip(this,'Cüzzam hakkında farkındalık yaratmak — fiziksel temas yoluyla bulaşıcı değil.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">Raising awareness about the dangers of landmines.</span><button class="tr-btn" onclick="showTip(this,'Kara mayınlarının tehlikeleri hakkında farkındalık yaratmak.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">Visiting hospitals to be with child cancer patients (Great Ormond Street / The Royal Marsden).</span><button class="tr-btn" onclick="showTip(this,'Kanser hastası çocuklarla birlikte olmak için hastaneleri ziyaret etmek.')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">Supporting homeless people (Centrepoint).</span><button class="tr-btn" onclick="showTip(this,'Evsiz insanları desteklemek (Centrepoint).')">?</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Similarities between Diana and Harry</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text"><span class="tl"><span class="tl-text">Harry has also worked for a lot of charities; he has a similar personality to his mother and is good at connecting with people; and he's not a typical royal.</span><button class="tr-btn" onclick="showTip(this,'Harry de pek çok hayır kurumu için çalıştı; annesine benzer bir kişiliğe sahip ve insanlarla bağ kurmada iyidir; ve tipik bir kraliyet üyesi değildir.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!--  AUDIOSCRIPT                               -->
+<!-- ══════════════════════════════════════════ -->
+<section id="audioscript">
+  <div class="section-label">Audioscript</div>
+  <div class="section-title">Unit 6 – Key Audioscript Extracts</div>
+  <div class="section-page">(Audioscript s. 134–135)</div>
+
+  <div class="q-block">
+    <div class="q-num">6.13 – David Taylor Bews (key monologue)</div>
+    <div class="audio-box">
+      <p style="font-size:14px;">
+        <span class="tl"><span class="tl-text">I come from Newcastle in England, but I live in Perth, Australia, now. I've been here nearly ten years. My wife, Jodie, is Australian, and our children, Russell and Alice, were born here. Alice is named after her great-grandmother – that's my grandmother – Alice Bews. She's 89 now and still lives in Newcastle, and she's in great shape for her age.</span><button class="tr-btn" onclick="showTip(this,'İngiltere\'nin Newcastle şehrindenim ama şu an Avustralya\'nın Perth şehrinde yaşıyorum. Buraya geleli yaklaşık on yıl oldu. Eşim Jodie Avustralyalı; çocuklarımız Russell ve Alice burada doğdu. Alice, büyükannesinin adını taşıyor — o benim anneannnem — Alice Bews. Şimdi 89 yaşında, Newcastle\'da yaşıyor ve yaşına göre çok iyi durumda.')">?</button></span>
+      </p>
+      <p style="font-size:14px;margin-top:8px;">
+        <span class="tl"><span class="tl-text">… I knew that our family's ancestors were actually Norwegian – they came over to Scotland in the 9th century … my great-grandfather was a farmer there over a hundred years ago. And, it became more and more difficult for my great-grandparents to make a living there as farmers, so they travelled south, and finally arrived in the north of England, in Newcastle, with their eight children. Alice was born not long after they arrived.</span><button class="tr-btn" onclick="showTip(this,'… Aile atalarımızın aslında Norveçli olduğunu öğrendim — 9. yüzyılda İskoçya\'ya geldiler. Büyük büyük dedem orada yüz yılı aşkın süre önce çiftçiydi. Zamanla çiftçilik yaparak geçimlerini sağlamak giderek zorlaştı, bu yüzden güneye yolculuk ettiler ve sekiz çocuklarıyla birlikte İngiltere\'nin kuzeyindeki Newcastle\'a ulaştılar. Alice onların varışından kısa süre sonra doğdu.')">?</button></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">6.14 – David talking to his grandmother Alice (Skype)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker audio-name">D:</span><span><span class="tl"><span class="tl-text">So, Grandma, your parents came from the Orkney Islands – is that right?</span><button class="tr-btn" onclick="showTip(this,'Anne-baban Orkney Adaları\'ndan geliyordu, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">A:</span><span><span class="tl"><span class="tl-text">Yes. My mother was called Jane. She grew up there, and she got married when she was only 17.</span><button class="tr-btn" onclick="showTip(this,'Evet. Annemin adı Jane\'di. Orada büyüdü ve sadece 17 yaşındayken evlendi.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">D:</span><span><span class="tl"><span class="tl-text">And you were her ninth child, weren't you?</span><button class="tr-btn" onclick="showTip(this,'Sen onun dokuzuncu çocuğuydun, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">A:</span><span><span class="tl"><span class="tl-text">Yes, and I was the only one born in England. Life was really hard for my mother – you see, my father died when I was only three. I can't really remember him at all.</span><button class="tr-btn" onclick="showTip(this,'Evet, ve İngiltere\'de doğan tek çocuktum. Annem için hayat gerçekten zordu — babam ben sadece üç yaşındayken öldü. Onu hiç hatırlamıyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">D:</span><span><span class="tl"><span class="tl-text">She worked as a cleaner, and a dressmaker.</span><button class="tr-btn" onclick="showTip(this,'Temizlikçi ve terzi olarak çalıştı.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">A:</span><span><span class="tl"><span class="tl-text">Yes. She had two jobs, and all those children! That's … but it wasn't unusual in those days. And I only had three children.</span><button class="tr-btn" onclick="showTip(this,'Evet. İki işi ve tüm o çocukları vardı! Ama bu o günlerde alışılmadık değildi. Benim yalnızca üç çocuğum oldu.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">A:</span><span><span class="tl"><span class="tl-text">Oh yes, I love it. I can talk to all my grandchildren, and I've seen all my great-grandchildren as soon as they were born. And I get emails and texts all the time – it's all really wonderful, isn't it?</span><button class="tr-btn" onclick="showTip(this,'Oh evet, çok seviyorum. Tüm torunlarımla konuşabiliyorum ve tüm torunlarımın çocuklarını doğar doğmaz gördüm. Sürekli e-posta ve mesaj alıyorum — hepsi gerçekten harika, değil mi?')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">6.17 – Replying to Tags (Exercise 4 answers)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker audio-name">1A:</span><span><span class="tl"><span class="tl-text">Dominic's party was brilliant, wasn't it?</span><button class="tr-btn" onclick="showTip(this,'Dominic\'in partisi harikaydı, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">Yes, it was. I had a great time on the dance floor!</span><button class="tr-btn" onclick="showTip(this,'Evet, öyleydi. Dans pistinde harika vakit geçirdim!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">2A:</span><span><span class="tl"><span class="tl-text">Karen knows a lot about gardens, doesn't she?</span><button class="tr-btn" onclick="showTip(this,'Karen bahçeler hakkında çok şey biliyor, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">Yes, she does. She's helped me a lot with mine.</span><button class="tr-btn" onclick="showTip(this,'Evet, biliyor. Benimkiyle çok yardımcı oldu.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">3A:</span><span><span class="tl"><span class="tl-text">You went to school with my brother, didn't you?</span><button class="tr-btn" onclick="showTip(this,'Erkek kardeşimle aynı okula gittin, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">Yes, I did. We've been good friends ever since.</span><button class="tr-btn" onclick="showTip(this,'Evet, gittim. O günden beri iyi arkadaşız.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">4A:</span><span><span class="tl"><span class="tl-text">Learning a language isn't easy, is it?</span><button class="tr-btn" onclick="showTip(this,'Dil öğrenmek kolay değil, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">No, it isn't. It takes time and lots of practice.</span><button class="tr-btn" onclick="showTip(this,'Hayır, değil. Zaman ve çok pratik gerektiriyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">5A:</span><span><span class="tl"><span class="tl-text">My English has improved a lot, hasn't it?</span><button class="tr-btn" onclick="showTip(this,'İngilizcemi çok geliştirdim, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">Yes, it has. You sound much more natural now.</span><button class="tr-btn" onclick="showTip(this,'Evet, geliştirdin. Şimdi çok daha doğal konuşuyorsun.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">6A:</span><span><span class="tl"><span class="tl-text">You won't forget to call me, will you?</span><button class="tr-btn" onclick="showTip(this,'Beni aramayı unutmayacaksın, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker audio-name">B:</span><span><span class="tl"><span class="tl-text">No, of course not. I'll call as soon as I get home.</span><button class="tr-btn" onclick="showTip(this,'Hayır, tabii ki unutmayacağım. Eve gelir gelmez arayacağım.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+
+  function showTip(btn, text) {
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 300;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) left = rect.left - pw - 8;
+    if (left < 8) left = 8;
+    if (top + 130 > window.innerHeight) top = window.innerHeight - 140;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) positionPopup(activeBtn);
+  }, { passive: true });
+</script>
+</body>
+</html>
