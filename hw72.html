@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 7: Simply the Best</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght=0,300;0,400;0,600;1,300&display=swap');
+  :root {
+    --orange:#e8581a; --orange-light:#f5956a; --orange-pale:#fff3ed;
+    --dark:#1a1208; --mid:#4a3520; --muted:#8a6d50; --line:#e8d8c8;
+    --bg:#fdfaf6; --white:#ffffff; --green:#2e7d5e; --green-light:#e8f5ef;
+    --blue:#1e5a8a; --blue-light:#e8f0f8; --red:#8a1e1e; --red-light:#fde8e8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);font-family:'Source Serif 4',Georgia,serif;color:var(--dark);font-size:15px;line-height:1.7;}
+
+  .site-header{background:var(--blue);padding:32px 40px 28px;position:sticky;top:0;z-index:100;box-shadow:0 3px 20px rgba(0,0,0,.18);}
+  .header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:20px;}
+  .header-badge{background:white;color:var(--blue);font-family:'Playfair Display',serif;font-weight:900;font-size:28px;width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .header-text h1{font-family:'Playfair Display',serif;font-weight:900;font-size:22px;color:white;line-height:1.2;}
+  .header-text p{color:rgba(255,255,255,.82);font-size:13px;font-style:italic;}
+
+  .toc{background:var(--dark);padding:0 40px;}
+  .toc-inner{max-width:900px;margin:0 auto;display:flex;gap:4px;flex-wrap:wrap;padding:8px 0;}
+  .toc a{color:rgba(255,255,255,.7);font-size:12px;text-decoration:none;padding:5px 12px;border-radius:6px;transition:all .2s;white-space:nowrap;}
+  .toc a:hover{background:var(--blue);color:white;}
+
+  .main{max-width:900px;margin:0 auto;padding:40px 24px 80px;}
+
+  .section-label{display:inline-block;background:var(--blue);color:white;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:6px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+  .section-page{color:var(--muted);font-size:13px;font-style:italic;margin-bottom:24px;}
+  .section-divider{border:none;border-top:2px solid var(--line);margin:48px 0 36px;}
+
+  .q-block{margin-bottom:28px;border-left:3px solid var(--line);padding-left:18px;}
+  .q-block:hover{border-left-color:var(--blue-light);}
+  .q-num{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+
+  .tl{display:inline;} .tl-text{display:inline;}
+  .tr-btn{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:var(--blue);color:white;border:none;border-radius:50%;font-size:10px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;line-height:1;transition:background .15s;flex-shrink:0;}
+  .tr-btn:hover{background:var(--dark);}
+
+  .tr-popup{display:none;position:fixed;z-index:9999;background:var(--dark);color:#f5e8d8;padding:12px 16px;border-radius:10px;font-size:13px;max-width:300px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.38);pointer-events:none;}
+  .tr-popup.active{display:block;}
+  .tr-popup::before{content:'🇹🇷';font-size:11px;margin-right:6px;}
+
+  .answer-card{background:white;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-top:10px;}
+  .answer-row{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #f5ede2;align-items:flex-start;}
+  .answer-row:last-child{border-bottom:none;}
+  .ans-num{color:var(--blue);font-weight:700;font-size:13px;min-width:22px;padding-top:2px;}
+  .ans-text{flex:1;font-size:14px;}
+
+  .fill-sentence{font-size:14.5px;margin-bottom:6px;line-height:1.9;}
+  .blank-ans{display:inline-block;background:var(--blue-light);border-bottom:2px solid var(--blue);color:var(--blue);font-weight:700;padding:0 8px;border-radius:4px 4px 0 0;font-size:14px;}
+
+  .grammar-box{background:#f8faff;border:2px solid var(--blue-light);border-radius:12px;padding:18px 22px;margin-top:10px;}
+  .grammar-box .gb-title{font-weight:700;color:var(--blue);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+
+  .dialogue{background:var(--blue-light);border-radius:10px;padding:16px 20px;margin-top:8px;}
+  .dlg-line{display:flex;gap:10px;margin-bottom:8px;font-size:14px;}
+  .dlg-line:last-child{margin-bottom:0;}
+  .dlg-speaker{font-weight:700;color:var(--blue);min-width:20px;flex-shrink:0;}
+
+  /* TABLES */
+  .verb-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .verb-table th{background:var(--dark);color:white;padding:8px 14px;text-align:left;font-size:12px;letter-spacing:.05em;}
+  .verb-table td{padding:8px 14px;border-bottom:1px solid var(--line);}
+  .verb-table tr:nth-child(even) td{background:#faf5ef;}
+
+  .match-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .match-table th{background:var(--mid);color:white;padding:8px 14px;font-size:12px;letter-spacing:.05em;text-align:left;}
+  .match-table td{padding:8px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .match-table tr:nth-child(even) td{background:#faf5ef;}
+
+  /* VOCAB CHIP */
+  .vocab-box{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .vocab-chip{background:var(--green-light);border:1px solid #a8d8c0;color:var(--green);font-size:13px;font-weight:600;padding:5px 12px;border-radius:20px;}
+  .vocab-chip-blue{background:var(--blue-light);border:1px solid #a0c0e8;color:var(--blue);font-size:13px;font-weight:600;padding:5px 12px;border-radius:20px;}
+
+  /* INFO NOTE */
+  .info-note{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--blue);margin-top:8px;}
+  .info-green{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--green);margin-top:8px;}
+
+  /* LISTINGS CARD */
+  .listing-card{background:white;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:13.5px;}
+  .listing-tag{display:inline-block;background:var(--blue);color:white;font-weight:700;padding:2px 8px;border-radius:4px;font-size:11px;margin-bottom:6px;}
+
+  @media(max-width:600px){.site-header{padding:20px 16px;}.main{padding:24px 14px 60px;}.section-title{font-size:20px;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">7</div>
+    <div class="header-text">
+      <h1>Simply the best</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Student's Book Answer Key</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#opener">Unit Opener</a>
+    <a href="#starter">Starter</a>
+    <a href="#grammar1">Grammar: What's it like?</a>
+    <a href="#berlin">Practice: Berlin</a>
+    <a href="#comparatives">Comparatives & Superlatives</a>
+    <a href="#shortlist">Best for the Job?</a>
+    <a href="#pictures">Favourite Pictures</a>
+    <a href="#synonyms">Synonyms & Antonyms</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing: Hometown</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<section id="opener">
+  <div class="section-label">Unit Opener</div>
+  <div class="section-title">Simply the best – Unit Opener &amp; Photo Activity</div>
+  <div class="section-page">(Ders Kitabı s. 69 / Cevap Anahtarı s. 94)</div>
+
+  <div class="q-block">
+    <div class="q-num">Unit Opener – Suggested Answers</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Peacock. It is displaying its coat to attract a mate.</span><button class="tr-btn" onclick="showTip(this,'Tavus kuşu. Eşini cezbetmek için tüylerini sergiliyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Yes, by wearing beautiful clothes and make-up.</span><button class="tr-btn" onclick="showTip(this,'Evet, güzel kıyafetler giyerek ve makyaj yaparak (insanlar da benzer şekilde davranır).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Students\' own answers.</span><button class="tr-btn" onclick="showTip(this,'Öğrencilerin kendi cevapları.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="starter">
+  <div class="section-label">Starter</div>
+  <div class="section-title">My Favourite Things</div>
+  <div class="section-page">(Ders Kitabı s. 70 / Cevap Anahtarı s. 94–95)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Mat Hennek's Favourite Things</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">A</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite music/composer: <strong>Johann Sebastian Bach</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği müzik/besteci: Johann Sebastian Bach')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">B</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite actor: <strong>Daniel Day Lewis</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği aktör: Daniel Day Lewis')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">C</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite food: <strong>Nuremberg sausages & sauerkraut</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği yemek: Nürnberg sosisleri ve lahana turşusu')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">D</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite TV programme: <strong>The Americans</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği TV programı: The Americans')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">E</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite football team: <strong>Bayern Munich</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği futbol takımı: Bayern Münih')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">F</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite book: <strong>Border Trilogy by Cormac McCarthy</strong></span><button class="tr-btn" onclick="showTip(this,'En sevdiği kitap: Cormac McCarthy\'den Sınır Üçlemesi')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">G</span><span class="ans-text"><span class="tl"><span class="tl-text">Favourite musician: <strong>Hélène Grimaud</strong> (his partner)</span><button class="tr-btn" onclick="showTip(this,'En sevdiği müzisyen: Hélène Grimaud (hayat arkadaşı)')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Adjectives used by Mat in the interview (7.1)</div>
+    <div class="answer-card">
+      <div class="vocab-box">
+        <span class="vocab-chip">talented ✓</span>
+        <span class="vocab-chip">spicy ✓</span>
+        <span class="vocab-chip">shocking ✓</span>
+        <span class="vocab-chip">amazing ✓</span>
+        <span class="vocab-chip">exciting ✓</span>
+        <span class="vocab-chip">cool ✓</span>
+        <span class="vocab-chip">delicious ✓</span>
+        <span class="vocab-chip">unique ✓</span>
+        <span class="vocab-chip">brilliant ✓</span>
+        <span class="vocab-chip">funny ✓</span>
+        <span class="vocab-chip">fantastic ✓</span>
+        <span class="vocab-chip">sad ✓</span>
+      </div>
+      <div class="info-note">Ticked adjectives above are used in Audioscript 7.1. Mat does not use "salty", "reliable", or "fascinating" in this interview.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="grammar1">
+  <div class="section-label">Grammar Spot</div>
+  <div class="section-title">What's it like? vs Do you like?</div>
+  <div class="section-page">(Ders Kitabı s. 70 / Cevap Anahtarı s. 95)</div>
+
+  <div class="q-block">
+    <div class="q-num">Grammar Spot Answers</div>
+    <div class="grammar-box">
+      <div class="gb-title">Key Distinctions</div>
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><strong>Do you like Cormac McCarthy's books?</strong> → Yes, I do. / No, I don't. <span style="color:var(--muted)">(Asks for personal liking)</span></span><button class="tr-btn" onclick="showTip(this,'Kişisel beğeniyi sorar. Cevap Evet/Hayır ile verilir.')">?</button></span><br>
+          <span class="tl"><span class="tl-text"><strong>What are his books like?</strong> → They're sad in some ways. They're full of hope. <span style="color:var(--muted)">(Asks for description - Tell me about them)</span></span><button class="tr-btn" onclick="showTip(this,'Açıklama/Tasvir ister. Örn: Kitaplar nasıldır?')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row" style="border:none;">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">In "What's it like?", **like** is a <strong>preposition</strong>, not a verb. We do not use "like" in the adjective answer. (Wrong: *It's like exciting. Correct: **It's exciting.**)</span><button class="tr-btn" onclick="showTip(this,'Buradaki -like- edattır. Cevapta tekrar kullanılmaz. Doğru kullanım: -It is exciting- şeklindedir.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="berlin">
+  <div class="section-label">Practice</div>
+  <div class="section-title">What's Berlin like? – Singular &amp; Plural Questions (7.2)</div>
+  <div class="section-page">(Ders Kitabı s. 71 / Cevap Anahtarı s. 95–96)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Complete the dialogue</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. I: <span class="blank-ans">What's Berlin like</span>?<br>M: It's a really exciting city. There's so much going on all the time. <button class="tr-btn" onclick="showTip(this,'Berlin nasıl bir yer? - Gerçekten heyecan verici bir şehir.')">?</button></div>
+      <div class="fill-sentence">2. I: <span class="blank-ans">What's the weather</span> like there?<br>M: It's OK. It gets hot in summer and very cold in winter, and we do get quite a lot of rain. <button class="tr-btn" onclick="showTip(this,'Orada hava nasıl? - İdare eder. Yazın sıcak, kışın çok soğuk olur.')">?</button></div>
+      <div class="fill-sentence">3. I: <span class="blank-ans">What are the people</span> like?<br>M: Berliners are great - they're a very interesting mix. It's a very cosmopolitan city! <button class="tr-btn" onclick="showTip(this,'İnsanlar nasıl? - Berlinliler harikadır; çok ilginç bir karışım.')">?</button></div>
+      <div class="fill-sentence">4. I: And <span class="blank-ans">what are the buildings</span> like?<br>M: Amazing! Lots of them are famous and historical, but there are some fantastic modern ones, too. <button class="tr-btn" onclick="showTip(this,'Peki binalar nasıl? - Harika! Pek çoğu ünlü ve tarihi, ama harika modern olanlar da var.')">?</button></div>
+      <div class="fill-sentence">5. I: <span class="blank-ans">What are the restaurants</span> like?<br>M: They're brilliant! You can find food from every country in the world! <button class="tr-btn" onclick="showTip(this,'Restoranlar nasıl? - Harikalar! Dünyadaki her ülkeden yemek bulabilirsiniz.')">?</button></div>
+      <div class="fill-sentence">6. I: <span class="blank-ans">What's the nightlife</span> like?<br>M: It's fantastic! There are lots of really good bars and clubs. It's the best thing about Berlin! <button class="tr-btn" onclick="showTip(this,'Gece hayatı nasıl? - Şahane! Pek çok iyi bar ve kulüp var.')">?</button></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="comparatives">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Good, better, best! – Comparatives &amp; Superlatives</div>
+  <div class="section-page">(Ders Kitabı s. 71–72 / Cevap Anahtarı s. 96–97)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Mat's City Tour Interview (7.3)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">
+        <span class="tl"><span class="tl-text">Tokyo is obviously the <strong>biggest</strong>, and the <span class="blank-ans">busiest</span>. It's much <span class="blank-ans">bigger than</span> Munich, and much <span class="blank-ans">more</span> modern.</span><button class="tr-btn" onclick="showTip(this,'Tokyo bariz bir şekilde en büyüğü ve en yoğun olanı. Münih\'ten çok daha büyük ve çok daha modern.')">?</button></span>
+      </div>
+      <div class="fill-sentence" style="margin-top:8px;">
+        <span class="tl"><span class="tl-text">And, in fact, for me, the best and <span class="blank-ans">most</span> interesting is Santa Barbara. It's much <span class="blank-ans">smaller than</span> the other two cities, and it isn't <span class="blank-ans">as</span> exciting.</span><button class="tr-btn" onclick="showTip(this,'Ve aslında benim için en iyisi ve en ilginç olanı Santa Barbara. Diğer iki şehirden çok daha küçük ve onlar kadar heyecan verici değil.')">?</button></span>
+      </div>
+      <div class="fill-sentence" style="margin-top:8px;">
+        <span class="tl"><span class="tl-text">Tokyo has the <span class="blank-ans">most delicious</span> food - simple and fresh. Is it <span class="blank-ans">better than</span> sausages and sauerkraut?</span><button class="tr-btn" onclick="showTip(this,'Tokyo en lezzetli yemeklere sahip - sade ve taze. Sosis ve lahana turşusundan daha mı iyi?')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Grammar Spot Answers – Rules Chart</div>
+    <table class="verb-table">
+      <thead>
+        <tr><th>Adjective Type</th><th>Base</th><th>Comparative</th><th>Superlative</th><th>Rule</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>One syllable</td><td>old<br>small</td><td>older<br>smaller</td><td>the oldest<br>the smallest</td><td>Add <em>-er / -est</em></td></tr>
+        <tr><td>One vowel + One cons.</td><td>big<br>wet</td><td>bi<strong>gger</strong><br>we<strong>tter</strong></td><td>the bi<strong>ggest</strong><br>the we<strong>ttest</strong></td><td>Double consonant + <em>-er / -est</em></td></tr>
+        <tr><td>Ending in <em>-y</em></td><td>busy<br>noisy</td><td>bus<strong>ier</strong><br>nois<strong>ier</strong></td><td>the bus<strong>iest</strong><br>the nois<strong>iest</strong></td><td>Change <em>-y</em> to <em>-i</em> + <em>-er / -est</em></td></tr>
+        <tr><td>Long adjectives</td><td>interesting<br>delicious</td><td>more interesting<br>more delicious</td><td>the most interesting<br>the most delicious</td><td>Use <em>more / most</em></td></tr>
+        <tr><td style="color:var(--red);font-weight:600;">Irregular</td><td style="font-weight:600;">good<br>bad</td><td style="color:var(--green);font-weight:600;">better<br>worse</td><td style="color:var(--orange);font-weight:600;">the best<br>the worst</td><td>Irregular forms</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – General Knowledge Quiz Answers (7.7)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Monaco is much <strong>smaller than</strong> Malta, but Vatican City is <strong>the smallest</strong> country.</span><button class="tr-btn" onclick="showTip(this,'Monako, Malta\'dan çok daha küçüktür, ancak Vatikan en küçük ülkedir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">The Eiffel Tower is nearly <strong>as tall as</strong> the Empire State Building, but the Burj Khalifa is <strong>the tallest</strong> by far.</span><button class="tr-btn" onclick="showTip(this,'Eyfel Kulesi neredeyse Empire State Binası kadar yüksektir, ancak Burj Khalifa açık ara en yükseğidir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">The Atlantic Ocean is <strong>bigger than</strong> the Arctic Ocean, but the Pacific Ocean is <strong>the biggest</strong>.</span><button class="tr-btn" onclick="showTip(this,'Atlantik Okyanusu, Arktik Okyanusu\'ndan daha büyüktür, ancak Pasifik Okyanusu en büyüğüdür.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">The Japanese Bullet Train isn't <strong>as fast as</strong> the Italian AGV Italo. The Shanghai Maglev is <strong>the fastest</strong> train.</span><button class="tr-btn" onclick="showTip(this,'Japon Hızlı Treni, İtalyan AGV Italo kadar hızlı değildir. Şanghay Maglev en hızlı trendir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">The lion is <strong>more dangerous than</strong> the shark. The hippopotamus is <strong>the most dangerous</strong> of all.</span><button class="tr-btn" onclick="showTip(this,'Aslan köpekbalığından daha tehlikelidir. Su aygırı ise hepsinden daha tehlikelidir.')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="shortlist">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Best for the Job? – HR Summary (7.8)</div>
+  <div class="section-page">(Ders Kitabı s. 72–73 / Cevap Anahtarı s. 98)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 6 – HR Summary Completion</div>
+    <div class="answer-card">
+      <div style="font-weight:700;color:var(--blue);margin-bottom:8px;">Age &amp; Salary</div>
+      <div class="fill-sentence">
+        Adam Bates is the <span class="blank-ans">oldest</span> (32). Jasmine Wyland is the <span class="blank-ans">youngest</span> (26). Rachel Slater is a bit <span class="blank-ans">younger than</span> Adam (30).
+      </div>
+      <div class="fill-sentence">
+        Adam earns the <span class="blank-ans">most</span>. Jasmine doesn't earn nearly <span class="blank-ans">as much as</span> Adam, and Rachel earns quite a lot <span class="blank-ans">more than</span> Jasmine.
+      </div>
+      
+      <div style="font-weight:700;color:var(--blue);margin-top:12px;margin-bottom:8px;">Experience &amp; Qualifications</div>
+      <div class="fill-sentence">
+        Adam has <span class="blank-ans">the most</span> experience, but he doesn't have much <span class="blank-ans">more than</span> Rachel. They both have a lot <span class="blank-ans">more</span> experience <span class="blank-ans">than</span> Jasmine.
+      </div>
+      <div class="fill-sentence">
+        Rachel is <span class="blank-ans">the most</span> qualified. She isn't much <span class="blank-ans">more</span> qualified than Adam, but she's <span class="blank-ans">a lot more</span> qualified than Jasmine.
+      </div>
+
+      <div style="font-weight:700;color:var(--blue);margin-top:12px;margin-bottom:8px;">Happy to Travel</div>
+      <div class="fill-sentence">
+        Adam is <span class="blank-ans">happiest</span> to travel, and Rachel is a lot <span class="blank-ans">happier</span> to travel than Jasmine.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="pictures">
+  <div class="section-label">Reading</div>
+  <div class="section-title">Favourite Pictures – Descriptive Language</div>
+  <div class="section-page">(Ders Kitabı s. 74–75 / Cevap Anahtarı s. 100–101)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 &amp; 3 – Summary of the Pictures</div>
+    
+    <div style="font-weight:700;color:var(--mid);margin-bottom:6px;">A. Tiger in a Tropical Storm (Henri Rousseau)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text">
+        <span class="tl"><span class="tl-text">Lucy bought it from the National Gallery in London. It is in her bedroom opposite her bed. She adores the rich colors and straight/curved shapes of plants. The tiger looks absolutely terrified, which helps her feel better when she is scared of life.</span><button class="tr-btn" onclick="showTip(this,'Lucy bunu Londra\'daki National Gallery\'den satın aldı. Yatak odasında, yatağının karşısındaki duvarda asılı. Zengin renklere ve bitkilerin harika şekillerine bayılıyor. Kaplan dehşet içinde görünüyor, bu da hayattan korktuğunda ona yalnız olmadığını hissettirip iyi geliyor.')">?</button></span>
+      </span></div>
+    </div>
+
+    <div style="font-weight:700;color:var(--mid);margin-top:12px;margin-bottom:6px;">B. Kliffküste (Mat Hennek)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text">
+        <span class="tl"><span class="tl-text">Greg bought it in an art gallery in Berlin. It hangs above the fireplace in his living room. It's a photograph of a wood but looks like a painting. The light coming from the left is bright and beautiful, while the dark right side is scary like fairy tales.</span><button class="tr-btn" onclick="showTip(this,'Greg bunu Berlin\'deki bir sanat galerisinden aldı. Salonunda şöminenin üzerinde asılı duruyor. Bir orman fotoğrafı ama tablo gibi duruyor. Soldan gelen ışık aydınlık ve güzelken, sağdaki karanlık kısım peri masalları gibi korkutucu.')">?</button></span>
+      </span></div>
+    </div>
+
+    <div style="font-weight:700;color:var(--mid);margin-top:12px;margin-bottom:6px;">C. Girls under Trees (August Macke)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">✓</span><span class="ans-text">
+        <span class="tl"><span class="tl-text">Sandra got it as a present from a friend. It's in her kitchen and as a screensaver on her PC. She enjoys the bright mix of colors and the happy outside scene. She feels sad because the painter died tragically in WWI at age 27, shortly after painting this.</span><button class="tr-btn" onclick="showTip(this,'Sandra\'ya bir arkadaşı hediye etmiş. Mutfağında ve bilgisayarında ekran koruyucu olarak duruyor. Canlı renk karışımını ve dışarıdaki mutlu ortamı seviyor. Ressamın bu tabloyu yaptıktan kısa süre sonra, I. Dünya Savaşı\'nda 27 yaşında trajik bir şekilde ölmesi onu üzüyor.')">?</button></span>
+      </span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="synonyms">
+  <div class="section-label">Vocabulary</div>
+  <div class="section-title">Synonyms and Antonyms</div>
+  <div class="section-page">(Ders Kitabı s. 76 / Cevap Anahtarı s. 101–102)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete conversations with Synonyms (7.12)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. A: I'm scared of spiders.<br>B: Well, a lot of people are <span class="blank-ans">frightened</span> of big ones! <button class="tr-btn" onclick="showTip(this,'scared = frightened (korkmuş/ürkmüş)')">?</button></div>
+      <div class="fill-sentence">2. A: Let's check the answer key to see if it's right.<br>B: Yes, it's <span class="blank-ans">correct</span>! <button class="tr-btn" onclick="showTip(this,'right = correct (doğru)')">?</button></div>
+      <div class="fill-sentence">3. A: It's strange that Dave left without saying goodbye.<br>B: Yes, that is <span class="blank-ans">unusual</span>. <button class="tr-btn" onclick="showTip(this,'strange = unusual (garip/olağandışı)')">?</button></div>
+      <div class="fill-sentence">4. A: I think I'll find it hard to drive on the left when I'm in the UK!<br>B: It'll be <span class="blank-ans">difficult</span> at first, but you'll be fine. <button class="tr-btn" onclick="showTip(this,'hard = difficult (zor)')">?</button></div>
+      <div class="fill-sentence">5. A: Are you happy with your new phone?<br>B: Yes, I'm very <span class="blank-ans">pleased</span> with it. <button class="tr-btn" onclick="showTip(this,'happy = pleased (memnun/mutlu)')">?</button></div>
+      <div class="fill-sentence">6. A: Tommy's a clever boy, isn't he?<br>B: Yes, he's very <span class="blank-ans">intelligent</span> for a ten-year-old. <button class="tr-btn" onclick="showTip(this,'clever = intelligent (zeki)')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 8 – Agreeing using "not very + Antonym" (7.13)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. A: This film is so boring!<br>B: Mmm, it isn't very <span class="blank-ans">interesting</span>, is it? <button class="tr-btn" onclick="showTip(this,'boring != interesting (Sıkıcı → Pek ilginç değil, değil mi?)')">?</button></div>
+      <div class="fill-sentence">2. A: It's so noisy in this restaurant!<br>B: Yes, it isn't very <span class="blank-ans">quiet</span>, is it? <button class="tr-btn" onclick="showTip(this,'noisy != quiet (Gürültülü → Pek sakin/sessiz değil, değil mi?)')">?</button></div>
+      <div class="fill-sentence">3. A: That man was really rude!<br>B: Yes, he wasn't very <span class="blank-ans">polite</span>, was he? <button class="tr-btn" onclick="showTip(this,'rude != polite (Kaba → Pek kibar değildi, değil mi?)')">?</button></div>
+      <div class="fill-sentence">4. A: That was so stupid of you!<br>B: Yes, it wasn't very <span class="blank-ans">clever</span> of me, was it? <button class="tr-btn" onclick="showTip(this,'stupid != clever (Aptalca → Pek akıllıca değildi, değil mi?)')">?</button></div>
+      <div class="fill-sentence">5. A: These plates are dirty.<br>B: Mmm, they're not very <span class="blank-ans">clean</span>, are they? <button class="tr-btn" onclick="showTip(this,'dirty != clean (Kirli → Pek temiz değiller, değil mi?)')">?</button></div>
+      <div class="fill-sentence">6. A: Pat always seems so miserable.<br>B: Yes, she never seems very <span class="blank-ans">happy</span>, does she? <button class="tr-btn" onclick="showTip(this,'miserable != happy (Perişan/Mutsuz → Pek mutlu görünmüyor, değil mi?)')">?</button></div>
+      <div class="fill-sentence">7. A: This computer is so slow!<br>B: Mmm, it's not very <span class="blank-ans">fast</span>, is it? <button class="tr-btn" onclick="showTip(this,'slow != fast/quick (Yavaş → Pek hızlı değil, değil mi?)')">?</button></div>
+      <div class="fill-sentence">8. A: It's really cold in here!<br>B: Yes, it's not very <span class="blank-ans">warm</span>, is it? <button class="tr-btn" onclick="showTip(this,'cold != warm/hot (Soğuk → Pek sıcak değil, değil mi?)')">?</button></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">What's on? – Entertainment in London (7.14)</div>
+  <div class="section-page">(Ders Kitabı s. 77 / Cevap Anahtarı s. 103)</div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Reading Listings Answers</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Who can go into Tate Modern without paying? → <strong>Members and under 12s.</strong></span><button class="tr-btn" onclick="showTip(this,'Tate Modern\'e kim ödeme yapmadan girebilir? → Üyeler ve 12 yaş altı çocuklar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">How much does it cost a 14-year-old to go to the British Museum exhibition? → <strong>It's free (Under 16s are FREE).</strong></span><button class="tr-btn" onclick="showTip(this,'14 yaşındaki bir çocuk için British Museum sergisine girmek ne kadar? → Ücretsiz (16 yaş altı ücretsizdir).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Which days is School of Rock not on? → <strong>Sunday and Tuesday.</strong></span><button class="tr-btn" onclick="showTip(this,'School of Rock müzikali hangi günler sahnelenmiyor? → Pazar ve Salı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">How many nights is the concert on at the Royal Albert Hall? → <strong>Only one night (Saturday 9th).</strong></span><button class="tr-btn" onclick="showTip(this,'Royal Albert Hall\'daki konser kaç gece sürüyor? → Sadece bir gece (Cumartesi 9).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">How do people hear the music at the Silent Disco? → <strong>They wear special headphones.</strong></span><button class="tr-btn" onclick="showTip(this,'Sessiz Disko\'da insanlar müziği nasıl duyuyor? → Özel kulaklıklar takarak.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">Which film is suitable for young children? → <strong>Mary Poppins Returns (rated U - Universal).</strong></span><button class="tr-btn" onclick="showTip(this,'Hangi film küçük çocuklar için uygundur? → Mary Poppins Dönüyor (U sertifikalı - Genel İzleyici).')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Conversation Completion (7.14)</div>
+    <div class="dialogue">
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>What shall we do today?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>I'm not sure. Let's have a look. How about <span class="blank-ans">going to the cinema</span>?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>Er, no, I don't <span class="blank-ans">feel like</span> seeing a <span class="blank-ans">film</span>.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>OK... What about an exhibition?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>Maybe. <span class="blank-ans">What's on</span>?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>There's Modigliani at the Tate Modern.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>Mmm... not my <span class="blank-ans">kind of thing</span>. What else?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>There's an exhibition called 'Living with gods' about beliefs in different cultures.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>That sounds interesting! <span class="blank-ans">Where's it on</span>?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>The British Museum.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A:</span><span>Oh good, the British Museum's free.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B:</span><span>Yeah, but this is a special exhibition, and it's <span class="blank-ans">£15</span>.</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Describing my hometown – Relative Pronouns</div>
+  <div class="section-page">(Ders Kitabı s. 78 / Cevap Anahtarı s. 104–105)</div>
+
+  <div class="q-block">
+    <div class="q-num">Grammar Spot – Relative Pronouns</div>
+    <div class="grammar-box">
+      <div class="gb-title">Relative Pronouns Rules</div>
+      <div class="answer-row" style="border:none;">
+        <span class="ans-text">
+          <div><span class="tl"><span class="tl-text">• <strong>who</strong> is for people. <span style="color:var(--muted)">(e.g., I met a man who was from my hometown.)</span></span><button class="tr-btn" onclick="showTip(this,'who: İnsanlar için kullanılır.')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">• <strong>where</strong> is for places. <span style="color:var(--muted)">(e.g., The hotel where we stayed was wonderful.)</span></span><button class="tr-btn" onclick="showTip(this,'where: Mekanlar/yerler için kullanılır.')">?</button></span></div>
+          <div><span class="tl"><span class="tl-text">• <strong>which</strong> or <strong>that</strong> is for things/animals. <span style="color:var(--muted)">(e.g., We bought a house which cost £300,000.)</span></span><button class="tr-btn" onclick="showTip(this,'which/that: Nesneler veya hayvanlar için kullanılır.')">?</button></span></div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Join the sentences</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1. That's the man <span class="blank-ans">who</span> helped me start my car. <button class="tr-btn" onclick="showTip(this,'Arabamı çalıştırmama yardım eden adam buydu.')">?</button></div>
+      <div class="fill-sentence">2. That's the restaurant <span class="blank-ans">where</span> we had dinner last night. <button class="tr-btn" onclick="showTip(this,'Dün gece akşam yemeği yediğimiz restoran burasıydı.')">?</button></div>
+      <div class="fill-sentence">3. These are the children <span class="blank-ans">who</span> need a lift home. <button class="tr-btn" onclick="showTip(this,'Eve bırakılmaya ihtiyacı olan çocuklar bunlar.')">?</button></div>
+      <div class="fill-sentence">4. We found a wallet <span class="blank-ans">that / which</span> had a lot of money in it. <button class="tr-btn" onclick="showTip(this,'İçinde çok para olan bir cüzdan bulduk.')">?</button></div>
+      <div class="fill-sentence">5. This is the parcel <span class="blank-ans">which / that</span> arrived this morning. <button class="tr-btn" onclick="showTip(this,'Bu sabah gelen paket buydu.')">?</button></div>
+      <div class="fill-sentence">6. That's the hospital <span class="blank-ans">where</span> I was born. <button class="tr-btn" onclick="showTip(this,'Benim doğduğum hastane burası.')">?</button></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Pittsburgh Text Completion</div>
+    <div class="answer-card">
+      <p style="font-size:14px;line-height:1.8;">
+        I was born in Pittsburgh, the second largest city in Pennsylvania, USA... The city is named after William Pitt, <span class="blank-ans">who</span> (1) was the Prime Minister of Britain in the 1700s. Pittsburgh lies on the banks of three rivers, <span class="blank-ans">which / that</span> (2) are crossed by over 400 bridges... Fifty years ago, Pittsburgh was a busy industrial town. It had many factories, <span class="blank-ans">which / that</span> (3) produced iron and steel. However, in the 1970s and 80s the steel mills closed... The streets <span class="blank-ans">where</span> (4) people once hurried to work became empty and dangerous. Today, a lot of these streets are full of life again... All around Pittsburgh, there are hills from <span class="blank-ans">which</span> (5) you can enjoy great views of the city, views <span class="blank-ans">which / that</span> (6) many artists have painted. One local artist is Linda Barnicott, <span class="blank-ans">who</span> (7) painted 'My Home Town'... Pittsburgh is also home to the Andy Warhol Museum, <span class="blank-ans">where</span> (8) you can find a huge collection... Pittsburgh is full of people <span class="blank-ans">who</span> (9) have lived through good times and bad...
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+
+  function showTip(btn, text) {
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 300;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) left = rect.left - pw - 8;
+    if (left < 8) left = 8;
+    if (top + 130 > window.innerHeight) top = window.innerHeight - 140;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) positionPopup(activeBtn);
+  }, { passive: true });
+</script>
+</body>
+</html>
