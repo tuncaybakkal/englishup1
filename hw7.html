@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7 – Simply the Best | Cevap Anahtarı</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8500A;
+    --orange-light: #FF6B2B;
+    --dark: #1a1208;
+    --cream: #FDF6EC;
+    --warm-gray: #6B5C4A;
+    --card-bg: #FFFFFF;
+    --border: #E8D9C5;
+    --green: #2D6A4F;
+    --blue: #1B4F8A;
+    --answer-bg: #F0F8F4;
+    --answer-border: #2D6A4F;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--orange);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '7';
+    position: absolute;
+    right: -0.5rem;
+    top: -1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  header .subtitle {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 400;
+  }
+  header .subtitle span {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 0.2rem 0.75rem;
+    margin-right: 0.4rem;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  /* NAV PILLS */
+  .nav-bar {
+    background: var(--dark);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    color: rgba(255,255,255,0.55);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-pill:hover, .nav-pill.active {
+    color: #fff;
+    border-bottom-color: var(--orange);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* SECTION BLOCK */
+  .section-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-tag {
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+  .section-tag.vocab { background: var(--green); }
+  .section-tag.writing { background: var(--blue); }
+  .section-tag.everyday { background: #7B3F00; }
+  .section-tag.listening { background: #5C2D8A; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .section-title-tr {
+    font-size: 0.82rem;
+    color: var(--warm-gray);
+    font-style: italic;
+    margin-left: 0.2rem;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 0.9rem;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .q-card:hover { box-shadow: 0 4px 16px rgba(232,80,10,0.1); }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1rem 1.15rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-num {
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .q-texts { flex: 1; }
+  .q-en {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.45;
+  }
+  .q-tr {
+    font-size: 0.79rem;
+    color: var(--warm-gray);
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+  .q-toggle {
+    font-size: 1.1rem;
+    color: var(--orange);
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    margin-top: 2px;
+    font-weight: 300;
+  }
+  .q-card.open .q-toggle { transform: rotate(45deg); }
+
+  /* ANSWER */
+  .q-answer {
+    display: none;
+    padding: 0 1.15rem 1rem 3.1rem;
+    animation: fadeIn 0.2s ease;
+  }
+  .q-card.open .q-answer { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .answer-box {
+    background: var(--answer-bg);
+    border-left: 3px solid var(--answer-border);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+  }
+  .answer-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.4rem;
+  }
+  .answer-en {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.5;
+  }
+  .answer-tr {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    margin-top: 0.3rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* LIST ANSWERS */
+  .ans-list {
+    list-style: none;
+    padding: 0;
+  }
+  .ans-list li {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.86rem;
+    line-height: 1.4;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .ans-list li:last-child { border-bottom: none; }
+  .ans-list li .num {
+    color: var(--orange);
+    font-weight: 700;
+    min-width: 18px;
+    font-size: 0.8rem;
+  }
+  .ans-list li .val { color: var(--dark); font-weight: 500; }
+  .ans-list li .val-tr { color: var(--warm-gray); font-style: italic; font-size: 0.78rem; }
+
+  /* TABLE */
+  .ans-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-top: 0.25rem;
+  }
+  .ans-table th {
+    background: rgba(45,106,79,0.12);
+    color: var(--green);
+    font-weight: 700;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .ans-table td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .ans-table td:first-child { font-weight: 600; color: var(--dark); }
+
+  /* GRAMMAR BOX */
+  .grammar-note {
+    background: #EEF4FF;
+    border: 1px solid #B8D0F7;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--blue);
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+  }
+  .grammar-note strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+
+  /* HIGHLIGHT */
+  .hl { color: var(--orange); font-weight: 700; }
+  .hl-g { color: var(--green); font-weight: 700; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Simply the Best</h1>
+  <div class="subtitle">
+    <span>Grammar</span>
+    <span>Vocabulary</span>
+    <span>Everyday English</span>
+    <span>Writing</span>
+    <span>Listening</span>
+  </div>
+</header>
+
+<nav class="nav-bar">
+  <a class="nav-pill active" href="#grammar">Grammar</a>
+  <a class="nav-pill" href="#comparatives">Comparatives</a>
+  <a class="nav-pill" href="#vocab">Vocabulary</a>
+  <a class="nav-pill" href="#everyday">Everyday English</a>
+  <a class="nav-pill" href="#writing">Writing</a>
+  <a class="nav-pill" href="#listening">Listening</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════ GRAMMAR: WHAT'S IT LIKE -->
+<section id="grammar" class="section-block">
+  <div class="section-header">
+    <span class="section-tag">Grammar</span>
+    <div>
+      <div class="section-title">What's it like? <span class="section-title-tr">— Nasıl biri / nasıl bir şey?</span></div>
+    </div>
+  </div>
+
+  <div class="grammar-note">
+    <strong>📌 Kural</strong>
+    <b>What's … like?</b> → bir şeyi <em>tarif etmek</em> için kullanılır. Burada <em>like</em> edat (preposition) işlevi görür, fiil değil.<br>
+    <b>Do you like … ?</b> → <em>sevip sevmediğinizi</em> sormak için kullanılır.<br><br>
+    ✦ <em>What are his books like?</em> → <span class="hl-g">They're sad in some ways. / They're full of hope.</span><br>
+    ✦ <em>Do you like his books?</em> → <span class="hl-g">Yes, I do. / No, I don't.</span>
+  </div>
+
+  <!-- Exercise 2 – adjectives Mat uses -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-texts">
+        <div class="q-en">Which adjectives does Mat use to describe his favourite things?</div>
+        <div class="q-tr">Mat, sevdiği şeyleri hangi sıfatlarla tarif ediyor?</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <div class="answer-en">talented, spicy, shocking, amazing, exciting, cool, delicious, unique, brilliant, funny, fantastic, sad</div>
+        <div class="answer-tr">yetenekli, baharatlı, şoke edici, harika, heyecan verici, havalı, lezzetli, eşsiz, muhteşem, komik, fantastik, hüzünlü</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 – adjective matching -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-texts">
+        <div class="q-en">Match adjectives to Mat's favourite things.</div>
+        <div class="q-tr">Sıfatları Mat'in sevdikleriyle eşleştirin.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">A</span><div><span class="val">Bach</span> → <span class="hl">unique</span> <span class="val-tr">— eşsiz</span></div></li>
+          <li><span class="num">B</span><div><span class="val">Daniel Day Lewis</span> → <span class="hl">talented, brilliant</span> <span class="val-tr">— yetenekli, muhteşem</span></div></li>
+          <li><span class="num">C</span><div><span class="val">Nuremberg sausages</span> → <span class="hl">spicy, delicious</span> <span class="val-tr">— baharatlı, lezzetli</span></div></li>
+          <li><span class="num">D</span><div><span class="val">The Americans (TV)</span> → <span class="hl">shocking, funny, fantastic</span> <span class="val-tr">— şoke edici, komik, fantastik</span></div></li>
+          <li><span class="num">E</span><div><span class="val">Bayern Munich</span> → <span class="hl">exciting</span> <span class="val-tr">— heyecan verici</span></div></li>
+          <li><span class="num">F</span><div><span class="val">Cormac McCarthy's books</span> → <span class="hl">sad</span> <span class="val-tr">— hüzünlü</span></div></li>
+          <li><span class="num">G</span><div><span class="val">Hélène Grimaud</span> → <span class="hl">cool</span> <span class="val-tr">— havalı</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PRACTICE: WHAT'S BERLIN LIKE -->
+<section id="berlin" class="section-block">
+  <div class="section-header">
+    <span class="section-tag">Practice</span>
+    <div>
+      <div class="section-title">What's Berlin like? <span class="section-title-tr">— Berlin nasıl bir şehir?</span></div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-texts">
+        <div class="q-en">Complete the questions with <em>is</em> or <em>are</em> and the correct words.</div>
+        <div class="q-tr">Soruları <em>is</em> veya <em>are</em> ile ve doğru kelimelerle tamamlayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val">What <span class="hl">is Berlin</span> like?</span></div></li>
+          <li><span class="num">2</span><div><span class="val">What <span class="hl">is the weather</span> like there?</span></div></li>
+          <li><span class="num">3</span><div><span class="val">What <span class="hl">are the people</span> like?</span></div></li>
+          <li><span class="num">4</span><div><span class="val">And what <span class="hl">are the buildings</span> like?</span></div></li>
+          <li><span class="num">5</span><div><span class="val">What <span class="hl">are the restaurants</span> like?</span></div></li>
+          <li><span class="num">6</span><div><span class="val">What <span class="hl">is the nightlife</span> like?</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ COMPARATIVES -->
+<section id="comparatives" class="section-block">
+  <div class="section-header">
+    <span class="section-tag">Grammar</span>
+    <div>
+      <div class="section-title">Good, better, best! <span class="section-title-tr">— Karşılaştırmalı ve Üstünlük Dereceleri</span></div>
+    </div>
+  </div>
+
+  <div class="grammar-note">
+    <strong>📌 Kurallar / Rules</strong>
+    • Tek heceli sıfatlar: <b>old → older → oldest</b><br>
+    • Tek sesli + tek ünsüzle bitenler: <b>big → bigger → biggest</b><br>
+    • -y ile bitenler: <b>busy → busier → busiest</b><br>
+    • 3+ heceli: <b>interesting → more interesting → most interesting</b><br>
+    • Düzensiz: <b>good → better → best &nbsp;|&nbsp; bad → worse → worst</b><br>
+    • Eşitlik: <b>as … as</b> &nbsp;→&nbsp; Tokyo isn't as big <em>as</em> Munich.
+  </div>
+
+  <!-- Grammar Spot 1: forms -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">●</div>
+      <div class="q-texts">
+        <div class="q-en">Grammar Spot 1 — Comparative &amp; Superlative forms</div>
+        <div class="q-tr">Karşılaştırmalı ve üstünlük dereceleri formu</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <table class="ans-table">
+          <tr><th>Adjective</th><th>Comparative</th><th>Superlative</th></tr>
+          <tr><td>old</td><td>older</td><td>the oldest</td></tr>
+          <tr><td>big</td><td>bigger</td><td>the biggest</td></tr>
+          <tr><td>busy</td><td>busier</td><td>the busiest</td></tr>
+          <tr><td>interesting</td><td>more interesting</td><td>the most interesting</td></tr>
+          <tr><td>small</td><td>smaller</td><td>the smallest</td></tr>
+          <tr><td>wet</td><td>wetter</td><td>the wettest</td></tr>
+          <tr><td>noisy</td><td>noisier</td><td>the noisiest</td></tr>
+          <tr><td>delicious</td><td>more delicious</td><td>the most delicious</td></tr>
+          <tr><td>good</td><td>better</td><td>the best</td></tr>
+          <tr><td>bad</td><td>worse</td><td>the worst</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grammar Spot 3: as…as -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">●</div>
+      <div class="q-texts">
+        <div class="q-en">Grammar Spot 3 — Which is the smallest city? (as … as)</div>
+        <div class="q-tr">En küçük şehir hangisi? (as … as yapısı)</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <div class="answer-en"><span class="hl">Munich</span> is the smallest.</div>
+        <div class="answer-tr">Munich en küçük şehirdir.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Good, better, best: Mat's favourite city -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-texts">
+        <div class="q-en">Complete the sentences about Tokyo, Munich and Santa Barbara. Which is Mat's favourite city?</div>
+        <div class="q-tr">Tokyo, Münih ve Santa Barbara hakkındaki cümleleri tamamlayın. Mat'in favori şehri hangisi?</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val"><span class="hl">like</span></span></div></li>
+          <li><span class="num">2</span><div><span class="val"><span class="hl">busiest</span></span></div></li>
+          <li><span class="num">3</span><div><span class="val"><span class="hl">much</span></span></div></li>
+          <li><span class="num">4</span><div><span class="val"><span class="hl">than</span></span></div></li>
+          <li><span class="num">5</span><div><span class="val"><span class="hl">more</span></span></div></li>
+          <li><span class="num">6</span><div><span class="val"><span class="hl">most</span></span></div></li>
+          <li><span class="num">7</span><div><span class="val"><span class="hl">than</span></span></div></li>
+          <li><span class="num">8</span><div><span class="val"><span class="hl">as</span></span></div></li>
+          <li><span class="num">9</span><div><span class="val"><span class="hl">best</span></span></div></li>
+          <li><span class="num">10</span><div><span class="val"><span class="hl">most</span></span></div></li>
+          <li><span class="num">11</span><div><span class="val"><span class="hl">than</span></span></div></li>
+        </ul>
+        <div class="answer-en" style="margin-top:0.5rem">Mat's favourite city: <span class="hl">Santa Barbara</span></div>
+        <div class="answer-tr">Mat'in favori şehri: Santa Barbara — çünkü güzel, sakin ve çok yeşil.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- General knowledge quiz -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-texts">
+        <div class="q-en">General Knowledge Quiz — Compare the items using comparative &amp; superlative forms.</div>
+        <div class="q-tr">Genel Bilgi Testi — Öğeleri karşılaştırmalı ve üstünlük derecesiyle karşılaştırın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val">Monaco is <span class="hl">much smaller than</span> Malta, but Vatican City is <span class="hl">the smallest</span> country.</span><span class="val-tr"> — Vatikan en küçük ülke; yarım km²'den az.</span></div></li>
+          <li><span class="num">2</span><div><span class="val">The Eiffel Tower is <span class="hl">nearly as tall as</span> the Empire State Building, but Burj Khalifa is <span class="hl">the tallest</span> (828 m).</span><span class="val-tr"> — Burj Khalifa en uzun yapı.</span></div></li>
+          <li><span class="num">3</span><div><span class="val">The Atlantic Ocean is <span class="hl">bigger than</span> the Arctic, but the Pacific is <span class="hl">the biggest</span> — twice as big as the Atlantic.</span><span class="val-tr"> — Pasifik en büyük okyanus.</span></div></li>
+          <li><span class="num">4</span><div><span class="val">The Japanese Bullet Train <span class="hl">isn't as fast as</span> the Italian AGV Italo. The Shanghai Maglev is <span class="hl">the fastest</span> (431 kph).</span><span class="val-tr"> — Shanghai Maglev en hızlı tren.</span></div></li>
+          <li><span class="num">5</span><div><span class="val">The lion is <span class="hl">more dangerous than</span> the shark. The hippopotamus is <span class="hl">the most dangerous</span> (~500 people/year).</span><span class="val-tr"> — Suaygırı en tehlikeli hayvan.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview Summary -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-texts">
+        <div class="q-en">Best for the job? — Complete the HR interview summary.</div>
+        <div class="q-tr">İş için en iyi aday? — İK görüşme özetini tamamlayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <table class="ans-table">
+          <tr><th>Konu</th><th>Cevap</th></tr>
+          <tr><td>Age (Yaş) 1</td><td><span class="hl">oldest</span> (en yaşlı)</td></tr>
+          <tr><td>Age 2</td><td><span class="hl">youngest</span> (en genç)</td></tr>
+          <tr><td>Age 3</td><td><span class="hl">younger than</span> (daha genç)</td></tr>
+          <tr><td>Salary 4</td><td><span class="hl">most</span></td></tr>
+          <tr><td>Salary 5</td><td><span class="hl">highest</span></td></tr>
+          <tr><td>Salary 6–7</td><td><span class="hl">as much as</span> / <span class="hl">more than</span></td></tr>
+          <tr><td>Experience 8–9</td><td><span class="hl">the most</span> / <span class="hl">more than</span></td></tr>
+          <tr><td>Experience 10–11</td><td><span class="hl">more</span> / <span class="hl">than</span></td></tr>
+          <tr><td>Qualifications 12</td><td><span class="hl">the most qualified</span></td></tr>
+          <tr><td>Qualifications 13–14</td><td><span class="hl">more</span> / <span class="hl">a lot more … than</span></td></tr>
+          <tr><td>Travel 15–16</td><td><span class="hl">happiest to travel</span> / <span class="hl">a lot happier</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ VOCABULARY -->
+<section id="vocab" class="section-block">
+  <div class="section-header">
+    <span class="section-tag vocab">Vocabulary</span>
+    <div>
+      <div class="section-title">Synonyms &amp; Antonyms <span class="section-title-tr">— Eş Anlamlılar ve Zıt Anlamlılar</span></div>
+    </div>
+  </div>
+
+  <!-- Ex 1: synonyms/antonyms -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-texts">
+        <div class="q-en">Which are synonyms? Which are antonyms? (beautiful, lovely, light, bright, dark)</div>
+        <div class="q-tr">Hangileri eş anlamlı, hangileri zıt anlamlı?</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <div class="answer-en"><span class="hl-g">Synonyms:</span> <em>beautiful / lovely</em> &nbsp;|&nbsp; <em>bright / light</em></div>
+        <div class="answer-tr">Eş anlamlılar: güzel/güzel; parlak/açık</div>
+        <div class="answer-en" style="margin-top:0.4rem"><span class="hl">Antonyms:</span> <em>dark / light</em> &nbsp;|&nbsp; <em>dark / bright</em></div>
+        <div class="answer-tr">Zıt anlamlılar: karanlık/açık; karanlık/parlak</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3: Synonyms fill-in -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-texts">
+        <div class="q-en">Complete conversations with the synonyms: <em>difficult, frightened, intelligent, unusual, correct, pleased</em></div>
+        <div class="q-tr">Eş anlamlılarla konuşmaları tamamlayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val"><span class="hl">frightened</span></span><span class="val-tr"> — korkmuş (= scared)</span></div></li>
+          <li><span class="num">2</span><div><span class="val"><span class="hl">correct</span></span><span class="val-tr"> — doğru (= right)</span></div></li>
+          <li><span class="num">3</span><div><span class="val"><span class="hl">unusual</span></span><span class="val-tr"> — alışılmadık (= strange)</span></div></li>
+          <li><span class="num">4</span><div><span class="val"><span class="hl">difficult</span></span><span class="val-tr"> — zor (= hard)</span></div></li>
+          <li><span class="num">5</span><div><span class="val"><span class="hl">pleased</span></span><span class="val-tr"> — memnun (= happy)</span></div></li>
+          <li><span class="num">6</span><div><span class="val"><span class="hl">intelligent</span></span><span class="val-tr"> — zeki (= clever)</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 7: Antonyms -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-texts">
+        <div class="q-en">Think of an opposite (antonym) for each adjective.</div>
+        <div class="q-tr">Her sıfat için zıt anlam bulun.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <table class="ans-table">
+          <tr><th>Adjective</th><th>Antonym</th><th>Türkçe</th></tr>
+          <tr><td>boring</td><td>interesting</td><td>sıkıcı → ilginç</td></tr>
+          <tr><td>noisy</td><td>quiet</td><td>gürültülü → sessiz</td></tr>
+          <tr><td>rude</td><td>polite</td><td>kaba → kibar</td></tr>
+          <tr><td>stupid</td><td>clever / intelligent</td><td>aptal → akıllı</td></tr>
+          <tr><td>dirty</td><td>clean</td><td>kirli → temiz</td></tr>
+          <tr><td>miserable</td><td>happy / cheerful</td><td>mutsuz → mutlu</td></tr>
+          <tr><td>slow</td><td>quick / fast</td><td>yavaş → hızlı</td></tr>
+          <tr><td>cold</td><td>hot / warm</td><td>soğuk → sıcak</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vocabulary exercise from Reading (Ex 5, p74) -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-texts">
+        <div class="q-en">Reading Vocabulary — Write the highlighted words next to words with a similar meaning.</div>
+        <div class="q-tr">Okuma - Vurgulanan kelimeleri benzer anlamlı kelimelerle eşleştirin.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">–</span><div><span class="val">like (v) = <span class="hl">adore, enjoy, love</span></span><span class="val-tr"> — sevmek</span></div></li>
+          <li><span class="num">–</span><div><span class="val">light (adj) = <span class="hl">bright</span></span><span class="val-tr"> — parlak/açık</span></div></li>
+          <li><span class="num">–</span><div><span class="val">difficult (adj) = <span class="hl">hard</span></span><span class="val-tr"> — zor</span></div></li>
+          <li><span class="num">–</span><div><span class="val">wonderful (adj) = <span class="hl">lovely, great, amazing, beautiful</span></span><span class="val-tr"> — harika</span></div></li>
+          <li><span class="num">–</span><div><span class="val">afraid (adj) = <span class="hl">terrified, scared, frightened</span></span><span class="val-tr"> — korkmuş</span></div></li>
+          <li><span class="num">–</span><div><span class="val">see (v) = <span class="hl">notice</span></span><span class="val-tr"> — fark etmek</span></div></li>
+          <li><span class="num">–</span><div><span class="val">terrible (adj) = <span class="hl">awful</span></span><span class="val-tr"> — berbat</span></div></li>
+          <li><span class="num">–</span><div><span class="val">interesting (adj) = <span class="hl">fascinating</span></span><span class="val-tr"> — büyüleyici</span></div></li>
+          <li><span class="num">–</span><div><span class="val">not very clear = <span class="hl">out of focus</span></span><span class="val-tr"> — bulanık/odak dışı</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ EVERYDAY ENGLISH -->
+<section id="everyday" class="section-block">
+  <div class="section-header">
+    <span class="section-tag everyday">Everyday English</span>
+    <div>
+      <div class="section-title">What's On? <span class="section-title-tr">— Ne Var Ne Yok?</span></div>
+    </div>
+  </div>
+
+  <!-- Ex 1: listings questions -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-texts">
+        <div class="q-en">Read the London listings and answer the questions.</div>
+        <div class="q-tr">Londra etkinlik listesini okuyun ve soruları cevaplayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val">Who can go to Tate Modern free? → <span class="hl">Members and under 12s.</span></span><span class="val-tr"> — Üyeler ve 12 yaş altı ücretsiz.</span></div></li>
+          <li><span class="num">2</span><div><span class="val">How much for a 14-year-old at the British Museum? → <span class="hl">It's free.</span></span><span class="val-tr"> — Ücretsiz (genel giriş ücretsiz; özel sergi £15).</span></div></li>
+          <li><span class="num">3</span><div><span class="val">Which days is School of Rock not on? → <span class="hl">Sunday and Tuesday.</span></span><span class="val-tr"> — Pazar ve Salı günleri yok.</span></div></li>
+          <li><span class="num">4</span><div><span class="val">How many nights is the Royal Albert Hall concert? → <span class="hl">1 night (Saturday 9th only).</span></span><span class="val-tr"> — Sadece 1 gece.</span></div></li>
+          <li><span class="num">5</span><div><span class="val">How do people hear music at the Silent Disco? → <span class="hl">Headphones.</span></span><span class="val-tr"> — Kulaklıkla.</span></div></li>
+          <li><span class="num">6</span><div><span class="val">Which film is suitable for young children? → <span class="hl">Mary Poppins Returns (U).</span></span><span class="val-tr"> — Her yaşa uygun film: Mary Poppins Dönüyor.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2: conversation gap fill -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-texts">
+        <div class="q-en">Listen and complete the "What's On?" conversation (gaps 1–8).</div>
+        <div class="q-tr">Konuşmayı dinleyip boşlukları doldurun (1–8).</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val"><span class="hl">going to the cinema</span></span><span class="val-tr"> — sinemaya gitmek</span></div></li>
+          <li><span class="num">2</span><div><span class="val"><span class="hl">feel like</span></span><span class="val-tr"> — canım istemiyor (… seeing a film)</span></div></li>
+          <li><span class="num">3</span><div><span class="val"><span class="hl">What's on?</span></span><span class="val-tr"> — Ne var?</span></div></li>
+          <li><span class="num">4</span><div><span class="val"><span class="hl">kind of thing</span></span><span class="val-tr"> — not my kind of thing — benim tarzım değil</span></div></li>
+          <li><span class="num">5</span><div><span class="val"><span class="hl">Where's it on?</span></span><span class="val-tr"> — Nerede?</span></div></li>
+          <li><span class="num">6</span><div><span class="val"><span class="hl">We can get the Tube to Russell Square.</span></span><span class="val-tr"> — Metro ile Russell Square'e gidebiliriz.</span></div></li>
+          <li><span class="num">7</span><div><span class="val"><span class="hl">we could go to</span></span><span class="val-tr"> — gidebiliriz</span></div></li>
+          <li><span class="num">8</span><div><span class="val"><span class="hl">let's go!</span></span><span class="val-tr"> — Hadi gidelim!</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ LISTENING -->
+<section id="listening" class="section-block">
+  <div class="section-header">
+    <span class="section-tag listening">Listening</span>
+    <div>
+      <div class="section-title">The Best Things in Life Are Free <span class="section-title-tr">— Hayatın En Güzel Şeyleri Bedava</span></div>
+    </div>
+  </div>
+
+  <!-- Photo order -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-texts">
+        <div class="q-en">Put the photos in the order you hear them (A–F).</div>
+        <div class="q-tr">Fotoğrafları duyduğunuz sıraya göre sıralayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <div class="answer-en"><span class="hl">1 A</span> (sunset) &nbsp;→&nbsp; <span class="hl">2 B</span> (baby) &nbsp;→&nbsp; <span class="hl">3 E</span> (park) &nbsp;→&nbsp; <span class="hl">4 F</span> (girl smiling) &nbsp;→&nbsp; <span class="hl">5 D</span> (man walking) &nbsp;→&nbsp; <span class="hl">6 C</span> (dog)</div>
+        <div class="answer-tr">Sıra: Gün batımı → Bebek → Park → Gülen kız → Yürüyen adam → Köpek</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-texts">
+        <div class="q-en">Complete the chart — What do they love that's free? Why? What isn't free?</div>
+        <div class="q-tr">Tabloyu tamamlayın — Ücretsiz ne seviyorlar? Neden? Ücretsiz olmayan ne?</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <table class="ans-table">
+          <tr><th>Kim</th><th>Sevdiği ücretsiz şey</th><th>Neden?</th><th>Ücretsiz olmayan?</th></tr>
+          <tr><td>Jane</td><td>Sunsets / family hugs (Gün batımı / aile sarılmaları)</td><td>Most beautiful; hugs money can't buy</td><td>Her youngest son (oğlu)</td></tr>
+          <tr><td>Robin</td><td>Park walks (Park yürüyüşleri)</td><td>Great to be outside; time to think</td><td>Driving to countryside (arabayla kıra gitmek)</td></tr>
+          <tr><td>Charlotte</td><td>Playing with sister Ava (Kız kardeşiyle oynamak)</td><td>Always waiting for her; fun</td><td>Sweets (şekerler)</td></tr>
+          <tr><td>Ella</td><td>Boyfriend Alex (Sevgilisi)</td><td>Funniest, nicest person she knows</td><td>Cinema (sinema)</td></tr>
+          <tr><td>Oliver</td><td>Dog Fudge (Köpeği Fudge)</td><td>Beautiful, loving, crazy, fun</td><td>Vet's (veteriner)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ WRITING -->
+<section id="writing" class="section-block">
+  <div class="section-header">
+    <span class="section-tag writing">Writing</span>
+    <div>
+      <div class="section-title">Describing My Hometown <span class="section-title-tr">— Memleketime Dair</span></div>
+    </div>
+  </div>
+
+  <div class="grammar-note">
+    <strong>📌 Relative Pronouns / İlgi Zamirleri</strong>
+    • <b>who</b> → people (insanlar için) — <em>the man who helped me</em><br>
+    • <b>where</b> → places (yerler için) — <em>the hotel where we stayed</em><br>
+    • <b>which / that</b> → things (şeyler için) — <em>the house which/that cost £300,000</em>
+  </div>
+
+  <!-- Grammar Spot rules -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">●</div>
+      <div class="q-texts">
+        <div class="q-en">Grammar Spot — Complete the rules for relative pronouns.</div>
+        <div class="q-tr">İlgi zamiri kurallarını tamamlayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">–</span><div><span class="val"><span class="hl">who</span> is for people.</span><span class="val-tr"> — insanlar için</span></div></li>
+          <li><span class="num">–</span><div><span class="val"><span class="hl">where</span> is for places.</span><span class="val-tr"> — yerler için</span></div></li>
+          <li><span class="num">–</span><div><span class="val"><span class="hl">which</span> or <span class="hl">that</span> is for things.</span><span class="val-tr"> — şeyler için</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2: join sentences -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-texts">
+        <div class="q-en">Join the sentences with the correct relative pronoun.</div>
+        <div class="q-tr">Cümleleri doğru ilgi zamiriyle birleştirin.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val">That's the man <span class="hl">who</span> helped me start my car.</span><span class="val-tr"> — Arabamı çalıştırmama yardım eden adam.</span></div></li>
+          <li><span class="num">2</span><div><span class="val">That's the restaurant <span class="hl">where</span> we had dinner last night.</span><span class="val-tr"> — Dün gece yemek yediğimiz restoran.</span></div></li>
+          <li><span class="num">3</span><div><span class="val">These are the children <span class="hl">who</span> need a lift home.</span><span class="val-tr"> — Eve bırakılması gereken çocuklar.</span></div></li>
+          <li><span class="num">4</span><div><span class="val">We found a wallet <span class="hl">that</span> had a lot of money in it.</span><span class="val-tr"> — İçinde çok para olan bir cüzdan bulduk.</span></div></li>
+          <li><span class="num">5</span><div><span class="val">This is the parcel <span class="hl">which</span> arrived this morning.</span><span class="val-tr"> — Bu sabah gelen paket.</span></div></li>
+          <li><span class="num">6</span><div><span class="val">That's the hospital <span class="hl">where</span> I was born.</span><span class="val-tr"> — Doğduğum hastane.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 4: Pittsburgh text -->
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-texts">
+        <div class="q-en">Complete the Pittsburgh text with relative pronouns AND answer questions 1–7.</div>
+        <div class="q-tr">Pittsburgh metnini ilgi zamirleriyle tamamlayın ve soruları cevaplayın.</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Metin Boşlukları / Text Gaps</div>
+        <ul class="ans-list">
+          <li><span class="num">2</span><div><span class="val"><span class="hl">which / that</span></span></div></li>
+          <li><span class="num">3</span><div><span class="val"><span class="hl">which / that</span></span></div></li>
+          <li><span class="num">4</span><div><span class="val"><span class="hl">where</span></span></div></li>
+          <li><span class="num">5</span><div><span class="val"><span class="hl">which</span></span></div></li>
+          <li><span class="num">6</span><div><span class="val"><span class="hl">which / that</span></span></div></li>
+          <li><span class="num">7</span><div><span class="val"><span class="hl">who</span></span></div></li>
+          <li><span class="num">8</span><div><span class="val"><span class="hl">where</span></span></div></li>
+          <li><span class="num">9</span><div><span class="val"><span class="hl">who</span></span></div></li>
+        </ul>
+        <div class="answer-label" style="margin-top:0.75rem">✓ Sorular / Questions</div>
+        <ul class="ans-list">
+          <li><span class="num">1</span><div><span class="val">In Pennsylvania, in the US.</span><span class="val-tr"> — Pennsylvania, ABD'de.</span></div></li>
+          <li><span class="num">2</span><div><span class="val">There are over 400 bridges.</span><span class="val-tr"> — 400'den fazla köprü var.</span></div></li>
+          <li><span class="num">3</span><div><span class="val">It's named after William Pitt, the Prime Minister of Britain in the 1700s.</span><span class="val-tr"> — 1700'lerde İngiltere Başbakanı William Pitt'ten.</span></div></li>
+          <li><span class="num">4</span><div><span class="val">It was a thriving industrial town with factories producing iron and steel.</span><span class="val-tr"> — Demir-çelik üreten fabrikalarla dolu, gelişen sanayi şehriydi.</span></div></li>
+          <li><span class="num">5</span><div><span class="val">It's thriving again — full of shops, restaurants, and theatres.</span><span class="val-tr"> — Mağaza, restoran ve tiyatrolarla yeniden canlanmış.</span></div></li>
+          <li><span class="num">6</span><div><span class="val">Linda Barnicott and Andy Warhol.</span><span class="val-tr"> — Linda Barnicott ve Andy Warhol.</span></div></li>
+          <li><span class="num">7</span><div><span class="val">They're tough but friendly; they make the writer proud.</span><span class="val-tr"> — Sert ama dost canlısı; yazar onlarla gurur duyuyor.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ READING -->
+<section id="reading" class="section-block">
+  <div class="section-header">
+    <span class="section-tag">Reading</span>
+    <div>
+      <div class="section-title">Favourite Pictures <span class="section-title-tr">— En Sevilen Resimler</span></div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-texts">
+        <div class="q-en">Read all three texts — which people (Lucy/Greg/Sandra) talk about these topics?</div>
+        <div class="q-tr">Üç metni de okuyun — hangi kişiler bu konuları ele alıyor?</div>
+      </div>
+      <div class="q-toggle">+</div>
+    </div>
+    <div class="q-answer">
+      <div class="answer-box">
+        <div class="answer-label">✓ Cevap / Answer</div>
+        <table class="ans-table">
+          <tr><th>#</th><th>Topic</th><th>Who?</th></tr>
+          <tr><td>1</td><td>time of day</td><td><span class="hl">Greg &amp; Sandra</span></td></tr>
+          <tr><td>2</td><td>time of year</td><td>Greg &amp; Sandra</td></tr>
+          <tr><td>3</td><td>the weather</td><td>Lucy &amp; Sandra</td></tr>
+          <tr><td>4</td><td>the colours</td><td>Lucy &amp; Sandra</td></tr>
+          <tr><td>5</td><td>the shapes</td><td>Lucy &amp; Greg</td></tr>
+          <tr><td>6</td><td>sounds they imagine</td><td>Lucy</td></tr>
+          <tr><td>7</td><td>something frightening</td><td>Lucy &amp; Sandra</td></tr>
+          <tr><td>8</td><td>something that makes them sad</td><td>Sandra</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Unit 7 • Simply the Best &nbsp;|&nbsp; Headway Pre-Intermediate 5th Edition &nbsp;|&nbsp; Answer Key
+</footer>
+
+<script>
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+
+  // Smooth scroll for nav pills
+  document.querySelectorAll('.nav-pill').forEach(pill => {
+    pill.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
