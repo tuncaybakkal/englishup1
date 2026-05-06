@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 8: Living Dangerously</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --orange: #e8581a;
+    --orange-light: #f5956a;
+    --orange-pale: #fff3ed;
+    --dark: #1a1208;
+    --mid: #4a3520;
+    --muted: #8a6d50;
+    --line: #e8d8c8;
+    --bg: #fdfaf6;
+    --white: #ffffff;
+    --green: #2e7d5e;
+    --green-light: #e8f5ef;
+    --blue: #1e5a8a;
+    --blue-light: #e8f0f8;
+    --gold: #c89a30;
+    --purple: #6a3ab8;
+    --purple-light: #f5f0fa;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--orange);
+    padding: 32px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.18);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-badge {
+    background: white;
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 28px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-text p {
+    color: rgba(255,255,255,0.82);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* NAV */
+  .toc { background: var(--dark); padding: 0 40px; }
+  .toc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  .toc a {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { background: var(--orange); color: white; }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* SECTION HEADERS */
+  .section-label {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .section-page {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 48px 0 36px;
+  }
+
+  /* QUESTION BLOCK */
+  .q-block {
+    margin-bottom: 28px;
+    border-left: 3px solid var(--line);
+    padding-left: 18px;
+  }
+  .q-block:hover { border-left-color: var(--orange-light); }
+  .q-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* TOOLTIP BUTTON */
+  .tl { display: inline; }
+  .tl-text { display: inline; }
+  .tr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+    line-height: 1;
+    position: relative;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+  .tr-btn:hover { background: var(--dark); }
+
+  /* POPUP */
+  .tr-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--dark);
+    color: #f5e8d8;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 280px;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,.38);
+    pointer-events: none;
+  }
+  .tr-popup.active { display: block; }
+  .tr-popup::before { content: '🇹🇷'; font-size: 11px; margin-right: 6px; }
+
+  /* ANSWER CARD */
+  .answer-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .answer-row {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5ede2;
+    align-items: flex-start;
+  }
+  .answer-row:last-child { border-bottom: none; }
+  .ans-num {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .ans-text { flex: 1; font-size: 14px; }
+
+  /* FILL-IN */
+  .blank-ans {
+    display: inline-block;
+    background: var(--orange-pale);
+    border-bottom: 2px solid var(--orange);
+    color: var(--orange);
+    font-weight: 600;
+    padding: 0 8px;
+    border-radius: 4px 4px 0 0;
+    font-size: 14px;
+  }
+  .fill-sentence {
+    font-size: 14.5px;
+    margin-bottom: 5px;
+    line-height: 1.8;
+  }
+
+  /* GRAMMAR BOX */
+  .grammar-box {
+    background: #fff8f2;
+    border: 2px solid var(--orange-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .grammar-box .gb-title {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* DIALOGUE */
+  .dialogue {
+    background: var(--blue-light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 8px;
+  }
+  .dlg-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .dlg-line:last-child { margin-bottom: 0; }
+  .dlg-speaker {
+    font-weight: 700;
+    color: var(--blue);
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+
+  /* VOCAB BOX */
+  .vocab-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .vocab-chip {
+    background: var(--green-light);
+    border: 1px solid #a8d8c0;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* WRITING BOX */
+  .writing-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .writing-box li { margin-bottom: 6px; margin-left: 18px; }
+
+  /* AUDIOSCRIPT BOX */
+  .audio-box {
+    background: var(--purple-light);
+    border: 1px solid #c8b0e8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 10px;
+  }
+  .audio-speaker { font-weight: 700; color: var(--purple); min-width: 20px; flex-shrink: 0; }
+  .audio-name { color: var(--purple); font-weight: 600; }
+  .audio-tag {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    letter-spacing: .05em;
+  }
+
+  /* MATCH TABLE */
+  .match-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+  .match-table th { background: var(--mid); color: white; padding: 8px 14px; font-size: 12px; letter-spacing: .05em; text-align: left; }
+  .match-table td { padding: 8px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .match-table tr:nth-child(even) td { background: #faf5ef; }
+  .match-arrow { color: var(--orange); font-weight: 700; text-align: center; }
+
+  /* QUIZ RESULTS */
+  .quiz-row {
+    display: flex;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f5ede2;
+    align-items: flex-start;
+    font-size: 14px;
+  }
+  .quiz-row:last-child { border-bottom: none; }
+  .quiz-num { color: var(--orange); font-weight: 700; min-width: 22px; }
+  .badge-true { background: var(--green-light); color: var(--green); border: 1px solid #a8d8c0; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+  .badge-false { background: #fde8e8; color: #b83232; border: 1px solid #f5a8a8; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+
+  /* INFO NOTE */
+  .info-note {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 18px;
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--blue);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">8</div>
+    <div class="header-text">
+      <h1>Living Dangerously</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Unit 8 (s. 79–88)</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#grammar">Grammar</a>
+    <a href="#should-must">Should / Must</a>
+    <a href="#practice">Practice</a>
+    <a href="#listening">Listening & Speaking</a>
+    <a href="#reading">Reading</a>
+    <a href="#vocab">Vocabulary</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing</a>
+    <a href="#audioscript">Audioscript</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  GRAMMAR: have to / don't have to                      -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">have to / don't have to</div>
+  <div class="section-page">(Ders Kitabı s. 80–81 / Cevap Anahtarı s. 1–2)</div>
+
+  <!-- Exercise 1 -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – Kurt Weiner hakkında soruları dinleyip cevaplayın (8.1)</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <div class="ans-num">1</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">He does yoga because it helps with learning to hold your breath and it also helps keep him calm when things get difficult.</span><button class="tr-btn" onclick="showTip(this, 'Yoga yapıyor çünkü nefes tutmayı öğrenmede yardımcı oluyor ve zor anlarda sakin kalmasına da yardım ediyor.')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num">2</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">He can hold his breath for over four minutes.</span><button class="tr-btn" onclick="showTip(this, 'Nefesini dört dakikadan fazla tutabilir.')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num">3</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">His dad took him surfing before he was two years old.</span><button class="tr-btn" onclick="showTip(this, 'Babası onu iki yaşından önce sörf yapmaya götürdü.')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num">4</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">He goes swimming underwater at Three Tables Cave – it's great for breath-holding practice.</span><button class="tr-btn" onclick="showTip(this, 'Three Tables Mağarası\'nda su altında yüzüyor – nefes tutma pratiği için harika.')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num">5</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">Yes, he has. He's travelled all over the world from Mexico to China.</span><button class="tr-btn" onclick="showTip(this, 'Evet. Meksika\'dan Çin\'e kadar dünyanın her yerine seyahat etti.')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num">6</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">It's one of the most famous waves in the world.</span><button class="tr-btn" onclick="showTip(this, 'Dünyanın en ünlü dalgalarından biri.')">?</button></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 – Fill in blanks -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 2 – Kutudaki kelimelerle boşlukları doldurun (8.1 tekrar)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 Kurt, <span class="blank-ans">do you have to</span> be very fit and strong to be a big wave surfer?</div>
+      <div class="fill-sentence">2 You <span class="blank-ans">have to</span> be strong in mind and body.</div>
+      <div class="fill-sentence">3 You <span class="blank-ans">have to</span> learn to hold your breath.</div>
+      <div class="fill-sentence">4 That was one of the first things I <span class="blank-ans">had to</span> learn.</div>
+      <div class="fill-sentence">5 Kurt, <span class="blank-ans">did you have to</span> start surfing when you were very young to be as good as you are today?</div>
+      <div class="fill-sentence">6 I <span class="blank-ans">can't</span> remember when I didn't surf.</div>
+      <div class="fill-sentence">7 So, <span class="blank-ans">do you have to</span> start young if you want to be a good surfer?</div>
+      <div class="fill-sentence">8 You <span class="blank-ans">don't have to</span>, but it helps!</div>
+      <div class="fill-sentence">9 I <span class="blank-ans">don't have to</span> train every day, but I do most days.</div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 – Q&A with have to -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 3 – have to ile soru ve cevapları tamamlayın (8.3)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 '<span class="blank-ans">Does</span> Kurt <span class="blank-ans">have to</span> train hard?'
+        &nbsp; 'Yes, he <span class="blank-ans">does</span>. He <span class="blank-ans">has to</span> train very hard.'</div>
+      <div class="fill-sentence">2 'Why does Kurt do yoga?'
+        &nbsp; 'Because surfers <span class="blank-ans">have to</span> hold their breath for a long time.'</div>
+      <div class="fill-sentence">3 '<span class="blank-ans">Do</span> all surfers <span class="blank-ans">have to</span> start young?'
+        &nbsp; 'No, they <span class="blank-ans">don't have to</span>, but it helps.'</div>
+    </div>
+  </div>
+
+  <!-- Grammar Spot -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot – have to formları</div>
+    <div class="grammar-box">
+      <div class="gb-title">● Grammar Spot</div>
+      <div class="fill-sentence"><strong>Soru:</strong> <span class="blank-ans">Do you have to</span> work at the weekends?</div>
+      <div class="fill-sentence"><strong>Olumsuz:</strong> No, I <span class="blank-ans">don't have to</span> work at the weekends.</div>
+      <div class="fill-sentence"><strong>Geçmiş:</strong> But I <span class="blank-ans">had to</span> work last weekend.</div>
+      <br>
+      <div class="fill-sentence">It's possible = <span class="blank-ans">can</span> &nbsp;|&nbsp; It's not possible = <span class="blank-ans">can't</span></div>
+      <div class="fill-sentence">It's necessary = <span class="blank-ans">have to</span> &nbsp;|&nbsp; It's not necessary = <span class="blank-ans">don't have to</span></div>
+    </div>
+  </div>
+
+  <!-- have to – forms and tenses Ex 2 -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz – have to doğru zaman ve biçimde (s. 81)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 What time <span class="blank-ans">do</span> we <span class="blank-ans">have to</span> be at the match? <span style="font-size:13px;color:var(--muted)">(verilmiş)</span></div>
+      <div class="fill-sentence">2 My sister <span class="blank-ans">has to</span> wear a uniform because she's a flight attendant.</div>
+      <div class="fill-sentence">3 My grandfather is 68. He <span class="blank-ans">doesn't have to</span> work, but he wants to.</div>
+      <div class="fill-sentence">4 You <span class="blank-ans">don't have to</span> say anything if you don't want to.</div>
+      <div class="fill-sentence">5 Why <span class="blank-ans">did</span> you <span class="blank-ans">have to</span> get up so early yesterday?</div>
+      <div class="fill-sentence">6 Our plane left at 8 a.m., so we <span class="blank-ans">had to</span> be at the airport at 6 a.m.</div>
+      <div class="fill-sentence">7 <span class="blank-ans">Do</span> we <span class="blank-ans">have to</span> do this exercise? It's really boring.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  SHOULD / MUST                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="should-must">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">What should I do? – should / must</div>
+  <div class="section-page">(Ders Kitabı s. 82 / Cevap Anahtarı s. 2)</div>
+
+  <!-- Grammar Spot -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot – should / must farkı</div>
+    <div class="grammar-box">
+      <div class="gb-title">● Grammar Spot</div>
+      <p style="font-size:14px;margin-bottom:8px;">
+        <span class="tl"><span class="tl-text"><strong>"You must see a doctor."</strong> expresses stronger advice than <strong>"You should do gentle exercises."</strong></span><button class="tr-btn" onclick="showTip(this, '\"Bir doktora görünmelisin\" cümlesi \"Önce hafif egzersizler yapmalısın\" cümlesinden daha güçlü bir tavsiye ifade eder.')">?</button></span>
+      </p>
+      <div class="fill-sentence"><strong>Soru (should):</strong> <span class="blank-ans">Should</span> I see a doctor? / What <span class="blank-ans">should</span> I do?</div>
+      <div class="fill-sentence"><strong>Olumsuz (should):</strong> He <span class="blank-ans">shouldn't</span> sit at his desk all day.</div>
+      <div class="fill-sentence"><strong>Olumsuz (must):</strong> He <span class="blank-ans">mustn't</span> run before his ankle has healed.</div>
+      <div style="margin-top:8px;font-size:13.5px;color:var(--muted);">
+        <span class="tl"><span class="tl-text">Must ile soru nadiren kullanılır; bunun yerine have to tercih edilir. He/she/it ile -s eklenmez.</span><button class="tr-btn" onclick="showTip(this, 'Must ile soru nadiren kullanılır; bunun yerine have to tercih edilir: \"Do I have to see a doctor?\" / \"You don\'t have to see a doctor.\" He/she/it ile -s eklenmez.')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 – Match advice to problems -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 3 – Dr Drew'un tavsiyelerini sorunlarla eşleştirin</div>
+    <div class="answer-card">
+      <div class="answer-row"><div class="ans-num">a</div><div class="ans-text"><span class="tl"><span class="tl-text">Dear <strong>Adam</strong> (sprained ankle)</span><button class="tr-btn" onclick="showTip(this, 'Adam\'a – bileği burkuk')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">b</div><div class="ans-text"><span class="tl"><span class="tl-text">Dear <strong>Millie</strong> (no time for fun)</span><button class="tr-btn" onclick="showTip(this, 'Millie\'ye – eğlenmeye zamanı yok')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">c</div><div class="ans-text"><span class="tl"><span class="tl-text">Dear <strong>James</strong> (too busy to exercise)</span><button class="tr-btn" onclick="showTip(this, 'James\'e – egzersiz yapacak zamanı yok')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">d</div><div class="ans-text"><span class="tl"><span class="tl-text">Dear <strong>Cheryl</strong> (gets bored doing exercises)</span><button class="tr-btn" onclick="showTip(this, 'Cheryl\'e – egzersiz yaparken sıkılıyor')">?</button></span></div></div>
+    </div>
+  </div>
+
+  <!-- Exercise 4 – Complete Dr Drew's advice -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 4 – Dr Drew'un tavsiyelerini tamamlayın (8.5)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 When you travel, you <span class="blank-ans">should</span> stay in hotels that have a gym or a spa. And if you want to lose weight, you <span class="blank-ans">shouldn't</span> have too many big business dinners in expensive restaurants. <em style="font-size:12px;color:var(--muted)">(James)</em></div>
+      <div class="fill-sentence">2 I <span class="blank-ans">don't think you should</span> believe all your friends say about having fun. Maybe they're jealous of your special talent. <em style="font-size:12px;color:var(--muted)">(Millie)</em></div>
+      <div class="fill-sentence">3 One of the best exercises is walking, and you <span class="blank-ans">don't have to</span> do this alone. You <span class="blank-ans">should</span> ask a friend to go with you, and then you can chat and exercise at the same time. <em style="font-size:12px;color:var(--muted)">(Cheryl)</em></div>
+      <div class="fill-sentence">4 And you <span class="blank-ans">must</span> walk before you run again – you absolutely <span class="blank-ans">mustn't</span> run until it has completely healed. <em style="font-size:12px;color:var(--muted)">(Adam)</em></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PRACTICE – Pronunciation                              -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="practice">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Telaffuz & Konuşma</div>
+  <div class="section-page">(Ders Kitabı s. 81–83 / Audioscript s. 136)</div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – have/has/had telaffuzu (8.4)</div>
+    <div class="answer-card">
+      <table class="match-table">
+        <thead><tr><th>Cümle</th><th>Telaffuz</th><th>Neden?</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>I <strong>have</strong> a good job.</td>
+            <td><code>/hæv/</code></td>
+            <td><span class="tl"><span class="tl-text">Ana fiil olarak – güçlü form</span><button class="tr-btn" onclick="showTip(this, 'have ana fiil olarak kullanıldığında güçlü biçimde okunur: /hæv/')">?</button></span></td>
+          </tr>
+          <tr>
+            <td>I <strong>have</strong> to work hard.</td>
+            <td><code>/hæf/</code></td>
+            <td><span class="tl"><span class="tl-text">have to → /hæf tə/ – zayıf form</span><button class="tr-btn" onclick="showTip(this, 'have to kalıbında zayıf biçimle okunur: /hæf tə/')">?</button></span></td>
+          </tr>
+          <tr>
+            <td>He <strong>has</strong> a new surfboard.</td>
+            <td><code>/hæz/</code></td>
+            <td><span class="tl"><span class="tl-text">Ana fiil – güçlü form</span><button class="tr-btn" onclick="showTip(this, 'has ana fiil olarak: /hæz/')">?</button></span></td>
+          </tr>
+          <tr>
+            <td>He <strong>has</strong> to train a lot.</td>
+            <td><code>/hæs/</code></td>
+            <td><span class="tl"><span class="tl-text">has to → /hæs tə/ – zayıf form</span><button class="tr-btn" onclick="showTip(this, 'has to kalıbında: /hæs tə/')">?</button></span></td>
+          </tr>
+          <tr>
+            <td>We <strong>had</strong> a good time.</td>
+            <td><code>/hæd/</code></td>
+            <td><span class="tl"><span class="tl-text">Ana fiil – güçlü form</span><button class="tr-btn" onclick="showTip(this, 'had ana fiil olarak: /hæd/')">?</button></span></td>
+          </tr>
+          <tr>
+            <td>We <strong>had</strong> to get up early.</td>
+            <td><code>/hæt/</code></td>
+            <td><span class="tl"><span class="tl-text">had to → /hæt tə/ – zayıf form</span><button class="tr-btn" onclick="showTip(this, 'had to kalıbında: /hæt tə/')">?</button></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  LISTENING & SPEAKING                                  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="listening">
+  <div class="section-label">Listening & Speaking</div>
+  <div class="section-title">A Health and Fitness Quiz</div>
+  <div class="section-page">(Ders Kitabı s. 83 / Cevap Anahtarı s. 2 / Audioscript s. 136)</div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 2 – Sağlık maddeleri doğru mu yanlış mı? (8.7)</div>
+    <div class="answer-card">
+      <div class="quiz-row">
+        <div class="quiz-num">1</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">You shouldn't skip breakfast. → FALSE. Skipping breakfast doesn't necessarily make you unhealthy, but people who do eat breakfast tend to look after their health better overall.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Kahvaltıyı atlamak sizi mutlaka sağlıksız yapmaz; ancak kahvaltı yapan insanlar genel olarak sağlıklarına daha iyi bakarlar.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">2</div>
+        <div><span class="badge-true">DOĞRU ✓</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">You should weigh yourself regularly. → TRUE. Weighing yourself regularly helps keep a healthy weight, but not every day – once a week is enough.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Düzenli tartılmak sağlıklı kilonuzu korumanıza yardımcı olur; ama her gün değil, haftada bir yeterli.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">3</div>
+        <div><span class="badge-true">DOĞRU ✓</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">You must always warm up before hard exercise and cool down after. → TRUE.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Yoğun egzersiz öncesinde ısınmak ve sonrasında soğumak gereklidir.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">4</div>
+        <div><span class="badge-true">DOĞRU ✓</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Swimming is one of the best forms of exercise. → TRUE. Some say it's the perfect exercise for the body; Tai Chi is also excellent.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Yüzme vücut için mükemmel egzersizlerden biri; Tai Chi de çok iyi.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">5</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">30 minutes continuous vs 3×10 minutes. → FALSE. Short periods of 10 minutes are fine, but aim for at least 150 minutes a week.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. 10 dakikalık kısa periyotlar da iyidir; ancak haftada en az 150 dakika egzersiz hedefleyin.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">6</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Exercise until it hurts – no pain no gain. → FALSE. You don't have to feel pain. Start slowly, little and often is better.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Egzersizde acı çekmeniz gerekmez. Yavaş başlayın; az ama sık yapmak daha iyidir.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">7</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Drink water after a meal to lose weight. → FALSE. Drink water before a meal – it helps you feel full.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Yemekten ÖNCE su için; bu daha az yemenize yardımcı olur.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">8</div>
+        <div><span class="badge-true">DOĞRU ✓</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Wait 15 minutes after a meal if you don't feel full. → TRUE. Sometimes you want to eat more just after a meal, but if you wait 15–20 minutes, your food fills your stomach.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Bazen yemekten sonra daha çok yemek istersiniz; ama 15-20 dakika beklerseniz mideniz dolar.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">9</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Always choose water over other drinks after exercise. → FALSE. It doesn't have to be water – any non-alcoholic drink will rehydrate you.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Sadece su olmak zorunda değil; alkolsüz herhangi bir içecek sizi rehidre eder.')">?</button></span></div>
+      </div>
+      <div class="quiz-row">
+        <div class="quiz-num">10</div>
+        <div><span class="badge-false">YANLIŞ ✗</span></div>
+        <div style="flex:1"><span class="tl"><span class="tl-text">Better to exercise in the morning. → FALSE. There is no best time – you can do it morning, afternoon, or night!</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Egzersiz için en iyi zaman yoktur; sabah, öğleden sonra veya gece yapabilirsiniz!')">?</button></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  READING & SPEAKING                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="reading">
+  <div class="section-label">Reading & Speaking</div>
+  <div class="section-title">Two Stuntwomen and a Stuntman</div>
+  <div class="section-page">(Ders Kitabı s. 84–85 / Cevap Anahtarı s. 3–4)</div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – Dublör ne iş yapar?</div>
+    <div class="writing-box">
+      <span class="tl"><span class="tl-text">A stuntman or stuntwoman has to do dangerous things in the place of actors – such as fall out of windows or cars, fall off horses, jump over obstacles, etc.</span><button class="tr-btn" onclick="showTip(this, 'Bir dublör, oyuncuların yerine tehlikeli şeyler yapmalıdır – pencereden veya arabadan düşmek, attan düşmek, engellerin üzerinden atlamak vb.')">?</button></span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 4 – İki dublör hakkında okuyun</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <div class="ans-num" style="min-width:80px;">Nereden?</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">Amanda Foster – Essex, England (not married). Dayna Grant – Auckland, New Zealand (married).</span><button class="tr-btn" onclick="showTip(this, 'Amanda Foster – Essex, İngiltere (evli değil). Dayna Grant – Auckland, Yeni Zelanda (evli).')">?</button></span></div>
+      </div>
+      <div class="answer-row">
+        <div class="ans-num" style="min-width:80px;">Daha fazla kazanan?</div>
+        <div class="ans-text"><span class="tl"><span class="tl-text">Stuntwomen earn more than stuntmen in New Zealand, because they can't wear as much protective clothing, making it more dangerous for them.</span><button class="tr-btn" onclick="showTip(this, 'Yeni Zelanda\'da kadın dublörler erkeklerden fazla kazanır; çünkü o kadar koruyucu kıyafet giyemezler, bu da işi daha tehlikeli kılar.')">?</button></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group A – Amanda -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 5 – Grup A: Amanda Foster</div>
+    <div class="answer-card">
+      <div class="answer-row"><div class="ans-num">1</div><div class="ans-text"><span class="tl"><span class="tl-text">She was sporty and worked as a PE teacher and a film extra.</span><button class="tr-btn" onclick="showTip(this, 'Spordu ve beden eğitimi öğretmeni ile film figuranı olarak çalışıyordu.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">2</div><div class="ans-text"><span class="tl"><span class="tl-text">On a film set she heard someone say there were no British black stunt actresses, so she decided to be the first.</span><button class="tr-btn" onclick="showTip(this, 'Film setinde hiç İngiliz siyah stant oyuncusu olmadığını duyunca ilk olmaya karar verdi.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">3</div><div class="ans-text"><span class="tl"><span class="tl-text">Whoopi Goldberg, Halle Berry, Tom Cruise, Brad Pitt (and Naomie Harris)</span><button class="tr-btn" onclick="showTip(this, 'Whoopi Goldberg, Halle Berry, Tom Cruise, Brad Pitt (ve Naomie Harris)')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">4</div><div class="ans-text"><span class="tl"><span class="tl-text">Sword fighting, jumping over tables, jumping on top of Brad Pitt and biting his face.</span><button class="tr-btn" onclick="showTip(this, 'Kılıç dövüşü, masaların üzerinden atlama, Brad Pitt\'in üstüne atlayıp yüzünü ısırma.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">5</div><div class="ans-text"><span class="tl"><span class="tl-text">Gymnastics, trampolining, motorcycle racing, martial arts.</span><button class="tr-btn" onclick="showTip(this, 'Jimnastik, trambolin, motosiklet yarışı, dövüş sanatları.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">6</div><div class="ans-text"><span class="tl"><span class="tl-text">She watches how the star moves – the viewer has to believe that she actually is the star.</span><button class="tr-btn" onclick="showTip(this, 'Yıldızın nasıl hareket ettiğini izler – izleyici onun gerçekten yıldız olduğuna inanmalıdır.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">7</div><div class="ans-text"><span class="tl"><span class="tl-text">Many times. She says: "As long as I leave in my own car and not an ambulance, it's been a good day."</span><button class="tr-btn" onclick="showTip(this, 'Çok kez yaralandı. "Kendi arabamla ayrılabildiğim sürece bu iyi bir gündür" diyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">8</div><div class="ans-text"><span class="tl"><span class="tl-text">Her children are grown up now and are very proud of their mother.</span><button class="tr-btn" onclick="showTip(this, 'Çocukları artık büyümüş ve anneleriyle çok gurur duyuyorlar.')">?</button></span></div></div>
+    </div>
+  </div>
+
+  <!-- Group B – Dayna -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 5 – Grup B: Dayna Grant</div>
+    <div class="answer-card">
+      <div class="answer-row"><div class="ans-num">1</div><div class="ans-text"><span class="tl"><span class="tl-text">She was a gymnast and a horse rider.</span><button class="tr-btn" onclick="showTip(this, 'Jimnastikçi ve binici idi.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">2</div><div class="ans-text"><span class="tl"><span class="tl-text">Two stuntman friends asked her to audition for Xena: Warrior Princess.</span><button class="tr-btn" onclick="showTip(this, 'İki dublör arkadaşı onu Xena: Warrior Princess için seçmelere davet etti.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">3</div><div class="ans-text"><span class="tl"><span class="tl-text">Charlize Theron, Gwyneth Paltrow, Tilda Swinton (and Lucy Lawless)</span><button class="tr-btn" onclick="showTip(this, 'Charlize Theron, Gwyneth Paltrow, Tilda Swinton (ve Lucy Lawless)')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">4</div><div class="ans-text"><span class="tl"><span class="tl-text">Shave her head, spend nine months in the Namibian desert, run alongside a truck and fall under its wheels.</span><button class="tr-btn" onclick="showTip(this, 'Başını tıraş ettirmek, dokuz ay Namibya çölünde kalmak, hareket eden bir kamyonun yanında koşup tekerleğinin altına düşmek.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">5</div><div class="ans-text"><span class="tl"><span class="tl-text">Martial arts (judo, karate), archery, chariot driving.</span><button class="tr-btn" onclick="showTip(this, 'Dövüş sanatları (judo, karate), okçuluk, savaş arabası sürme.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">6</div><div class="ans-text"><span class="tl"><span class="tl-text">Because they have to spend a lot of time together.</span><button class="tr-btn" onclick="showTip(this, 'Çünkü birlikte çok zaman geçirmeleri gerekiyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">7</div><div class="ans-text"><span class="tl"><span class="tl-text">Yes – she slipped and her head fell on a dagger. She says: "I was a bit of a mess."</span><button class="tr-btn" onclick="showTip(this, 'Evet – kaydı ve başı bir hançere çarptı. "Epeyce can sıkıcı bir hal aldım" diyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">8</div><div class="ans-text"><span class="tl"><span class="tl-text">Her son thinks she's not a normal mum – "Most mums drink tea, you jump off buildings!"</span><button class="tr-btn" onclick="showTip(this, 'Oğlu, onun normal bir anne olmadığını düşünüyor – "Çoğu anne çay içer, sen binalardan atlıyorsun!"')">?</button></span></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  VOCABULARY                                            -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="vocab">
+  <div class="section-label">Vocabulary & Speaking</div>
+  <div class="section-title">Not a Thing to Wear! – Vücut & Giyim</div>
+  <div class="section-page">(Ders Kitabı s. 86 / Cevap Anahtarı s. 4)</div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – Çocuk şarkısındaki vücut parçaları (8.9)</div>
+    <div class="answer-card">
+      <div class="vocab-box">
+        <span class="vocab-chip">head</span>
+        <span class="vocab-chip">shoulders</span>
+        <span class="vocab-chip">knees</span>
+        <span class="vocab-chip">toes</span>
+        <span class="vocab-chip">eyes</span>
+        <span class="vocab-chip">ears</span>
+        <span class="vocab-chip">mouth</span>
+        <span class="vocab-chip">nose</span>
+      </div>
+      <div style="margin-top:10px;font-size:13px;color:var(--muted);font-style:italic;">
+        <button class="tr-btn" onclick="showTip(this, 'baş · omuzlar · dizler · parmak uçları · gözler · kulaklar · ağız · burun')">? Türkçe</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Egzersiz 3 – Giysileri Person X üzerinde eşleştirin</div>
+    <div class="answer-card">
+      <table class="match-table">
+        <thead><tr><th>Harf</th><th>Giysi</th><th>Nereye gider?</th></tr></thead>
+        <tbody>
+          <tr><td>a</td><td>a dress</td><td><span class="tl"><span class="tl-text">on the body</span><button class="tr-btn" onclick="showTip(this, 'vücutta')">?</button></span></td></tr>
+          <tr><td>b</td><td>a shirt + tie</td><td><span class="tl"><span class="tl-text">on the top half of the body + round the neck</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında + boyunda')">?</button></span></td></tr>
+          <tr><td>c</td><td>a skirt</td><td><span class="tl"><span class="tl-text">on the bottom half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun alt yarısında')">?</button></span></td></tr>
+          <tr><td>d</td><td>a hoodie</td><td><span class="tl"><span class="tl-text">on the top half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında')">?</button></span></td></tr>
+          <tr><td>e</td><td>jeans</td><td><span class="tl"><span class="tl-text">on the bottom half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun alt yarısında')">?</button></span></td></tr>
+          <tr><td>f</td><td>sunglasses</td><td><span class="tl"><span class="tl-text">on the face / eyes</span><button class="tr-btn" onclick="showTip(this, 'yüzde / gözlerde')">?</button></span></td></tr>
+          <tr><td>g</td><td>sandals</td><td><span class="tl"><span class="tl-text">on the feet</span><button class="tr-btn" onclick="showTip(this, 'ayaklarda')">?</button></span></td></tr>
+          <tr><td>h</td><td>a sports vest</td><td><span class="tl"><span class="tl-text">on the top half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında')">?</button></span></td></tr>
+          <tr><td>i</td><td>gloves</td><td><span class="tl"><span class="tl-text">on the hands</span><button class="tr-btn" onclick="showTip(this, 'ellerde')">?</button></span></td></tr>
+          <tr><td>j</td><td>a watch</td><td><span class="tl"><span class="tl-text">round the wrist</span><button class="tr-btn" onclick="showTip(this, 'bileğe')">?</button></span></td></tr>
+          <tr><td>k</td><td>a cap</td><td><span class="tl"><span class="tl-text">on the head</span><button class="tr-btn" onclick="showTip(this, 'başta')">?</button></span></td></tr>
+          <tr><td>l</td><td>a tracksuit</td><td><span class="tl"><span class="tl-text">on the body</span><button class="tr-btn" onclick="showTip(this, 'vücutta')">?</button></span></td></tr>
+          <tr><td>m</td><td>a jacket</td><td><span class="tl"><span class="tl-text">on the top half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında')">?</button></span></td></tr>
+          <tr><td>n</td><td>a scarf</td><td><span class="tl"><span class="tl-text">round the neck</span><button class="tr-btn" onclick="showTip(this, 'boyunda')">?</button></span></td></tr>
+          <tr><td>o</td><td>shorts</td><td><span class="tl"><span class="tl-text">on the bottom half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun alt yarısında')">?</button></span></td></tr>
+          <tr><td>p</td><td>a jumper</td><td><span class="tl"><span class="tl-text">on the top half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında')">?</button></span></td></tr>
+          <tr><td>q</td><td>boots</td><td><span class="tl"><span class="tl-text">on the feet</span><button class="tr-btn" onclick="showTip(this, 'ayaklarda')">?</button></span></td></tr>
+          <tr><td>r</td><td>socks</td><td><span class="tl"><span class="tl-text">on the feet</span><button class="tr-btn" onclick="showTip(this, 'ayaklarda')">?</button></span></td></tr>
+          <tr><td>s</td><td>goggles</td><td><span class="tl"><span class="tl-text">on the eyes</span><button class="tr-btn" onclick="showTip(this, 'gözlerde')">?</button></span></td></tr>
+          <tr><td>t</td><td>a suit</td><td><span class="tl"><span class="tl-text">on the body</span><button class="tr-btn" onclick="showTip(this, 'vücutta')">?</button></span></td></tr>
+          <tr><td>u</td><td>a belt</td><td><span class="tl"><span class="tl-text">round the waist</span><button class="tr-btn" onclick="showTip(this, 'belde')">?</button></span></td></tr>
+          <tr><td>v</td><td>a helmet</td><td><span class="tl"><span class="tl-text">on the head</span><button class="tr-btn" onclick="showTip(this, 'başta')">?</button></span></td></tr>
+          <tr><td>w</td><td>a T-shirt</td><td><span class="tl"><span class="tl-text">on the top half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun üst yarısında')">?</button></span></td></tr>
+          <tr><td>x</td><td>trainers</td><td><span class="tl"><span class="tl-text">on the feet</span><button class="tr-btn" onclick="showTip(this, 'ayaklarda')">?</button></span></td></tr>
+          <tr><td>y</td><td>a swimsuit</td><td><span class="tl"><span class="tl-text">on the middle part of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun orta kısmında')">?</button></span></td></tr>
+          <tr><td>z</td><td>leggings</td><td><span class="tl"><span class="tl-text">on the bottom half of the body</span><button class="tr-btn" onclick="showTip(this, 'vücudun alt yarısında')">?</button></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  EVERYDAY ENGLISH – At the Doctor's                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">At the Doctor's</div>
+  <div class="section-page">(Ders Kitabı s. 87 / Cevap Anahtarı s. 4–6)</div>
+
+  <!-- Exercise 1 – Pictures -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – Resimleri kelimelerle eşleştirin</div>
+    <div class="answer-card">
+      <div class="answer-row"><div class="ans-num">A</div><div class="ans-text"><span class="tl"><span class="tl-text">a sprained ankle</span><button class="tr-btn" onclick="showTip(this, 'burkulmuş ayak bileği')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">B</div><div class="ans-text"><span class="tl"><span class="tl-text">diarrhoea</span><button class="tr-btn" onclick="showTip(this, 'ishal')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">C</div><div class="ans-text"><span class="tl"><span class="tl-text">food poisoning</span><button class="tr-btn" onclick="showTip(this, 'gıda zehirlenmesi')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">D</div><div class="ans-text"><span class="tl"><span class="tl-text">flu</span><button class="tr-btn" onclick="showTip(this, 'grip')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">E</div><div class="ans-text"><span class="tl"><span class="tl-text">an allergy</span><button class="tr-btn" onclick="showTip(this, 'alerji')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">F</div><div class="ans-text"><span class="tl"><span class="tl-text">a sore throat</span><button class="tr-btn" onclick="showTip(this, 'boğaz ağrısı')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">G</div><div class="ans-text"><span class="tl"><span class="tl-text">a cold</span><button class="tr-btn" onclick="showTip(this, 'soğuk algınlığı')">?</button></span></div></div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 – Diagnosis -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 2 – Doktorun teşhisini tamamlayın (8.10)</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 I can't stop coughing and blowing my nose. → You've got <span class="blank-ans">a cold</span>.</div>
+      <div class="fill-sentence">2 I've got a fever, my whole body aches, and I feel awful. → You've got <span class="blank-ans">flu</span>.</div>
+      <div class="fill-sentence">3 It hurts when I walk on it. → You've got <span class="blank-ans">a sprained ankle</span>.</div>
+      <div class="fill-sentence">4 I keep going to the toilet. → You've got <span class="blank-ans">diarrhoea</span>.</div>
+      <div class="fill-sentence">5 My glands are swollen, and it hurts when I swallow. → You've got <span class="blank-ans">a sore throat</span>.</div>
+      <div class="fill-sentence">6 I keep being sick, and I've got terrible diarrhoea. → You've got <span class="blank-ans">food poisoning</span>.</div>
+      <div class="fill-sentence">7 I start sneezing when I'm near a cat. → You've got <span class="blank-ans">an allergy</span>.</div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 – Questions about Edsom -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 3 – Edsom ve doktor konuşması hakkında sorular (8.11)</div>
+    <div class="answer-card">
+      <div class="answer-row"><div class="ans-num">1</div><div class="ans-text"><span class="tl"><span class="tl-text">He's had a bad headache for a few days and a sore throat. He feels hot especially at night and starts coughing when he lies down.</span><button class="tr-btn" onclick="showTip(this, 'Birkaç gündür şiddetli baş ağrısı ve boğaz ağrısı var. Özellikle geceleri ateşi çıkıyor ve uzanınca öksürüyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">2</div><div class="ans-text"><span class="tl"><span class="tl-text">What seems to be the problem? Any sickness or diarrhoea? Do you feel hot? Does this hurt? Are you allergic to penicillin?</span><button class="tr-btn" onclick="showTip(this, 'Sorunu nedir? Bulantı ya da ishal var mı? Ateşiniz var mı? Bu acıtıyor mu? Penisiline alerjiniz var mı?')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">3</div><div class="ans-text"><span class="tl"><span class="tl-text">She thinks he has a throat infection.</span><button class="tr-btn" onclick="showTip(this, 'Boğaz enfeksiyonu olduğunu düşünüyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">4</div><div class="ans-text"><span class="tl"><span class="tl-text">She prescribes antibiotics / penicillin.</span><button class="tr-btn" onclick="showTip(this, 'Antibiyotik / penisilin reçete ediyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">5</div><div class="ans-text"><span class="tl"><span class="tl-text">She tells him not to go to work for a couple of days, to drink plenty of liquids, and to take things easy.</span><button class="tr-btn" onclick="showTip(this, 'Birkaç gün işe gitmemesini, bol sıvı içmesini ve dinlenmesini söylüyor.')">?</button></span></div></div>
+      <div class="answer-row"><div class="ans-num">6</div><div class="ans-text"><span class="tl"><span class="tl-text">He has to pay £8.80 for the prescription.</span><button class="tr-btn" onclick="showTip(this, 'Reçete için 8.80 sterlin ödemesi gerekiyor.')">?</button></span></div></div>
+    </div>
+  </div>
+
+  <!-- Exercise 4 – Complete the conversation -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 4 – Konuşmayı tamamlayın (8.11)</div>
+    <div class="dialogue">
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Hello. Come and sit down. What seems to be the <span class="blank-ans">problem</span>?</span><button class="tr-btn" onclick="showTip(this, 'Merhaba. Oturun. Sorun nedir?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span><span class="tl"><span class="tl-text">Well, I haven't felt <span class="blank-ans">well</span> for a few days. I've had a bad <span class="blank-ans">headache</span>, and now I've got a <span class="blank-ans">sore throat</span>.</span><button class="tr-btn" onclick="showTip(this, 'Birkaç gündür kendimi iyi hissetmiyorum. Şiddetli baş ağrım vardı ve şimdi boğaz ağrım var.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Any sickness or diarrhoea?</span><button class="tr-btn" onclick="showTip(this, 'Bulantı ya da ishal var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span><span class="tl"><span class="tl-text">No, I haven't been <span class="blank-ans">sick</span> or had any diarrhoea.</span><button class="tr-btn" onclick="showTip(this, 'Hayır, bulantım olmadı ve ishal de yok.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Do you feel hot?</span><button class="tr-btn" onclick="showTip(this, 'Ateşiniz var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span><span class="tl"><span class="tl-text">Yes, especially at night. I can't sleep because I feel hot, and I start <span class="blank-ans">coughing</span> when I lie down.</span><button class="tr-btn" onclick="showTip(this, 'Evet, özellikle geceleri. Ateşim olduğu için uyuyamıyorum ve uzanınca öksürmeye başlıyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">OK, I'll just <span class="blank-ans">take</span> your temperature. Can I just pop this in your mouth?</span><button class="tr-btn" onclick="showTip(this, 'Tamam, ateşinizi ölçeyim. Bunu ağzınıza koyabilir miyim?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>Aaargh!</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Ah, yes. You do have a bit of a <span class="blank-ans">fever</span>. Now, let me see your throat. Open your <span class="blank-ans">mouth</span> wide, please.</span><button class="tr-btn" onclick="showTip(this, 'Ah, evet. Hafif ateşiniz var. Şimdi boğazınıza bakayım. Ağzınızı geniş açın lütfen.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>'ot can u see? / Can you see anything?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Yes, your throat looks very red. Does this <span class="blank-ans">hurt</span>?</span><button class="tr-btn" onclick="showTip(this, 'Evet, boğazınız çok kırmızı. Bu acıtıyor mu?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>Ouch!</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">And your glands are <span class="blank-ans">swollen</span>.</span><button class="tr-btn" onclick="showTip(this, 'Ve lenf düğümleriniz şişmiş.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>Is it serious?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">No, not at all. You just have a bit of a <span class="blank-ans">throat</span> infection. You should have antibiotics. Are you allergic to penicillin?</span><button class="tr-btn" onclick="showTip(this, 'Hayır, hiç değil. Sadece hafif bir boğaz enfeksiyonunuz var. Antibiyotik almanız gerekiyor. Penisiline alerjiniz var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>No, I'm not.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">Good. Now, you <span class="blank-ans">shouldn't</span> go to work for a couple of days, and you <span class="blank-ans">must</span> drink plenty of liquids. Just take things easy for a while. I'll write you a prescription.</span><button class="tr-btn" onclick="showTip(this, 'Güzel. Birkaç gün işe gitmemelisiniz ve bol sıvı içmelisiniz. Bir süre dinlenin. Size reçete yazacağım.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>Thank you. Do I have to pay you?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">D:</span><span><span class="tl"><span class="tl-text">No, no. Seeing me is free, but you'll have to pay for the <span class="blank-ans">prescription</span>. It's £8.80.</span><button class="tr-btn" onclick="showTip(this, 'Hayır. Beni görmek ücretsiz, ama reçete için ödeme yapmanız gerekecek. 8.80 sterlin.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E:</span><span>Right. Thanks very much. Goodbye.</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  WRITING                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Writing Emails – Formal &amp; Informal</div>
+  <div class="section-page">(Ders Kitabı s. 88 / Cevap Anahtarı s. 6–7)</div>
+
+  <!-- Exercise 1 – Beginnings & Endings -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 1 – Başlangıç ve kapanış ifadeleri</div>
+    <div class="answer-card">
+      <table class="match-table">
+        <thead><tr><th>Başlangıç</th><th>Uygun Kapanış</th><th>Tür</th></tr></thead>
+        <tbody>
+          <tr><td>1 Dear Peter</td><td>a, b, c, d, g</td><td><span class="badge-false">Gayri resmi</span></td></tr>
+          <tr><td>2 Dear Mr Smith</td><td>f</td><td><span class="badge-true">Resmi</span></td></tr>
+          <tr><td>3 Hello Cathy</td><td>a, b, c, d, g</td><td><span class="badge-false">Gayri resmi</span></td></tr>
+          <tr><td>4 Dear Sir or Madam</td><td>e</td><td><span class="badge-true">Resmi</span></td></tr>
+          <tr><td>5 Dear mum</td><td>a, b, c, d, (g)</td><td><span class="badge-false">Gayri resmi</span></td></tr>
+          <tr><td>6 Hi Rob</td><td>a, b, c, d, g</td><td><span class="badge-false">Gayri resmi</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Exercise 3 – Formal email -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 3 – Resmi e-postayı tamamlayın</div>
+    <div class="answer-card">
+      <div class="fill-sentence">1 I saw your <span class="blank-ans">advertisement</span> for English classes …</div>
+      <div class="fill-sentence">2 … and I am <span class="blank-ans">interested in</span> coming to your school this summer.</div>
+      <div class="fill-sentence">3 I have to use English <span class="blank-ans">frequently</span> in my job.</div>
+      <div class="fill-sentence">4 <span class="blank-ans">However</span>, I now feel that it is necessary to study further.</div>
+      <div class="fill-sentence">5 I would especially like <span class="blank-ans">to improve</span> my pronunciation.</div>
+      <div class="fill-sentence">6 … and an <span class="blank-ans">application form</span>?</div>
+      <div class="fill-sentence">7 I would also like <span class="blank-ans">some information</span> about accommodation.</div>
+      <div class="fill-sentence">8 I look forward <span class="blank-ans">to hearing</span> from you as soon as possible.</div>
+      <div class="fill-sentence">9 Yours <span class="blank-ans">sincerely</span>,</div>
+    </div>
+  </div>
+
+  <!-- Exercise 5 – Informal equivalents -->
+  <div class="q-block">
+    <div class="q-num">Egzersiz 5 – Resmi ifadelerin gayri resmi karşılıkları</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <div class="ans-text" style="font-size:13.5px;">
+          <span class="tl"><span class="tl-text">I am interested in coming → I'm thinking of coming</span><button class="tr-btn" onclick="showTip(this, 'Gelmeyi düşünüyorum')">?</button></span><br>
+          <span class="tl"><span class="tl-text">I have to use English frequently → I use English a lot</span><button class="tr-btn" onclick="showTip(this, 'İngilizceyi çok kullanıyorum')">?</button></span><br>
+          <span class="tl"><span class="tl-text">I would like → I want</span><button class="tr-btn" onclick="showTip(this, 'İstiyorum')">?</button></span><br>
+          <span class="tl"><span class="tl-text">I would especially like to improve my pronunciation → especially for my pronunciation</span><button class="tr-btn" onclick="showTip(this, 'Özellikle telaffuzum için')">?</button></span><br>
+          <span class="tl"><span class="tl-text">your advertisement → an interesting ad</span><button class="tr-btn" onclick="showTip(this, 'ilginç bir ilan')">?</button></span><br>
+          <span class="tl"><span class="tl-text">I would like → I'd love to</span><button class="tr-btn" onclick="showTip(this, 'Çok isterim')">?</button></span><br>
+          <span class="tl"><span class="tl-text">I look forward to hearing from you → Can't wait to hear from you</span><button class="tr-btn" onclick="showTip(this, 'Haberini sabırsızlıkla bekliyorum')">?</button></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  AUDIOSCRIPT                                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="audioscript">
+  <div class="section-label">Audioscript</div>
+  <div class="section-title">Unit 8 – Sesli Konuşma Metinleri</div>
+  <div class="section-page">(Audioscript Kitabı s. 136–137)</div>
+
+  <!-- 8.1 Kurt Weiner -->
+  <div class="q-block">
+    <div class="q-num">8.1 – Kurt Weiner: Big Wave Surfer</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.1 · I = Interviewer, K = Kurt</div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">Kurt, do you have to be very fit and strong to be a big wave surfer?</span><button class="tr-btn" onclick="showTip(this, 'Kurt, büyük dalga sörfçüsü olmak için çok fit ve güçlü olmak zorunda mısın?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">Yeah, you do. You have to be strong in mind and body. It's a fantastic sport but a dangerous one. I find doing Yoga helps me a lot.</span><button class="tr-btn" onclick="showTip(this, 'Evet, öyle. Hem zihin hem de beden açısından güçlü olmak zorundasın. Harika ama tehlikeli bir spor. Yoga yapmak bana çok yardımcı oluyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">Yoga?!</span><button class="tr-btn" onclick="showTip(this, 'Yoga mı?!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">Yeah, a lot of surfers do yoga. You have to learn to hold your breath – and yoga helps with that and… of course it helps you keep calm when things get difficult.</span><button class="tr-btn" onclick="showTip(this, 'Evet, pek çok sörfçü yoga yapıyor. Nefes tutmayı öğrenmek zorundasın – yoga buna yardımcı oluyor ve tabii işler zorlaştığında sakin kalmanı sağlıyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">I can understand that.</span><button class="tr-btn" onclick="showTip(this, 'Bunu anlayabiliyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">I've learnt to hold my breath for over four minutes. That was one of the first things I had to learn – the bigger the wave the longer you have to do it.</span><button class="tr-btn" onclick="showTip(this, 'Nefesimi dört dakikadan fazla tutmayı öğrendim. Bu öğrenmek zorunda olduğum ilk şeylerden biriydi – dalga ne kadar büyükse o kadar uzun tutmak zorundasın.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">Four minutes! Wow! Kurt, did you have to start surfing when you were very young to be as good as you are today?</span><button class="tr-btn" onclick="showTip(this, 'Dört dakika! Kurt, bugünkü kadar iyi olmak için çok küçükken başlamak zorunda mıydın?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">I can't remember when I didn't surf – my dad took me before I was two years old.</span><button class="tr-btn" onclick="showTip(this, 'Sörf yapmadığım bir zamanı hatırlamıyorum – babam beni iki yaşıma gelmeden sörf yaptırmaya götürdü.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">So, do you have to start young if you want to be a good surfer?</span><button class="tr-btn" onclick="showTip(this, 'Peki, iyi bir sörfçü olmak istiyorsan genç yaşta başlamak zorunda mısın?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">Well, you don't have to, but it helps and living here it's the natural thing to do – it's just part of life on Oahu.</span><button class="tr-btn" onclick="showTip(this, 'Şey, zorunda değilsin ama yardımcı olur; burada yaşarken bu çok doğal bir şey – Oahu\'da yaşamın bir parçası.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">You say you have to keep fit, so how often do you train?</span><button class="tr-btn" onclick="showTip(this, 'Fit kalman gerektiğini söylüyorsun, peki ne sıklıkla antrenman yapıyorsun?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">Well, I don't have to train every day, but I do most days – I go swimming underwater. I go to Three Tables Caves near my home – it's great for breath-holding practice.</span><button class="tr-btn" onclick="showTip(this, 'Her gün antrenman yapmam gerekmiyor ama çoğu gün yapıyorum – sualtı yüzmeye gidiyorum. Evimin yakınındaki Three Tables Mağaraları\'na gidiyorum – nefes tutma pratiği için harika.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">And do you travel to surf?</span><button class="tr-btn" onclick="showTip(this, 'Sörf için seyahat ediyor musun?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">I do, a lot. I've been to surf spots all over the world, from Mexico to China … but right on my doorstep is one of the most famous waves in the world – the Banzai Pipeline. It's a fantastic ride!</span><button class="tr-btn" onclick="showTip(this, 'Evet, çok fazla. Meksika\'dan Çin\'e kadar dünyanın her yerindeki sörf noktalarına gittim… ama tam kapımın önünde dünyanın en ünlü dalgalarından biri var – Banzai Pipeline. Muhteşem bir deneyim!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">I:</span><span><span class="tl"><span class="tl-text">Kurt, you're a lucky guy. I hear you have a surf school, too. Can you teach me to surf?</span><button class="tr-btn" onclick="showTip(this, 'Kurt, şanslı bir adamsın. Bir sörf okulu da varmış. Bana sörf öğretebilir misin?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">K:</span><span><span class="tl"><span class="tl-text">OK – how about a game of squash with me now? That's enough danger for me!</span><button class="tr-btn" onclick="showTip(this, 'Tamam – şimdi benimle bir squash maçı ne dersin? Bu benim için yeterince tehlike!')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- 8.6 Giving Advice -->
+  <div class="q-block">
+    <div class="q-num">8.6 – Giving Advice (Tavsiye Verme)</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.6</div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">1</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: I'm hopeless at all sports. &nbsp; B: You shouldn't worry about it. Lots of people aren't sporty, but you should make some exercise part of your daily routine – walking more quickly can help.</span><button class="tr-btn" onclick="showTip(this, 'A: Tüm sporlarda çok kötüyüm. B: Bu konuda endişelenmemelisin. Pek çok insan sportif değildir, ama egzersizi günlük rutinin bir parçası yapmalısın – daha hızlı yürümek yardımcı olabilir.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">2</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: I can't sleep at night. &nbsp; B: You must do more exercise during the day. Why don't you walk to work? And you shouldn't drink so much coffee just before bedtime.</span><button class="tr-btn" onclick="showTip(this, 'A: Geceleri uyuyamıyorum. B: Gündüzleri daha fazla egzersiz yapmalısın. İşe yürüyerek gitsen olmaz mı? Ayrıca yatmadan hemen önce bu kadar çok kahve içmemelisin.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">3</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: I don't like my brother's new girlfriend. &nbsp; B: I don't think you should tell your brother. I think you should try to find some good things about her.</span><button class="tr-btn" onclick="showTip(this, 'A: Kardeşimin yeni kız arkadaşını sevmiyorum. B: Bence bunu kardeşine söylememelisin. Onun hakkında bazı iyi şeyler bulmaya çalışmalısın.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">4</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: I've got an important exam tomorrow, and I'm really nervous. &nbsp; B: I don't think you should study any more today. You must get a good night's sleep tonight. Don't worry. I'm sure you'll pass, and if you don't it's not the end of the world.</span><button class="tr-btn" onclick="showTip(this, 'A: Yarın önemli bir sınavım var ve çok gergenim. B: Bence bugün artık ders çalışmaman gerekiyor. Bu gece iyi bir gece uykusu uyumalısın. Merak etme. Eminim geçersin, geçemesen de bu dünyanın sonu değil.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">5</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: A boy in my class is bullying me. &nbsp; B: You must tell your teacher or ask your mum to talk to the teacher.</span><button class="tr-btn" onclick="showTip(this, 'A: Sınıfımdan bir çocuk beni zorbalıyor. B: Öğretmenine söylemeli ya da annenin öğretmenle konuşmasını istemelsin.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">6</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: I fell off my bike and banged my head – now I've got a bad headache. &nbsp; B: Oooh that looks bad! You must go to A and E immediately and get an X-ray. I'll drive you, I don't think you should go alone.</span><button class="tr-btn" onclick="showTip(this, 'A: Bisikletten düştüm ve başımı çarptım – şimdi şiddetli baş ağrım var. B: Bu kötü görünüyor! Acil servise gitmelisin ve röntgen çektirmelisin. Seni götüreyim, yalnız gitmen doğru olmaz.')">?</button></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="audio-name">7</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: My computer's behaving very strangely. &nbsp; B: Mine does that all the time. You should do what I do – turn it off, wait a while, then turn it on again. It's the only thing that ever works for me.</span><button class="tr-btn" onclick="showTip(this, 'A: Bilgisayarım çok garip davranıyor. B: Benimki de hep böyle yapıyor. Benim yaptığımı yapmalısın – kapat, biraz bekle, tekrar aç. Benim için işe yarayan tek şey bu.')">?</button></span>
+      </div>
+      <div>
+        <span class="audio-name">8</span>&nbsp;
+        <span class="tl"><span class="tl-text">A: My car's making a funny noise. &nbsp; B: It sounds bad – you mustn't drive it. You should call the garage.</span><button class="tr-btn" onclick="showTip(this, 'A: Arabam garip bir ses çıkarıyor. B: Kulağa kötü geliyor – bunu kullanmamalısın. Tamircini aramalısın.')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.7 Health Quiz Answers -->
+  <div class="q-block">
+    <div class="q-num">8.7 – A Health Quiz – Answers (Sağlık Testi – Cevaplar)</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.7</div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>1 FALSE.</strong> Skipping breakfast doesn't necessarily make you unhealthy. However, people who do have breakfast are more likely to look after their health generally – they eat healthily and exercise regularly, so they're more healthy anyway.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Kahvaltıyı atlamak sizi mutlaka sağlıksız yapmaz. Ancak kahvaltı yapan insanlar genel olarak sağlıklarına daha iyi bakar.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>2 TRUE.</strong> Weighing yourself regularly helps you keep a healthy weight. But you shouldn't do it too often – not every day, once a week is enough.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Düzenli tartılmak sağlıklı kilonuzu korumanıza yardımcı olur. Ama çok sık yapmamalısınız – haftada bir yeterli.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>3 TRUE.</strong> Some fast walking to start and perhaps some yoga or Tai Chi afterwards.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Önce hızlı bir yürüyüş ve ardından belki biraz yoga ya da Tai Chi.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>4 TRUE.</strong> Some people say it's the perfect exercise for the body. Tai Chi is also very good because it is both movement and relaxation.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Bazıları yüzmenin vücut için mükemmel egzersiz olduğunu söylüyor. Tai Chi de hem hareket hem dinlenme olduğu için çok iyi.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>5 FALSE.</strong> Short is fine, but you should try to do at least 150 minutes a week.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Kısa periyotlar da iyidir, ancak haftada en az 150 dakika yapmayı hedeflemelisiniz.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>6 FALSE.</strong> You don't have to feel pain when you exercise to keep fit. Do it slowly at first. Little and often is better, and then build up to harder, longer exercises.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Fit kalmak için egzersiz yaparken acı çekmenize gerek yok. Önce yavaş yapın. Az ama sık daha iyidir; sonra daha yoğun egzersizlere geçin.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>7 FALSE.</strong> No, you should drink water before a meal. It helps you feel full, and you won't eat too much.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Yemekten ÖNCE su içmelisiniz. Tokluk hissi verir ve fazla yememenizi sağlar.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>8 TRUE.</strong> Sometimes you want to eat more just after a meal, but if you wait 15 to 20 minutes, your food fills your stomach and you start to feel full.</span><button class="tr-btn" onclick="showTip(this, 'DOĞRU. Bazen yemekten hemen sonra daha fazla yemek istersiniz; ama 15-20 dakika beklerseniz yiyeceğiniz midenizi doldurur ve tokluk hissi başlar.')">?</button></span>
+      </div>
+      <div style="margin-bottom:8px;font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>9 FALSE.</strong> It doesn't have to be water. Any non-alcoholic drink will rehydrate you.</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. Su olmak zorunda değil. Alkolsüz herhangi bir içecek sizi rehidre eder.')">?</button></span>
+      </div>
+      <div style="font-size:13.5px;">
+        <span class="tl"><span class="tl-text"><strong>10 FALSE.</strong> There is no best time. The important thing is just to exercise – you can do morning, afternoon or night!</span><button class="tr-btn" onclick="showTip(this, 'YANLIŞ. En iyi zaman diye bir şey yok. Önemli olan egzersiz yapmak – sabah, öğleden sonra ya da gece yapabilirsiniz!')">?</button></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.8 Andy Lambert – Stuntman -->
+  <div class="q-block">
+    <div class="q-num">8.8 – Andy Lambert: A Stuntman's Story</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.8 · A = Andy Lambert, J = Justin</div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">Andy, I've often wondered … and never asked – how did you become a stuntman?</span><button class="tr-btn" onclick="showTip(this, 'Andy, aklıma hep geliyordu… ama hiç sormadım – nasıl dublör oldun?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Well … I first thought about it when I was at school. I loved all sports – athletics, swimming, even pole vaulting – anything and everything – and I loved climbing trees too, so I thought … hmmm … I'd like to be a stuntman. But eventually when I was 29, I had the courage and got started. Twenty-nine is quite late for a stuntman.</span><button class="tr-btn" onclick="showTip(this, 'Şey… ilk kez okulda düşündüm. Her sporu seviyordum – atletizm, yüzme, sırıkla atlama bile – her şeyi – ağaçlara tırmanmayı da seviyordum, bu yüzden … hmm … dublör olmak istiyorum diye düşündüm. Ama sonunda 29 yaşında cesaretimi toplayıp başladım. Yirmi dokuz, bir dublör için oldukça geç.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">Really? You actually had the idea at school? It's not a job many people think of.</span><button class="tr-btn" onclick="showTip(this, 'Gerçekten mi? Okulda bu fikri aldın mı? Pek çok insanın aklına gelmeyen bir iş.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Well, I did … but then I thought that the people doing it had to be very special in some way – so it couldn't be me. But eventually when I was 29, I had the courage and got started.</span><button class="tr-btn" onclick="showTip(this, 'Evet öyle düşündüm… ama sonra bu işi yapan insanların bir şekilde çok özel olması gerektiğini düşündüm – yani bu ben olamazdım. Ama sonunda 29 yaşında cesaretimi toplayıp başladım.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">So what were the first jobs you did?</span><button class="tr-btn" onclick="showTip(this, 'Peki ilk işlerin nelerdi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Well, I worked as a film extra at first on some TV dramas – I was the person sat at the bar or just one of the crowd. But at the same time I worked at other skills – you have to do that – horse riding, high diving, and martial arts, of course. I did judo competitions, and I built a portfolio of photographs of myself.</span><button class="tr-btn" onclick="showTip(this, 'Şey, önce bazı TV dramalarında film figuranı olarak çalıştım – barda oturan kişi ya da kalabalığın bir parçasıydım. Ama aynı zamanda diğer beceriler üzerinde çalıştım – bunu yapmak zorundasın – at binme, yüksek dalış ve dövüş sanatları tabii. Judo yarışmalarına katıldım ve kendimin bir fotoğraf portföyü oluşturdum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">Yeah, I was keen … and finally I got my first job. It was on a film called Onegin – a Russian romantic drama with Ralph Fiennes – I was doubling for Toby Stephens, Maggie Smith's son.</span><button class="tr-btn" onclick="showTip(this, 'Evet, istekliydim… ve sonunda ilk işimi aldım. Onegin adlı bir filmdi – Ralph Fiennes\'lı bir Rus romantik draması – Maggie Smith\'in oğlu Toby Stephens\'ın dublörüydüm.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span>Oh yeah – then what?</span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Well, after that I got work on a Bond film, one with Pierce Brosnan, when he comes crashing through a restaurant window in a speedboat. That was me!</span><button class="tr-btn" onclick="showTip(this, 'Sonra bir Bond filmine iş buldum – Pierce Brosnan\'ın oynadığı, bir sürat teknesinde restoran camından çıktığı sahneydi. O bendim!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">I saw the film – I didn't recognise you!</span><button class="tr-btn" onclick="showTip(this, 'Filmi gördüm – seni tanımadım!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">That's good – you're not meant to!</span><button class="tr-btn" onclick="showTip(this, 'Bu iyi – tanımamalısın zaten!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">I know! So … how do you prepare for a film like that?</span><button class="tr-btn" onclick="showTip(this, 'Biliyorum! Peki… böyle bir film için nasıl hazırlanıyorsun?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">First, you have to talk through the stunts with the director – so, for example, if you're going to fall out of a window you have to talk about how he, or she, wants you to move in the air and land – hit the ground, you know.</span><button class="tr-btn" onclick="showTip(this, 'Önce yönetmenle sahneleri konuşmak zorundasın – mesela pencereden düşeceksen, havada nasıl hareket etmeni ve nasıl ineceğini – yere nasıl çarpmak istediğini konuşman gerekiyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">Whoah, Andy! It sounds so dangerous. Have you ever been injured?</span><button class="tr-btn" onclick="showTip(this, 'Vay be Andy! Çok tehlikeli geliyor. Hiç yaralandın mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Not too much. I'm lucky. Just a few bumps and bruises, but a lot of stuntmen and women do get injured – sprained ankles, broken arms and legs, and the like. If you think about it, if you have to fall off a horse say 10 or 12 times in one day, you are not going to feel great.</span><button class="tr-btn" onclick="showTip(this, 'Çok fazla değil. Şanslıyım. Sadece birkaç darbe ve morluk; ama pek çok dublör yaralanıyor – burkulmuş bilekler, kırık kollar ve bacaklar vb. Bir düşün, bir günde 10-12 kez attan düşmek zorunda kalırsan pek iyi hissetmezsin.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span>I'm laughing but …</span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Actually, there was another injury. What was that? Well, I was going to do a really big film, in Greece – it was Captain Corelli's Mandolin with Nicholas Cage, and then just before I had to leave I sprained my ankle.</span><button class="tr-btn" onclick="showTip(this, 'Aslında bir yaralanma daha oldu. O neydi? Şey, Yunanistan\'da çok büyük bir film çekecektim – Nicholas Cage\'li Captain Corelli\'nin Mandolini\'ydi ve gitmeden hemen önce ayak bileğimi burktu.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">What a shame! How did you do that?</span><button class="tr-btn" onclick="showTip(this, 'Ne yazık! Nasıl yaptın bunu?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">Well, I was running in my local park and I fell – can you believe it?</span><button class="tr-btn" onclick="showTip(this, 'Şey, mahalle parkımda koşarken düştüm – inanılır gibi değil, değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">J:</span><span><span class="tl"><span class="tl-text">You're kidding! You don't do much stunt work now do you?</span><button class="tr-btn" onclick="showTip(this, 'Şaka mı yapıyorsun! Artık fazla dublörlük yapmıyorsun değil mi?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">A:</span><span><span class="tl"><span class="tl-text">No, I don't. I haven't done much since I married and had kids – my wife was pleased when I stopped, but my sons love to hear about when dad was a stuntman. I still love a bit of danger in my life.</span><button class="tr-btn" onclick="showTip(this, 'Hayır, yapmıyorum. Evlenip çocuk sahibi olduğumdan beri fazla yapmadım – bırakınca karım çok sevindi, ama oğullarım babanın dublör olduğu günleri duymayı seviyor. Hayatımda hâlâ biraz tehlikeyi seviyorum.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- 8.10 The Doctor's Diagnosis -->
+  <div class="q-block">
+    <div class="q-num">8.10 – The Doctor's Diagnosis (Doktorun Teşhisi)</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.10 · P = Patient, D = Doctor</div>
+      <div class="dlg-line"><span class="audio-speaker">P1:</span><span><span class="tl"><span class="tl-text">I can't stop coughing and blowing my nose.</span><button class="tr-btn" onclick="showTip(this, 'Öksürmeyi ve burnumu silmeyi durduramıyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got a cold. It's just a bad cold.</span><button class="tr-btn" onclick="showTip(this, 'Soğuk algınlığınız var. Kötü bir soğuk algınlığı.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P2:</span><span><span class="tl"><span class="tl-text">I've got a fever, my whole body aches, and I feel awful.</span><button class="tr-btn" onclick="showTip(this, 'Ateşim var, tüm vücudum ağrıyor ve kendimi berbat hissediyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got flu – just go home and go to bed.</span><button class="tr-btn" onclick="showTip(this, 'Gribiniz var – eve gidin ve yatın.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P3:</span><span><span class="tl"><span class="tl-text">It hurts when I walk on it.</span><button class="tr-btn" onclick="showTip(this, 'Üzerine basınca acıyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got a sprained ankle. It looks quite bad. You should go for an X-ray.</span><button class="tr-btn" onclick="showTip(this, 'Ayak bileğiniz burkulmuş. Oldukça kötü görünüyor. Röntgen çektirmelisiniz.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P4:</span><span><span class="tl"><span class="tl-text">I keep going to the toilet.</span><button class="tr-btn" onclick="showTip(this, 'Sürekli tuvalete gidiyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got diarrhoea. It's probably something you've eaten. You can get some pills from the pharmacist.</span><button class="tr-btn" onclick="showTip(this, 'İshaliniz var. Yediklerinizden kaynaklanıyor olabilir. Eczaneden hap alabilirsiniz.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P5:</span><span><span class="tl"><span class="tl-text">My glands are swollen, and it hurts when I swallow.</span><button class="tr-btn" onclick="showTip(this, 'Lenf bezlerim şişmiş ve yutkunurken acıyor.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got a sore throat – let me see! … Ah yes … it's tonsillitis.</span><button class="tr-btn" onclick="showTip(this, 'Boğaz ağrınız var – bir bakayım! … Ah evet … bademcik iltihabı.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P6:</span><span><span class="tl"><span class="tl-text">I keep being sick, and I've got terrible diarrhoea.</span><button class="tr-btn" onclick="showTip(this, 'Sürekli hastalanıyorum ve korkunç ishalim var.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got food poisoning. It will pass in a few hours – oh dear … the toilet's just over there!</span><button class="tr-btn" onclick="showTip(this, 'Gıda zehirlenmesi geçirdiniz. Birkaç saat içinde geçer – oh azizim … tuvalet hemen şurada!')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">P7:</span><span><span class="tl"><span class="tl-text">I start sneezing when I'm near a cat.</span><button class="tr-btn" onclick="showTip(this, 'Kedi yakınımda olunca hapşırmaya başlıyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">You've got an allergy. Lots of people are allergic to cats. You can take antihistamine pills – you can get a packet from the chemist.</span><button class="tr-btn" onclick="showTip(this, 'Alerjiniz var. Pek çok insan kedilere karşı alerjiktir. Antihistamin hap alabilirsiniz – eczaneden bir kutu temin edebilirsiniz.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- 8.11 Seeing the Doctor -->
+  <div class="q-block">
+    <div class="q-num">8.11 – Seeing the Doctor (Doktora Gitmek – tam metin)</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.11 · D = Doctor, E = Edsom</div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Hello. Come and sit down. What seems to be the problem?</span><button class="tr-btn" onclick="showTip(this, 'Merhaba. Gelin oturun. Sorun nedir?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span><span class="tl"><span class="tl-text">Well, I haven't felt well for a few days. I've had a bad headache, and now I've got a sore throat.</span><button class="tr-btn" onclick="showTip(this, 'Birkaç gündür kendimi iyi hissetmiyorum. Şiddetli baş ağrım vardı ve şimdi boğaz ağrım var.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Any sickness or diarrhoea?</span><button class="tr-btn" onclick="showTip(this, 'Bulantı ya da ishal var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span><span class="tl"><span class="tl-text">No, I haven't been sick or had any diarrhoea.</span><button class="tr-btn" onclick="showTip(this, 'Hayır, bulantı olmadı ve ishal de yok.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Do you feel hot?</span><button class="tr-btn" onclick="showTip(this, 'Ateşiniz var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span><span class="tl"><span class="tl-text">Yes, especially at night. I can't sleep because I feel hot, and I start coughing when I lie down.</span><button class="tr-btn" onclick="showTip(this, 'Evet, özellikle geceleri. Ateşim olduğu için uyuyamıyorum ve uzanınca öksürüyorum.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">OK, I'll just take your temperature. Can I just pop this in your mouth?</span><button class="tr-btn" onclick="showTip(this, 'Tamam, ateşinizi ölçeyim. Bunu ağzınıza koyabilir miyim?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>Aaargh!</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Ah, yes. You do have a bit of a fever. Now, let me see your throat. Open your mouth wide, please.</span><button class="tr-btn" onclick="showTip(this, 'Ah, evet. Hafif ateşiniz var. Şimdi boğazınıza bakayım. Ağzınızı geniş açın lütfen.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>'ot can u see? / Can you see anything?</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Yes, your throat looks very red. Does this hurt?</span><button class="tr-btn" onclick="showTip(this, 'Evet, boğazınız çok kırmızı. Bu acıtıyor mu?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>Ouch!</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">And your glands are swollen.</span><button class="tr-btn" onclick="showTip(this, 'Ve lenf bezleriniz şişmiş.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>Is it serious?</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">No, not at all. You just have a bit of a throat infection. You should have antibiotics. Are you allergic to penicillin?</span><button class="tr-btn" onclick="showTip(this, 'Hayır, hiç değil. Sadece hafif bir boğaz enfeksiyonunuz var. Antibiyotik almanız gerekiyor. Penisiline alerjiniz var mı?')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>No, I'm not.</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">Good. Now, you shouldn't go to work for a couple of days, and you must drink plenty of liquids. Just take things easy for a while. I'll write you a prescription.</span><button class="tr-btn" onclick="showTip(this, 'Güzel. Birkaç gün işe gitmemelisiniz ve bol sıvı içmelisiniz. Bir süre dinlenin. Size reçete yazacağım.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>Thank you. Do I have to pay you?</span></div>
+      <div class="dlg-line"><span class="audio-speaker">D:</span><span><span class="tl"><span class="tl-text">No, no. Seeing me is free, but you'll have to pay for the prescription. It's £8.80.</span><button class="tr-btn" onclick="showTip(this, 'Hayır. Muayene ücretsiz, ama reçete için 8.80 sterlin ödemeniz gerekecek.')">?</button></span></span></div>
+      <div class="dlg-line"><span class="audio-speaker">E:</span><span>Right. Thanks very much. Goodbye.</span></div>
+    </div>
+  </div>
+
+  <!-- 8.9 Children's Song -->
+  <div class="q-block">
+    <div class="q-num">8.9 – A Children's Song (Çocuk Şarkısı)</div>
+    <div class="audio-box">
+      <div class="audio-tag">8.9</div>
+      <p style="font-size:14px;line-height:2;">
+        <span class="tl"><span class="tl-text">Head and shoulders, knees and toes, knees and toes!</span><button class="tr-btn" onclick="showTip(this, 'Baş ve omuzlar, dizler ve parmak uçları, dizler ve parmak uçları!')">?</button></span><br>
+        <span class="tl"><span class="tl-text">Head and shoulders, knees and toes, knees and toes!</span><button class="tr-btn" onclick="showTip(this, 'Baş ve omuzlar, dizler ve parmak uçları, dizler ve parmak uçları!')">?</button></span><br>
+        <span class="tl"><span class="tl-text">And eyes and ears and mouth and nose!</span><button class="tr-btn" onclick="showTip(this, 'Ve gözler ve kulaklar ve ağız ve burun!')">?</button></span><br>
+        <span class="tl"><span class="tl-text">Head and shoulders, knees and toes, knees and toes!</span><button class="tr-btn" onclick="showTip(this, 'Baş ve omuzlar, dizler ve parmak uçları, dizler ve parmak uçları!')">?</button></span>
+      </p>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- POPUP ELEMENT -->
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+
+  function showTip(btn, text) {
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 280;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) left = rect.left - pw - 8;
+    if (left < 8) left = 8;
+    if (top + 120 > window.innerHeight) top = window.innerHeight - 130;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) positionPopup(activeBtn);
+  }, { passive: true });
+</script>
+</body>
+</html>
