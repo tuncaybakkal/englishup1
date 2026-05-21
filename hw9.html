@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 9: What a story!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --orange: #e8581a;
+    --orange-light: #f5956a;
+    --orange-pale: #fff3ed;
+    --dark: #1a1208;
+    --mid: #4a3520;
+    --muted: #8a6d50;
+    --line: #e8d8c8;
+    --bg: #fdfaf6;
+    --white: #ffffff;
+    --green: #2e7d5e;
+    --green-light: #e8f5ef;
+    --blue: #1e5a8a;
+    --blue-light: #e8f0f8;
+    --gold: #c89a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .site-header {
+    background: var(--orange);
+    padding: 32px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.18);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-badge {
+    background: white;
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 28px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-text p {
+    color: rgba(255,255,255,0.82);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .toc {
+    background: var(--dark);
+    padding: 0 40px;
+  }
+  .toc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  .toc a {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { background: var(--orange); color: white; }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section-label {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .section-page {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 48px 0 36px;
+  }
+
+  .q-block {
+    margin-bottom: 28px;
+    border-left: 3px solid var(--line);
+    padding-left: 18px;
+  }
+  .q-block:hover { border-left-color: var(--orange-light); }
+  .q-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tl { display: inline; }
+  .tl-text { display: inline; }
+
+  .tr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+    line-height: 1;
+    position: relative;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+  .tr-btn:hover { background: var(--dark); }
+
+  .tr-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--dark);
+    color: #f5e8d8;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 280px;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,.38);
+    pointer-events: none;
+  }
+  .tr-popup.active { display: block; }
+  .tr-popup::before {
+    content: '🇹🇷';
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
+  .answer-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .answer-row {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5ede2;
+    align-items: flex-start;
+  }
+  .answer-row:last-child { border-bottom: none; }
+  .ans-num {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .ans-text { flex: 1; font-size: 14px; }
+
+  .fill-sentence {
+    font-size: 14.5px;
+    margin-bottom: 5px;
+    line-height: 1.8;
+  }
+  .blank-ans {
+    display: inline-block;
+    background: var(--orange-pale);
+    border-bottom: 2px solid var(--orange);
+    color: var(--orange);
+    font-weight: 600;
+    padding: 0 8px;
+    border-radius: 4px 4px 0 0;
+    font-size: 14px;
+  }
+
+  .grammar-box {
+    background: #fff8f2;
+    border: 2px solid var(--orange-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .grammar-box .gb-title {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .grammar-box p, .grammar-box li { font-size: 14px; margin-bottom: 6px; }
+  .grammar-box ul { margin-left: 18px; }
+
+  .dialogue {
+    background: var(--blue-light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 8px;
+  }
+  .dlg-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .dlg-line:last-child { margin-bottom: 0; }
+  .dlg-speaker {
+    font-weight: 700;
+    color: var(--blue);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+
+  .vocab-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .vocab-chip {
+    background: var(--green-light);
+    border: 1px solid #a8d8c0;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .vocab-chip.neg {
+    background: #fde8e8;
+    border-color: #f5a8a8;
+    color: #b83232;
+  }
+
+  .match-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .match-table th {
+    background: var(--mid);
+    color: white;
+    padding: 8px 14px;
+    font-size: 12px;
+    letter-spacing: .05em;
+    text-align: left;
+  }
+  .match-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .match-table tr:nth-child(even) td { background: #faf5ef; }
+  .match-arrow { color: var(--orange); font-weight: 700; text-align: center; }
+
+  .writing-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .writing-box li { margin-bottom: 6px; margin-left: 18px; }
+  .writing-box p { margin-bottom: 8px; }
+
+  .audio-box {
+    background: #f5f0fa;
+    border: 1px solid #c8b0e8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 10px;
+  }
+  .audio-speaker {
+    font-weight: 700;
+    color: #6a3ab8;
+    font-size: 13px;
+  }
+  .audio-name { color: #6a3ab8; font-weight: 600; }
+
+  .info-note {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+
+  .story-box {
+    background: #fef9f0;
+    border: 1px solid #e8cfa0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .story-box p { margin-bottom: 10px; }
+  .story-box .pp { color: var(--orange); font-weight: 600; }
+
+  .pron-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .pron-table th {
+    background: var(--dark);
+    color: white;
+    padding: 8px 14px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .05em;
+  }
+  .pron-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pron-table tr:nth-child(even) td { background: #faf5ef; }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 20px 16px; }
+    .main { padding: 24px 14px 60px; }
+    .section-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">9</div>
+    <div class="header-text">
+      <h1>What a story!</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Student's Book Answer Key</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#starter">Starter</a>
+    <a href="#grammar1">Grammar: Past Perfect</a>
+    <a href="#grammar2">Joining Words</a>
+    <a href="#practice1">Practice</a>
+    <a href="#listening">Listening</a>
+    <a href="#reading">Reading</a>
+    <a href="#vocabulary">Vocabulary: Feelings</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing</a>
+    <a href="#audioscript">Audioscript</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- STARTER                                        -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="starter">
+  <div class="section-label">Starter</div>
+  <div class="section-title">Match the pictures with the books</div>
+  <div class="section-page">(Ders Kitabı s. 90)</div>
+
+  <div class="q-block">
+    <div class="q-num">Match pictures A–C with the books and opening lines</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">A</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Mary Poppins — Line 3: "If you want to find Cherry Tree Lane, all you have to do is ask a policeman at the crossroads."</span>
+          <button class="tr-btn" onclick="showTip(this, 'Mary Poppins — 3. satır: "Cherry Tree Lane\'i bulmak istiyorsan, tek yapman gereken kavşaktaki polise sormak."')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">B</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Pinocchio — Line 2: "Once upon a time there was a piece of wood."</span>
+          <button class="tr-btn" onclick="showTip(this, 'Pinokyo — 2. satır: "Bir zamanlar bir tahta parçası varmış."')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">C</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Peter Pan — Line 1: "All children, except one, grow up."</span>
+          <button class="tr-btn" onclick="showTip(this, 'Peter Pan — 1. satır: "Bir çocuk dışında tüm çocuklar büyür."')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- GRAMMAR 1: PAST PERFECT & NARRATIVE TENSES    -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="grammar1">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Past Perfect and Narrative Tenses</div>
+  <div class="section-page">(Ders Kitabı s. 90–91 / Cevap Anahtarı)</div>
+
+  <!-- Ex 1 - A folk tale -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – A folk tale: Which man is Mula?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">→</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Mula is the old man with the stick (walking stick / staff).</span>
+          <button class="tr-btn" onclick="showTip(this, 'Mula, bastonlu/değnekli yaşlı adamdır.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2 - Moral -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – What is the moral of the story?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">→</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Appreciate what you have, however little!</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ne kadar az olursa olsun sahip olduklarına değer ver!')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 - Questions -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete the questions</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Where <span class="blank-ans">was</span> Mula <span class="blank-ans">walking</span> when he saw the man?</div>
+          <span class="tl"><span class="tl-text">Along the road through the woods.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ormandaki yol boyunca.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <div class="fill-sentence">What <span class="blank-ans">was</span> the man <span class="blank-ans">carrying</span>?</div>
+          <span class="tl"><span class="tl-text">A dirty, old sack.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kirli, eski bir çuval.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <div class="fill-sentence">What <span class="blank-ans">did</span> the man <span class="blank-ans">do</span> when Mula took his sack?</div>
+          <span class="tl"><span class="tl-text">He sat down and cried.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Oturup ağladı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Where <span class="blank-ans">did</span> Mula <span class="blank-ans">put</span> the man's sack?</div>
+          <span class="tl"><span class="tl-text">In the middle of the road.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Yolun ortasına.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <div class="fill-sentence">How <span class="blank-ans">did</span> the man <span class="blank-ans">feel</span> when he got his sack back?</div>
+          <span class="tl"><span class="tl-text">Very happy.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çok mutlu.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 4 - Fill in the lines -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Put these lines in the correct places (…) in the story</div>
+    <div class="story-box">
+      <p>A wise old man called Mula was walking along the road through the woods, when he saw a man walking towards him.</p>
+      <p>The man was carrying a dirty, old sack. He looked very unhappy, and when Mula asked him why, the man told him his story.</p>
+      <p>He was all alone, <span class="pp">(¹) because his wife had left him,</span> and he was also poor and homeless <span class="pp">(²) because he had lost his job, and his house.</span></p>
+      <p>'Everything I own is in this old sack', he said. 'My life is miserable.' And he walked off.</p>
+      <p><span class="pp">(³) After the man had gone a few yards,</span> Mula ran past him, took his sack, and ran into the woods. The man was afraid to follow <span class="pp">(⁴) – he had heard it was easy to get lost in these woods.</span></p>
+      <p>'Now my life is even more miserable!' he said. And he sat down and cried.</p>
+      <p>Meanwhile, further down the road, Mula came out of the woods and put the man's sack in the middle of the road. Finally, <span class="pp">(⁵) when he had stopped crying,</span> the man set off again…</p>
+    </div>
+    <div class="info-note" style="margin-top:10px;">
+      <strong>Correct order:</strong> (1) because his wife <em>had left</em> him · (2) because he <em>had lost</em> his job, and his house · (3) After the man <em>had gone</em> a few yards · (4) he <em>had heard</em> it was easy to get lost · (5) when he <em>had stopped</em> crying
+    </div>
+  </div>
+
+  <!-- Grammar Spot -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot</div>
+    <div class="grammar-box">
+      <div class="gb-title">● Grammar Spot Answers</div>
+      <p><strong>1. Tenses in bold:</strong></p>
+      <ul>
+        <li><span class="tl"><span class="tl-text">"The man <em>was carrying</em> a sack." → <strong>Past Continuous</strong></span><button class="tr-btn" onclick="showTip(this, '\"Adam bir çuval taşıyordu.\" → Geçmiş Sürekli (Past Continuous)')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">"He <em>told</em> Mula his story." → <strong>Past Simple</strong></span><button class="tr-btn" onclick="showTip(this, '\"Mula\'ya hikayesini anlattı.\" → Geçmiş Zaman (Past Simple)')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text">"He <em>had lost</em> his job." → <strong>Past Perfect</strong></span><button class="tr-btn" onclick="showTip(this, '\"İşini kaybetmişti.\" → Geçmiş Mükemmel (Past Perfect)')">?</button></span></li>
+      </ul>
+      <p style="margin-top:10px;"><strong>2.</strong> <span class="tl"><span class="tl-text">"His wife left him. He was all alone." → Expressed as: "He was all alone <em>because his wife had left him.</em>"</span><button class="tr-btn" onclick="showTip(this, '\"Karısı onu terk etti. Yapayalnızdı.\" → Hikayede: \"Karısı onu terk ettiği için yapayalnızdı.\"')">?</button></span></p>
+      <p><strong>3.</strong> <span class="tl"><span class="tl-text">We form the Past Perfect with <em>had</em> + the <strong>past participle</strong> of the verb.</span><button class="tr-btn" onclick="showTip(this, 'Past Perfect = had + fiilin üçüncü hali (geçmiş katılım)')">?</button></span></p>
+    </div>
+  </div>
+
+  <!-- Ex 5 - Ask and answer -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Ask and answer with Past Perfect</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Why was the man all alone? — B: Because his wife had left him.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Adam neden yapayalnızdı? — B: Çünkü karısı onu terk etmişti.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Why was he poor and homeless? — B: Because he'd lost his job, and his house.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Neden fakir ve evsizdi? — B: Çünkü işini ve evini kaybetmişti.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Why was he afraid to follow Mula into the woods? — B: Because he'd heard it was easy to get lost in them.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Neden Mula\'yı ormana kadar takip etmekten korkuyordu? — B: Çünkü orada kaybolmanın kolay olduğunu duymuştu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Why was his sack in the middle of the road? — B: Because Mula had put it there.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Çuvalı neden yolun ortasındaydı? — B: Çünkü Mula oraya koymuştu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Why was he so happy? — B: Because he'd found his sack again, with everything still inside it.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Neden bu kadar mutluydu? — B: Çünkü her şey içinde olmak üzere çuvalını yeniden bulmuştu.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Practice: Pronunciation -->
+  <div class="q-block">
+    <div class="q-num">Practice – Pronunciation (9.4): 'd = had — which sentence is Past Perfect?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text"><span class="blank-ans">2</span> <span class="tl"><span class="tl-text">(second sentence is Past Perfect)</span><button class="tr-btn" onclick="showTip(this, 'İkinci cümle Past Perfect')">?</button></span></span>
+      </div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="blank-ans">1</span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="blank-ans">1</span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="blank-ans">2</span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="blank-ans">1</span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="blank-ans">1</span></span></div>
+    </div>
+  </div>
+
+  <!-- Practice: Match A with B (9.5) -->
+  <div class="q-block">
+    <div class="q-num">Practice – Match a line in A with a line in B (9.5)</div>
+    <table class="match-table">
+      <tr><th>A</th><th></th><th>B</th></tr>
+      <tr>
+        <td>1 I got a fabulous view of the Alps</td>
+        <td class="match-arrow">→ d</td>
+        <td>as we were flying over them.</td>
+      </tr>
+      <tr>
+        <td>2 I felt tired all day yesterday</td>
+        <td class="match-arrow">→ e</td>
+        <td>because I hadn't slept much the night before.</td>
+      </tr>
+      <tr>
+        <td>3 Just as I was falling asleep,</td>
+        <td class="match-arrow">→ f</td>
+        <td>the neighbour's dog started barking.</td>
+      </tr>
+      <tr>
+        <td>4 Tom's new girlfriend seemed familiar.</td>
+        <td class="match-arrow">→ c</td>
+        <td>I was sure I'd seen her somewhere before.</td>
+      </tr>
+      <tr>
+        <td>5 I was nervous before the flight</td>
+        <td class="match-arrow">→ a</td>
+        <td>because I'd never flown before.</td>
+      </tr>
+      <tr>
+        <td>6 My brother rang me</td>
+        <td class="match-arrow">→ b</td>
+        <td>while I was out shopping.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Discussing grammar -->
+  <div class="q-block">
+    <div class="q-num">Discussing Grammar – Differences in meaning</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1a</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>When I arrived, she cooked dinner.</em> → I arrived first, then she cooked.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ben geldim, sonra o yemek pişirdi. (Önce ben geldim.)')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">1b</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>When I arrived, she was cooking dinner.</em> → She was in the process of cooking when I arrived.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ben geldiğimde yemek pişirme sürecindeydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">1c</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>When I arrived, she'd cooked dinner.</em> → When I arrived the cooking had already finished and dinner was ready.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ben geldiğimde yemek pişirme zaten bitmişti, yemek hazırdı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2a</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>He spoke good French because he was living in France.</em> → He lived there for a time and spoke French regularly.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Bir süre orada yaşadı ve sürekli Fransızca konuştu, bu yüzden Fransızcası iyiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2b</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>He spoke good French because he had lived in France.</em> → He lived there in the past (probably not now) and so his French was good.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Geçmişte (muhtemelen artık değil) orada yaşamıştı ve bu yüzden Fransızcası iyiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3a</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>I listened to music while I did my homework.</em> → Both actions happened at the same time.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Her iki eylem aynı anda gerçekleşti (ödev yaparken müzik dinledim).')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3b</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>I listened to music when I'd done my homework.</em> → I did homework first, then listened to music.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Önce ödevimi yaptım, sonra müzik dinledim.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4a</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>She gave me a book, and I read it.</em> → She gave me the book first and then I read it.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kitabı verdi, sonra ben okudum.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4b</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>She gave me a book, but I'd read it.</em> → She gave me a book but I had already read it before she gave it to me.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kitabı verdi ama ben onu daha önce okumuştum.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5a</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>When I got home, the children were going to bed.</em> → I arrived home, the children were in their bedrooms, in their pyjamas.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Eve geldiğimde çocuklar yataklarına gidiyordu (pijamaları giyiyordu).')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5b</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><em>When I got home, the children had gone to bed.</em> → I arrived home, the children were in bed and perhaps asleep.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Eve geldiğimde çocuklar yataktaydı, belki de uyuyordu.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- GRAMMAR 2: JOINING WORDS                       -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="grammar2">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">The Role-swap – Joining Words (Conjunctions)</div>
+  <div class="section-page">(Ders Kitabı s. 92)</div>
+
+  <!-- Story answers -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – The Professor and His Driver: Choose the correct joining words</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="blank-ans">before</span> <span class="tl"><span class="tl-text">the tour ended</span><button class="tr-btn" onclick="showTip(this, 'tur bitmeden önce')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="blank-ans">so</span> <span class="tl"><span class="tl-text">he travelled by car</span><button class="tr-btn" onclick="showTip(this, 'bu yüzden arabayla seyahat etti')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="blank-ans">because</span> <span class="tl"><span class="tl-text">he was too tired to drive</span><button class="tr-btn" onclick="showTip(this, 'çünkü sürmek için çok yorgundu')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="blank-ans">after</span> <span class="tl"><span class="tl-text">he'd finished his lectures</span><button class="tr-btn" onclick="showTip(this, 'derslerini bitirdikten sonra')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="blank-ans">as</span> <span class="tl"><span class="tl-text">they were driving to the last lecture</span><button class="tr-btn" onclick="showTip(this, 'son derse doğru araba kullanırlarken')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="blank-ans">when</span> <span class="tl"><span class="tl-text">you give your lecture</span><button class="tr-btn" onclick="showTip(this, 'ders verdiğinizde')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="blank-ans">but</span> <span class="tl"><span class="tl-text">Professor Higgs knew Harry was a clever man</span><button class="tr-btn" onclick="showTip(this, 'ama Profesör Higgs Harry\'nin zeki bir adam olduğunu biliyordu')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="blank-ans">As soon as</span> <span class="tl"><span class="tl-text">they arrived at the university</span><button class="tr-btn" onclick="showTip(this, 'üniversiteye varır varmaz')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">9</span><span class="ans-text"><span class="blank-ans">while</span> <span class="tl"><span class="tl-text">Harry gave the lecture</span><button class="tr-btn" onclick="showTip(this, 'Harry ders verirken')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">10</span><span class="ans-text"><span class="blank-ans">until</span> <span class="tl"><span class="tl-text">the audience had finished clapping</span><button class="tr-btn" onclick="showTip(this, 'seyirci alkışlamayı bitirinceye kadar')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">11</span><span class="ans-text"><span class="blank-ans">although</span> <span class="tl"><span class="tl-text">it seems a difficult one</span><button class="tr-btn" onclick="showTip(this, 'zor görünse de')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 3 - Ask and answer -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Ask and answer the questions</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because he didn't like flying.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çünkü uçmayı sevmiyordu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">As they were driving to the last lecture.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Son derse doğru araba kullanırlarken.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">As soon as they arrived at the university.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Üniversiteye varır varmaz.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Until the audience had finished clapping.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Seyirci alkışlamayı bitirinceye kadar.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 4 - Complete with although/while/so -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Complete the sentences with <em>although</em>, <em>while</em>, or <em>so</em></div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div class="fill-sentence">The professor liked the idea of swapping roles, <span class="blank-ans">so</span> he decided to try it.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Profesör rolleri değiştirme fikrini beğendi, bu yüzden denemeye karar verdi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <div class="fill-sentence"><span class="blank-ans">Although</span> Harry wasn't a physicist, he gave the lecture perfectly.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Her ne kadar Harry bir fizikçi olmasa da, dersi mükemmel verdi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <div class="fill-sentence">The audience listened quietly <span class="blank-ans">while</span> Harry was giving his lecture.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Harry dersini verirken seyirci sessizce dinledi.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PRACTICE (Conjunctions)                        -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="practice1">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Discussing Grammar – Conjunctions</div>
+  <div class="section-page">(Ders Kitabı s. 93)</div>
+
+  <!-- Ex 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Choose the correct words to join the sentences</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="blank-ans">When</span> <span class="tl"><span class="tl-text">the plane had landed, I switched my phone on.</span><button class="tr-btn" onclick="showTip(this, 'Uçak inince telefonumu açtım.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="blank-ans">while</span> <span class="tl"><span class="tl-text">I cut myself while I was shaving.</span><button class="tr-btn" onclick="showTip(this, 'Tıraş olurken kendimi kestim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="blank-ans">until</span> <span class="tl"><span class="tl-text">He worked for IBM until he retired.</span><button class="tr-btn" onclick="showTip(this, 'Emekli olana kadar IBM\'de çalıştı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="blank-ans">as soon as</span> <span class="tl"><span class="tl-text">I got out of bed as soon as I woke up.</span><button class="tr-btn" onclick="showTip(this, 'Uyanır uyanmaz yataktan kalktım.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="blank-ans">as</span> <span class="tl"><span class="tl-text">She listened to music as she drove home.</span><button class="tr-btn" onclick="showTip(this, 'Eve giderken müzik dinledi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="blank-ans">Before</span> <span class="tl"><span class="tl-text">Before I went to bed, I locked all the doors.</span><button class="tr-btn" onclick="showTip(this, 'Yatmadan önce tüm kapıları kilitledim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="blank-ans">After</span> <span class="tl"><span class="tl-text">After I left school, I lived abroad for a year.</span><button class="tr-btn" onclick="showTip(this, 'Okuldan ayrıldıktan sonra bir yıl yurt dışında yaşadım.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="blank-ans">although</span> <span class="tl"><span class="tl-text">We had a lovely picnic, although the weather wasn't great.</span><button class="tr-btn" onclick="showTip(this, 'Harika bir piknik yaptık, her ne kadar hava çok iyi olmasa da.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 2 - Join sentences with Past Perfect -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Join the sentences using the conjunction. Use Past Perfect in one sentence.</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I went to bed when I'd done my homework.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ödevimi yapınca yattım.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">After I'd driven two hundred miles, I stopped for coffee.</span>
+          <button class="tr-btn" onclick="showTip(this, 'İki yüz mil sürdükten sonra kahve molası verdim.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She bought a car as soon as she'd passed her driving test.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ehliyet sınavını geçer geçmez araba aldı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I didn't go to live in Italy until I'd learnt Italian.</span>
+          <button class="tr-btn" onclick="showTip(this, 'İtalyanca öğrenene kadar İtalya\'ya yerleşmeye gitmedim.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Although I'd enjoyed reading the book, I didn't like the film.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kitabı okumaktan zevk almış olmama rağmen filmi beğenmedim.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">His mother sent him to bed because he'd been naughty.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Annesi onu yatağa gönderdi çünkü yaramazlık etmişti.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I'd burnt the chicken, so we went out to eat.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Tavuğu yakmıştım, bu yüzden dışarıya yemeye gittik.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Jill invited me to stay for lunch, but I'd arranged to have lunch with Jo.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Jill beni öğle yemeğinde kalmaya davet etti ama Jo ile öğle yemeği ayarlamıştım.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- LISTENING & SPEAKING                           -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="listening">
+  <div class="section-label">Listening &amp; Speaking</div>
+  <div class="section-title">Young Adult Literature</div>
+  <div class="section-page">(Ders Kitabı s. 93)</div>
+
+  <!-- Ex 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Children's vs Young Adult literature</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">→</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The difference is that young adult literature is aimed at teenagers. Children's books: Oliver and the Seawigs, The Lion the Witch and the Wardrobe, Wolf. Young adult: Tightrope.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Fark: genç yetişkin edebiyatı ergenlere yöneliktir. Çocuk kitapları: Oliver and the Seawigs, Aslan, Cadı ve Dolap, Kurt. Genç yetişkin: Tightrope.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2 - 9.8 interview -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 (9.8) – Interview with Liz Davis</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The other two golden ages were the 19th century and the 1950s.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Diğer iki altın çağ 19. yüzyıl ve 1950\'lerdir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Alice in Wonderland, Peter Pan, The Storyteller, The Lord of the Rings, The Lion the Witch and the Wardrobe, The Harry Potter series, The Hunger Games.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Alice Harikalar Diyarında, Peter Pan, Hikayeci, Yüzüklerin Efendisi, Aslan Cadı ve Dolap, Harry Potter serisi, Açlık Oyunları.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 - Listen again -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 (9.8) – Listen again</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">For 15–18 year-olds. The stories and subjects in them aren't what you usually find in children's literature — they're more adult.</span>
+          <button class="tr-btn" onclick="showTip(this, '15-18 yaş arası. İçlerindeki hikaye ve konular çocuk edebiyatında bulduklarınızdan farklı — daha yetişkin.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">They were the earliest fantasy books for children. Before that, children's books were serious and educational.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çocuklar için ilk fantezi kitaplarıydı. Bundan önce çocuk kitapları ciddi ve eğiticiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">There had been the Second World War and the atomic bomb.</span>
+          <button class="tr-btn" onclick="showTip(this, 'İkinci Dünya Savaşı ve atom bombası yaşanmıştı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">They were the first children's books that people of all ages read.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Her yaştan insanın okuduğu ilk çocuk kitaplarıydı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The later Harry Potter books. They are not typical because they are not about the ordinary everyday problems that teenagers experience.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Sonraki Harry Potter kitapları. Tipik değiller çünkü ergenlerin günlük sıradan sorunlarını anlatmıyorlar.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">People complained that young people's literature had never shown the reality of teenage life.</span>
+          <button class="tr-btn" onclick="showTip(this, 'İnsanlar gençlik edebiyatının ergen hayatının gerçekliğini hiç göstermediğinden şikayetçiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Many parents worry about children reading about relationships, alcohol and drugs. No, Liz thinks it helps if teenagers see people learning to get through modern problems.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Birçok ebeveyn çocukların ilişkiler, alkol ve uyuşturucu hakkında okumasından endişeleniyor. Hayır, Liz ergenlerin modern sorunlarla başa çıkmayı öğrenen insanları görmesinin yardımcı olduğunu düşünüyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She doesn't like the fact that so many young adult novels end miserably. She thinks teenagers like happy endings, really.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Birçok genç yetişkin romanının mutsuz sonla bitmesini sevmiyor. Aslında ergenlerin mutlu son sevdiğini düşünüyor.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- READING: THE TRAIN JOURNEY                     -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="reading">
+  <div class="section-label">Reading &amp; Speaking</div>
+  <div class="section-title">The Train Journey – The Storyteller (Saki)</div>
+  <div class="section-page">(Ders Kitabı s. 94–95)</div>
+
+  <!-- Ex 1 - fact file -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Fact file about Saki</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">When?</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He wrote in the early 1900s.</span>
+          <button class="tr-btn" onclick="showTip(this, '1900\'lerin başında yazdı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Stories?</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">His short stories often made fun of the self-important upper classes in Edwardian society.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kısa hikayeleri genellikle Edvardyen dönemin kendini beğenmiş üst sınıflarını alay konusu etti.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 - first part -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 (9.9) – Answer the questions (first part)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">One hour.</span><button class="tr-btn" onclick="showTip(this, 'Bir saat.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Three children with their aunt, and a young man.</span><button class="tr-btn" onclick="showTip(this, 'Teyzesiyle birlikte üç çocuk ve bir genç adam.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Because they are bored, hot, and tired.</span><button class="tr-btn" onclick="showTip(this, 'Çünkü sıkılmış, bunalmış ve yorgunlardı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">That he had chosen the wrong carriage to sit in.</span><button class="tr-btn" onclick="showTip(this, 'Yanlış vagona girdiğini (düşünüyordu).')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">Lots of "why" questions.</span><button class="tr-btn" onclick="showTip(this, 'Çok sayıda "neden" sorusu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">To keep them quiet.</span><button class="tr-btn" onclick="showTip(this, 'Onları susturmak için.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">Probably not — they had obviously heard her stories before and found them boring.</span><button class="tr-btn" onclick="showTip(this, 'Muhtemelen hayır — teyzesinin hikayelerini daha önce duymuşlar ve sıkıcı bulmuşlardı.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 4 - Match (second part) -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 (9.10) – Match the lines (second part)</div>
+    <table class="match-table">
+      <tr><th>A</th><th></th><th>B</th></tr>
+      <tr>
+        <td>1 The children had heard the aunt's stories before,</td>
+        <td class="match-arrow">→ c</td>
+        <td>so they weren't interested in this one.</td>
+      </tr>
+      <tr>
+        <td>2 The aunt said that the people saved the girl</td>
+        <td class="match-arrow">→ e</td>
+        <td>because she was so good.</td>
+      </tr>
+      <tr>
+        <td>3 The girl said that although some people are bad,</td>
+        <td class="match-arrow">→ a</td>
+        <td>people still try to save them.</td>
+      </tr>
+      <tr>
+        <td>4 The younger girl didn't listen</td>
+        <td class="match-arrow">→ d</td>
+        <td>as soon as the aunt suggested it.</td>
+      </tr>
+      <tr>
+        <td>5 When the aunt had finished her story,</td>
+        <td class="match-arrow">→ f</td>
+        <td>the man said she wasn't a good storyteller.</td>
+      </tr>
+      <tr>
+        <td>6 The young man agreed to tell a story</td>
+        <td class="match-arrow">→ b</td>
+        <td>while the aunt was telling her story.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Ex 6 - Listening 9.11 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 6 (9.11) – The man's story about Bertha</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because it started in the same way as the aunt's story.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çünkü teyzesinin hikayesiyle aynı şekilde başladı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">She worked hard at school and was never late, never dirty or untidy, never rude, and she never told lies.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Okulda çok çalıştı, hiç geç kalmadı, asla kirli ya da dağınık olmadı, kaba olmadı ve asla yalan söylemedi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because it was unusual and they liked how it sounded.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çünkü alışılmışın dışındaydı ve nasıl sesi çıktığını beğendiler.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Three: "never late", "always polite", "best-behaved child in town".</span>
+          <button class="tr-btn" onclick="showTip(this, 'Üç tane: "hiç geç kalmaz", "her zaman kibar", "kasabanın en iyi huylu çocuğu".')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because of her clean white dress.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Temiz beyaz elbisesi nedeniyle.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He could hear her medals clinking together.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Madalyalarının birbirine çarparak çıkardığı şıngırtıyı duyabiliyordu.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- VOCABULARY: FEELINGS                           -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="vocabulary">
+  <div class="section-label">Vocabulary &amp; Speaking</div>
+  <div class="section-title">Feelings</div>
+  <div class="section-page">(Ders Kitabı s. 96)</div>
+
+  <!-- Ex 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Positive or negative feelings?</div>
+    <div style="margin-top:10px;">
+      <p style="font-size:13px; font-weight:600; color:var(--green); margin-bottom:6px;">✓ Positive</p>
+      <div class="vocab-box">
+        <span class="vocab-chip">delighted</span>
+        <span class="vocab-chip">proud</span>
+        <span class="vocab-chip">amazed</span>
+      </div>
+      <p style="font-size:13px; font-weight:600; color:#b83232; margin-top:12px; margin-bottom:6px;">✗ Negative</p>
+      <div class="vocab-box">
+        <span class="vocab-chip neg">angry</span>
+        <span class="vocab-chip neg">nervous</span>
+        <span class="vocab-chip neg">stressed</span>
+        <span class="vocab-chip neg">disappointed</span>
+        <span class="vocab-chip neg">upset</span>
+        <span class="vocab-chip neg">homesick</span>
+        <span class="vocab-chip neg">jealous</span>
+        <span class="vocab-chip neg">scared</span>
+        <span class="vocab-chip neg">lonely</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Which feelings describe situations A–J?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">A</span><span class="ans-text"><span class="blank-ans">homesick</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Yurt özlemi')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">B</span><span class="ans-text"><span class="blank-ans">delighted, amazed</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Memnun, şaşırmış')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">C</span><span class="ans-text"><span class="blank-ans">nervous, stressed, scared</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Sinirli, stresli, korkmuş')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">D</span><span class="ans-text"><span class="blank-ans">stressed</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Stresli')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">E</span><span class="ans-text"><span class="blank-ans">delighted, jealous, amazed</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Memnun, kıskanç, şaşırmış')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">F</span><span class="ans-text"><span class="blank-ans">delighted, proud, amazed</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Memnun, gururlu, şaşırmış')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">G</span><span class="ans-text"><span class="blank-ans">angry, stressed, upset</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Kızgın, stresli, üzgün')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">H</span><span class="ans-text"><span class="blank-ans">angry, upset, jealous</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Kızgın, üzgün, kıskanç')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">I</span><span class="ans-text"><span class="blank-ans">angry, upset</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Kızgın, üzgün')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">J</span><span class="ans-text"><span class="blank-ans">disappointed, upset</span> <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Hayal kırıklığına uğramış, üzgün')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 3 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete with your own ideas (suggested answers)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">I was scared because <span class="blank-ans">the lights had gone out.</span></span><button class="tr-btn" onclick="showTip(this, 'Korkmuştum çünkü ışıklar sönmüştü.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I was jealous because <span class="blank-ans">my sister got the biggest bedroom.</span></span><button class="tr-btn" onclick="showTip(this, 'Kıskançtım çünkü kız kardeşim en büyük yatak odasını aldı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">I was nervous because <span class="blank-ans">I hadn't sung in public before.</span></span><button class="tr-btn" onclick="showTip(this, 'Sinirlendim çünkü daha önce halkın önünde şarkı söylememiştim.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">I was upset because <span class="blank-ans">my best friend had forgotten my birthday.</span></span><button class="tr-btn" onclick="showTip(this, 'Üzülmüştüm çünkü en iyi arkadaşım doğum günümü unutmuştu.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">I was disappointed because <span class="blank-ans">the restaurant wasn't very good.</span></span><button class="tr-btn" onclick="showTip(this, 'Hayal kırıklığına uğradım çünkü restoran çok iyi değildi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">I was proud because <span class="blank-ans">my photo won first prize.</span></span><button class="tr-btn" onclick="showTip(this, 'Gurur duydum çünkü fotoğrafım birinci oldu.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 4 - Match A with B -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Match a line in A with a line in B</div>
+    <table class="match-table">
+      <tr><th>A</th><th></th><th>B</th></tr>
+      <tr>
+        <td>1 Sometimes I feel really homesick.</td>
+        <td class="match-arrow">→ d</td>
+        <td>I'm sure you do. What do you miss the most?</td>
+      </tr>
+      <tr>
+        <td>2 I've got too much work to do!</td>
+        <td class="match-arrow">→ e</td>
+        <td>You'll manage. You're just stressed right now.</td>
+      </tr>
+      <tr>
+        <td>3 I'm worried about my driving test.</td>
+        <td class="match-arrow">→ a</td>
+        <td>It's normal! I was nervous when I took mine.</td>
+      </tr>
+      <tr>
+        <td>4 We're going to have a baby!</td>
+        <td class="match-arrow">→ b</td>
+        <td>Oh, that's fabulous! I'm delighted for you both!</td>
+      </tr>
+      <tr>
+        <td>5 I get upset when people are so horrible.</td>
+        <td class="match-arrow">→ c</td>
+        <td>Well, remember that people can be really nice, too!</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- EVERYDAY ENGLISH: so and such                  -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">Exclamations with <em>so</em> and <em>such</em></div>
+  <div class="section-page">(Ders Kitabı s. 97)</div>
+
+  <!-- Ex 1 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 (9.15) – Which word has most stress?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">→</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">"That was <strong>such</strong> an amazing film!" — <em>such</em> and <em>so</em> both carry strong stress.</span>
+          <button class="tr-btn" onclick="showTip(this, '"Öyle harika bir filmdi!" — "such" ve "so" kelimeleri güçlü vurgu alır.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 - Rules -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – When do we use …?</div>
+    <div class="grammar-box">
+      <div class="gb-title">● so / such / such a(n) / so many / so much</div>
+      <ul>
+        <li><span class="tl"><span class="tl-text"><strong>so</strong> + adjective or adverb: <em>I was so surprised! / She sings so beautifully!</em></span><button class="tr-btn" onclick="showTip(this, 'so + sıfat veya zarf: Çok şaşırdım! / Çok güzel söylüyor!')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>such a/an</strong> + (adjective +) noun (singular): <em>It was such a shock! / such an awful day!</em></span><button class="tr-btn" onclick="showTip(this, 'such a/an + (sıfat +) tekil isim: Böyle bir şok! / Böyle berbat bir gün!')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>such</strong> + adjective + plural noun: <em>You have such crazy ideas!</em></span><button class="tr-btn" onclick="showTip(this, 'such + sıfat + çoğul isim: Çok çılgınca fikirlerin var!')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>such</strong> + adjective + uncountable noun: <em>We had such terrible weather!</em></span><button class="tr-btn" onclick="showTip(this, 'such + sıfat + sayılamayan isim: Böyle berbat bir hava vardı!')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>so many</strong> + plural noun: <em>There were so many people in town!</em></span><button class="tr-btn" onclick="showTip(this, 'so many + çoğul isim: Kasabada bu kadar çok insan vardı!')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>so much</strong> + uncountable noun: <em>I've got so much work!</em></span><button class="tr-btn" onclick="showTip(this, 'so much + sayılamayan isim: Bu kadar çok işim var!')">?</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ex 4 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Complete the sentences</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">This is <span class="blank-ans">such a</span> good novel!</span><button class="tr-btn" onclick="showTip(this, 'Bu kadar iyi bir roman!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">It's <span class="blank-ans">so</span> scary!</span><button class="tr-btn" onclick="showTip(this, 'Bu kadar korkutucu!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Susie and John are <span class="blank-ans">such</span> nice people!</span><button class="tr-btn" onclick="showTip(this, 'Susie ve John ne kadar iyi insanlar!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">There are <span class="blank-ans">so many</span> pizzas to choose from!</span><button class="tr-btn" onclick="showTip(this, 'Bu kadar çok pizza arasından seçim yapmak!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">Why are you driving <span class="blank-ans">so</span> fast?!</span><button class="tr-btn" onclick="showTip(this, 'Neden bu kadar hızlı araba kullanıyorsun?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">You've made <span class="blank-ans">such a</span> mess in the kitchen!</span><button class="tr-btn" onclick="showTip(this, 'Mutfağı ne kadar dağıttın!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">I've spent <span class="blank-ans">so much</span> money this week!</span><button class="tr-btn" onclick="showTip(this, 'Bu hafta bu kadar çok para harcadım!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">That was <span class="blank-ans">such an</span> amazing experience!</span><button class="tr-btn" onclick="showTip(this, 'Bu kadar harika bir deneyimdi!')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 5 - Match -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Match the sentences with the lines in Exercise 4</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">"This is such a good novel!" → <em>Do you want to borrow it now?</em></span><button class="tr-btn" onclick="showTip(this, '\"Bu kadar iyi bir roman!\" → Şimdi ödünç almak ister misin?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">"It's so scary!" → <em>I had my eyes closed for a lot of it!</em></span><button class="tr-btn" onclick="showTip(this, '\"Bu kadar korkutucu!\" → Çoğunun gözlerimi kapalı geçirdim!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">"They're such nice people!" → <em>They're always so friendly and helpful.</em></span><button class="tr-btn" onclick="showTip(this, '\"Ne kadar iyi insanlar!\" → Her zaman bu kadar samimi ve yardımseverdirler.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">"There are so many pizzas!" → <em>I can't decide which one to order!</em></span><button class="tr-btn" onclick="showTip(this, '\"Bu kadar çok pizza var!\" → Hangisini ısmarlayacağıma karar veremiyorum!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">"Why are you driving so fast?!" → <em>We're not in any hurry!</em></span><button class="tr-btn" onclick="showTip(this, '\"Neden bu kadar hızlı kullanıyorsun?!\" → Hiç acele etmiyoruz!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">"You've made such a mess!" → <em>Come and clean it up now!</em></span><button class="tr-btn" onclick="showTip(this, '\"Ne kadar dağıttın!\" → Gel şimdi temizle!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">"I've spent so much money!" → <em>I should leave my credit card at home!</em></span><button class="tr-btn" onclick="showTip(this, '\"Bu kadar çok para harcadım!\" → Kredi kartımı evde bırakmalıyım!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">8</span><span class="ans-text"><span class="tl"><span class="tl-text">"Such an amazing experience!" → <em>It's the first time I've been to an IMAX cinema!</em></span><button class="tr-btn" onclick="showTip(this, '\"Harika bir deneyimdi!\" → İlk kez IMAX sinemasına gittim!')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- WRITING: Reviewing a book or film             -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Reviewing a Book or Film – Referring Back in a Text</div>
+  <div class="section-page">(Ders Kitabı s. 98)</div>
+
+  <!-- Ex 2 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – What do the words in bold refer to?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">It</span><span class="ans-text"><span class="tl"><span class="tl-text">= the really good film</span><button class="tr-btn" onclick="showTip(this, '= gerçekten iyi film')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">They</span><span class="ans-text"><span class="tl"><span class="tl-text">= the friends the speaker went with</span><button class="tr-btn" onclick="showTip(this, '= konuşmacının birlikte gittiği arkadaşlar')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">it (2nd)</span><span class="ans-text"><span class="tl"><span class="tl-text">= the film</span><button class="tr-btn" onclick="showTip(this, '= film')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">which</span><span class="ans-text"><span class="tl"><span class="tl-text">= the acting</span><button class="tr-btn" onclick="showTip(this, '= oyunculuk')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">That</span><span class="ans-text"><span class="tl"><span class="tl-text">= the fact that the friends didn't like the acting</span><button class="tr-btn" onclick="showTip(this, '= arkadaşlarının oyunculuğu beğenmemesi')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">it (3rd)</span><span class="ans-text"><span class="tl"><span class="tl-text">= the acting</span><button class="tr-btn" onclick="showTip(this, '= oyunculuk')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">this</span><span class="ans-text"><span class="tl"><span class="tl-text">= the film they saw last week</span><button class="tr-btn" onclick="showTip(this, '= geçen hafta izledikleri film')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 4 - Frankenstein questions -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Frankenstein: Check your answers</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Frankenstein is both a book and a film.</span><button class="tr-btn" onclick="showTip(this, 'Frankenstein hem kitap hem de filmdir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">It is a horror story, with elements of science fiction and romance.</span><button class="tr-btn" onclick="showTip(this, 'Bilim kurgu ve romantizm unsurları barındıran bir korku hikayesidir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">(Victor) Frankenstein is a scientist.</span><button class="tr-btn" onclick="showTip(this, 'Victor Frankenstein bir bilim insanıdır.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Victor Frankenstein makes a human being from dead bodies, but it is huge and ugly and scares people. The monster wants Frankenstein to make it a wife. Frankenstein refuses, the monster kills various people, and is chased by Frankenstein. Both die in the end.</span><button class="tr-btn" onclick="showTip(this, 'Victor Frankenstein ölü bedenlerden bir insan yaratır ama bu yaratık devasa ve çirkindir. Canavar, Frankenstein\'dan kendisine bir eş yapmasını ister. Frankenstein reddeder, canavar çeşitli insanları öldürür. İkisi de sonunda ölür.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">No, the ending is sad.</span><button class="tr-btn" onclick="showTip(this, 'Hayır, son hüzünlüdür.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 5 - Referring back in Frankenstein review -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – What do the words in bold refer to? (Frankenstein review)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">It</span><span class="ans-text"><span class="tl"><span class="tl-text">= the story of Frankenstein</span><button class="tr-btn" onclick="showTip(this, '= Frankenstein hikayesi')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">They</span><span class="ans-text"><span class="tl"><span class="tl-text">= people</span><button class="tr-btn" onclick="showTip(this, '= insanlar')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">it (monster)</span><span class="ans-text"><span class="tl"><span class="tl-text">= the monster</span><button class="tr-btn" onclick="showTip(this, '= canavar')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">He</span><span class="ans-text"><span class="tl"><span class="tl-text">= Captain Robert Walton</span><button class="tr-btn" onclick="showTip(this, '= Kaptan Robert Walton')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">these</span><span class="ans-text"><span class="tl"><span class="tl-text">= bodies</span><button class="tr-btn" onclick="showTip(this, '= cesetler / bedenler')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">This</span><span class="ans-text"><span class="tl"><span class="tl-text">= making a wife for the monster</span><button class="tr-btn" onclick="showTip(this, '= canaVar için eş yaratmak')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">his</span><span class="ans-text"><span class="tl"><span class="tl-text">= Victor Frankenstein's</span><button class="tr-btn" onclick="showTip(this, '= Victor Frankenstein\'ın')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">itself</span><span class="ans-text"><span class="tl"><span class="tl-text">= the monster</span><button class="tr-btn" onclick="showTip(this, '= canavar')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">The first</span><span class="ans-text"><span class="tl"><span class="tl-text">= the first Frankenstein film</span><button class="tr-btn" onclick="showTip(this, '= ilk Frankenstein filmi')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">which</span><span class="ans-text"><span class="tl"><span class="tl-text">= the character of the monster</span><button class="tr-btn" onclick="showTip(this, '= canavar karakteri')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 6 - Headings -->
+  <div class="q-block">
+    <div class="q-num">Exercise 6 – Find the information for each heading in the Frankenstein review</div>
+    <div class="writing-box">
+      <p><strong>Title and author:</strong> Frankenstein; Mary Shelley</p>
+      <p><strong>Type of book/film:</strong> Horror / science fiction</p>
+      <p><strong>The period or date:</strong> 1818</p>
+      <p><strong>Characters:</strong> Captain Robert Walton (explorer), Victor Frankenstein (scientist), the monster, Frankenstein's brother, friend, and wife (Elizabeth)</p>
+      <p><strong>The plot:</strong> Frankenstein discovers the secret of life and makes a human being from dead bodies, but it is huge and ugly and scares people. The monster feels lonely and wants a wife. Frankenstein refuses, the monster kills various people, both Frankenstein and the monster die in the end.</p>
+      <p><strong>People's reaction:</strong> frightened, sad</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- AUDIOSCRIPT                                    -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="audioscript">
+  <div class="section-label">Audioscript</div>
+  <div class="section-title">Unit 9 Audioscript Highlights</div>
+  <div class="section-page">(Ses Metni s. 137–138)</div>
+
+  <!-- 9.3 -->
+  <div class="q-block">
+    <div class="q-num">9.3 – Questions about the story (Mula)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">A</span><span>Why was the man all alone?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B</span><span>Because his wife had left him.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A</span><span>Why was he poor and homeless?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B</span><span>Because he'd lost his job, and his house.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A</span><span>Why was he afraid to follow Mula into the woods?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B</span><span>Because he'd heard it was easy to get lost in them.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A</span><span>Why was his sack in the middle of the road?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B</span><span>Because Mula had put it there.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">A</span><span>Why was he so happy?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">B</span><span>Because he'd found his sack again, with everything still inside it.</span></div>
+    </div>
+  </div>
+
+  <!-- 9.4 -->
+  <div class="q-block">
+    <div class="q-num">9.4 – The contraction 'd (= had)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">1</span><span>He lost his job. / He'd lost his job.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">2</span><span>We'd missed the bus. / We missed the bus.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">3</span><span>They'd all left. / They all left.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">4</span><span>But you met him before! / But you'd met him before!</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">5</span><span>I'd checked the doors. / I checked the doors.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">6</span><span>She'd asked everybody. / She asked everybody.</span></div>
+    </div>
+  </div>
+
+  <!-- 9.8 Interview excerpt -->
+  <div class="q-block">
+    <div class="q-num">9.8 – Interview with Liz Davis (extract)</div>
+    <div class="audio-box">
+      <div class="dlg-line">
+        <span class="dlg-speaker audio-name">I</span>
+        <span>Now, children's literature is very big business at the moment — is that because of the recent popularity of young adult fiction?</span>
+      </div>
+      <div class="dlg-line">
+        <span class="dlg-speaker audio-name">L</span>
+        <span>No, not really. We are in a golden age of children's literature for all ages right now. And it isn't the first golden age — there have been three. The first came in the 19th century, with the earliest fantasy books for children. <em>Alice in Wonderland</em> and <em>Peter Pan</em> were the first novels where ordinary children had adventures in a magical world.</span>
+      </div>
+      <div class="dlg-line">
+        <span class="dlg-speaker audio-name">I</span>
+        <span>And until then, children's books had been quite serious and educational, hadn't they?</span>
+      </div>
+      <div class="dlg-line">
+        <span class="dlg-speaker audio-name">L</span>
+        <span>Oh yes! People thought children's stories should teach them morals … there's a lovely story called <em>The Storyteller</em>, by a writer called Saki, which makes fun of this idea.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.11 -->
+  <div class="q-block">
+    <div class="q-num">9.11 – The man's story about Bertha (extract)</div>
+    <div class="audio-box">
+      <p style="font-size:13px; color: var(--muted); margin-bottom:8px; font-style:italic;">The young man tells the children the story of Bertha…</p>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>'Once upon a time, a long time ago, there was a little girl called Bertha, who was very, very good.' The children looked disappointed. They had hoped for a better story from him.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>'She was always well-behaved, and worked hard at school because she wanted to please her parents and teachers. She was never late, never dirty or untidy, never rude, and she never told lies.'</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>'Was she pretty?' asked the children. 'Not as pretty as you,' the young man said. 'But she was <em>horribly</em> good.'</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>The children were suddenly interested. Using the word 'horribly' with good was unusual, and they liked how true it sounded.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>'Bertha was so good that she'd won three medals for it — one said "Never late", one said "Always polite", and the third said "Best-behaved child in town". She wore them every day … so that everyone knew how good she was. "Horribly good," Cyril reminded him.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">"</span><span>'The King had heard how good this girl was, and he invited Bertha to tea at the Royal Palace … But in the woods, there lived a big hungry wolf. He quickly saw Bertha's clean white dress through the trees … Bertha saw the wolf and ran, but it was difficult to run fast because of the medals. She hid in some bushes, but she was shaking with fear, and the wolf could hear the medals clinking together. He caught her, and ate every bit of her — except for the medals, of course.'</span></div>
+    </div>
+  </div>
+
+  <!-- 9.13 -->
+  <div class="q-block">
+    <div class="q-num">9.13 – How did you feel?</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">1</span><span>I was scared because the lights had gone out.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">2</span><span>I was jealous because my sister got the biggest bedroom.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">3</span><span>I was nervous because I hadn't sung in public before.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">4</span><span>I was upset because my best friend had forgotten my birthday.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">5</span><span>I was disappointed because the restaurant wasn't very good.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">6</span><span>I was proud because my photo won first prize.</span></div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- Turkish tooltip popup -->
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+  let hideTimer = null;
+
+  function showTip(btn, text) {
+    clearTimeout(hideTimer);
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 280;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) {
+      left = rect.left - pw - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + 120 > window.innerHeight) top = window.innerHeight - 130;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) {
+      positionPopup(activeBtn);
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
