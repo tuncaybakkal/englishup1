@@ -745,9 +745,10 @@
 
   <div class="feedback-bar" id="feedbackBar">
     <div class="feedback-icon" id="feedbackIcon"></div>
-    <div>
+    <div style="flex:1">
       <div id="feedbackText"></div>
       <div class="feedback-explain" id="feedbackExplain"></div>
+      <div id="feedbackTranslation" style="margin-top:6px;font-size:0.82rem;color:var(--accent2);font-style:italic;display:none"></div>
     </div>
   </div>
 
@@ -815,9 +816,10 @@
   <div class="choices" id="lqChoices"></div>
   <div class="feedback-bar" id="lqFeedback">
     <div class="feedback-icon" id="lqFeedbackIcon"></div>
-    <div>
+    <div style="flex:1">
       <div id="lqFeedbackText"></div>
       <div class="feedback-explain" id="lqFeedbackExplain"></div>
+      <div id="lqFeedbackTranslation" style="margin-top:6px;font-size:0.82rem;color:var(--accent2);font-style:italic;display:none"></div>
     </div>
   </div>
   <button class="next-btn" id="lqNextBtn" onclick="nextLessonQuestion()">Sonraki →</button>
@@ -1136,6 +1138,18 @@ function answerQ(idx, clickedBtn, correctIdx, explain) {
   fb.className = 'feedback-bar show ' + (isCorrect ? 'correct' : 'wrong');
 
   document.getElementById('nextBtn').className = 'next-btn show';
+
+  // Doğru cevap verilince tam cümleyi Türkçeye çevir
+  if (isCorrect) {
+    const q = state.questions[state.current];
+    const correctAnswer = btns[correctIdx].textContent.replace(/^[A-D]/, '').trim();
+    const fullSentence = q.q.replace(/___+/, correctAnswer);
+    const translEl = document.getElementById('feedbackTranslation');
+    translEl.style.display = 'none';
+    translateSentence(fullSentence, 'feedbackTranslation');
+  } else {
+    document.getElementById('feedbackTranslation').style.display = 'none';
+  }
 }
 
 function nextQuestion() {
@@ -3991,6 +4005,33 @@ function setHint(h) {
   }
 }
 
+async function translateSentence(sentence, translationElId) {
+  const el = document.getElementById(translationElId);
+  if (!el) return;
+  el.style.display = 'block';
+  el.textContent = '🔄 Türkçe çevirisi yükleniyor...';
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 150,
+        messages: [{
+          role: 'user',
+          content: `Translate this English sentence to Turkish. Reply with ONLY the Turkish translation, nothing else, no explanation:\n\n"${sentence}"`
+        }]
+      })
+    });
+    const data = await resp.json();
+    const tr = data.content && data.content[0] && data.content[0].text ? data.content[0].text.trim() : '';
+    el.textContent = tr ? '🇹🇷 ' + tr : '';
+    if (!tr) el.style.display = 'none';
+  } catch(err) {
+    el.style.display = 'none';
+  }
+}
+
 function answerLQ(idx, clickedBtn, correctIdx, explain) {
   if (lqState.answered) return;
   lqState.answered = true;
@@ -4008,6 +4049,18 @@ function answerLQ(idx, clickedBtn, correctIdx, explain) {
   document.getElementById('lqFeedbackExplain').textContent = explain || '';
   fb.className = 'feedback-bar show ' + (isCorrect ? 'correct' : 'wrong');
   document.getElementById('lqNextBtn').className = 'next-btn show';
+
+  // Doğru cevap verilince tam cümleyi Türkçeye çevir
+  if (isCorrect) {
+    const q = lqState.questions[lqState.current];
+    const correctAnswer = btns[correctIdx].textContent.replace(/^[A-D]/, '').trim();
+    const fullSentence = q.q.replace(/___+/, correctAnswer);
+    const translEl = document.getElementById('lqFeedbackTranslation');
+    translEl.style.display = 'none';
+    translateSentence(fullSentence, 'lqFeedbackTranslation');
+  } else {
+    document.getElementById('lqFeedbackTranslation').style.display = 'none';
+  }
 }
 
 function nextLessonQuestion() {
