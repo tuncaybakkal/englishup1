@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Pre-intermediate – Unit 10: All-time greats!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --orange: #e8581a;
+    --orange-light: #f5956a;
+    --orange-pale: #fff3ed;
+    --dark: #1a1208;
+    --mid: #4a3520;
+    --muted: #8a6d50;
+    --line: #e8d8c8;
+    --bg: #fdfaf6;
+    --white: #ffffff;
+    --green: #2e7d5e;
+    --green-light: #e8f5ef;
+    --blue: #1e5a8a;
+    --blue-light: #e8f0f8;
+    --gold: #c89a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .site-header {
+    background: var(--orange);
+    padding: 32px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.18);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-badge {
+    background: white;
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 26px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-text p {
+    color: rgba(255,255,255,0.82);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .toc { background: var(--dark); padding: 0 40px; }
+  .toc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  .toc a {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { background: var(--orange); color: white; }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section-label {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .section-page {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 48px 0 36px;
+  }
+
+  .q-block {
+    margin-bottom: 28px;
+    border-left: 3px solid var(--line);
+    padding-left: 18px;
+  }
+  .q-block:hover { border-left-color: var(--orange-light); }
+  .q-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tl { display: inline; }
+  .tl-text { display: inline; }
+
+  .tr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+    line-height: 1;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+  .tr-btn:hover { background: var(--dark); }
+
+  .tr-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--dark);
+    color: #f5e8d8;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 280px;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,.38);
+    pointer-events: none;
+  }
+  .tr-popup.active { display: block; }
+  .tr-popup::before { content: '🇹🇷'; font-size: 11px; margin-right: 6px; }
+
+  .answer-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .answer-row {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5ede2;
+    align-items: flex-start;
+  }
+  .answer-row:last-child { border-bottom: none; }
+  .ans-num {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .ans-text { flex: 1; font-size: 14px; }
+
+  .fill-sentence {
+    font-size: 14.5px;
+    margin-bottom: 5px;
+    line-height: 1.8;
+  }
+  .blank-ans {
+    display: inline-block;
+    background: var(--orange-pale);
+    border-bottom: 2px solid var(--orange);
+    color: var(--orange);
+    font-weight: 600;
+    padding: 0 8px;
+    border-radius: 4px 4px 0 0;
+    font-size: 14px;
+  }
+
+  .grammar-box {
+    background: #fff8f2;
+    border: 2px solid var(--orange-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 10px;
+  }
+  .grammar-box .gb-title {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .grammar-box p, .grammar-box li { font-size: 14px; margin-bottom: 6px; }
+  .grammar-box ul { margin-left: 18px; }
+
+  .match-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .match-table th {
+    background: var(--mid);
+    color: white;
+    padding: 8px 14px;
+    font-size: 12px;
+    letter-spacing: .05em;
+    text-align: left;
+  }
+  .match-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .match-table tr:nth-child(even) td { background: #faf5ef; }
+  .match-arrow { color: var(--orange); font-weight: 700; text-align: center; }
+
+  .vocab-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .vocab-chip {
+    background: var(--green-light);
+    border: 1px solid #a8d8c0;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .writing-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .writing-box p { margin-bottom: 8px; }
+  .writing-box li { margin-bottom: 6px; margin-left: 18px; }
+
+  .audio-box {
+    background: #f5f0fa;
+    border: 1px solid #c8b0e8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 10px;
+  }
+  .dlg-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .dlg-line:last-child { margin-bottom: 0; }
+  .dlg-speaker {
+    font-weight: 700;
+    color: #6a3ab8;
+    min-width: 26px;
+    flex-shrink: 0;
+  }
+
+  .info-note {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+
+  .check-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .check-table th {
+    background: var(--dark);
+    color: white;
+    padding: 8px 14px;
+    font-size: 12px;
+    text-align: left;
+    letter-spacing: .05em;
+  }
+  .check-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .check-table tr:nth-child(even) td { background: #faf5ef; }
+  .correct { color: var(--green); font-weight: 700; }
+  .wrong { color: #b83232; font-weight: 700; text-decoration: line-through; }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 20px 16px; }
+    .main { padding: 24px 14px 60px; }
+    .section-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">10</div>
+    <div class="header-text">
+      <h1>All-time greats!</h1>
+      <p>Headway Pre-intermediate · 5th Edition · Student's Book Answer Key</p>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#starter">Starter</a>
+    <a href="#grammar">Grammar: Passives</a>
+    <a href="#practice">Practice</a>
+    <a href="#vocabulary">Vocabulary</a>
+    <a href="#reading">Reading: Man United</a>
+    <a href="#listening">Listening: Chewing Gum</a>
+    <a href="#everyday">Everyday English</a>
+    <a href="#writing">Writing</a>
+    <a href="#audioscript">Audioscript</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- UNIT OPENER                                    -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="starter">
+  <div class="section-label">Unit Opener &amp; Starter</div>
+  <div class="section-title">All-time greats! – Opening questions &amp; Passive Starter</div>
+  <div class="section-page">(Ders Kitabı s. 99–100)</div>
+
+  <!-- Opener -->
+  <div class="q-block">
+    <div class="q-num">Unit Opener – Discussion questions</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He is Usain Bolt, a Jamaican sprinter who has won eight Gold medals at three Olympic Games, and eleven World Championship Gold medals, in the 100 m, 200 m, and 4×100 m relay races.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Usain Bolt — Jamaikalı bir sprinter. Üç Olimpiyat Oyunları\'nda 8 altın madalya ve 100m, 200m ve 4x100m bayrak yarışlarında 11 Dünya Şampiyonluğu altın madalyası kazanmıştır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">They want to be associated with success and winners.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Başarı ve kazananlarla özdeşleşmek istiyorlar.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Students' own answers.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Öğrencilerin kendi cevapları.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Starter -->
+  <div class="q-block">
+    <div class="q-num">Starter – Make true sentences from the chart (Passive: is/are made/grown in)</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Toshiba cars are made in Japan.</span><button class="tr-btn" onclick="showTip(this, 'Toshiba arabaları Japonya\'da üretilir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Champagne is made in France.</span><button class="tr-btn" onclick="showTip(this, 'Şampanya Fransa\'da üretilir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Coffee is grown in Brazil.</span><button class="tr-btn" onclick="showTip(this, 'Kahve Brezilya\'da yetiştirilir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Rolex watches are made in Switzerland.</span><button class="tr-btn" onclick="showTip(this, 'Rolex saatler İsviçre\'de üretilir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Rice is grown in China.</span><button class="tr-btn" onclick="showTip(this, 'Pirinç Çin\'de yetiştirilir.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">→</span><span class="ans-text"><span class="tl"><span class="tl-text">Whisky is made in Scotland.</span><button class="tr-btn" onclick="showTip(this, 'Viski İskoçya\'da üretilir.')">?</button></span></span></div>
+      <div class="answer-row">
+        <span class="ans-num">✗</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Negative examples: Toshiba cars aren't made in France. Champagne isn't made in China. Coffee isn't grown in Scotland. Rolex watches aren't made in Japan.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Olumsuz örnekler: Toshiba arabaları Fransa\'da üretilmez. Şampanya Çin\'de üretilmez. Kahve İskoçya\'da yetiştirilmez. Rolex saatler Japonya\'da üretilmez.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- GRAMMAR: PASSIVES – ALL TENSES                 -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <div class="section-title">Passives – All Tenses (Tetris)</div>
+  <div class="section-page">(Ders Kitabı s. 100–101)</div>
+
+  <!-- Ex 2 – Tetris intro -->
+  <div class="q-block">
+    <div class="q-num">Exercise 2 – Read the first part of the Tetris article</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">Age?</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It's over 35 years old.</span>
+          <button class="tr-btn" onclick="showTip(this, '35 yıldan daha eski.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Creator?</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Alexey Pajitnov – he worked at the Russian Academy of Science, in Moscow.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Alexey Pajitnov — Moskova\'daki Rus Bilimler Akademisi\'nde çalıştı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Spread?</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It spread to Budapest, and then on to Britain and the US.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Budapeşte\'ye, oradan İngiltere ve ABD\'ye yayıldı.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 – Correct the false information -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 (10.1) – Correct the false information in these sentences</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">Nearly 495 million</span> → <span class="correct">Over 495 million</span> games have been sold worldwide.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Dünya genelinde 495 milyondan FAZLA oyun satılmıştır (yaklaşık değil).')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">Russian publisher</span> → <span class="correct">Russian Artificial Intelligence Researcher, Alexey Pajitnov.</span></span>
+          <button class="tr-btn" onclick="showTip(this, 'Rus bir yayıncı değil, Rus Yapay Zeka Araştırmacısı Alexey Pajitnov tarafından keşfedildi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">the only game</span> → Tetris was the game enjoyed <span class="correct">the most</span> by his colleagues.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Tek oyun değil; meslektaşlarının en çok zevk aldığı oyundu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">coloured circles</span> → The game is made up of <span class="correct">coloured squares.</span></span>
+          <button class="tr-btn" onclick="showTip(this, 'Dairelerden değil, renkli karelerden oluşmaktadır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">too difficult</span> → It is <span class="correct">simple enough</span> to be played by children.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çok zor değil; çocukların oynayabileceği kadar basit.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">many countries</span> → It <span class="correct">can be played in any country.</span></span>
+          <button class="tr-btn" onclick="showTip(this, 'Birçok ülkede değil, herhangi bir ülkede oynanabilir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">smartphone</span> → The <span class="correct">Nintendo Game Boy</span> was the first hand-held computer.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Akıllı telefon değil; Nintendo Game Boy ilk elde tutulan bilgisayardı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text"><span class="wrong">some doubt</span> → There is <span class="correct">little doubt</span> that Tetris will be downloaded in the future.</span>
+          <button class="tr-btn" onclick="showTip(this, '"Biraz şüphe" değil; Tetris\'in gelecekte indirilip indirilmeyeceği konusunda az şüphe var.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grammar Spot -->
+  <div class="q-block">
+    <div class="q-num">Grammar Spot</div>
+    <div class="grammar-box">
+      <div class="gb-title">● Passive formation</div>
+      <p><strong>1.</strong> <span class="tl"><span class="tl-text">We form the passive with the appropriate form of the verb <em>be</em> and the <em>past participle</em>.</span><button class="tr-btn" onclick="showTip(this, 'Edilgen yapıyı uygun bir \"be\" fiili + geçmiş katılım (past participle) ile oluştururuz.')">?</button></span></p>
+      <p style="margin-top:8px;"><strong>2. Passive forms found in the text:</strong></p>
+      <ul>
+        <li><span class="tl"><span class="tl-text"><strong>Present Simple:</strong> is played, is said, is mastered</span><button class="tr-btn" onclick="showTip(this, 'Geniş Zaman edilgeni: is played (oynanır), is said (söylenir), is mastered (ustalaşılır)')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>Past Simple:</strong> was created, were enjoyed, was discovered, was launched</span><button class="tr-btn" onclick="showTip(this, 'Geçmiş Zaman edilgeni: was created (yaratıldı), were enjoyed (zevkle oynandı), was discovered (keşfedildi), was launched (piyasaya sürüldü)')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>Present Perfect:</strong> have been sold</span><button class="tr-btn" onclick="showTip(this, 'Present Perfect edilgeni: have been sold (satılmıştır)')">?</button></span></li>
+        <li><span class="tl"><span class="tl-text"><strong>will future:</strong> will be downloaded</span><button class="tr-btn" onclick="showTip(this, 'Gelecek Zaman edilgeni: will be downloaded (indirilecek)')">?</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ex 4 – Active to passive -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Active to Passive: How are these sentences expressed in the passive?</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Tetris / It is still played all over the world.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Tetris hâlâ tüm dünyada oynanmaktadır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It is said that it's difficult to find a video game player who has never heard of Tetris.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Tetris\'i hiç duymamış bir video oyunu oyuncusu bulmak zor olduğu söylenmektedir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Over 495 million have been sold worldwide.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Dünya genelinde 495 milyondan fazlası satılmıştır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It was created by Alexey Pajitnov in Russia, in 1984.</span>
+          <button class="tr-btn" onclick="showTip(this, '1984 yılında Rusya\'da Alexey Pajitnov tarafından yaratıldı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Many of the games were enjoyed by Pajitnov's colleagues.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Oyunların büyük bölümü Pajitnov\'un meslektaşları tarafından zevkle oynandı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It can be played on any computer.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Herhangi bir bilgisayarda oynanabilir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Nintendo Game Boy was launched in Japan in 1989.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Nintendo Game Boy 1989\'da Japonya\'da piyasaya sürüldü.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Many years from now, it will be downloaded by our children and grandchildren.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Yıllar sonra, çocuklarımız ve torunlarımız tarafından indirilecek.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check it Ex 5 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Check it: Underline the correct word</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Where <span class="blank-ans">were</span> these shoes made?</span><button class="tr-btn" onclick="showTip(this, 'Bu ayakkabılar nerede üretildi?')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I was given this watch <span class="blank-ans">by</span> my aunt.</span><button class="tr-btn" onclick="showTip(this, 'Bu saati teyzem verdi.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">My bag <span class="blank-ans">has been stolen</span>!</span><button class="tr-btn" onclick="showTip(this, 'Çantam çalındı!')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Our newsagent <span class="blank-ans">sells</span> stamps.</span><button class="tr-btn" onclick="showTip(this, 'Gazetecimiz pul satıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">British police officers <span class="blank-ans">don't carry</span> guns.</span><button class="tr-btn" onclick="showTip(this, 'İngiliz polisleri silah taşımaz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">All the beer was <span class="blank-ans">drunk</span> by nine o'clock.</span><button class="tr-btn" onclick="showTip(this, 'Tüm bira saat dokuza kadar içilmişti.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">Have all the sandwiches <span class="blank-ans">been eaten</span>?</span><button class="tr-btn" onclick="showTip(this, 'Tüm sandviçler yendi mi?')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PRACTICE                                       -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="practice">
+  <div class="section-label">Practice</div>
+  <div class="section-title">Inventions that changed the world &amp; Statistics Worldwide</div>
+  <div class="section-page">(Ders Kitabı s. 102)</div>
+
+  <!-- Ex 1 – Inventions -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 – Match inventions with inventors and dates (10.2)</div>
+    <table class="match-table">
+      <tr><th>Invention</th><th>Inventor</th><th>Date</th></tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">paper</span><button class="tr-btn" onclick="showTip(this, 'kağıt')">?</button></span></td>
+        <td>T'sai Lun</td>
+        <td>105 AD</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">printing press</span><button class="tr-btn" onclick="showTip(this, 'matbaa')">?</button></span></td>
+        <td>Johannes Gutenberg</td>
+        <td>1440</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">telephone</span><button class="tr-btn" onclick="showTip(this, 'telefon')">?</button></span></td>
+        <td>Alexander Graham Bell</td>
+        <td>1876</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">radio</span><button class="tr-btn" onclick="showTip(this, 'radyo')">?</button></span></td>
+        <td>Guglielmo Marconi</td>
+        <td>1901</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">television</span><button class="tr-btn" onclick="showTip(this, 'televizyon')">?</button></span></td>
+        <td>John Logie Baird</td>
+        <td>1924</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">ballpoint pen</span><button class="tr-btn" onclick="showTip(this, 'tükenmez kalem')">?</button></span></td>
+        <td>László Bíró</td>
+        <td>1938</td>
+      </tr>
+      <tr>
+        <td><span class="tl"><span class="tl-text">Apple PC</span><button class="tr-btn" onclick="showTip(this, 'Apple kişisel bilgisayar')">?</button></span></td>
+        <td>Steve Jobs &amp; Steve Wozniak</td>
+        <td>1976</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Ex 3 – Statistics (passive form) -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Statistics Worldwide: Complete with the passive form</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div class="fill-sentence">60% of video games <span class="blank-ans">are bought</span> by men and 40% by women.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Video oyunların %60\'ı erkekler, %40\'ı kadınlar tarafından satın alınıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Nearly 75 trillion emails <span class="blank-ans">are sent</span> every year.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Her yıl yaklaşık 75 trilyon e-posta gönderilmektedir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Over 40,000 questions <span class="blank-ans">are answered</span> by Google every second.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Google her saniye 40.000\'den fazla soruyu yanıtlıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <div class="fill-sentence">eBay <span class="blank-ans">was invented</span> in 1995.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'eBay 1995\'te icat edildi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Facebook <span class="blank-ans">has been translated</span> into 76 languages since it began.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Facebook başladığından bu yana 76 dile çevrilmiştir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <div class="fill-sentence">The first Twitter message <span class="blank-ans">was sent</span> in 2006.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'İlk Twitter mesajı 2006\'da gönderildi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Airbnb <span class="blank-ans">was founded</span> in San Francisco in 2008.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Airbnb 2008\'de San Francisco\'da kuruldu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Amazon.com <span class="blank-ans">was founded</span> in 1994.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Amazon.com 1994\'te kuruldu.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 4 – Questions and answers -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 (10.4) – Questions and answers about statistics</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: How many video games are bought by men and women? B: 60% are bought by men, 40% by women. The average age of a video game player is 38.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Erkekler ve kadınlar kaç video oyunu satın alıyor? B: %60\'ı erkekler, %40\'ı kadınlar tarafından alınıyor. Ortalama oyun oyuncusu yaşı 38.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: How many emails are sent every year? B: Nearly 75 trillion. The average office worker receives 121 emails a day.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Her yıl kaç e-posta gönderiliyor? B: Yaklaşık 75 trilyon. Ortalama ofis çalışanı günde 121 e-posta alıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: How many questions are answered by Google every second? B: Over 40,000 a second! About 15% of these have not been asked before.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Google her saniye kaç soruyu yanıtlıyor? B: 40.000\'den fazlası! Bunların yaklaşık %15\'i daha önce sorulmamış.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: When was eBay invented? B: In 1995. Pierre Omidyar was 28 when he invented it — he was a billionaire by the time he was 31.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: eBay ne zaman icat edildi? B: 1995\'te. Pierre Omidyar icat ettiğinde 28 yaşındaydı — 31 yaşına geldiğinde milyarderdı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: How many languages has Facebook been translated into? B: 76. There are now over 2 billion Facebook users — of these 83 million are fake profiles.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Facebook kaç dile çevrildi? B: 76. Şu an 2 milyardan fazla Facebook kullanıcısı var — bunların 83 milyonu sahte profil.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: When was the first Twitter message sent? B: In 2006, by Jack Dorsey. Now 500 million tweets are sent every day by 328 million users.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: İlk Twitter mesajı ne zaman gönderildi? B: 2006\'da Jack Dorsey tarafından. Şimdi 328 milyon kullanıcı tarafından her gün 500 milyon tweet atılıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: Where and when was Airbnb invented? B: In San Francisco in 2008. It is now used by 150 million people in 191 countries.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Airbnb nerede ve ne zaman icat edildi? B: 2008\'de San Francisco\'da. Şimdi 191 ülkede 150 milyon kişi tarafından kullanılıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">A: When was Amazon.com founded? B: In 1994. Jeff Bezos started it from his garage. It is now the world's greatest online shopping company with over 300 million customers.</span>
+          <button class="tr-btn" onclick="showTip(this, 'A: Amazon.com ne zaman kuruldu? B: 1994\'te. Jeff Bezos onu garajından başlattı. Şimdi 300 milyondan fazla müşterisiyle dünyanın en büyük çevrimiçi alışveriş şirketi.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- VOCABULARY                                     -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="vocabulary">
+  <div class="section-label">Vocabulary &amp; Speaking</div>
+  <div class="section-title">Words that go together</div>
+  <div class="section-page">(Ders Kitabı s. 103)</div>
+
+  <!-- Noun + noun -->
+  <div class="q-block">
+    <div class="q-num">Noun + Noun – Compound nouns (Exercise 1 &amp; 2)</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The <strong>first</strong> word is stressed in compound nouns (e.g. <em>VIdeo game</em>, <em>TExt message</em>).</span>
+          <button class="tr-btn" onclick="showTip(this, 'Bileşik isimlerde birinci kelime vurgulanır (ör. VIdeo oyunu, METin mesajı).')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Possible compound nouns — business: card, deal, call, game · football: game, ground, team, card · phone: card, number, call · computer: game, virus, program</span>
+          <button class="tr-btn" onclick="showTip(this, 'Olası bileşik isimler — business: card (kartvizit), deal (anlaşma), call (çağrı), game / football: game, ground (saha), team, card / phone: card, number, call / computer: game, virus, program')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verb + noun -->
+  <div class="q-block">
+    <div class="q-num">Verb + Noun – Which noun does NOT go with the verb? (Exercise 3)</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1 send</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">a text message ✓ · an email ✓ · a present ✓ · your love ✓ — <strong>a phone call ✗</strong> (you make a phone call)</span>
+          <button class="tr-btn" onclick="showTip(this, '"send" ile: mesaj, e-posta, hediye, sevgini gönderebilirsin. Ama "phone call" yapmazsın, "make" kullanırsın.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2 take</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">notes ✓ · a long time ✓ · a pill ✓ — <strong>a big breakfast ✗</strong> (you have/eat breakfast)</span>
+          <button class="tr-btn" onclick="showTip(this, '"take" ile: notlar al, uzun süre, hap al. Ama kahvaltı "have/eat" ile kullanılır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3 make</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">a complaint ✓ · a discovery ✓ · a phone call ✓ · a lot of money ✓ — <strong>an invention ✗</strong> (you make a discovery; inventions are "invented")</span>
+          <button class="tr-btn" onclick="showTip(this, '"make" ile: şikâyet, keşif, telefon, para. "invention" için "invent" fiili kullanılır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4 do</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">research ✓ · the shopping ✓ · exercises ✓ · the housework ✓ — <strong>a photo ✗</strong> (you take a photo)</span>
+          <button class="tr-btn" onclick="showTip(this, '"do" ile: araştırma, alışveriş, egzersiz, ev işi. Ama fotoğraf "take" ile çekilir.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5 play</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">cards ✓ · the piano ✓ · a part ✓ · baseball ✓ — <strong>yoga ✗</strong> (you do yoga)</span>
+          <button class="tr-btn" onclick="showTip(this, '"play" ile: kart, piyano, rol, beyzbol. Yoga "do" ile yapılır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6 win</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">a competition ✓ · a match ✓ · a game ✓ · a trophy ✓ — <strong>a team ✗</strong> (you join / manage / play for a team)</span>
+          <button class="tr-btn" onclick="showTip(this, '"win" ile: yarışma, maç, oyun, kupa. Ama takım "join/manage" ile birlikte kullanılır.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adverb + past participle -->
+  <div class="q-block">
+    <div class="q-num">Adverb + Past Participle (well- / badly-) – Exercise 5</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">She has a wonderful job. She's very <span class="blank-ans">well paid</span>.</span><button class="tr-btn" onclick="showTip(this, 'Harika bir işi var. Çok iyi ücret alıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">I didn't enjoy that novel. It was really <span class="blank-ans">badly written</span>.</span><button class="tr-btn" onclick="showTip(this, 'O romanın tadını çıkarmadım. Gerçekten kötü yazılmıştı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">You don't need to spend a lot of money on clothes to look <span class="blank-ans">well-dressed</span>.</span><button class="tr-btn" onclick="showTip(this, 'İyi giyinmiş görünmek için çok para harcamana gerek yok.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Our office is really <span class="blank-ans">well equipped</span>. We have all the latest machines.</span><button class="tr-btn" onclick="showTip(this, 'Ofisimiz gerçekten iyi donanımlı. En yeni makinelerin hepsine sahibiz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">I hope they don't bring their dogs. They're so <span class="blank-ans">badly behaved</span>.</span><button class="tr-btn" onclick="showTip(this, 'Umarım köpeklerini getirmezler. Çok yaramaz (kötü huylu) oluyorlar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text">Can I have my steak very <span class="blank-ans">well done</span> please? I don't like it rare.</span><button class="tr-btn" onclick="showTip(this, 'Bifteğimi çok iyi pişmiş alabilir miyim? Az pişmişi sevmiyorum.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text">Surely you've heard of Ed Sheeran? He's a really <span class="blank-ans">well-known</span> singer.</span><button class="tr-btn" onclick="showTip(this, 'Elbette Ed Sheeran\'ı duydunuz? Gerçekten çok tanınmış bir şarkıcı.')">?</button></span></span></div>
+    </div>
+    <div class="info-note">The stress in compound adjectives (well-paid, badly-written) is on the <strong>second</strong> word.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- READING: MANCHESTER UNITED                     -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="reading">
+  <div class="section-label">Reading &amp; Speaking</div>
+  <div class="section-title">The World's Most Loved Football Team! – Manchester United</div>
+  <div class="section-page">(Ders Kitabı s. 104–105)</div>
+
+  <!-- Ex 3 -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – Complete the sentences</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Of the 1.6 billion football fans worldwide, <span class="blank-ans">659 million</span> are fans of Manchester United.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Dünya genelindeki 1,6 milyar futbol taraftarından 659 milyonu Manchester United taraftarı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <div class="fill-sentence">Manchester United is known by two nicknames: <span class="blank-ans">Man U</span> and <span class="blank-ans">The Red Devils</span>.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'Manchester United iki lakabıyla tanınır: Man U ve Kırmızı Şeytanlar.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <div class="fill-sentence">When <span class="blank-ans">English people</span> travel abroad, they are often asked questions about the club.</div>
+          <span class="tl"><button class="tr-btn" onclick="showTip(this, 'İngilizler yurt dışına gittiklerinde, kulüp hakkında sık sık sorular sorulur.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 4 – Brief history -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Man U: A brief history</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The first players for the club all worked for a local railway company.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Kulübün ilk oyuncularının hepsi yerel bir demiryolu şirketinde çalışıyordu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">It was named Manchester United.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Manchester United olarak adlandırıldı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The football ground – Old Trafford.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Futbol stadyumu — Old Trafford.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He (Matt Busby) brought a lot of young players into the team.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Matt Busby takıma çok sayıda genç oyuncu dahil etti.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because eight players were killed in a plane crash in Munich in 1958.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çünkü 1958\'de Münih\'teki uçak kazasında sekiz oyuncu hayatını kaybetti.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Alex Ferguson – the club won 25 major trophies during his 20 years at the club.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Alex Ferguson — kulüpte geçirdiği 20 yıl boyunca kulüp 25 büyük kupa kazandı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Because the team sells about two million shirts a year.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çünkü takım yılda yaklaşık iki milyon forma satıyor.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">They put their logos on the shirts.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Logolarını formalara koyuyorlar.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 5 – Why so popular -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 – Four reasons for the club's popularity</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">They've won a great many trophies.</span><button class="tr-btn" onclick="showTip(this, 'Pek çok kupa kazandılar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">A number of talented players have played/play for the team.</span><button class="tr-btn" onclick="showTip(this, 'Bir dizi yetenekli oyuncu takım için oynadı/oynuyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">They have lots of famous fans.</span><button class="tr-btn" onclick="showTip(this, 'Çok sayıda ünlü taraftarları var.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Old Trafford is a 'theatre of dreams' where players and fans can find fairy-tale glory and make their dreams come true.</span><button class="tr-btn" onclick="showTip(this, 'Old Trafford, oyuncuların ve taraftarların peri masalı zaferini bulabildiği ve hayallerini gerçekleştirebildiği bir "rüyalar tiyatrosu".')">?</button></span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- LISTENING: CHEWING GUM                         -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="listening">
+  <div class="section-label">Listening &amp; Speaking</div>
+  <div class="section-title">The World's Number One Habit – Chewing Gum</div>
+  <div class="section-page">(Ders Kitabı s. 106)</div>
+
+  <!-- Ex 3 – True/False -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – True (✓) or False (✗)?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="correct">✓</span> (Over 300 trillion sticks — correct)</span><button class="tr-btn" onclick="showTip(this, '✓ Doğru')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="wrong">✗</span> It isn't made of rubber.</span><button class="tr-btn" onclick="showTip(this, '✗ Yanlış — kauçuktan yapılmamıştır.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="wrong">✗</span> The habit of chewing gum goes back <em>nine thousand</em> years (not two thousand).</span><button class="tr-btn" onclick="showTip(this, '✗ Yanlış — sakız çiğneme alışkanlığı iki bin değil, dokuz bin yıl öncesine dayanıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="correct">✓</span></span><button class="tr-btn" onclick="showTip(this, '✓ Doğru')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="wrong">✗</span> It was made of tree sap and <em>honey</em> (not sugar).</span><button class="tr-btn" onclick="showTip(this, '✗ Yanlış — şekerden değil, ağaç özü ve baldan yapılmıştı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">6</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="correct">✓</span> They also thought it was good for their health.</span><button class="tr-btn" onclick="showTip(this, '✓ Doğru — sağlıkları için de iyi olduğunu düşünüyorlardı.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">7</span><span class="ans-text"><span class="tl"><span class="tl-text"><span class="wrong">✗</span> They wrapped it in <em>leaves</em> (not paper).</span><button class="tr-btn" onclick="showTip(this, '✗ Yanlış — kağıda değil, yapraklara sarıyorlardı.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 5 – Part Two questions -->
+  <div class="q-block">
+    <div class="q-num">Exercise 5 (10.10) – Part Two: Answer the questions</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Thomas Adams was an American inventor who introduced chewing gum to the US (from Mexico). William Wrigley was a business genius who decided chewing gum was the thing of the future.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Thomas Adams, sakızı Amerika\'ya (Meksika\'dan) tanıtan Amerikalı bir mucitti. William Wrigley ise sakızın geleceğin ürünü olduğuna karar veren iş dahiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He was the first to use advertising to sell his products.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ürünlerini satmak için reklamcılığı kullanan ilk kişiydi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">He hired hundreds of pretty girls ("The Wrigley girls") and they walked up and down the streets of New York and Chicago, handing out free chewing gum.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Yüzlerce güzel kız kiraladı ("Wrigley kızları") ve bunlar New York ile Chicago sokaklarında dolaşarak ücretsiz sakız dağıttı.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">During the Second World War.</span>
+          <button class="tr-btn" onclick="showTip(this, 'İkinci Dünya Savaşı sırasında.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">5</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The US army.</span>
+          <button class="tr-btn" onclick="showTip(this, 'ABD ordusu.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">6</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Children said it to American soldiers.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Çocuklar Amerikan askerlerine bunu söyledi.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">7</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">The recipe is a secret.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Tarif bir sır.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">8</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">More than £10 million a year.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Yılda 10 milyon sterlinden fazla.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- EVERYDAY ENGLISH: ON THE PHONE                 -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="everyday">
+  <div class="section-label">Everyday English</div>
+  <div class="section-title">On the Phone</div>
+  <div class="section-page">(Ders Kitabı s. 107)</div>
+
+  <!-- Ex 1 – Phone numbers -->
+  <div class="q-block">
+    <div class="q-num">Exercise 1 (10.11) – How are these numbers expressed?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">0</span><span class="ans-text"><span class="tl"><span class="tl-text">= /əʊ/ ("oh")</span><button class="tr-btn" onclick="showTip(this, '"0" sıfır değil, "oh" diye okunur.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">00</span><span class="ans-text"><span class="tl"><span class="tl-text">= double /əʊ/ ("double oh")</span><button class="tr-btn" onclick="showTip(this, '"00" = double oh')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">99</span><span class="ans-text"><span class="tl"><span class="tl-text">= double nine</span><button class="tr-btn" onclick="showTip(this, '"99" = double nine')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">0800</span><span class="ans-text"><span class="tl"><span class="tl-text">= /əʊ/ eight hundred</span><button class="tr-btn" onclick="showTip(this, '"0800" = oh eight hundred')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 3 – Four conversations -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 (10.12) – Four telephone conversations</div>
+
+    <p style="font-size:13px; font-weight:700; color:var(--orange); margin-top:12px; margin-bottom:4px;">Conversation 1</p>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Pat is speaking to John.</span><button class="tr-btn" onclick="showTip(this, 'Pat, John ile konuşuyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Pat is on a mobile. We don't know about John.</span><button class="tr-btn" onclick="showTip(this, 'Pat cep telefonunda. John\'un ne kullandığını bilmiyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Pat is at the train station. We don't know about John.</span><button class="tr-btn" onclick="showTip(this, 'Pat tren garında. John\'un nerede olduğunu bilmiyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Pat wants to rearrange a meeting.</span><button class="tr-btn" onclick="showTip(this, 'Pat toplantıyı yeniden düzenlemek istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">They know each other well.</span><button class="tr-btn" onclick="showTip(this, 'Birbirlerini iyi tanıyorlar.')">?</button></span></span></div>
+    </div>
+
+    <p style="font-size:13px; font-weight:700; color:var(--orange); margin-top:14px; margin-bottom:4px;">Conversation 2</p>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Emma is speaking to John.</span><button class="tr-btn" onclick="showTip(this, 'Emma, John ile konuşuyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">We don't know (what kind of phone).</span><button class="tr-btn" onclick="showTip(this, 'Bilmiyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">We don't know (where they are).</span><button class="tr-btn" onclick="showTip(this, 'Bilmiyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">John wants to speak to Patrick. He asks Emma to take a message.</span><button class="tr-btn" onclick="showTip(this, 'John, Patrick ile konuşmak istiyor. Emma\'dan mesaj almasını istiyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">They know each other well. John and Emma's husband are friends.</span><button class="tr-btn" onclick="showTip(this, 'Birbirlerini iyi tanıyorlar. John ile Emma\'nın kocası arkadaş.')">?</button></span></span></div>
+    </div>
+
+    <p style="font-size:13px; font-weight:700; color:var(--orange); margin-top:14px; margin-bottom:4px;">Conversation 3</p>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Harriet is speaking to the receptionist (Chantal) and then to Patrick's secretary (Teresa).</span><button class="tr-btn" onclick="showTip(this, 'Harriet resepsiyonist Chantal ve ardından Patrick\'in sekreteri Teresa ile konuşuyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">They're on a landline.</span><button class="tr-btn" onclick="showTip(this, 'Sabit hat kullanıyorlar.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">The receptionist and secretary are in the office. Harriet is at Digby and Moss Associates.</span><button class="tr-btn" onclick="showTip(this, 'Resepsiyonist ve sekreter ofisteler. Harriet Digby and Moss Associates\'de.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Harriet wants to speak to Patrick. He isn't available at first and then his secretary puts her through.</span><button class="tr-btn" onclick="showTip(this, 'Harriet Patrick ile konuşmak istiyor. Patrick başta müsait değil, sonra sekreteri bağlıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">They know each other.</span><button class="tr-btn" onclick="showTip(this, 'Birbirlerini tanıyorlar.')">?</button></span></span></div>
+    </div>
+
+    <p style="font-size:13px; font-weight:700; color:var(--orange); margin-top:14px; margin-bottom:4px;">Conversation 4</p>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">1</span><span class="ans-text"><span class="tl"><span class="tl-text">Teresa is speaking to Emma.</span><button class="tr-btn" onclick="showTip(this, 'Teresa, Emma ile konuşuyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">2</span><span class="ans-text"><span class="tl"><span class="tl-text">Teresa is on a landline. We don't know about Emma.</span><button class="tr-btn" onclick="showTip(this, 'Teresa sabit hatta. Emma hakkında bilmiyoruz.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">3</span><span class="ans-text"><span class="tl"><span class="tl-text">Teresa is in the office and Emma isn't.</span><button class="tr-btn" onclick="showTip(this, 'Teresa ofistedir, Emma değil.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">4</span><span class="ans-text"><span class="tl"><span class="tl-text">Emma wants to speak to Patrick. He isn't available and she leaves a message.</span><button class="tr-btn" onclick="showTip(this, 'Emma Patrick ile konuşmak istiyor. Patrick müsait değil ve Emma mesaj bırakıyor.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">5</span><span class="ans-text"><span class="tl"><span class="tl-text">They know each other well.</span><button class="tr-btn" onclick="showTip(this, 'Birbirlerini iyi tanıyorlar.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 4 – Complete expressions -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – Complete the expressions from the conversations</div>
+    <div class="answer-card">
+      <div class="answer-row">
+        <span class="ans-num">Conv.1</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">Sorry, you're <span class="blank-ans">breaking</span> up. · It's not a good <span class="blank-ans">signal</span>. · I can't <span class="blank-ans">make</span> it on Thursday. · Are you free on Friday <span class="blank-ans">instead</span>? · Can I get <span class="blank-ans">back</span> to you? · Speak <span class="blank-ans">later</span>!</span>
+          <button class="tr-btn" onclick="showTip(this, 'Ses geliyor ama kopuk. Sinyal iyi değil. Perşembe uygun değilim. Cuma müsait misin? Sizi tekrar arayabilir miyim? Sonra konuşuruz!')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Conv.2</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I'm trying to get <span class="blank-ans">hold of</span> Patrick. · Have you tried his <span class="blank-ans">mobile</span>? · He's not <span class="blank-ans">answering</span>. · It's probably <span class="blank-ans">switched</span> off. · Can you give him a <span class="blank-ans">message</span>?</span>
+          <button class="tr-btn" onclick="showTip(this, 'Patrick\'e ulaşmaya çalışıyorum. Cep telefonunu denedin mi? Cevap vermiyor. Muhtemelen kapalı. Ona mesaj verebilir misin?')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Conv.3</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I'm afraid his line's <span class="blank-ans">busy</span>. Would you like to <span class="blank-ans">hold</span>? · It's <span class="blank-ans">ringing</span> for you now. · Teresa <span class="blank-ans">speaking</span>. · <span class="blank-ans">This is</span> Harriet Smith from Digby and Moss Associates. · I'll put you <span class="blank-ans">through</span> immediately.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Hattı meşgul. Beklemek ister misiniz? Şimdi çalıyor. Teresa konuşuyor. Digby and Moss Associates\'ten Harriet Smith. Hemen bağlıyorum.')">?</button></span>
+        </span>
+      </div>
+      <div class="answer-row">
+        <span class="ans-num">Conv.4</span>
+        <span class="ans-text">
+          <span class="tl"><span class="tl-text">I'm afraid he has <span class="blank-ans">someone</span> with him. · Is it <span class="blank-ans">urgent</span>? · Just tell him I <span class="blank-ans">rang</span>. · Will <span class="blank-ans">do</span>. I hope there isn't a problem.</span>
+          <button class="tr-btn" onclick="showTip(this, 'Üzgünüm, şu an yanında biri var. Acil mi? Sadece aradığımı söyleyin. Tamam. Umarım bir sorun yoktur.')">?</button></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- WRITING: PROS AND CONS                         -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Discussing Pros and Cons – Social Media Sites</div>
+  <div class="section-page">(Ders Kitabı s. 108)</div>
+
+  <!-- Ex 3 – Paragraph purposes -->
+  <div class="q-block">
+    <div class="q-num">Exercise 3 – What is the purpose of each paragraph?</div>
+    <div class="answer-card">
+      <div class="answer-row"><span class="ans-num">Para 1</span><span class="ans-text"><span class="tl"><span class="tl-text">Expresses advantages / pros.</span><button class="tr-btn" onclick="showTip(this, 'Avantajları / olumlu yanları anlatır.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">Para 2</span><span class="ans-text"><span class="tl"><span class="tl-text">Expresses disadvantages / cons.</span><button class="tr-btn" onclick="showTip(this, 'Dezavantajları / olumsuz yanları anlatır.')">?</button></span></span></div>
+      <div class="answer-row"><span class="ans-num">Para 3</span><span class="ans-text"><span class="tl"><span class="tl-text">Expresses personal view / conclusion.</span><button class="tr-btn" onclick="showTip(this, 'Kişisel görüşü / sonucu ifade eder.')">?</button></span></span></div>
+    </div>
+  </div>
+
+  <!-- Ex 4 – Full model essay with linkers -->
+  <div class="q-block">
+    <div class="q-num">Exercise 4 – The Pros and Cons of Social Media Sites (model text with linkers)</div>
+    <div class="writing-box">
+      <p><strong>THE PROS AND CONS OF SOCIAL MEDIA SITES</strong></p>
+      <p>Social media sites, such as Facebook, <em>clearly</em> have many advantages. <em>First of all</em>, they are an excellent way of keeping in touch with people in your life, <em>both</em> friends and family, and they are a great way of finding old friends. <em>Also</em>, you can communicate with these people at any time you want and in many ways, <em>for example</em> you can share your photos or your favourite music and videos with them. <em>Another advantage is that</em> you can join groups with similar interests to yourself, <em>such as</em> sports, hobbies, and your work.</p>
+      <p><em>However</em>, social media sites also have many disadvantages. <em>Firstly</em>, you are often flooded with requests from unknown or unwanted 'friends'. <em>Secondly</em>, friends and family may find out too much about your private life, and, <em>what is more</em>, you may hear about boring events in their lives. You can <em>also</em> be tagged in pictures that you don't want others to see. <em>Finally</em>, <em>perhaps</em> the biggest problem is that you can waste too much time on Facebook. Some people can <em>even</em> become addicted to it.</p>
+      <p><em>Despite</em> the disadvantages, social media sites are definitely here to stay. They are now one of the main means of communication worldwide. <em>The fact is that</em> we can't imagine our lives without them.</p>
+    </div>
+  </div>
+
+  <!-- Linkers overview -->
+  <div class="q-block">
+    <div class="q-num">Overview of Linking Words</div>
+    <div class="grammar-box">
+      <div class="gb-title">● Linking words (bağlaçlar) – categories</div>
+      <p><strong>Listing:</strong> <span class="tl"><span class="tl-text">First of all / Firstly, Secondly, Another (advantage) is that, Finally</span><button class="tr-btn" onclick="showTip(this, 'Sıralama: Her şeyden önce, İkinci olarak, Bir diğer avantaj, Son olarak')">?</button></span></p>
+      <p><strong>Addition:</strong> <span class="tl"><span class="tl-text">Also, and, what is more</span><button class="tr-btn" onclick="showTip(this, 'Ekleme: Ayrıca, ve, üstelik')">?</button></span></p>
+      <p><strong>Example:</strong> <span class="tl"><span class="tl-text">for example, such as</span><button class="tr-btn" onclick="showTip(this, 'Örnek: örneğin, gibi')">?</button></span></p>
+      <p><strong>Contrast:</strong> <span class="tl"><span class="tl-text">however, despite</span><button class="tr-btn" onclick="showTip(this, 'Karşıtlık: ancak / bununla birlikte, rağmen')">?</button></span></p>
+      <p><strong>Emphasis:</strong> <span class="tl"><span class="tl-text">even, The fact is that, clearly</span><button class="tr-btn" onclick="showTip(this, 'Vurgu: bile, gerçek şu ki, açıkça')">?</button></span></p>
+      <p><strong>Other:</strong> <span class="tl"><span class="tl-text">both (her iki), perhaps (belki)</span><button class="tr-btn" onclick="showTip(this, 'Diğer: both = her ikisi de; perhaps = belki')">?</button></span></p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- AUDIOSCRIPT                                    -->
+<!-- ══════════════════════════════════════════════ -->
+<section id="audioscript">
+  <div class="section-label">Audioscript</div>
+  <div class="section-title">Unit 10 Key Audioscripts</div>
+  <div class="section-page">(Ses Metni s. 138–139)</div>
+
+  <!-- 10.2 -->
+  <div class="q-block">
+    <div class="q-num">10.2 – Inventions that changed the world (extracts)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">1</span><span>Paper was invented by a Chinese government official, called T'sai Lun, in 105 AD. Since the 18th century paper has been made of wood because it is much stronger than cloth.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">2</span><span>The printing press was invented in 1440 by a German printer called Johannes Gutenberg.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">3</span><span>Alexander Graham Bell invented the telephone in 1876. The first sentence he ever sent was 'Watson, come here; I want you.'</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">4</span><span>Guglielmo Marconi was an Italian physicist. He invented the radio in 1895. The company he founded, The Marconi Company Ltd., was bought by the Swedish firm, Ericsson, in 2006.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">5</span><span>Television was invented by a Scottish engineer, John Logie Baird in 1924.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">6</span><span>The first ballpoint pen was invented by the Hungarian journalist, Laszlo Biro, in 1938.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">7</span><span>The Apple PC was invented by two American computer engineers, Steve Jobs &amp; Steve Wozniak in 1976. The name Apple was chosen because it was Jobs's favourite fruit.</span></div>
+    </div>
+  </div>
+
+  <!-- 10.9 -->
+  <div class="q-block">
+    <div class="q-num">10.9 – Part 1: Chewing gum (key extract)</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>Well, the history of chewing gum goes back thousands of years. In Sweden in 1993 a skeleton of a teenage boy was found – this boy was 9,000 years old and in his mouth was some gum. It was made of tree sap and honey – and this is the first known chewing gum.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>Yes – the ancient Greeks chewed a gum called mastica – it's a type of tree sap. They thought it was good for the health … We also know that in the first century AD the Mayan Indians in South America enjoyed chewing gum – they chewed a tree sap called chiclay. They wrapped it in leaves …</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>Well, the strangest thing about gum today is that nobody knows exactly what it's made of – the recipe is secret!</span></div>
+    </div>
+  </div>
+
+  <!-- 10.10 -->
+  <div class="q-block">
+    <div class="q-num">10.10 – Part 2: The history of modern chewing gum</div>
+    <div class="audio-box">
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>In 1871, Thomas Adams, an American inventor, introduced chewing gum from Mexico to the US … and it became popular very quickly with American kids.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>But it was in 1892 when a very clever young man called William Wrigley decided chewing gum was the thing of the future. He was a business genius – he was the first to use advertising to sell his products.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>He hired hundreds of pretty girls – he called them, 'The Wrigley girls', and they walked up and down the streets of New York and Chicago handing out free chewing gum.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>Well, during the Second World War, American soldiers were given Wrigley's gum to help them stay calm. In 1944 all chewing gum production went to the US Army … Soon they were followed everywhere with the cry, 'Got any gum, chum?' … So, of course, it spread worldwide.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">LW</span><span>Well, the cost of cleaning it from the streets of London is more than £10 million a year!</span></div>
+    </div>
+  </div>
+
+  <!-- 10.12 – Conversation 1 -->
+  <div class="q-block">
+    <div class="q-num">10.12 – Phone conversations (key phrases)</div>
+    <div class="audio-box">
+      <p style="font-size:12px; color:var(--muted); margin-bottom:6px; font-style:italic;">Conversation 1 (Pat &amp; John)</p>
+      <div class="dlg-line"><span class="dlg-speaker">J</span><span>Hi Pat! Where are you?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">P</span><span>I'm at the station on my way home from work.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">P</span><span>Sorry, you're <em>breaking up</em>. I couldn't hear that.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">P</span><span>I know, it's not a good <em>signal</em>. But, listen, I'm calling because I can't <em>make</em> it on Thursday.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">P</span><span>Are you free on Friday <em>instead</em>? … Can I get <em>back</em> to you? … Speak <em>later</em>!</span></div>
+
+      <p style="font-size:12px; color:var(--muted); margin: 12px 0 6px; font-style:italic;">Conversation 3 (Harriet, Chantal &amp; Teresa)</p>
+      <div class="dlg-line"><span class="dlg-speaker">C</span><span>I'm afraid his line's <em>busy</em>. Would you like to <em>hold</em>?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">C</span><span>It's <em>ringing</em> for you now.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">T</span><span>Hello. Patrick Doyle's office. Teresa <em>speaking</em>.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">H</span><span><em>This is</em> Harriet Smith from Digby and Moss Associates.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">T</span><span>I'll put you <em>through</em> immediately.</span></div>
+
+      <p style="font-size:12px; color:var(--muted); margin: 12px 0 6px; font-style:italic;">Conversation 4 (Teresa &amp; Emma)</p>
+      <div class="dlg-line"><span class="dlg-speaker">T</span><span>I'm afraid he has <em>someone</em> with him at the moment. Is it <em>urgent</em>?</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">E</span><span>No, no, it's not urgent. Just tell him I <em>rang</em> and I'll see him this evening at home.</span></div>
+      <div class="dlg-line"><span class="dlg-speaker">T</span><span>Will <em>do</em>. I hope there isn't a problem.</span></div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<div class="tr-popup" id="trPopup"></div>
+
+<script>
+  const popup = document.getElementById('trPopup');
+  let activeBtn = null;
+  let hideTimer = null;
+
+  function showTip(btn, text) {
+    clearTimeout(hideTimer);
+    if (activeBtn === btn && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      activeBtn = null;
+      return;
+    }
+    activeBtn = btn;
+    popup.textContent = text;
+    popup.classList.add('active');
+    positionPopup(btn);
+  }
+
+  function positionPopup(btn) {
+    const rect = btn.getBoundingClientRect();
+    const pw = 280;
+    let left = rect.right + 8;
+    let top = rect.top - 10;
+    if (left + pw > window.innerWidth - 16) left = rect.left - pw - 8;
+    if (left < 8) left = 8;
+    if (top + 120 > window.innerHeight) top = window.innerHeight - 130;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('tr-btn') && !popup.contains(e.target)) {
+      popup.classList.remove('active');
+      activeBtn = null;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeBtn && popup.classList.contains('active')) positionPopup(activeBtn);
+  }, { passive: true });
+</script>
+</body>
+</html>
